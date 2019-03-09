@@ -1,0 +1,24 @@
+oscilador -> joaco
+
+filtro antialiasing -> rochi
+
+filtro recuperador
+
+sample and hold 
+
+llave analogica
+
+entorno de simulacion -> ari
+
+mediciones
+
+remuestreo
+
+muestreo sub nyquist
+
+ejercicios teoricos
+1 listo
+2 marce
+9 11 martu
+
+9.2, 9.3 ari
