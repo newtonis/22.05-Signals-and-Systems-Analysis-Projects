@@ -24,7 +24,7 @@ def computar_recurrencia(x, alpha, beta):
 def get_max(arr):
     max_val = 0
     for v in arr:
-        max_val = max(max_val, v)
+        max_val = max(max_val, abs(v))
 
     return max_val
 
@@ -43,11 +43,19 @@ i = 0
 for f in f_range:
     x = [sin(2*pi*f*n) for n in n_range]
     y = computar_recurrencia(x, alpha, beta)
-    print(get_max(y))
-    amplitud = 20 * log10( get_max(y) )
+
+    amplitud = get_max(y)
     amp_values[i] = amplitud
 
     i = i + 1
+
+plt.xlabel("Frecuencia")
+plt.ylabel("Amplitud (veces)")
+
+
+plt.minorticks_on()
+plt.grid(which='major', linestyle='-', linewidth=0.3, color='black')
+plt.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
 plt.plot(f_range , amp_values)
 plt.show()
