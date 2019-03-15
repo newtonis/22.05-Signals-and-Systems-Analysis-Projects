@@ -30,13 +30,14 @@ def get_max(arr):
 
 
 alpha = 1
-beta = -1/4
+beta = -1/2
+dif = 0.0001
 
-f_range = linspace(-1/2, 1/2, 10000)
+f_range = linspace(-1/2+dif, 1/2-dif, 1000)
 
-amp_values = 10000 * [0]
+amp_values = 1000 * [0]
 
-n_range = range(100)
+n_range = range(10000)
 
 i = 0
 
@@ -44,12 +45,12 @@ for f in f_range:
     x = [sin(2*pi*f*n) for n in n_range]
     y = computar_recurrencia(x, alpha, beta)
 
-    amplitud = get_max(y)
+    amplitud = 20 * log10(get_max(y))
     amp_values[i] = amplitud
 
     i = i + 1
 
-plt.xlabel("Frecuencia")
+plt.xlabel("Frecuencia normalizada")
 plt.ylabel("Amplitud (veces)")
 
 
