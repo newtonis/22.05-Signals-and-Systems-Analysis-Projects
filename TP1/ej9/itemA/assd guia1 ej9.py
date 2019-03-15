@@ -1,7 +1,7 @@
 # y(nT) = 0.5x((n-2)T) + alpha * y((n-1)T) + beta * y((n-2)T)
 
 
-def diffEq(alpha, beta, x2, y1, y2):
+def diffEq(alpha, beta, x2, y1, y2):# output is y0
     return 0.5 * x2 + alpha * y1 + beta * y2
 
 n = 30
