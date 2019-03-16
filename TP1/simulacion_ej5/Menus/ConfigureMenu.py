@@ -1,8 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog
 from Menus.PlotMenu import PlotMenu
+from Globals import Modes
 import ntpath
-
+from Etapas import ProcessSignals
 from Globals import config
 
 
@@ -33,11 +34,11 @@ class ConfigureMenu(tk.Frame):
 
         self.buttonSelectFile.pack(side=tk.TOP, fill=tk.BOTH)
 
-        for mode in config.getModes().modesEnabled.keys():
+        for mode in Modes.getModes().modesEnabled.keys():
             checkButton = tk.Checkbutton(
                 self,
                 text=mode,
-                variable=config.getModes().modesEnabled[mode],
+                variable=Modes.getModes().modesEnabled[mode],
                 height=3,
                 width=44,
                 font=config.SMALL_FONT,
@@ -63,9 +64,11 @@ class ConfigureMenu(tk.Frame):
 
     def searchFile(self):
         tk.Tk().withdraw()
-        config.getModes().setFilename(filedialog.askopenfilename())
+        Modes.getModes().setFilename(filedialog.askopenfilename())
 
-        self.btnText.set("Seleccionar entrada [" + ntpath.basename(config.getModes().getFilename()) + "]")
+        self.btnText.set("Seleccionar entrada [" + ntpath.basename(Modes.getModes().getFilename()) + "]")
 
     def goToPlotMenu(self):
-        self.controller.showFrame(PlotMenu)
+        if Modes.getModes().getFilename():
+            ProcessSignals.processSignals(Modes.getModes().getFilename(), None)
+            self.controller.showFrame(PlotMenu)

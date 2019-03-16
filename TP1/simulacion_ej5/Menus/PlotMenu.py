@@ -1,5 +1,6 @@
 import tkinter as tk
-from Globals import config
+from Globals import config, Modes
+from Globals import PlotSignals
 from GuiUtils.ButtonSelector import ButtonSelector
 from GuiUtils.ButtonSelectorModel import ButtonSelectorModel
 from GuiUtils.ButtonModel import ButtonModel
@@ -44,7 +45,7 @@ class PlotMenu(tk.Frame):
         self.updateButtons()
 
     def updateButtons(self):
-        modesEnabled = config.getModes().modesEnabled
+        modesEnabled = Modes.getModes().modesEnabled
         buttons = {}
         buttons["Entrada"] = ButtonModel(
                 "Entrada",
@@ -61,11 +62,10 @@ class PlotMenu(tk.Frame):
 
         self.buttonModel.setButtons(buttons)
 
-
-
-
     def modeSelected(self, mode):
-        print("Mode selected: ", mode)
-
+        if mode == "Entrada":
+            inputSignal = PlotSignals.getSignalsData().signals[mode]
+            self.plotContainerTabs.tab1.plot(inputSignal)
+            self.plotContainerTabs.tab1.plot(inputSignal)
     def goToConfigureMenu(self):
         self.controller.showFrame(ConfigureMenu.ConfigureMenu)

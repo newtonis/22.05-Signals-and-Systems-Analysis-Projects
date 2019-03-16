@@ -1,8 +1,8 @@
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.backends._backend_tk import NavigationToolbar2Tk
+import matplotlib.pyplot as plt
 from tkinter import *
-from Globals import config
 
 
 class PlotContainer(tk.Frame):
@@ -11,8 +11,7 @@ class PlotContainer(tk.Frame):
 
         self.graph = Canvas(self)
 
-        self.fig, self.axis = config.getAxisData().fig, config.getAxisData().axis
-
+        self.fig, self.axis = plt.subplots()
         self.dataPlot = FigureCanvasTkAgg(self.fig, master=self.graph)
         #self.dataPlot.draw(self)
 
@@ -23,3 +22,8 @@ class PlotContainer(tk.Frame):
         self.dataPlot._tkcanvas.pack(side=BOTTOM, fill=X, expand=1)
 
         self.graph.pack(side=TOP, expand=1, fill=BOTH)
+
+    def plot(self, signal):
+        self.axis.plot(signal.time, signal.values)
+
+        self.dataPlot.draw()
