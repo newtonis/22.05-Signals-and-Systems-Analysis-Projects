@@ -9,8 +9,8 @@ class PlotContainerTabs(tk.Frame):
 
         self.tabControl = ttk.Notebook(self)
 
-        self.tab1 = PlotContainer(self.tabControl)
-        self.tab2 = PlotContainer(self.tabControl)
+        self.tab1 = PlotContainer(self.tabControl, "Tiempo (s)", "Amplitud (V)")
+        self.tab2 = PlotContainer(self.tabControl, "Frecuencia (hz)", "Amplitud (V)")
 
         self.tabControl.add(self.tab1, text="Tiempo")
         self.tabControl.add(self.tab2, text="Frecuencia")

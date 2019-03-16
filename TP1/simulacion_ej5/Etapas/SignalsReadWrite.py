@@ -23,9 +23,9 @@ def readSignal(filename):
 def writeSignal(signal, filename):
     data = ET.Element('signal')
 
-    for index in range(len(signal.time)):
+    for index in range(len(signal.xvar)):
         item = ET.SubElement(data, 'sample')
-        item.set("time", str(signal.time[index]))
+        item.set("time", str(signal.xvar[index]))
         item.set("value", str(signal.values[index]))
 
     myData = ET.tostring(data)

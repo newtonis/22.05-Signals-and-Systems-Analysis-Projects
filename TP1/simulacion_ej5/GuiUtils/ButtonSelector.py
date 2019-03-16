@@ -32,7 +32,7 @@ class ButtonSelector(tk.Frame):
                                                value=button,
                                                variable=self.var,
                                                font=config.SMALLEST_FONT,
-                                               command = lambda: buttons[button].callAction(),
+                                               command=buttons[button].callAction,
                                                background="cyan2",
                                                selectcolor="cyan4")
 

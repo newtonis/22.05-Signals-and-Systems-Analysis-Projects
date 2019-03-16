@@ -70,5 +70,5 @@ class ConfigureMenu(tk.Frame):
 
     def goToPlotMenu(self):
         if Modes.getModes().getFilename():
-            ProcessSignals.processSignals(Modes.getModes().getFilename(), None)
+            ProcessSignals.processSignals(Modes.getModes().getFilename(), Modes.getModes().modesEnabled)
             self.controller.showFrame(PlotMenu)

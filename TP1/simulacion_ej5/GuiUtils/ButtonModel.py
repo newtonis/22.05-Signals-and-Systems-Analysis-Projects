@@ -9,5 +9,5 @@ class ButtonModel:
 
     def callAction(self):
         if self.action:
-            self.action
+            self.action()
 

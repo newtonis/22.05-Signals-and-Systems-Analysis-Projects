@@ -25,6 +25,7 @@ def not_num(content):
         return 0
     return 1
 
+
 def read_file_spice(filename):
     file = open(filename,'r')
     lines = file.readlines()

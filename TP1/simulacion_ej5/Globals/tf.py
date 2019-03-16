@@ -8,7 +8,7 @@ class TF:
     tf = None
 
     def __init__(self):
-        pass
+        self.loaded = False
 
     def loadTf(self):
         s = sp.symbols("s")
@@ -20,6 +20,7 @@ class TF:
         H = 1 / (72 * A)
 
         self.tf = algebra.conseguir_tf(H, s)
+        self.loaded = True
 
         return self.tf
 
@@ -28,7 +29,7 @@ tf = TF()
 
 
 def getTf():
-    if not tf.loaded():
+    if not tf.loaded:
         tf.loadTf()
 
     return tf.tf

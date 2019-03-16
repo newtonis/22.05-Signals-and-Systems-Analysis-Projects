@@ -5,6 +5,8 @@ from GuiUtils.ButtonSelector import ButtonSelector
 from GuiUtils.ButtonSelectorModel import ButtonSelectorModel
 from GuiUtils.ButtonModel import ButtonModel
 from GuiUtils.PlotContainerTabs import PlotContainerTabs
+from Utils import FourierTransform
+
 from Menus import ConfigureMenu
 
 
@@ -49,23 +51,28 @@ class PlotMenu(tk.Frame):
         buttons = {}
         buttons["Entrada"] = ButtonModel(
                 "Entrada",
-                self.modeSelected("Entrada"
-            )
+                self.modeSelected
         )
 
+
         for mode in modesEnabled.keys():
+            #print(mode, modesEnabled[mode].get())
             if modesEnabled[mode].get():
                 buttons[mode] = ButtonModel(
                     "Salida de " + mode,
-                    lambda: self.modeSelected(mode)
+                    self.modeSelected
                 )
 
         self.buttonModel.setButtons(buttons)
 
-    def modeSelected(self, mode):
-        if mode == "Entrada":
+    def modeSelected(self):
+        mode = self.buttonSelector.var.get()
+        print(mode)
+        if mode == "Entrada" or mode == "FAA":
+
             inputSignal = PlotSignals.getSignalsData().signals[mode]
             self.plotContainerTabs.tab1.plot(inputSignal)
-            self.plotContainerTabs.tab1.plot(inputSignal)
+            self.plotContainerTabs.tab2.plot(FourierTransform.fourierTransform(inputSignal))
+
     def goToConfigureMenu(self):
         self.controller.showFrame(ConfigureMenu.ConfigureMenu)

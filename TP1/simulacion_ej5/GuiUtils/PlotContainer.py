@@ -6,7 +6,7 @@ from tkinter import *
 
 
 class PlotContainer(tk.Frame):
-    def __init__(self, tabControl):
+    def __init__(self, tabControl, xAxis, yAxis):
         super(PlotContainer, self).__init__(tabControl)
 
         self.graph = Canvas(self)
@@ -23,7 +23,17 @@ class PlotContainer(tk.Frame):
 
         self.graph.pack(side=TOP, expand=1, fill=BOTH)
 
+        self.xAxis = xAxis
+        self.yAxis = yAxis
+
     def plot(self, signal):
-        self.axis.plot(signal.time, signal.values)
+        self.axis.clear()
+        self.axis.set_xlabel(self.xAxis)
+        self.axis.set_ylabel(self.yAxis)
+
+        self.axis.plot(signal.xvar, signal.values)
+        self.axis.minorticks_on()
+        self.axis.grid(which='major', linestyle='-', linewidth=0.3, color='black')
+        self.axis.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
         self.dataPlot.draw()
