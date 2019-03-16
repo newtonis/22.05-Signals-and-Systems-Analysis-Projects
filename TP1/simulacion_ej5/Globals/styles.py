@@ -1,4 +1,4 @@
-import config
+from Globals import config
 import tkinter.ttk as ttk
 
 

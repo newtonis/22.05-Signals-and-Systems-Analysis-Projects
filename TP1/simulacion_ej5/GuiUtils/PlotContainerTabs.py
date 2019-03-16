@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
-from PlotContainer import PlotContainer
+from GuiUtils.PlotContainer import PlotContainer
 
 
 class PlotContainerTabs(tk.Frame):

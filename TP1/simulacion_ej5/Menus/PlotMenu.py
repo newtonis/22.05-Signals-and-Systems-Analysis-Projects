@@ -1,10 +1,10 @@
 import tkinter as tk
-import config
-from ButtonSelector import ButtonSelector
-from ButtonSelectorModel import ButtonSelectorModel
-from ButtonModel import ButtonModel
-from PlotContainerTabs import PlotContainerTabs
-import ConfigureMenu
+from Globals import config
+from GuiUtils.ButtonSelector import ButtonSelector
+from GuiUtils.ButtonSelectorModel import ButtonSelectorModel
+from GuiUtils.ButtonModel import ButtonModel
+from GuiUtils.PlotContainerTabs import PlotContainerTabs
+from Menus import ConfigureMenu
 
 
 class PlotMenu(tk.Frame):

@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog
-from PlotMenu import PlotMenu
+from Menus.PlotMenu import PlotMenu
 import ntpath
 
-import config
+from Globals import config
 
 
 class ConfigureMenu(tk.Frame):
@@ -65,7 +65,7 @@ class ConfigureMenu(tk.Frame):
         tk.Tk().withdraw()
         config.getModes().setFilename(filedialog.askopenfilename())
 
-        self.btnText.set("Seleccionar entrada ["+ntpath.basename(self.filename)+"]")
+        self.btnText.set("Seleccionar entrada [" + ntpath.basename(config.getModes().getFilename()) + "]")
 
     def goToPlotMenu(self):
         self.controller.showFrame(PlotMenu)

@@ -1,9 +1,8 @@
-import config
 import tkinter as tk
 from tkinter import *
-from ConfigureMenu import ConfigureMenu
-from PlotMenu import PlotMenu
-import styles
+from Menus.ConfigureMenu import ConfigureMenu
+from Menus.PlotMenu import PlotMenu
+from Globals import styles, config
 
 frames = [
     ConfigureMenu,
@@ -15,10 +14,9 @@ class UI(tk.Tk):
     def __init__(self, **kwargs):
         super(UI, self).__init__(**kwargs)
         self.protocol('WM_DELETE_WINDOW', self.exitFunction)
+        self.title("Simulador")
 
         self.resizable(width=False, height=False)
-        #self.minsize(width=800)
-        #self.maxsize(width=800)
 
         if config.debug:
             print("Comenzando aplicación principal")

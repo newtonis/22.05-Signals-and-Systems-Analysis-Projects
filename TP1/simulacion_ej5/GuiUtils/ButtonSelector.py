@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import *
-import config
+from Globals import config
 
 
 class ButtonSelector(tk.Frame):
@@ -26,15 +26,15 @@ class ButtonSelector(tk.Frame):
 
         for button in buttons.keys():
             self.buttons[button] = Radiobutton(self,
-                            text=buttons[button].title,
-                            indicatoron=0,
-                            width=20,
-                            value=button,
-                            variable=self.var,
-                            font=config.SMALLEST_FONT,
-                            command = lambda: buttons[button].callAction(),
-                            background="cyan2",
-                            selectcolor="cyan4")
+                                               text=buttons[button].title,
+                                               indicatoron=0,
+                                               width=20,
+                                               value=button,
+                                               variable=self.var,
+                                               font=config.SMALLEST_FONT,
+                                               command = lambda: buttons[button].callAction(),
+                                               background="cyan2",
+                                               selectcolor="cyan4")
 
             self.buttons[button].pack(side=LEFT, fill=tk.X, expand=1)
             i = i + 1

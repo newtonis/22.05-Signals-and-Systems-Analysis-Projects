@@ -1,9 +1,8 @@
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.backends._backend_tk import NavigationToolbar2Tk
-from matplotlib.figure import Figure
 from tkinter import *
-import config
+from Globals import config
 
 
 class PlotContainer(tk.Frame):
