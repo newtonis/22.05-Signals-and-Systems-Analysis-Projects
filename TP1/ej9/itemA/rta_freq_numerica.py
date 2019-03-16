@@ -31,10 +31,11 @@ def get_max(arr):
 
 alpha = 1
 beta = -1/4
+N = 1000
 
-f_range = linspace(-1/2, 1/2, 10000)
+f_range = linspace(-1/2, 1/2, N)
 
-amp_values = 10000 * [0]
+amp_values = N * [0]
 
 n_range = range(100)
 
