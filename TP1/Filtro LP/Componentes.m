@@ -1,5 +1,5 @@
 % Filtro LP - Orden 8 Legendre %
-% Ap = 1dB y As = 41dB
+% Ap = 1dB y As = 41dB %
 clc;
 
 Q1 = 6.04;
