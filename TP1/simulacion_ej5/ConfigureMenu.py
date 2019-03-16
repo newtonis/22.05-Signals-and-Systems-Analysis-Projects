@@ -1,16 +1,22 @@
 import tkinter as tk
 from tkinter import filedialog
+from PlotMenu import PlotMenu
 import ntpath
 
 import config
+
 
 class ConfigureMenu(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
+        self.controller = controller
+
         label = tk.Label(self, height=2, text="Configuración", font=config.LARGE_FONT)
         label.pack(side=tk.TOP, fill=tk.BOTH)
+
+        self.filename = ""
 
         self.btnText = tk.StringVar()
 
@@ -46,13 +52,20 @@ class ConfigureMenu(tk.Frame):
             width=44,
             background="pale green",
             text="ACEPTAR",
-            font=config.LARGE_FONT
+            font=config.LARGE_FONT,
+            command=lambda: self.goToPlotMenu()
         )
 
         self.button.pack(side=tk.BOTTOM, fill=tk.BOTH)
 
+    def focus(self):
+        pass
+
     def searchFile(self):
         tk.Tk().withdraw()
-        self.filename = filedialog.askopenfilename()
+        config.getModes().setFilename(filedialog.askopenfilename())
 
-        self.btnText.set("Seleccionar entrada actual=["+ntpath.basename(self.filename)+"]")
+        self.btnText.set("Seleccionar entrada ["+ntpath.basename(self.filename)+"]")
+
+    def goToPlotMenu(self):
+        self.controller.showFrame(PlotMenu)
