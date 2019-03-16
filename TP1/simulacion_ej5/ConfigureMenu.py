@@ -38,7 +38,7 @@ class ConfigureMenu(tk.Frame):
                 self,
                 text=mode,
                 variable=config.getModes().modesEnabled[mode],
-                height=2,
+                height=3,
                 width=44,
                 font=config.SMALL_FONT,
                 background="light yellow"

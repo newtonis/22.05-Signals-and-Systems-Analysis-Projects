@@ -15,12 +15,12 @@ class PlotContainer(tk.Frame):
         self.fig, self.axis = config.getAxisData().fig, config.getAxisData().axis
 
         self.dataPlot = FigureCanvasTkAgg(self.fig, master=self.graph)
-        self.dataPlot.draw()
+        #self.dataPlot.draw(self)
 
-        self.nav = NavigationToolbar2Tk(self.dataPlot, self)
+        self.nav = NavigationToolbar2Tk(self.dataPlot, self.graph)
 
-        self.dataPlot.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+        #self.dataPlot.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
 
-        self.dataPlot._tkcanvas.pack(side=BOTTOM, fill=X, expand=True)
+        self.dataPlot._tkcanvas.pack(side=BOTTOM, fill=X, expand=1)
 
         self.graph.pack(side=TOP, expand=1, fill=BOTH)
