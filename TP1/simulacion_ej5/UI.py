@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import *
 from ConfigureMenu import ConfigureMenu
 from PlotMenu import PlotMenu
-
+import styles
 
 frames = [
     ConfigureMenu,
@@ -34,7 +34,10 @@ class UI(tk.Tk):
 
         self.showFrame(ConfigureMenu)
 
+        styles.getData().load()
+
     def showFrame(self, frame):
+        self.frames[frame].focus()
         frame = self.frames[frame]
         frame.tkraise()
 
