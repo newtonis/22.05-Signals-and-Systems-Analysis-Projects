@@ -67,12 +67,10 @@ class PlotMenu(tk.Frame):
 
     def modeSelected(self):
         mode = self.buttonSelector.var.get()
-        print(mode)
-        if mode == "Entrada" or mode == "FAA":
 
-            inputSignal = PlotSignals.getSignalsData().signals[mode]
-            self.plotContainerTabs.tab1.plot(inputSignal)
-            self.plotContainerTabs.tab2.plot(FourierTransform.fourierTransform(inputSignal))
+        inputSignal = PlotSignals.getSignalsData().signals[mode]
+        self.plotContainerTabs.tab1.plot(inputSignal)
+        self.plotContainerTabs.tab2.plot(FourierTransform.fourierTransform(inputSignal))
 
     def goToConfigureMenu(self):
         self.controller.showFrame(ConfigureMenu.ConfigureMenu)

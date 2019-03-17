@@ -1,5 +1,6 @@
 import tkinter as tk
 
+
 class Modes:
     def __init__(self):
         self.modesEnabled = None
@@ -9,7 +10,7 @@ class Modes:
         self.modesEnabled = {
             "FAA": tk.IntVar(),
             "Sample and Hold": tk.IntVar(),
-            "LLave Analógica": tk.IntVar(),
+            "Llave analógica": tk.IntVar(),
             "FR": tk.IntVar()
         }
 
@@ -19,7 +20,9 @@ class Modes:
     def getFilename(self):
         return self.filename
 
+
 modes = Modes()
+
 
 def getModes():
     if not modes.modesEnabled:
