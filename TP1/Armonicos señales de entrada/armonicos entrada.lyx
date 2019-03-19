@@ -1,0 +1,351 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%%% AGREGAR AL PREAMBULO para que ande 
+\backslash
+nicefrac:
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%% 
+\backslash
+usepackage{units}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Para determinar $f_p$, se busc
+\backslash
+'o minimizar este valor a fin de filtrar la mayor cantidad de ruido posible,
+ pero teniendo en cuenta tambi
+\backslash
+'en la necesidad de recuperar las se
+\backslash
+~nales originales.
+ Se estudió, pues, el espectro de las señales que se utilizarían en la entrada,
+ a saber: un seno en 500Hz, un $
+\backslash
+nicefrac{3}{2}$ seno en la misma frecuencia, y una exponencial decreciente
+ de per
+\backslash
+'iodo 10s.
+ La primera de estas se
+\backslash
+~nales nos permite determinar que el filtro antialiasing debe dejar pasar
+ al menos se
+\backslash
+~nales de 500Hz.
+\backslash
+par
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+En cuanto a la se
+\backslash
+~nal exponencial:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ x(t) = e^{-|t|}, 
+\backslash
+quad -5 
+\backslash
+leq t 
+\backslash
+leq 5 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+La frecuencia fundamental de la misma es 0.1Hz, con lo cual teniendo en cuenta
+ la restricci
+\backslash
+'on anterior, sabemos que van a pasar al menos 4999 de sus arm
+\backslash
+'onicos, con lo cual en principio esta se
+\backslash
+~nal no ser
+\backslash
+'ia un problema.
+ Para comprobar esta suposici
+\backslash
+'on, se obtuvieron los coeficientes de la serie exponencial de Fourier de
+ esta funci
+\backslash
+'on, resultando:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ X_n = 
+\backslash
+frac{2}{T} 
+\backslash
+cdot 
+\backslash
+frac{1 - (-1)^n 
+\backslash
+cdot e^{-
+\backslash
+nicefrac{T}{2}}}{1 + 
+\backslash
+left(
+\backslash
+frac{2
+\backslash
+pi n}{T}
+\backslash
+right)^2} 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+Sabiendo que la potencia correspondiente al en
+\backslash
+'esimo arm
+\backslash
+'onico es $2 
+\backslash
+cdot |X_n|^2$, se confirm
+\backslash
+'o que la misma se hace absolutamente despreciable a partir del octavo arm
+\backslash
+'onico, hasta donde se encuentra m
+\backslash
+'as del 99
+\backslash
+% de la potencia.
+ Por lo tanto, esta se
+\backslash
+~nal no impone restricciones al filtro antialiasing.
+ 
+\backslash
+par
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+En el caso del $
+\backslash
+nicefrac{3}{2}$ seno, la frecuencia fundamental es en cambio 333Hz, con
+ lo cual por un filtro con $f_p=500
+\backslash
+mathrm{Hz}$ no pasar
+\backslash
+'ia ning
+\backslash
+'un arm
+\backslash
+'onico, y se conservar
+\backslash
+'ia s
+\backslash
+'olo una arm
+\backslash
+'onica con un 
+\backslash
+textit{offset}, lo cual no consideramos aceptable.
+ Para analizar el espectro en este caso se utiliz
+\backslash
+'o la serie trigonom
+\backslash
+'etrica de Fourier, obteni
+\backslash
+'endose:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ a_0 = 
+\backslash
+frac{2}{3
+\backslash
+pi},
+\backslash
+quad a_n=
+\backslash
+frac{12}{
+\backslash
+pi} 
+\backslash
+cdot 
+\backslash
+left(
+\backslash
+frac{1}{9-4n^2}
+\backslash
+right) , 
+\backslash
+quad b_n=0 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Se obtuvo, pues, que hasta 333Hz se tiene el 67
+\backslash
+% de la potencia, hasta 667Hz el 97
+\backslash
+%, y hasta 1kHz el 99
+\backslash
+%.
+ Por lo tanto, siendo que con $f_p=1
+\backslash
+mathrm{kHz}$ se puede conservar m
+\backslash
+'as del 99
+\backslash
+% de la potencia de las 3 se
+\backslash
+~nales de entrada, se utiliz
+\backslash
+'o este valor.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

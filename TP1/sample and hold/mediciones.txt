@@ -1,0 +1,14 @@
+100pF
+settle: entre 804ns y 1.03us
+acquisition: entre 1.38us y 1.5us
+droop rate: aprox 3.5kV/s (dVout/dt en salida)
+
+100nF:
+settle: demasiado chico para medir (menos de 15ns)
+acquisition: 127us
+droop rate: aprox 5V/s
+
+1nF:
+settle: demasiado chico
+acquisition: 8us
+droop rate: aprox 80V/s
