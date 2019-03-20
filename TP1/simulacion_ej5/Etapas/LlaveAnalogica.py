@@ -10,7 +10,6 @@ class LlaveAnalogica(Etapa):
         pass
 
     def processInput(self, inputSignal):
-
         output = []
 
         separation = 1 / config.LLfreq

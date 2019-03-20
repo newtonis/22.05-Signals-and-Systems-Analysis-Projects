@@ -7,4 +7,8 @@ debug = True
 
 FAAfreq = 1100
 SHfreq = FAAfreq * 20
+SHhold = 0.9
+SHsample = 0.1
+
+
 LLfreq = FAAfreq * 20

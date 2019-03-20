@@ -10,19 +10,25 @@ class SampleAndHold(Etapa):
         pass
 
     def processInput(self, inputSignal):
-
         output = []
 
-        separation = 1 / config.SHfreq
+        timePeriod = 1 / config.SHfreq
+        cyclesPeriod = int(timePeriod / inputSignal.separation)
 
-        output.append(inputSignal.values[0])
-        last = 0
+        output = [0] * len(inputSignal.xvar)
 
-        for ti in range(1, len(inputSignal.xvar)):
-            if abs(inputSignal.xvar[ti] - inputSignal.xvar[last]) > separation:
-                last = ti
+        for i in range(len(inputSignal.xvar)):
+            # tres casos
 
-            output.append(inputSignal.values[last])
+            fractionTime = i % cyclesPeriod
+
+            if fractionTime < config.SHsample * cyclesPeriod:
+                output[i] = inputSignal.values[i]
+            elif fractionTime < (config.SHsample + config.SHhold) * cyclesPeriod:
+                if i != 0:
+                    output[i] = output[i-1]
+                else:
+                    output[i] = 0
 
         return Senial.Senial(inputSignal.xvar, output)
 
