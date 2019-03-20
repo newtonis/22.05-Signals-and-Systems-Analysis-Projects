@@ -12,26 +12,22 @@ def decimate(x, M): # s es la primera posicion
     y = []
     values = []
 
-    s = x.values[0]
-    e = x.values[-1] - 1
+    s = x.xvar[0]
+    e = x.xvar[-1] - 1
     #print(s)
 
     for i in range(-M, s-1, -M):
-        y.append(x.seq[i-s])
+        y.append(x.yvar[i-s])
         values.append(i)
-        print(s+i)
-
-    #print(values)
 
     y.reverse()
     values.reverse()
 
     for i in range(0, e+1, M):
-        y.append(x.seq[i-s])
+        y.append(x.yvar[i-s])
         values.append(i)
-    #print(values)
 
-    return seq(y, values)
+    return seq(values, y)
 
 
 def evaluateDTFT(inputSignal):
@@ -44,12 +40,13 @@ def plot_data():
 
     n_range = range(-50, 51)
 
-    x1 = seq([sin(2*pi * 0.125 / 2 * n) for n in n_range], n_range)
+    x1 = seq(n_range, [sin(2*pi * 0.25 * n) for n in n_range])
     y1 = decimate(x1, 4)
 
-
     x1dtft = mathUtils.dtft(x1)
-    y1dtft = mathUtils.dtft(y1)
+    y1dtft = mathUtils.dtft(y1, 4)
+
+
     #tx = abs(fft(x)/Nx)# rafa
     # ty = abs(fft(y)/Ny)# rafa
     #
@@ -62,11 +59,11 @@ def plot_data():
 
 
     #plt.legend(handles=patches)
-    ax1.plot(x1dtft.values, x1dtft.seq)
-    ax1.plot(y1dtft.values, y1dtft.seq)
+    ax1.plot(x1dtft.xvar, x1dtft.yvar)
+    ax1.plot(y1dtft.xvar, y1dtft.yvar)
 
-    plt.xlabel("n")
-    plt.ylabel("x(n)")
+    plt.xlabel("frecuencia (hz)")
+    plt.ylabel("amplitud")
 
 
     plt.minorticks_on()
@@ -74,8 +71,5 @@ def plot_data():
     plt.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
     plt.show()
-
-
-
 
 plot_data()
