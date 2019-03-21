@@ -4,6 +4,7 @@ from scipy import signal
 from math import pi
 from Globals import config
 
+
 class TF:
     tf = None
 
@@ -14,10 +15,11 @@ class TF:
         s = sp.symbols("s")
 
         wp = 2 * pi * config.FAAfreq
-        A = ((s / wp) ** 2 + 0.5548 * (s / wp) + 0.2702) * ((s / wp) ** 2 + 0.0918 * (s / wp) + 0.9870) * (
-                    (s / wp) ** 2 + 0.4284 * (s / wp) + 0.5282) * ((s / wp) ** 2 + 0.2650 * (s / wp) + 0.8013) * (
-                        (s / wp) ** 2 + 0.6344 * (s / wp) + 0.1218)
-        H = 1 / (72 * A)
+        H = 1/72 * 1 / ( ((s/wp)**2 + 0.5548*(s/wp) + 0.2702) *\
+            ((s/wp)**2 + 0.0918*(s/wp) + 0.9870) *\
+            ((s/wp)**2 + 0.4284*(s/wp) + 0.5282) *\
+            ((s/wp)**2 + 0.2650*(s/wp) + 0.8013) *\
+            ((s/wp)**2 + 0.6344*(s/wp) + 0.1218) )
 
         self.tf = algebra.conseguir_tf(H, s)
         self.loaded = True
