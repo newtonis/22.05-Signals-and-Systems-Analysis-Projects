@@ -7,8 +7,11 @@ class SampleAndHold(Etapa):
     sampleAndHold = None
 
     def __init__(self):
-        pass
+        self.syncSignal = None
 
+    def setSyncSignal(self, syncSignal):
+        self.syncSignal = syncSignal
+        
     def processInput(self, inputSignal):
         output = []
 

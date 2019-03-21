@@ -7,12 +7,21 @@ class LlaveAnalogica(Etapa):
     llaveAnalogica = None
 
     def __init__(self):
-        pass
+        self.syncSignal = None
+
+    def setSyncSignal(self, syncSignal):
+        self.syncSignal = syncSignal
 
     def processInput(self, inputSignal):
+        if not self.syncSignal:
+            raise Exception("No sync signal configured")
+
+        if inputSignal.length() != self.syncSignal.length():
+            raise Exception("Signals are of different length")
+
         output = []
 
-        separation = 1 / config.LLfreq
+        separation = 1 / config.SHfreq
 
         output.append(inputSignal.values[0])
         last = 0
