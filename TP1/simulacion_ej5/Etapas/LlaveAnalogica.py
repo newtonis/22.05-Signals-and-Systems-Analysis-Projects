@@ -7,36 +7,21 @@ class LlaveAnalogica(Etapa):
     llaveAnalogica = None
 
     def __init__(self):
-        self.syncSignal = None
-
-    def setSyncSignal(self, syncSignal):
-        self.syncSignal = syncSignal
+        pass
 
     def processInput(self, inputSignal):
-        if not self.syncSignal:
-            raise Exception("No sync signal configured")
+        output = [0] * len(inputSignal.xvar)
 
-        if inputSignal.length() != self.syncSignal.length():
-            raise Exception("Signals are of different length")
+        timePeriod = 1 / config.SHfreq
+        cyclesPeriod = int(timePeriod / inputSignal.separation)
 
-        output = []
+        toffCycles = int(config.LLoff * cyclesPeriod)
 
-        separation = 1 / config.SHfreq
-
-        output.append(inputSignal.values[0])
-        last = 0
-
-        status = True
-
-        for ti in range(1, len(inputSignal.xvar)):
-            if abs(inputSignal.xvar[ti] - inputSignal.xvar[last]) > separation:
-                status = not status
-                last = ti
-
-            if status:
-                output.append(inputSignal.values[ti])
+        for ti in range(len(inputSignal.xvar)):
+            if ti % cyclesPeriod >= toffCycles:
+                output[ti] = inputSignal.values[ti]
             else:
-                output.append(0)
+                output[ti] = 0
 
         return Senial.Senial(inputSignal.xvar, output)
 

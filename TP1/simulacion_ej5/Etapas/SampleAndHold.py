@@ -7,13 +7,9 @@ class SampleAndHold(Etapa):
     sampleAndHold = None
 
     def __init__(self):
-        self.syncSignal = None
-
-    def setSyncSignal(self, syncSignal):
-        self.syncSignal = syncSignal
+        pass
         
     def processInput(self, inputSignal):
-        output = []
 
         timePeriod = 1 / config.SHfreq
         cyclesPeriod = int(timePeriod / inputSignal.separation)
