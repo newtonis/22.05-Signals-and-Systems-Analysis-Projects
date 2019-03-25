@@ -1,0 +1,473 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Oscilador
+\end_layout
+
+\begin_layout Subsection
+Introducción teórica
+\end_layout
+
+\begin_layout Standard
+En esta sección el objetivo es generar un oscilador con frecuencia y duty
+ cycle variables e independientes uno de otro.
+ 
+\end_layout
+
+\begin_layout Standard
+Frente a esta problemática se presentaron dos posibles soluciones:
+\end_layout
+
+\begin_layout Itemize
+Generar un diente de sierra con frecuencia variable
+\end_layout
+
+\begin_layout Itemize
+Generar una señal triangular con frecuencia variable
+\end_layout
+
+\begin_layout Standard
+Para la opción de duty cycle se optó por utilizar un comparador.
+ La señal generada va hacia una de las entradas del comparador y en la otra
+ se coloca una referencia.
+ El duty cycle de la señal a la salida del comparador será regulada mediante
+ la variación de la referencia.
+\end_layout
+
+\begin_layout Subsection
+Circuitos para generar las señales deseadas
+\end_layout
+
+\begin_layout Subsubsection
+Diente de sierra
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diente_sierra.jpg
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Generador de onda diente de sierra
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsubsection*
+Problema del diente de sierra con LM555
+\end_layout
+
+\begin_layout Standard
+El capacitor se descarga a través del transistor interno del 555, dando
+ lugar a una gran pendiente negativa en la señal y como se está midiendo
+ sobre un capacitor, esto resulta en una gran demanda de corriente.
+\end_layout
+
+\begin_layout Standard
+Dado que se carga el capacitor con una fuente de corriente constante, el
+ mismo va a extraer corriente a la fuente, haciendo que la tensión de alimentaci
+ón varíe.
+\end_layout
+
+\begin_layout Standard
+Estos efectos se pueden mitigar, uno colocando una resistencia en serie
+ en el pin de descarga del LM555 y el otro poniendo un capacitor de desacople.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito con y sin resistencia en serie con el pin de descarga
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El problema principal que surge con la colocación de la resistencia es que
+ si bien se logra suavizar la curva, a la hora de variar el duty cycle con
+ el comparador se va a complicar en un extremo llegar al duty cycle pedido
+ por consigna (esto es porque los cambios son muy pequeños mientras decrece
+ la señal acercandose a 0V).
+\end_layout
+
+\begin_layout Subsubsection
+Señal triangular
+\end_layout
+
+\begin_layout Standard
+A continuación se deja una figura del circuito propuesto con un bloque integrado
+r, un schmitt trigger no inversor y un bloque que independiza parte del
+ circuito de VCC.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename VTRgen.svg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Generador de onda triangular
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Bloque integrador
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{TR}=-V_{IN}\frac{1}{sC_{1}R_{1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego, si la salida del schmitt trigger es una señal cuadrada, V
+\begin_inset Formula $_{TR}$
+\end_inset
+
+ es una señal triangular cuya frecuencia
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f=\frac{1}{2C_{1}R_{1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Agregandole un offset a la señal se obtiene que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{TR}(t)=\begin{cases}
+-V_{IN}\frac{t}{C_{1}R_{1}} & 0<t<\frac{T}{2}\\
+V_{IN}\frac{t}{C_{1}R_{1}} & \frac{T}{2}<t<T
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{TR}(t)=V_{TR}(t+T)\ \forall t\epsilon\mathbb{R}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De esta forma se puede lograr 
+\series bold
+variar la frecuencia
+\series default
+ de la señal variando el valor de 
+\series bold
+R
+\begin_inset Formula $_{1}$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Schmitt trigger no inversor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V^{+}=V_{TR}(\frac{R_{3}}{R_{2}+R_{3}})+V_{ST}(\frac{R_{2}}{R_{2}+R_{3}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{ST}=\begin{cases}
+V_{ST_{MAX}} & V^{+}>0V\\
+V_{ST_{MIN}} & otro\ caso
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Clamper
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename clamper.svg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito clamper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Comparador
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename comparadores.svg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito comparador
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Variando P
+\begin_inset Formula $_{1}$
+\end_inset
+
+ y P
+\begin_inset Formula $_{2}$
+\end_inset
+
+ se pueden 
+\series bold
+regular los duty cycle
+\series default
+ 
+\series bold
+de la señales
+\series default
+.
+\end_layout
+
+\end_body
+\end_document
