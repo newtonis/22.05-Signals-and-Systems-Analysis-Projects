@@ -1,4 +1,4 @@
-
+import Globals.RWconfig as RWconfig
 
 LARGE_FONT = ("Bahnschrift", 24)
 SMALL_FONT = ("Bahnschrift", 16)
@@ -14,6 +14,4 @@ LLfreq = 500
 LLoff = 0.1
 LLon = 0.9
 
-
-def loadConfig():
-    pass
+RWconfig.loadConfig()
