@@ -95,7 +95,7 @@ Frente a esta problemática se presentaron dos posibles soluciones:
 \end_layout
 
 \begin_layout Itemize
-Generar un diente de sierra con frecuencia variable
+Generar una señal diente de sierra con frecuencia variable
 \end_layout
 
 \begin_layout Itemize
@@ -104,8 +104,8 @@ Generar una señal triangular con frecuencia variable
 
 \begin_layout Standard
 Para la opción de duty cycle se optó por utilizar un comparador.
- La señal generada va hacia una de las entradas del comparador y en la otra
- se coloca una referencia.
+ La señal generada excita una de las entradas del comparador y en la otra
+ se coloca una tension referencia.
  El duty cycle de la señal a la salida del comparador será regulada mediante
  la variación de la referencia.
 \end_layout
@@ -177,8 +177,8 @@ Dado que se carga el capacitor con una fuente de corriente constante, el
 \end_layout
 
 \begin_layout Standard
-Estos efectos se pueden mitigar, uno colocando una resistencia en serie
- en el pin de descarga del LM555 y el otro poniendo un capacitor de desacople.
+Estos efectos se pueden mitigar, primero colocando una resistencia en serie
+ en el pin de descarga del LM555 y luego poniendo un capacitor de desacople.
 \end_layout
 
 \begin_layout Standard
@@ -368,86 +368,6 @@ V_{ST_{MIN}} & otro\ caso
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\[
-V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
-5.1V & en\,directa\\
-0.7 & en\,inversa
-\end{cases}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-R_{2}=1K\Omega
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-R_{3}=8.2K\Omega
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-V_{ST_{MAX}}=5.8V
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-V_{ST_{MIN}}=-5.8V
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-I_{O_{TL084}}|_{MAX}\approx30mA
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
-\]
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection*
 Clamper
 \end_layout
@@ -587,6 +507,190 @@ en la entrada de la llave analógica y V
 \begin_layout Standard
 De esta forma podemos obtener un muestreo que evite el transitorio llamado
  settling time variando adecuadamente el duty de cada señal.
+\end_layout
+
+\begin_layout Subsection
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
+5.1V & en\,directa\\
+0.7 & en\,inversa
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1K\Omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.2K\Omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{ST_{MAX}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.8V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{ST_{MIN}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5.8V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{CC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{O_{TL084}}|_{MAX}\approx30mA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_body
