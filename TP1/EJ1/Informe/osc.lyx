@@ -414,6 +414,15 @@ Circuito clamper
 \begin_layout Standard
 El clamper logra elevar la señal por encima de 0V de forma tal que se pueda
  aprovechar la excursión de la señal.
+ R
+\begin_inset Formula $_{5}$
+\end_inset
+
+ y R
+\begin_inset Formula $_{6}$
+\end_inset
+
+ se ajustan de manera tal que la salida esté efectivamente sobre 0V.
 \end_layout
 
 \begin_layout Subsection
