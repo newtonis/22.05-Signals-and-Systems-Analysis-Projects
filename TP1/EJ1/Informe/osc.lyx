@@ -211,9 +211,9 @@ Circuito con y sin resistencia en serie con el pin de descarga
 \begin_layout Standard
 El problema principal que surge con la colocación de la resistencia es que
  si bien se logra suavizar la curva, a la hora de variar el duty cycle con
- el comparador se va a complicar en un extremo llegar al duty cycle pedido
- por consigna (esto es porque los cambios son muy pequeños mientras decrece
- la señal acercandose a 0V).
+ el comparador se complica llegar al duty cycle límite pedido por consigna
+ (esto es porque los cambios son muy pequeños mientras decrece la señal
+ acercandose a 0V).
 \end_layout
 
 \begin_layout Subsubsection
@@ -368,6 +368,86 @@ V_{ST_{MIN}} & otro\ caso
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
+5.1V & en\,directa\\
+0.7 & en\,inversa
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{2}=1K\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{3}=8.2K\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{ST_{MAX}}=5.8V
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{ST_{MIN}}=-5.8V
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{O_{TL084}}|_{MAX}\approx30mA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
 Clamper
 \end_layout
@@ -409,6 +489,11 @@ Circuito clamper
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+El clamper logra elevar la señal por encima de 0V de forma tal que se pueda
+ aprovechar la excursión de la señal.
 \end_layout
 
 \begin_layout Subsection
@@ -467,6 +552,41 @@ regular los duty cycle
 de la señales
 \series default
 .
+\end_layout
+
+\begin_layout Standard
+El propósito de este último circuito es generar dos señales con misma base
+ de tiempo, desfasadas 180° y con duty regulable.
+\end_layout
+
+\begin_layout Standard
+De esta forma tenemos dos opciones:
+\end_layout
+
+\begin_layout Itemize
+Tomar V
+\begin_inset Formula $_{OUT_{1}}$
+\end_inset
+
+y conectarlo tanto en la entrada de la llave analógica como la de sample
+ and hold.
+\end_layout
+
+\begin_layout Itemize
+V
+\begin_inset Formula $_{OUT_{1}}$
+\end_inset
+
+en la entrada de la llave analógica y V
+\begin_inset Formula $_{OUT_{2}}$
+\end_inset
+
+ en la de sample and hold (o viceversa).
+\end_layout
+
+\begin_layout Standard
+De esta forma podemos obtener un muestreo que evite el transitorio llamado
+ settling time variando adecuadamente el duty de cada señal.
 \end_layout
 
 \end_body
