@@ -3,4 +3,5 @@
 *.Zip
 *.xml
 *.pyc
-!/TP1/simulacion_ej5/Globals
+!sites/*/TP1/simulacion_ej5/Globals
+
