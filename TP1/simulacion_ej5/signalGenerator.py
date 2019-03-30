@@ -9,10 +9,21 @@ from Signals import SignalGenerator
 #SignalGenerator.GenerateCos(20000*12.0, 0, 0.005)
 
 k = 1e3
+f0 = 500
+fexp = 10
+fp = 1.5e3
 
-SignalGenerator.GenerateCos(500, 0, 0.05)
-SignalGenerator.Generate32Sine(500, 0, 0.05)
+SignalGenerator.GenerateCos(f0, 0, 3/f0, 1)
+SignalGenerator.GenerateCos(1e3, 0, 3/1e3, 1)
+SignalGenerator.GenerateCos(100, 0, 3/100, 1)
 
+SignalGenerator.GenerateExp(fexp, 0, 3/fexp, 2)
+
+SignalGenerator.Generate32Sine(500, 0, 3/500, 2)
+SignalGenerator.Generate32Sine(100, 0, 3/100, 2)
+
+SignalGenerator.GenerateAM(2*f0, 0.2*f0, 0, 3/(0.2*f0), 1)
+SignalGenerator.GenerateAM(0.8*fp, 0.08*f0, 0, 3/(0.08*fp), 1)
 
 #SignalGenerator.GenerateSquare(0.001, 0.002)
 
