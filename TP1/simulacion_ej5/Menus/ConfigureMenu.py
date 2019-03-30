@@ -114,7 +114,6 @@ class ConfigureMenu(tk.Frame):
             thread.start()
 
     def onDataCalc(self):
-
         self.controller.showFrame(PlotMenu)
 
         self.isLoading = False
