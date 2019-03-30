@@ -7,8 +7,13 @@ from Etapas.Senial import Senial
 def readSignal(filename):
     mydoc = minidom.parse(filename)
 
-    samples = mydoc.getElementsByTagName("sample")
+    root = mydoc.childNodes[0]
+    try:
+        shift = float(root.attributes['shift'].value)
+    except:
+        shift = 0
 
+    samples = mydoc.getElementsByTagName("sample")
 
     t = []
     y = []
@@ -17,7 +22,9 @@ def readSignal(filename):
         t.append(float(sample.attributes['time'].value))
         y.append(float(sample.attributes['value'].value))
 
-    return Senial(t, y)
+    senial = Senial(t, y)
+    senial.setShift(shift)
+    return senial
 
 
 def writeSignal(signal, filename):

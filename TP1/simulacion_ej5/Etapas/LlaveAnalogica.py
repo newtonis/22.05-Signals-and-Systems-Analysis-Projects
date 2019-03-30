@@ -24,6 +24,7 @@ class LlaveAnalogica(Etapa):
                 output[ti] = inputSignal.values[ti]
             else:
                 output[ti] = 0
+
             aux += paso
             if ti % 1000 == 0:
                 loadingModel.update(aux)

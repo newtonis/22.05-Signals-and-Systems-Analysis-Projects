@@ -100,6 +100,11 @@ class ConfigureMenu(tk.Frame):
 
     def goToPlotMenu(self):
         if Modes.getModes().getFilename() and not self.isLoading:
+            config.GetConfigData().setFs(self.slider1.getValue())
+            config.GetConfigData().setSampleCycle(self.slider2.getValue())
+
+            config.GetConfigData().save()
+
             self.button.configure(state=tk.DISABLED)
 
             self.isLoading = True
@@ -112,9 +117,5 @@ class ConfigureMenu(tk.Frame):
 
         self.controller.showFrame(PlotMenu)
 
-        config.GetConfigData().setFs(self.slider1.getValue())
-        config.GetConfigData().setSampleCycle(self.slider2.getValue())
-
-        config.GetConfigData().save()
-
         self.isLoading = False
+

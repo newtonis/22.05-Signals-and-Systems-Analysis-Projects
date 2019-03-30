@@ -15,6 +15,10 @@ class Senial:
             else:
                 if abs(self.xvar[i] - self.xvar[i-1] - self.separation) > eps:
                     raise Exception("separacion de tiempos no uniforme")
+        self.shift = 0
+
+    def setShift(self, shift):
+        self.shift = shift
 
     def addSample(self, timeIndex, valuesIndex):
         self.xvar.append(timeIndex)
