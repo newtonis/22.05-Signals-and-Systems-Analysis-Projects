@@ -311,8 +311,10 @@ Parámetros de diseño
 \end_layout
 
 \begin_layout Standard
-La elección de dichos valores se trata en secciones posteriores.
- (#VER CUALES)
+La elección de dichos valores se basa en poder abarcar, con un poco de margen,
+ el ancho de banda de las señales a utilizar para ingresar al sistema y
+ posterior recuperación.
+ #AMPLIAR UN POCO
 \end_layout
 
 \begin_layout Subsubsection
@@ -324,7 +326,7 @@ Para obtener la función transferencia teórica del filtro, se utilizó la
  aproximación de Legendre, dado que utilizando la misma se obtiene un orden
  razonable para la transferencia (lo cual facilita la implementación y calibraci
 ón, teniendo en cuenta que es el mismo filtro tanto para antialiasing como
- para recuperador) y no posee ripple.
+ para recuperador) y, idealmente, no posee ripple.
  Utilizando la aproximación de Chebyshev se obtiene una mayor caída con
  menor orden, pero posee ripple, y utilizando Butterworth no se tiene ripple
  (máxima planicie en banda de paso) pero el orden resulta casi el doble
@@ -470,7 +472,7 @@ status open
 
 \begin_layout Plain Layout
 
-$1117.28Hz$
+$1621.86Hz$
 \end_layout
 
 \end_inset
@@ -489,7 +491,7 @@ status open
 
 \begin_layout Plain Layout
 
-8.93
+9.06
 \end_layout
 
 \end_inset
@@ -519,7 +521,7 @@ status open
 
 \begin_layout Plain Layout
 
-$1015.38Hz$
+$1473Hz$
 \end_layout
 
 \end_inset
@@ -538,7 +540,7 @@ status open
 
 \begin_layout Plain Layout
 
-2.78
+2.82
 \end_layout
 
 \end_inset
@@ -568,7 +570,7 @@ status open
 
 \begin_layout Plain Layout
 
-$838.24Hz$
+$1214.37Hz$
 \end_layout
 
 \end_inset
@@ -587,7 +589,7 @@ status open
 
 \begin_layout Plain Layout
 
-1.43
+1.45
 \end_layout
 
 \end_inset
@@ -617,7 +619,7 @@ status open
 
 \begin_layout Plain Layout
 
-$625.09Hz$
+$902.65Hz$
 \end_layout
 
 \end_inset
@@ -636,7 +638,7 @@ status open
 
 \begin_layout Plain Layout
 
-0.83
+0.84
 \end_layout
 
 \end_inset
@@ -666,7 +668,7 @@ status open
 
 \begin_layout Plain Layout
 
-$458.56Hz$
+$658.14Hz$
 \end_layout
 
 \end_inset
@@ -715,6 +717,59 @@ Detalles de cada etapa
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Etapas
+\end_layout
+
+\begin_layout Paragraph
+Etapa 1 - Celda KHN
+\end_layout
+
+\begin_layout Standard
+Para la primer etapa, dado que el 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+ resulta elevado, se optó por implementarla con dicha celda ya que permite
+ un control independiente del factor de selectividad sin afectar a la ganancia
+ de la celda, aunque el circuito resulte más grande.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+#DIBUJO DE LA CELDA#
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Celda KHN
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 
 \end_layout
@@ -722,6 +777,82 @@ Detalles de cada etapa
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+#CUENTAS - PRESET DE CALIBRACION Q
+\end_layout
+
+\begin_layout Paragraph
+Etapas 2, 3, 4 y 5 - Celda Sallen Key
+\end_layout
+
+\begin_layout Standard
+Para las etapas siguientes, se optó por implementarlas utilizando la celda
+ Sallen Key, dado que los 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+ no son muy altos y el circuito de dicha celda es más simple.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+#DIBUJO DE LA CELDA#
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Celda Sallen-Key
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+#CUENTAS, PRESET EN LA PRIMERA PARA CORREGIR Q
+\end_layout
+
+\begin_layout Standard
+#OPERACIONAL A UTILIZAR
+\end_layout
+
+\begin_layout Standard
+#IMPEDANCIAS DE ENTRADA Y SALIDA PARA VERIFICAR ACOPLAMIENTO
+\end_layout
+
+\begin_layout Standard
+#PRESET DE GANACIA AL FINAL
+\end_layout
+
+\begin_layout Standard
+#BODE - SUPERPOSICION DE SIMULACION CON MEDICION Y TEORICO
 \end_layout
 
 \end_body
