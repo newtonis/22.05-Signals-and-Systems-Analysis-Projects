@@ -214,7 +214,7 @@ status open
 
 \begin_layout Plain Layout
 
-$1KHz$
+$1.5KHz$
 \end_layout
 
 \end_inset
@@ -252,7 +252,7 @@ status open
 
 \begin_layout Plain Layout
 
-$1.5KHz$
+$2.25KHz$
 \end_layout
 
 \end_inset
@@ -314,7 +314,88 @@ Parámetros de diseño
 La elección de dichos valores se basa en poder abarcar, con un poco de margen,
  el ancho de banda de las señales a utilizar para ingresar al sistema y
  posterior recuperación.
- #AMPLIAR UN POCO
+ Tomando el caso de la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_C$
+\end_layout
+
+\end_inset
+
+, teniendo en cuenta que la frecuencia 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} = 500Hz$
+\end_layout
+
+\end_inset
+
+, las frecuencias que la componen son 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$900Hz$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1KHz$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.1KHz$
+\end_layout
+
+\end_inset
+
+, por lo que en un principio se tomaría como 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p = 1.1KHz$
+\end_layout
+
+\end_inset
+
+.
+ Para tener en cuenta la caía de la respuesta en frecuencia en dicho punto
+ y que el filtro real implementado puede poseer un poco de ripple debido
+ a las tolerancias de los componentes, se decidió correrla a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.5KHz$
+\end_layout
+
+\end_inset
+
+ de manera que ambas cuestiones no afecten a la señal, en caso de no poder
+ calibrarlo correctamente.
 \end_layout
 
 \begin_layout Subsubsection
@@ -781,7 +862,14 @@ status open
 
 \begin_layout Plain Layout
 \align center
-#DIBUJO DE LA CELDA#
+\begin_inset Graphics
+	filename Dibujos/KHNCircuito.png
+	display false
+	scale 50
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1372,7 +1460,21 @@ $R_4$
 \end_layout
 
 \begin_layout Standard
-#PRESET AJUSTE GANANCIA PREVIO ETAPAS SIGUIENTES + BUFFER
+Dado que el sobrepico de la etapa alcanza los 25dB, se añadió a la salida
+ de la misma un divisor resistivo fijo (separado de la etapa siguiente con
+ un buffer) para atenuar la señal 20dB, ya que las 2 etapas siguientes tienen
+ también un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+ elevado y se perdería más rango dinámico.
 \end_layout
 
 \begin_layout Paragraph
@@ -2377,20 +2479,207 @@ Omega$
 Acoplamiento y ajuste de ganancia
 \end_layout
 
+\begin_layout Standard
+Dado que las impedancias de entrada de las etapas con Sallen-Key resultan
+ mayores a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ y las de salida del orden de los 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+, no hay inconveniente para acoplar dichas etapas en cascada, por lo que
+ no se las separó mediante buffers, excepto la primer etapa KHN con la segunda,
+ dado que se incorporó el divisor resistivo mencionado anteriormente.
+\end_layout
+
+\begin_layout Standard
+A la salida del filtro, se colocó otro divisor resistivo, acoplado a un
+ buffer de salida, con un preset para realizar un ajuste a la ganancia general.
+\end_layout
+
 \begin_layout Subsection
 Respuesta en frecuencia
 \end_layout
 
 \begin_layout Standard
-#IMPEDANCIAS DE ENTRADA Y SALIDA PARA VERIFICAR ACOPLAMIENTO
+Teniendo la implementación real de los dos filtros, se midió la respuesta
+ en frecuencia (módulo), comparando con la teórica y la simulada en las
+ siguientes gráficas.
+ Se midió únicamente la respuesta en módulo ya que para la aplicación que
+ se tiene va a ser de interés si modifica o no la amplitud de la señal a
+ la entrada.
+ La fase introducida no es de interés para el análisis del muestreo y reconstruc
+ción.
 \end_layout
 
 \begin_layout Standard
-#PRESET DE GANACIA AL FINAL
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+#GRAFICO MODULO#
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+FAA - Módulo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-#BODE - SUPERPOSICION DE SIMULACION CON MEDICION Y TEORICO
+Como se puede observar, el filtro antialiasing pudo ser calibrado correctamente
+ disminuyendo el ripple y ajustando la ganacia a su salida.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+#GRAFICO MODULO#
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+FR - Módulo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso del filtro recuperador, debido a las desviaciones en los valores
+ de los componentes no fue posible ajustarlo correctamente para eliminar
+ el ripple.
+ No obstante, como se mencionó anteriormente en el diseño, se tuvo en cuenta
+ que podía ocurrir un inconveniente de este tipo, por lo que se definió
+ la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+ con un valor más grande, de manera tal que la señal sufra lo menos posible
+ la distorión que provoca el sobrepico de la curva de respuesta en el espectro
+ de la señal.
+ Como los aspectos a analizar se centran en el muestreo y recuperación,
+ no se lo consideró un problema grave.
+ En la siguiente gráfica se muestra el análisis de montecarlo tomando como
+ referencia una tolerancia de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+ en las resistencias y del 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$10%$
+\end_layout
+
+\end_inset
+
+ en los capacitores.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Curvas de montecarlo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
