@@ -1,0 +1,39 @@
+* C:\Users\joa-m\INFORMES_ASSD\TP1\EJ1\Con555\oscilador.asc
+XU1 0 N004 N002 +VCC N006 N004 N005 +VCC NE555
+V1 +VCC 0 15V
+J1 +VCC N001 P001 2N4393
+J2 TR N004 +VCC 2N4393
+R1 P001 N001 2k
+D1 N001 N002 1N4148
+D2 N001 N004 1N4148
+C1 N004 0 0.01µ
+R2 TR 0 10k
+R3 N005 N004 10k
+C2 N006 0 0.01µ
+RL +VCC N003 20k
+XU3 RF TR +VCC -VCC N003 -VCC LM111
+R4 RF +VCC 900
+R5 0 RF 1150
+V2 0 -VCC 15V
+XU2 0 cap N009 +VCC N010 cap N008 +VCC NE555
+R6 +VCC P002 8000
+R7 N007 0 2.2k
+C3 cap 0 100pf
+D4 N010 N009 1N4148
+Q1 cap N007 P002 0 2N3906
+R8 cap N008 500
+D6 N007 +VCC 1N750
+.model D D
+.lib C:\Users\joa-m\Documents\LTspiceXVII\lib\cmp\standard.dio
+.model NPN NPN
+.model PNP PNP
+.lib C:\Users\joa-m\Documents\LTspiceXVII\lib\cmp\standard.bjt
+.model NJF NJF
+.model PJF PJF
+.lib C:\Users\joa-m\Documents\LTspiceXVII\lib\cmp\standard.jft
+.inc "C:\Users\joa-m\INFORMES_ASSD\TP1\EJ1\Con555\TL082.301"
+.tran 0 6u 0
+.inc "C:\Users\joa-m\INFORMES_ASSD\TP1\EJ1\Con555\LM111.301"
+.lib NE555.sub
+.backanno
+.end

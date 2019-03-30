@@ -188,10 +188,59 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename sinR.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Circuito con y sin resistencia en serie con el pin de descarga
+Circuito sin resistencia en serie con el pin de descarga
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename conRde500.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito con resistencia de 500
+\begin_inset Formula $\Omega$
+\end_inset
+
+ en serie con el pin de descarga
 \end_layout
 
 \end_inset
@@ -214,6 +263,11 @@ El problema principal que surge con la colocación de la resistencia es que
  el comparador se complica llegar al duty cycle límite pedido por consigna
  (esto es porque los cambios son muy pequeños mientras decrece la señal
  acercandose a 0V).
+ Además experimentalmente se pudo comparar el comportamiento de los dos
+ circuitos propuestos a alta frecuencia y se pudo ver que a medida que aumenta
+ la frecuencia se va deformando la señal diente de sierra mientras que la
+ señal triangular mantiene su suavidad con un rango más amplio y esto fue
+ lo que determinó qué circuito se utilizó.
 \end_layout
 
 \begin_layout Subsubsection
@@ -526,8 +580,8 @@ Valores de componentes
 \begin_inset Formula 
 \[
 V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
-5.1V & en\,directa\\
-0.7 & en\,inversa
+5.1V & en\,inversa\\
+0.7 & en\,directa
 \end{cases}
 \]
 
