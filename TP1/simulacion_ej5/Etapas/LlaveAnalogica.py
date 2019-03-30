@@ -12,7 +12,7 @@ class LlaveAnalogica(Etapa):
     def processInput(self, inputSignal):
         output = [0] * len(inputSignal.xvar)
 
-        timePeriod = 1 / config.SHfreq
+        timePeriod = 1 / config.SRate
         cyclesPeriod = int(timePeriod / inputSignal.separation)
 
         toffCycles = int(config.LLoff * cyclesPeriod)

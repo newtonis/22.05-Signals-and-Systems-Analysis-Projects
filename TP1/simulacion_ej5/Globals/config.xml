@@ -1,0 +1,6 @@
+<config
+    FAAfreq="1600"
+    SHsample="0.1"
+    SHhold="0.9"
+    Sfreq="3000"
+/>

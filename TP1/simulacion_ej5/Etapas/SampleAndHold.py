@@ -11,7 +11,7 @@ class SampleAndHold(Etapa):
         
     def processInput(self, inputSignal):
 
-        timePeriod = 1 / config.SHfreq
+        timePeriod = 1 / config.SRate
         cyclesPeriod = int(timePeriod / inputSignal.separation)
 
         output = [0] * len(inputSignal.xvar)

@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
 from Menus.PlotMenu import PlotMenu
+from GuiUtils.SliderContainer import SliderContainer
+from GuiUtils.SliderModel import SliderModel
 from Globals import Modes
 import ntpath
 from Etapas import ProcessSignals
@@ -8,7 +10,6 @@ from Globals import config
 
 
 class ConfigureMenu(tk.Frame):
-
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
@@ -31,6 +32,10 @@ class ConfigureMenu(tk.Frame):
             command=self.searchFile
         )
         self.btnText.set("Seleccionar entrada")
+
+        self.slider1 = SliderModel(1, 2000, 5, config.FAAfreq, "Sample rate")
+
+        SliderContainer(self, self.slider1).pack(side=tk.TOP, fill=tk.BOTH)
 
         self.buttonSelectFile.pack(side=tk.TOP, fill=tk.BOTH)
 
