@@ -21,7 +21,7 @@ def GenerateCos(freq, a, b, vp):
 
     SignalsReadWrite.writeSignal(
         Senial.Senial(times, values),
-        "Signals/Coseno_"+str(freq/1000)+"k.xml"
+        "Signals/Coseno_"+str(freq/1000)+"k_"+str(vp)+"Vp.xml"
     )
 
 

@@ -15,7 +15,7 @@ def readSignal(filename):
 
     for sample in samples:
         t.append(float(sample.attributes['time'].value))
-        y.append(float(sample.attributes['value'].value))
+        y.append(complex(sample.attributes['value'].value).real)
 
     return Senial(t, y)
 
