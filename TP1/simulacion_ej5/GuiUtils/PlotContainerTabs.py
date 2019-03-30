@@ -16,3 +16,7 @@ class PlotContainerTabs(tk.Frame):
         self.tabControl.add(self.tab2, text="Frecuencia")
 
         self.tabControl.pack(side=tk.TOP, fill=tk.BOTH)
+
+    def autoscale(self):
+        self.tab1.autoscale()
+        self.tab2.autoscale()

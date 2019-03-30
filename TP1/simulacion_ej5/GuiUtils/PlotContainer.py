@@ -50,3 +50,6 @@ class PlotContainer(tk.Frame):
         self.axis.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
         self.dataPlot.draw()
+
+    def autoscale(self):
+        self.axis.autoscale()

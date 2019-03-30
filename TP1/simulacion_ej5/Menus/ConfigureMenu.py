@@ -45,7 +45,7 @@ class ConfigureMenu(tk.Frame):
 
         self.slider2 = SliderModel(2, 98, 1, config.GetConfigData().FAAfreq, "Sample cycle (%)")
         self.slider2cont = SliderContainer(self, self.slider2)
-        print(config.GetConfigData().SHhold)
+        #print(config.GetConfigData().SHhold)
 
         self.slider2.setContainer(self.slider2cont)
         self.slider2.setValue(config.GetConfigData().SHhold*100)
