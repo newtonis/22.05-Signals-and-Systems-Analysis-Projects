@@ -13,5 +13,6 @@ SRate = 500
 LLfreq = 500
 LLoff = 0.1
 LLon = 0.9
+Transitorio = 100
 
 RWconfig.loadConfig()

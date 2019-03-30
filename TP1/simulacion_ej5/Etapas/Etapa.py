@@ -6,4 +6,4 @@ class Etapa:
         pass
 
     def processInput(self, signalIn):
-        return Senial([],[])
+        return Senial([], [])
