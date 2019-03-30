@@ -10,10 +10,12 @@ def get(config, tag):
 
 
 def loadConfig(configDataWritable):
+    print("loading")
+
     mydoc = minidom.parse("Globals/config.xml")
     config = mydoc.childNodes[0]
 
-    configDataWritable.SRate = config.attributes['SampleFreq']
+    configDataWritable.fs = get(config, "SampleFreq")
     configDataWritable.FAAfreq = get(config, "FAAFreq")
     configDataWritable.SHsample = get(config, "SampleTime")
     configDataWritable.SHhold = get(config, "HoldTime")
@@ -32,11 +34,11 @@ def writeConfig(configDataReadable):
     data.set("FAAFreq", str(configDataReadable.FAAfreq))
     data.set("SampleFreq", str(configDataReadable.SRate))
     data.set("HoldTime", str(configDataReadable.SHhold))
-    data.set("SampleTime", str(configDataReadable.Sample))
+    data.set("SampleTime", str(configDataReadable.SHsample))
     data.set("Transitorio", str(configDataReadable.Transitorio))
 
     myData = ET.tostring(data)
-    myFile = open("config.xml", "wb")
+    myFile = open("Globals/config.xml", "wb")
     myFile.write(myData)
 
 

@@ -13,7 +13,7 @@ class ConfigData:
         self.FAAfreq = None
         self.SHsample = None
         self.SHhold = None
-        self.SRate = None
+        self.fs = None
 
         self.LLfreq = None
         self.LLoff = None
@@ -31,6 +31,17 @@ class ConfigData:
     def save(self):
         RWconfig.writeConfig(self)
 
+    def setFs(self, value):
+        self.fs = value
+        self.LLfreq = value
+
+    def setSampleCycle(self, value):
+        self.SHsample = value / 100
+        self.SHhold = 1 - self.SHsample
+
+        self.LLon = self.SHsample
+        self.LLoff = self.LLoff
+
 
 configData = ConfigData()
 
@@ -38,6 +49,7 @@ configData = ConfigData()
 def GetConfigData():
     if not configData.loaded:
         configData.load()
+        configData.loaded = True
 
     return configData
 

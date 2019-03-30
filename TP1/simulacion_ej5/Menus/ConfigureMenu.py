@@ -3,10 +3,13 @@ from tkinter import filedialog
 from Menus.PlotMenu import PlotMenu
 from GuiUtils.SliderContainer import SliderContainer
 from GuiUtils.SliderModel import SliderModel
+from GuiUtils.LoadingContainer import LoadingContainer
+from GuiUtils.LoadingModel import LoadingModel
 from Globals import Modes
 import ntpath
 from Etapas import ProcessSignals
 from Globals import config
+from threading import Thread
 
 
 class ConfigureMenu(tk.Frame):
@@ -33,11 +36,21 @@ class ConfigureMenu(tk.Frame):
         )
         self.btnText.set("Seleccionar entrada")
 
-        self.slider1 = SliderModel(1, 2000, 5, config.GetConfigData().FAAfreq, "Sample rate (hz)")
-        SliderContainer(self, self.slider1).pack(side=tk.TOP, fill=tk.BOTH)
+        self.slider1 = SliderModel(1, 5000, 5, config.GetConfigData().FAAfreq, "Sample rate (hz)")
+        self.slider1cont = SliderContainer(self, self.slider1)
+        self.slider1cont.pack(side=tk.TOP, fill=tk.BOTH)
+
+        self.slider1.setContainer(self.slider1cont)
+        self.slider1.setValue(config.GetConfigData().fs)
 
         self.slider2 = SliderModel(2, 98, 1, config.GetConfigData().FAAfreq, "Sample cycle (%)")
-        SliderContainer(self, self.slider2).pack(side=tk.TOP, fill=tk.BOTH)
+        self.slider2cont = SliderContainer(self, self.slider2)
+        print(config.GetConfigData().SHhold)
+
+        self.slider2.setContainer(self.slider2cont)
+        self.slider2.setValue(config.GetConfigData().SHhold*100)
+
+        self.slider2cont.pack(side=tk.TOP, fill=tk.BOTH)
 
         self.buttonSelectFile.pack(side=tk.TOP, fill=tk.BOTH)
 
@@ -54,6 +67,10 @@ class ConfigureMenu(tk.Frame):
 
             checkButton.pack(side=tk.TOP, fill=tk.BOTH)
 
+        self.loadingModel = None
+        self.loading = None
+
+    def focus(self):
         self.button = tk.Button(
             self,
             height=2,
@@ -63,11 +80,7 @@ class ConfigureMenu(tk.Frame):
             font=config.LARGE_FONT,
             command=lambda: self.goToPlotMenu()
         )
-
         self.button.pack(side=tk.BOTTOM, fill=tk.BOTH)
-
-    def focus(self):
-        pass
 
     def searchFile(self):
         tk.Tk().withdraw()
@@ -77,10 +90,27 @@ class ConfigureMenu(tk.Frame):
 
     def goToPlotMenu(self):
         if Modes.getModes().getFilename():
-            ProcessSignals.processSignals(Modes.getModes().getFilename(), Modes.getModes().modesEnabled)
-            self.controller.showFrame(PlotMenu)
+            self.button.destroy()
 
-            config.GetConfigData().setSRate(self.slider1.getValue())
-            config.GetConfigData().setSampleTime(self.slider2.getValue())
+            self.loadingModel = LoadingModel(0, 100)
+            self.loading = LoadingContainer(self, self.loadingModel)
+            self.loadingModel.setContainer(self.loading)
+            self.loading.pack(side=tk.TOP, fill=tk.BOTH)
 
-            config.GetConfigData().save()
+            self.loadingModel.setOnLoadedListener(
+                self.onDataCalc
+            )
+
+            thread = Thread(target=ProcessSignals.processSignals,
+                            args=(Modes.getModes().getFilename(), Modes.getModes().modesEnabled, self.loadingModel))
+            thread.start()
+
+    def onDataCalc(self):
+        self.loading.destroy()
+
+        self.controller.showFrame(PlotMenu)
+
+        config.GetConfigData().setFs(self.slider1.getValue())
+        config.GetConfigData().setSampleCycle(self.slider2.getValue())
+
+        config.GetConfigData().save()

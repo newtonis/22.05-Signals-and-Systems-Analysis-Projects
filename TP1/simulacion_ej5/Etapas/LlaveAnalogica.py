@@ -9,19 +9,22 @@ class LlaveAnalogica(Etapa):
     def __init__(self):
         pass
 
-    def processInput(self, inputSignal):
+    def processInput(self, inputSignal, loadingModel, fraction):
         output = [0] * len(inputSignal.xvar)
 
-        timePeriod = 1 / config.SRate
+        timePeriod = 1 / config.GetConfigData().fs
         cyclesPeriod = int(timePeriod / inputSignal.separation)
 
-        toffCycles = int(config.LLoff * cyclesPeriod)
+        toffCycles = int(config.GetConfigData().LLoff * cyclesPeriod)
 
+        paso = fraction / len(inputSignal.xvar)
         for ti in range(len(inputSignal.xvar)):
             if ti % cyclesPeriod >= toffCycles:
                 output[ti] = inputSignal.values[ti]
             else:
                 output[ti] = 0
+
+            loadingModel.update(paso)
 
         return Senial.Senial(inputSignal.xvar, output)
 
