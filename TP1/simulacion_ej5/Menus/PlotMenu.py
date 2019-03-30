@@ -61,7 +61,6 @@ class PlotMenu(tk.Frame):
         if self.currentSignal:
             filename = filedialog.asksaveasfile(mode='w', defaultextension=".xls")
             if filename:
-                #print("Writing signal to ", filename.name)
                 SignalsReadWrite.writeSignal(self.currentSignal, filename.name)
 
     def focus(self):
