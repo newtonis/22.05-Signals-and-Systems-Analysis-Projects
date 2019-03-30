@@ -9,25 +9,27 @@ class SampleAndHold(Etapa):
     def __init__(self):
         pass
         
-    def processInput(self, inputSignal):
+    def processInput(self, inputSignal, loadingModel, fraction):
 
-        timePeriod = 1 / config.SRate
+        timePeriod = 1 / config.GetConfigData().fs
         cyclesPeriod = int(timePeriod / inputSignal.separation)
 
         output = [0] * len(inputSignal.xvar)
-
+        paso = fraction / len(inputSignal.xvar)
         for i in range(len(inputSignal.xvar)):
             # tres casos
 
             fractionTime = i % cyclesPeriod
 
-            if fractionTime < config.SHsample * cyclesPeriod:
+            if fractionTime < config.GetConfigData().SHsample * cyclesPeriod:
                 output[i] = inputSignal.values[i]
-            elif fractionTime < (config.SHsample + config.SHhold) * cyclesPeriod:
+            elif fractionTime < (config.GetConfigData().SHsample + config.GetConfigData().SHhold) * cyclesPeriod:
                 if i != 0:
                     output[i] = output[i-1]
                 else:
                     output[i] = 0
+
+            loadingModel.update(paso)
 
         return Senial.Senial(inputSignal.xvar, output)
 

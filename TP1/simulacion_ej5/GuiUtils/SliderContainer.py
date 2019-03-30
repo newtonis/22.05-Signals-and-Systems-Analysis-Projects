@@ -27,4 +27,5 @@ class SliderContainer(tk.Frame):
     def updateValue(self, event):
         self.model.setValue(self.slider.get())
 
-
+    def refresh(self):
+        self.slider.set(self.model.getValue())
