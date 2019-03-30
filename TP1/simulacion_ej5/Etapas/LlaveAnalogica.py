@@ -18,13 +18,17 @@ class LlaveAnalogica(Etapa):
         toffCycles = int(config.GetConfigData().LLoff * cyclesPeriod)
 
         paso = fraction / len(inputSignal.xvar)
+        aux = 0
         for ti in range(len(inputSignal.xvar)):
             if ti % cyclesPeriod >= toffCycles:
                 output[ti] = inputSignal.values[ti]
             else:
                 output[ti] = 0
-
-            loadingModel.update(paso)
+            aux += paso
+            if ti % 1000 == 0:
+                loadingModel.update(aux)
+                aux = 0
+        loadingModel.update(aux)
 
         return Senial.Senial(inputSignal.xvar, output)
 

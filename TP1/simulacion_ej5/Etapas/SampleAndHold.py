@@ -16,6 +16,7 @@ class SampleAndHold(Etapa):
 
         output = [0] * len(inputSignal.xvar)
         paso = fraction / len(inputSignal.xvar)
+        aux = 0
         for i in range(len(inputSignal.xvar)):
             # tres casos
 
@@ -28,8 +29,11 @@ class SampleAndHold(Etapa):
                     output[i] = output[i-1]
                 else:
                     output[i] = 0
-
-            loadingModel.update(paso)
+            aux += paso
+            if i % 1000 == 0:
+                loadingModel.update(aux)
+                aux = 0
+        loadingModel.update(aux)
 
         return Senial.Senial(inputSignal.xvar, output)
 
