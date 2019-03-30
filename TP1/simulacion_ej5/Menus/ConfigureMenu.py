@@ -79,7 +79,7 @@ class ConfigureMenu(tk.Frame):
 
         self.button = tk.Button(
             self,
-            height=2,
+            height=1,
             width=44,
             background="pale green",
             text="ACEPTAR",
