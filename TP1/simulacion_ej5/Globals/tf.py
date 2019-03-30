@@ -12,7 +12,7 @@ class TF:
     def loadTf(self):
         s = sp.symbols("s")
 
-        wp = 2 * pi * config.FAAfreq
+        wp = 2 * pi * config.GetConfigData().FAAfreq
         self.addTf(1 / ((s/wp)**2 + 0.5548*(s/wp) + 0.2702), s)
         self.addTf(1 / ((s/wp)**2 + 0.0918*(s/wp) + 0.9870), s)
         self.addTf(1 / ((s/wp)**2 + 0.4284*(s/wp) + 0.5282), s)
@@ -22,7 +22,7 @@ class TF:
         return self.tf
 
     def addTf(self, exp, s):
-        tf.append(algebra.conseguir_tf(exp, s))
+        self.tf.append(algebra.conseguir_tf(exp, s))
 
 
 tf = None

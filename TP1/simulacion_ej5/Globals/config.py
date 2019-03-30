@@ -5,14 +5,39 @@ SMALL_FONT = ("Bahnschrift", 16)
 SMALLEST_FONT = ("Bahnschrift", 10)
 debug = True
 
-FAAfreq = 1600
-SHsample = 0.1
-SHhold = 0.9
-SRate = 500
+# los valores no son los reales
 
-LLfreq = 500
-LLoff = 0.1
-LLon = 0.9
-Transitorio = 100
 
-RWconfig.loadConfig()
+class ConfigData:
+    def __init__(self):
+        self.FAAfreq = None
+        self.SHsample = None
+        self.SHhold = None
+        self.SRate = None
+
+        self.LLfreq = None
+        self.LLoff = None
+        self.LLon = None
+        self.Transitorio = None
+
+        self.loaded = False
+
+    def setLoaded(self):
+        self.loaded = True
+
+    def load(self):
+        RWconfig.loadConfig(self)
+
+    def save(self):
+        RWconfig.writeConfig(self)
+
+
+configData = ConfigData()
+
+
+def GetConfigData():
+    if not configData.loaded:
+        configData.load()
+
+    return configData
+

@@ -1,6 +1,7 @@
 <config
-    FAAfreq="1600"
-    SHsample="0.1"
-    SHhold="0.9"
-    Sfreq="3000"
+    FAAFreq="1600"
+    SampleTime="0.1"
+    HoldTime="0.9"
+    SampleFreq="3000"
+    Transitorio="0"
 />

@@ -33,9 +33,11 @@ class ConfigureMenu(tk.Frame):
         )
         self.btnText.set("Seleccionar entrada")
 
-        self.slider1 = SliderModel(1, 2000, 5, config.FAAfreq, "Sample rate")
-
+        self.slider1 = SliderModel(1, 2000, 5, config.GetConfigData().FAAfreq, "Sample rate (hz)")
         SliderContainer(self, self.slider1).pack(side=tk.TOP, fill=tk.BOTH)
+
+        self.slider2 = SliderModel(2, 98, 1, config.GetConfigData().FAAfreq, "Sample cycle (%)")
+        SliderContainer(self, self.slider2).pack(side=tk.TOP, fill=tk.BOTH)
 
         self.buttonSelectFile.pack(side=tk.TOP, fill=tk.BOTH)
 
@@ -77,3 +79,8 @@ class ConfigureMenu(tk.Frame):
         if Modes.getModes().getFilename():
             ProcessSignals.processSignals(Modes.getModes().getFilename(), Modes.getModes().modesEnabled)
             self.controller.showFrame(PlotMenu)
+
+            config.GetConfigData().setSRate(self.slider1.getValue())
+            config.GetConfigData().setSampleTime(self.slider2.getValue())
+
+            config.GetConfigData().save()
