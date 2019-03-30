@@ -18,4 +18,5 @@ class LoadingContainer(ttk.Frame):
         self.progressBar["value"] = self.model.getValue()
 
     def destroy(self):
+        print("destroy")
         self.progressBar.destroy()

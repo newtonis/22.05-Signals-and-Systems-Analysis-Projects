@@ -32,7 +32,7 @@ def writeConfig(configDataReadable):
     data = ET.Element('config')
 
     data.set("FAAFreq", str(configDataReadable.FAAfreq))
-    data.set("SampleFreq", str(configDataReadable.SRate))
+    data.set("SampleFreq", str(configDataReadable.fs))
     data.set("HoldTime", str(configDataReadable.SHhold))
     data.set("SampleTime", str(configDataReadable.SHsample))
     data.set("Transitorio", str(configDataReadable.Transitorio))

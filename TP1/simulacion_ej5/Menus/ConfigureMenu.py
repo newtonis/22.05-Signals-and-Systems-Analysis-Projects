@@ -66,11 +66,17 @@ class ConfigureMenu(tk.Frame):
             )
 
             checkButton.pack(side=tk.TOP, fill=tk.BOTH)
-
         self.loadingModel = None
-        self.loading = None
+        self.isLoading = False
+        self.loadingModel = LoadingModel(0, 100)
+        self.loading = LoadingContainer(self, self.loadingModel)
+        self.loadingModel.setContainer(self.loading)
+        self.loading.pack(side=tk.BOTTOM, fill=tk.BOTH)
 
-    def focus(self):
+        self.loadingModel.setOnLoadedListener(
+            self.onDataCalc
+        )
+
         self.button = tk.Button(
             self,
             height=2,
@@ -82,6 +88,10 @@ class ConfigureMenu(tk.Frame):
         )
         self.button.pack(side=tk.BOTTOM, fill=tk.BOTH)
 
+    def focus(self):
+        self.loadingModel.reset()
+        self.button.configure(state=tk.NORMAL)
+
     def searchFile(self):
         tk.Tk().withdraw()
         Modes.getModes().setFilename(filedialog.askopenfilename())
@@ -89,24 +99,16 @@ class ConfigureMenu(tk.Frame):
         self.btnText.set("Seleccionar entrada [" + ntpath.basename(Modes.getModes().getFilename()) + "]")
 
     def goToPlotMenu(self):
-        if Modes.getModes().getFilename():
-            self.button.destroy()
+        if Modes.getModes().getFilename() and not self.isLoading:
+            self.button.configure(state=tk.DISABLED)
 
-            self.loadingModel = LoadingModel(0, 100)
-            self.loading = LoadingContainer(self, self.loadingModel)
-            self.loadingModel.setContainer(self.loading)
-            self.loading.pack(side=tk.TOP, fill=tk.BOTH)
-
-            self.loadingModel.setOnLoadedListener(
-                self.onDataCalc
-            )
+            self.isLoading = True
 
             thread = Thread(target=ProcessSignals.processSignals,
                             args=(Modes.getModes().getFilename(), Modes.getModes().modesEnabled, self.loadingModel))
             thread.start()
 
     def onDataCalc(self):
-        self.loading.destroy()
 
         self.controller.showFrame(PlotMenu)
 
@@ -114,3 +116,5 @@ class ConfigureMenu(tk.Frame):
         config.GetConfigData().setSampleCycle(self.slider2.getValue())
 
         config.GetConfigData().save()
+
+        self.isLoading = False

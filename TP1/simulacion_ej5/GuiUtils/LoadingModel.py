@@ -16,6 +16,10 @@ class LoadingModel:
         self.value += value
         if self.container:
             self.container.refresh()
+    def reset(self):
+        self.value = 0
+        if self.container:
+            self.container.refresh()
 
     def callOnFinished(self):
         if self.onLoaded:
