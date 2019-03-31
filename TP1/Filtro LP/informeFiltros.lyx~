@@ -94,8 +94,420 @@ Filtros
 Antialiasing
 \end_layout
 
+\begin_layout Standard
+Para el muestreo de señales analógicas, partimos de la base que éstas deben
+ poseer un ancho de banda limitado, de manera tal que de acuerdo al teorema
+ de Nyquist del muestreo, la frecuencia de muestreo debe ser el doble del
+ ancho de banda (B) de la señal (en el caso de que el filtro sea ideal)
+ para que las repeticiones del espectro de la señal en cuestión no se solapen,
+ es decir:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$f_s 
+\backslash
+geq 2B$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para observar mejor esto, llamando al período de muestreo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$T$
+\end_layout
+
+\end_inset
+
+, se tiene el tren de pulsos periódico:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+delta_T = 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} 
+\backslash
+delta(t-nT)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para el muestreo de una señal en tiempo continuo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(t)$
+\end_layout
+
+\end_inset
+
+, se tiene:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x^{*}(t) = x(t) 
+\backslash
+cdot 
+\backslash
+delta_T = 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} x(nT) 
+\backslash
+cdot 
+\backslash
+delta(t-nT)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x^{*}(t)$
+\end_layout
+
+\end_inset
+
+ es la señal muestreada.
+ Si se aplica la transformada de Fourier resulta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_T(
+\backslash
+omega) = X(
+\backslash
+omega)*
+\backslash
+delta_{
+\backslash
+omega_s}(
+\backslash
+omega)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+delta_{
+\backslash
+omega_s}(
+\backslash
+omega) = 
+\backslash
+omega_s 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} 
+\backslash
+delta(
+\backslash
+omega - n
+\backslash
+omega_s) 
+\backslash
+hspace{2cm} 
+\backslash
+omega_s = 
+\backslash
+frac{2
+\backslash
+pi}{T}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es decir que al convolucionar el espectro de la señal muestreada con el
+ tren de deltas se obtiene el espectro de dicha señal replicado cada 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$n
+\backslash
+omega_s$
+\end_layout
+
+\end_inset
+
+.
+ Suponiendo que el espectro tiene un ancho total B, para que no se solapen
+ las repeticiones (es decir, ocurra alias entre los espectros) se debe cumplir
+ el teorema en cuestión.
+\end_layout
+
+\begin_layout Standard
+La función del filtro antialiasing pasa bajos consiste entonces en, teniendo
+ una frecuencia de muestreo fija, limitar en banda a la señal de entrada,
+ de manera tal que si la señal que ingresa al sistema tiene un ancho 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$B < f_p$
+\end_layout
+
+\end_inset
+
+ (donde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+ es la frecuencia de paso del filtro) no ocurre ningún inconveniente.
+ En el caso contrario se perderían algunas componentes de la señal, pero
+ se asegura de esta manera que no ocurra el solapamiento entre espectros.
+ En el caso ideal puede modelarse como una ventana cuadrada en el dominio
+ de la frecuencia, donde entre 0 y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+frac{B}{2}$
+\end_layout
+
+\end_inset
+
+ dicha ventana vale 1, y fuera del mismo vale 0.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Dibujos/ventanaCuadrada.png
+	display false
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Transferencia del ideal del filtro
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Recuperador
+\end_layout
+
+\begin_layout Standard
+Una vez muestreada la señal, como se mencionó anteriormente se tiene el
+ espectro de la misma replicado en cada posición del tren de pulsos, separados
+ en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+omega_s$
+\end_layout
+
+\end_inset
+
+.
+ Para recuperar la señal original, basta con quedarse solamente con el espectro
+ en banda base, descartando el resto.
+ Para ello se utiliza el filtro recuperador, el cual resulta idéntico al
+ filtro antialiasing dado que, justamente lo que se busca es recuperar el
+ espectro original cuyo ancho en el peor caso es 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$B$
+\end_layout
+
+\end_inset
+
+ (entre 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-
+\backslash
+frac{B}{2}$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+frac{B}{2}$
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Para recuperar el espectro en banda base, se multiplica la transferencia
+ del filtro 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$H(
+\backslash
+omega)$
+\end_layout
+
+\end_inset
+
+ por el espectro periódico de la señal muestreada:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_R(
+\backslash
+omega) = X_T(
+\backslash
+omega) 
+\backslash
+cdot H(
+\backslash
+omega)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el filtro real, al no tener pendiente infinita en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+ y poseer cierta atenuación en la frecuencia de corte, se debe considerar
+ dar un margen de frecuencia al momento del diseño, lo cual se explica en
+ la sección siguiente.
 \end_layout
 
 \begin_layout Subsection
@@ -2643,7 +3055,9 @@ status open
 
 \begin_layout Plain Layout
 
-$10%$
+$10
+\backslash
+%$
 \end_layout
 
 \end_inset
@@ -2658,6 +3072,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Dibujos/Montecarlo.pdf
+	display false
+	scale 60
+
+\end_inset
+
 
 \end_layout
 
