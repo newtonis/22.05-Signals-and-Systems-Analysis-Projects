@@ -80,7 +80,20 @@ Implementación en PCB - Consideraciones
 \end_layout
 
 \begin_layout Standard
+Dado que el sistema en su conjunto consiste de una parte analógica y otra
+ digital, es necesario tener en cuenta ciertas cuestiones al momento del
+ diseño del PCB a implementar.
+\end_layout
 
+\begin_layout Subsection
+Flancos digitales - Clocks
+\end_layout
+
+\begin_layout Standard
+Los osciladores que proveen las señales cuadradas de control para la llave
+ analógica y el sample & hold exigen corriente al circuito en los flancos,
+ lo cual provoca una disminución en la tensión de alimentación durante un
+ breve lapso de tiempo, resultando agresivo para el circuito analógico.
 \end_layout
 
 \end_body
