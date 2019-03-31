@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import filedialog
 from Globals import config, Modes
 from Globals import PlotSignals
 from GuiUtils.ButtonSelector import ButtonSelector
@@ -6,7 +7,7 @@ from GuiUtils.ButtonSelectorModel import ButtonSelectorModel
 from GuiUtils.ButtonModel import ButtonModel
 from GuiUtils.PlotContainerTabs import PlotContainerTabs
 from Utils import FourierTransform
-
+from Etapas import SignalsReadWrite
 from Menus import ConfigureMenu
 
 
@@ -30,7 +31,6 @@ class PlotMenu(tk.Frame):
 
         self.buttonSelector.pack(side=tk.TOP, fill=tk.X)
 
-
         self.returnButton = tk.Button(
             self,
             height=1,
@@ -41,7 +41,27 @@ class PlotMenu(tk.Frame):
             command=lambda: self.goToConfigureMenu()
         )
 
-        self.returnButton.pack(side=tk.TOP, fill=tk.X)
+        self.returnButton.pack(side=tk.LEFT, fill=tk.X)
+
+        self.saveButton = tk.Button(
+            self,
+            height=1,
+            width=44,
+            background="light sky blue",
+            text="GUARDAR",
+            font=config.SMALL_FONT,
+            command=lambda: self.saveFile()
+        )
+
+        self.saveButton.pack(side=tk.LEFT,fill=tk.X)
+
+        self.currentSignal = None
+
+    def saveFile(self):
+        if self.currentSignal:
+            filename = filedialog.asksaveasfile(mode='w', defaultextension=".xls")
+            if filename:
+                SignalsReadWrite.writeSignal(self.currentSignal, filename.name)
 
     def focus(self):
         self.updateButtons()
@@ -71,6 +91,10 @@ class PlotMenu(tk.Frame):
         inputSignal = PlotSignals.getSignalsData().signals[mode]
         self.plotContainerTabs.tab1.plot(inputSignal)
         self.plotContainerTabs.tab2.plot(FourierTransform.fourierTransform(inputSignal))
+
+        self.plotContainerTabs.autoscale()
+
+        self.currentSignal = inputSignal
 
     def goToConfigureMenu(self):
         self.controller.showFrame(ConfigureMenu.ConfigureMenu)

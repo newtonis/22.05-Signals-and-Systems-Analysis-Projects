@@ -45,7 +45,7 @@ class ConfigureMenu(tk.Frame):
 
         self.slider2 = SliderModel(2, 98, 1, config.GetConfigData().FAAfreq, "Sample cycle (%)")
         self.slider2cont = SliderContainer(self, self.slider2)
-        print(config.GetConfigData().SHhold)
+        #print(config.GetConfigData().SHhold)
 
         self.slider2.setContainer(self.slider2cont)
         self.slider2.setValue(config.GetConfigData().SHhold*100)
@@ -79,7 +79,7 @@ class ConfigureMenu(tk.Frame):
 
         self.button = tk.Button(
             self,
-            height=2,
+            height=1,
             width=44,
             background="pale green",
             text="ACEPTAR",
@@ -100,6 +100,11 @@ class ConfigureMenu(tk.Frame):
 
     def goToPlotMenu(self):
         if Modes.getModes().getFilename() and not self.isLoading:
+            config.GetConfigData().setFs(self.slider1.getValue())
+            config.GetConfigData().setSampleCycle(self.slider2.getValue())
+
+            config.GetConfigData().save()
+
             self.button.configure(state=tk.DISABLED)
 
             self.isLoading = True
@@ -109,12 +114,7 @@ class ConfigureMenu(tk.Frame):
             thread.start()
 
     def onDataCalc(self):
-
         self.controller.showFrame(PlotMenu)
 
-        config.GetConfigData().setFs(self.slider1.getValue())
-        config.GetConfigData().setSampleCycle(self.slider2.getValue())
-
-        config.GetConfigData().save()
-
         self.isLoading = False
+

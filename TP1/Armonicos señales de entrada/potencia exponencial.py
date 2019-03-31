@@ -51,35 +51,35 @@ def serieFourier32Seno(n, t):
     return ans
 
 
-T = 1/500
-n = 1000
-t = numpy.arange(0, 3.1*T, T/1000)
-funcion = [sin32(tt, T) for tt in t]
-potfft = fft.fft(funcion)/len(t)
-potfourier = [(an32Seno(n)**2)/2 for n in range(0, n)]
-potfourier[0] *= 2
-
-for k in range(1, n):
-    potfourier[k] += potfourier[k-1]
-
-for k in range(n):
-    potfourier[k] /= potfourier[n-1]
-
-fourier4 = [serieFourier32Seno(4, tt) for tt in t]
-plt.plot(t, funcion, t, fourier4)
-#plt.bar(range(10), potfourier[0:10])
-print(potfourier)
-
-# T = 10
-# n = 4999
-# t = numpy.arange(0, 2.1*T, T/1000)
-# funcion = [exp_periodica(tt) for tt in t]
-# fourier = [serieFourierExp(n, tt) for tt in t]
-# plt.plot(t, funcion, t, fourier)
+# T = 1/500
+# n = 1000
+# t = numpy.arange(0, 3.1*T, T/1000)
+# funcion = [sin32(tt, T) for tt in t]
 # potfft = fft.fft(funcion)/len(t)
-# potfourier = [coefFourierExp(n)**2+coefFourierExp(-n)**2 for n in range(0, n)]
-# potfourier[0] /= 2
-# plt.bar(range(0, n), potfourier)
+# potfourier = [(an32Seno(n)**2)/2 for n in range(0, n)]
+# potfourier[0] *= 2
+#
+# for k in range(1, n):
+#     potfourier[k] += potfourier[k-1]
+#
+# for k in range(n):
+#     potfourier[k] /= potfourier[n-1]
+#
+# fourier4 = [serieFourier32Seno(4, tt) for tt in t]
+# plt.plot(t, funcion, t, fourier4)
+# #plt.bar(range(10), potfourier[0:10])
+# print(potfourier)
+
+T = 10
+n = 4999
+t = numpy.arange(0, 2.1*T, T/1000)
+funcion = [exp_periodica(tt) for tt in t]
+fourier = [serieFourierExp(n, tt) for tt in t]
+#plt.plot(t, funcion, t, fourier)
+potfft = fft.fft(funcion)/len(t)
+potfourier = [coefFourierExp(n)**2+coefFourierExp(-n)**2 for n in range(0, n)]
+potfourier[0] /= 2
+plt.bar(range(0, 20), potfourier)
 
 plt.xlabel("Tiempo (s)")
 plt.ylabel("Tensión (V)")

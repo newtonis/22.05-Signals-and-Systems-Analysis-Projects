@@ -39,8 +39,8 @@ class ConfigData:
         self.SHsample = value / 100
         self.SHhold = 1 - self.SHsample
 
-        self.LLon = self.SHsample
-        self.LLoff = self.LLoff
+        self.LLoff = self.SHsample
+        self.LLon = self.SHhold
 
 
 configData = ConfigData()

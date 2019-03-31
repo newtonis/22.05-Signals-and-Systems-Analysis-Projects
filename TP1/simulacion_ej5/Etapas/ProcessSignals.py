@@ -8,12 +8,16 @@ def processSignals(inputFile, modes, loadingModel):
 
     PlotSignals.getSignalsData().setSignal("Entrada", signal)
 
-    fraction = 100 / (
-            modes["FAA"].get() +
-            modes["Sample and Hold"].get() +
-            modes["Llave analógica"].get() +
+    total = modes["FAA"].get() + \
+            modes["Sample and Hold"].get() + \
+            modes["Llave analógica"].get() + \
             modes["FR"].get()
-    )
+
+    if total != 0:
+        fraction = 100 / total
+    else:
+        fraction = 1
+
     print("processing")
     if modes["FAA"].get():
         signal = FiltroLP.getFiltroLP().processInput(signal, loadingModel, fraction)
