@@ -20,7 +20,7 @@ fp = 1.5e3
 SignalGenerator.GenerateCos(f0, 0, 10/f0, 3)
 
 SignalGenerator.GenerateCos(f0, 0, 10/f0, 1)
-SignalGenerator.GenerateCos(1e3, 0, 10/1e3, 1)
+SignalGenerator.GenerateCos(1e3, 0, 30*10/1e3, 1)
 SignalGenerator.GenerateCos(100, 0, 10/100, 1)
 
 SignalGenerator.GenerateExp(fexp, 0, 10/fexp, 2)
