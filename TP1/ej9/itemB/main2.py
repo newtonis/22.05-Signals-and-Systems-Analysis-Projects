@@ -53,14 +53,16 @@ def plot_data():
     # ax1.plot(rx, tx, color='blue')
     # ax1.plot(ry, ty, color='red')
     #
-    # patches.append(mpatches.Patch(color="blue", label="original"))
-    # patches.append(mpatches.Patch(color="red", label="downsampled"))
+
+    patches = []
+    patches.append(mpatches.Patch(color="blue", label="original"))
+    patches.append(mpatches.Patch(color="tomato", label="downsampled"))
 
 
 
-    #plt.legend(handles=patches)
-    ax1.plot(x1dtft.xvar, x1dtft.yvar)
-    ax1.plot(y1dtft.xvar, y1dtft.yvar)
+    plt.legend(handles=patches)
+    ax1.plot(x1dtft.xvar, x1dtft.yvar, "blue")
+    ax1.plot(y1dtft.xvar, y1dtft.yvar, "tomato")
 
     plt.xlabel("frecuencia (hz)")
     plt.ylabel("amplitud")

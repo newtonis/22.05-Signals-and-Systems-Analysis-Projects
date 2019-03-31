@@ -110,6 +110,172 @@ $y(n)=x(nM)$
 
 \end_layout
 
+\begin_layout Subsection
+Caso 1
+\end_layout
+
+\begin_layout Standard
+La señal a analizar fue 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)=sin(2
+\backslash
+pi 
+\backslash
+frac{0.125}{2}n)$
+\end_layout
+
+\end_inset
+
+ con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-50
+\backslash
+leq n 
+\backslash
+leq 50$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Análisis temporal
+\end_layout
+
+\begin_layout Standard
+Se infirió la forma de la señal original mediante las muestras tanto con
+ la señal original 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)$
+\end_layout
+
+\end_inset
+
+ como la decimada, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$y(n)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El método que se utilizó consistió en primero calcular la dft de la señal
+ discreta, y luego la posterior reconstrucción de la misma mediante dichos
+ coeficientes utilizando series de fourier.
+\end_layout
+
+\begin_layout Standard
+La fórmula utilizada para la reconstrucción de la señal fue la siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x(t)=
+\backslash
+sum_{k=0}^{N-1}2
+\backslash
+|X_k
+\backslash
+|cos(2
+\backslash
+pi f + X_k)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se intentó el uso de la versión de la fórmula exponencial compleja, pero
+ debido a dificultades técnicas que no se llegaron a resolver, se optó por
+ la versión real de la fórmula, la cual no recurre al cálculo complejo,
+ pero que para señales reales es equivalente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename reconstruccion1.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename reconstruccion1decimate.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Señal 1 reconstruida con y sin decimate aplicado
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observá que, intuitivamente, es mucho más creible la fórma de la señal
+ inferida en la señal original sin decimate
+\end_layout
+
+\begin_layout Subsubsection
+Análisis espectral
+\end_layout
+
+\begin_layout Standard
+Se cálculo la DTFT de la señal con y sin downsampling.
+ Los resultados fueron los siguientes:
+\end_layout
+
 \begin_layout Standard
 
 \end_layout

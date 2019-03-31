@@ -1,0 +1,577 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Ejercicio 8b - Downsampling
+\end_layout
+
+\begin_layout Standard
+Se analizó el efecto sobre el espectro de dos señales al realizar un downsamplin
+g, es decir, al bajar la tasa de muestreo de las señales en un factor de
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$M=4$
+\end_layout
+
+\end_inset
+
+ aplicando la transformación 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$y(n)=x(nM)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Caso 1
+\end_layout
+
+\begin_layout Standard
+La señal a analizar fue 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)=sin(2
+\backslash
+pi 
+\backslash
+frac{0.125}{2}n)$
+\end_layout
+
+\end_inset
+
+ con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-50
+\backslash
+leq n 
+\backslash
+leq 50$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nota: se asumió arbitrariamente que la frecuencia de sampleo es 1 para la
+ señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)$
+\end_layout
+
+\end_inset
+
+ y 1/4 para la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$y(n)$
+\end_layout
+
+\end_inset
+
+, lo cual nos sirvió para hacer conclusiones utiles sobre la hipotetica
+ señal original
+\end_layout
+
+\begin_layout Subsubsection
+Análisis temporal
+\end_layout
+
+\begin_layout Standard
+Se infirió la forma de la señal original mediante las muestras tanto con
+ la señal original 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)$
+\end_layout
+
+\end_inset
+
+ como la decimada, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$y(n)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El método que se utilizó consistió en primero calcular la dft de la señal
+ discreta, y luego la posterior reconstrucción de la misma mediante dichos
+ coeficientes utilizando series de fourier.
+\end_layout
+
+\begin_layout Standard
+La fórmula utilizada para la reconstrucción de la señal fue la siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x(t)=
+\backslash
+sum_{k=0}^{N-1}2
+\backslash
+|X_k
+\backslash
+|cos(2
+\backslash
+pi f + 
+\backslash
+pha X_k)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se intentó el uso de la versión de la fórmula exponencial compleja, pero
+ debido a dificultades técnicas que no se llegaron a resolver, se optó por
+ la versión real de la fórmula, la cual no recurre al cálculo complejo,
+ pero que para señales reales es equivalente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename reconstruccion1.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename reconstruccion1decimate.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Señal 1 reconstruida con y sin decimate aplicado
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observá que, intuitivamente, es mucho más creible la fórma de la señal
+ inferida en la señal original sin decimate.
+\end_layout
+
+\begin_layout Subsubsection
+Análisis espectral
+\end_layout
+
+\begin_layout Standard
+Se cálculo la DTFT de la señal con y sin downsampling.
+ Los resultados fueron los siguientes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename downsampling1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DTFT señal con y sin downsampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos obserbar que como realizamos una DTFT en lugar de una FFT sobre
+ un período el espectro es continuo, pues la señal teórica analizada no
+ es periodica, se anula fuera de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$50
+\backslash
+leq n 
+\backslash
+leq 50$
+\end_layout
+
+\end_inset
+
+ para la DTFT
+\end_layout
+
+\begin_layout Standard
+Por otro lado, también se puede notar que las repeticiones del espectro
+ de la señal con downsampling se encuentran mucho mas cercanas entre si,
+ que las repeticiones del espectro de la señal sin el mismo; esto implica;
+ que para garatizar una reconstrucción adecuada de la señal con downsampling
+ se debe asumir que la señal original tenga un ancho de banda mas pequeño
+ (que si no tuviera el downsampling aplicado).
+ Este razonamiento es consecuencia del teorema de Niquist.
+\end_layout
+
+\begin_layout Subsection
+Caso 2
+\end_layout
+
+\begin_layout Standard
+Se repitió exactamente el mismo analisis pero con la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)=sin(2
+\backslash
+pi 0.25n)$
+\end_layout
+
+\end_inset
+
+ con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-50
+\backslash
+leq n 
+\backslash
+leq 50$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Análisis temporal
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename reconstruccion2.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename reconstruccion2decimate.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Señal 2 reconstruida con y sin downsampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso podemos observar que el downsampling provocá que la unica inferenci
+a que podamos hacer de la señal es que sea una constante, lo cual, en principio
+ no parece ser una inferencia adecuada.
+\end_layout
+
+\begin_layout Standard
+Esto se debe a que el ancho de banda de la señal original que buscamos inferir
+ es demasiado chico considerando la frecuencia de sampleo utilizada.
+ Más concretamente, mientras que la frecuencia de sampleo es 1/4, la frecuencia
+ de la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sin(2
+\backslash
+pi 0.25 t)$
+\end_layout
+
+\end_inset
+
+ es 1/4 tambien, cuando, por Niquist sabemos que la frecuencia de sampleo
+ debería ser al menos el doble.
+\end_layout
+
+\begin_layout Subsubsection
+Análisis espectral
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename downsampling2.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DTFT señal con y sin downsampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos observar que la señal con decimate carece de espectro, pues es una
+ constante nula.
+ 
+\end_layout
+
+\begin_layout Standard
+Hay una razón de este hecho.
+ Debido a que la frecuencia de sampleo de la señal con downsampling es menor
+ a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1/2=f_{niquist}$
+\end_layout
+
+\end_inset
+
+ la discretización provoca que el recorte del espectro de la señal continua
+ original, que ocurre en el rango 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$(-1/2 f_s, +1/2 f_s)=(-0.125 Hz, 0.125 Hz)$
+\end_layout
+
+\end_inset
+
+, no tome ningun armonico de la señal original (los cuales se encuentran
+ en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$(-0.25 Hz, 0.25 Hz)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
