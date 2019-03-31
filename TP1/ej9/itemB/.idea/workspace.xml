@@ -1,7 +1,436 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39c4d191-e1b5-493b-83c3-cc610f6cd92c" name="Default Changelist" comment="" />
+    <list default="true" id="39c4d191-e1b5-493b-83c3-cc610f6cd92c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../itemA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../itemA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/downsampling1.png" beforeDir="false" afterPath="$PROJECT_DIR$/downsampling1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main2.py" beforeDir="false" afterPath="$PROJECT_DIR$/main2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/max_rd.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/max_rd.lyx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/.idea/simulacion_ej5.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Etapas/Etapa.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Etapas/FiltroLP.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Etapas/LlaveAnalogica.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Etapas/ProcessSignals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Etapas/SampleAndHold.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Etapas/Senial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Etapas/SignalsReadWrite.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Etapas/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/AGUSPECTRUMDC12.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_01.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_02.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_03.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_04.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_05.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_06.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_07.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_08.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_09.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_12.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_13.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_14.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_15.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_16.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_17.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_18.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_19.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_24.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_25.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_26.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/Mediciones basicas/med_27.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_02.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_03.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_04.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_05.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_06.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_07.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_08.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_09.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_16.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/med_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressInput/test01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/ExpressOutput/med_17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Globals/Modes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Globals/PlotSignals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Globals/RWconfig.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Globals/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Globals/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Globals/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Globals/styles.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Globals/tf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GraficosExpress.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/ButtonModel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/ButtonSelector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/ButtonSelectorModel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/LoadingContainer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/LoadingModel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/PlotContainer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/PlotContainerTabs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/SliderContainer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/SliderModel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/GuiUtils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Menus/ConfigureMenu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Menus/PlotMenu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Menus/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/AM_1.0Hz.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/AM_1.2Hz.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Coseno_0.1k_1Vp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Coseno_0.5k_1Vp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Coseno_0.5k_3Vp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Coseno_1.0k_1Vp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Coseno_240.0k.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Coseno_500.0k.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Exp_10Hz.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Seno_1.6666666666666667k.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Seno_5.0k.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/SignalGenerator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Sine32_0.1k.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Sine32_0.5k.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Sine32_500.0k.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Sqaure_1e-06_2e-06ms.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/Sqaure_2.0000000000000002e-07_5e-07ms.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/sine.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Signals/xc_0.0_5e-05_0.5_1600.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/UI.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/FourierTransform.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/datacursor_easy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/ejemplo_graficos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/read_csv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/read_data_bode.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/read_spice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/read_xls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/utils/algebra.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/utils/etapas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/utils/gui/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/utils/gui/button_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/Utils/utils/parse_float.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/signalGenerator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/Senial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/datacursor_easy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/ejemplo_graficos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/.idea/python-utilidades.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/.idea/test02.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/BROADBAY.TTF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/bode.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/bode.spec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/data/BROADBAY.TTF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/data/test.kv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/gen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/hello.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/osc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/aislacion.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/band_pass.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/band_reject.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/bandpass01.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/bandreject01.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/comun_02.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/comun_12k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/comun_21k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/comun_53k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/comun_78k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/comun_v2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/diferencial.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/high_pass.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/lowpass04.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/lowpasss02.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/lowpasss03.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/lowpasss04.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/modo_comun_v05.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/output/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/test.kv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/test2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/test2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/test_interface.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_codigo_fuente/testjoaco.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/BROADBAY.TTF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/Include/pyconfig.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.FLAC.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.freetype.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.jpeg.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.modplug.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.mpg123.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.ogg-vorbis.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.png.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.tiff.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.webp.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/LICENSE.zlib.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/SDL2.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/SDL2_image.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/SDL2_mixer.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/SDL2_ttf.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/VCRUNTIME140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_bz2.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_contextvars.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_ctypes.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_decimal.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_distutils_findvs.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_elementtree.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_hashlib.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_lzma.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_multiprocessing.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_queue.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_socket.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_ssl.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/_win32sysloader.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/bode.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/bode.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isoamsa.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isoamsb.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isoamsc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isoamsn.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isoamso.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isoamsr.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isobox.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isocyr1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isocyr2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isodia.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isogrk1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isogrk2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isogrk3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isogrk4-wide.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isogrk4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isolat1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isolat2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isomfrk-wide.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isomfrk.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isomopf-wide.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isomopf.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isomscr-wide.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isomscr.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isonum.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isopub.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/isotech.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/mmlalias.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/mmlextra-wide.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/mmlextra.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/s5defs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/xhtml1-lat1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/xhtml1-special.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/parsers/rst/include/xhtml1-symbol.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/html4css1/html4css1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/html4css1/template.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/html5_polyglot/math.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/html5_polyglot/minimal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/html5_polyglot/plain.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/html5_polyglot/template.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/latex2e/default.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/latex2e/titlepage.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/latex2e/xelatex.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/odf_odt/styles.odt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/pep_html/pep.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/pep_html/template.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/big-black/__base__" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/big-black/framing.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/big-black/pretty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/big-white/framing.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/big-white/pretty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/blank.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/framing.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/iepngfix.htc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/opera.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/outline.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/pretty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/s5-core.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/slides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/default/slides.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/medium-black/__base__" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/medium-black/pretty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/medium-white/framing.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/medium-white/pretty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/small-black/__base__" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/small-black/pretty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/small-white/framing.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/docutils/writers/s5_html/themes/small-white/pretty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/gen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/glew32.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/_clock.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/_event.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/core/audio/audio_sdl2.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/core/clipboard/_clipboard_sdl2.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/core/image/_img_sdl2.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/core/text/_text_sdl2.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/core/text/text_layout.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/core/window/_window_sdl2.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/core/window/window_info.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/buffer.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/cgl.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/cgl_backend/cgl_debug.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/cgl_backend/cgl_gl.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/cgl_backend/cgl_glew.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/cgl_backend/cgl_mock.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/cgl_backend/cgl_sdl2.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/compiler.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/context.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/context_instructions.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/fbo.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/gl_instructions.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/instructions.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/opengl.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/opengl_utils.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/scissor_instructions.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/shader.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/stencil_instructions.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/svg.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/tesselator.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/texture.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/transformation.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/vbo.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/vertex.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/graphics/vertex_instructions.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/lib/gstplayer/_gstplayer.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/properties.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy/weakproxy.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/fonts/DejaVuSans.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/fonts/Roboto-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/fonts/Roboto-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/fonts/Roboto-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/fonts/Roboto-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/fonts/RobotoMono-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/glsl/default.fs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/glsl/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/glsl/default.vs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/glsl/header.fs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/glsl/header.vs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/images/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/images/cursor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/images/defaultshape.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/images/defaulttheme-0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/images/defaulttheme.atlas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/images/image-loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/images/testpattern.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/keyboards/azerty.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/keyboards/de.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/keyboards/de_CH.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/keyboards/en_US.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/keyboards/fr_CH.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/keyboards/qwerty.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/keyboards/qwertz.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/logo/kivy-icon-128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/logo/kivy-icon-16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/logo/kivy-icon-24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/logo/kivy-icon-256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/logo/kivy-icon-32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/logo/kivy-icon-48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/logo/kivy-icon-512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/logo/kivy-icon-64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/settings_kivy.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/data/style.kv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/_webdebugger.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/console.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/cursor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/inspector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/joycursor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/keybinding.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/monitor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/recorder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/screen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/touchring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/kivy_install/modules/webdebugger.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/lib2to3/Grammar.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/lib2to3/Grammar3.7.0.final.0.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/lib2to3/PatternGrammar.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/lib2to3/PatternGrammar3.7.0.final.0.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/lib2to3/tests/data/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libFLAC-8.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libcrypto-1_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libffi-7.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libfreetype-6.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libglib-2.0-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libgmodule-2.0-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libgobject-2.0-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libgstreamer-1.0-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libintl-8.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libjpeg-9.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libmodplug-1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libmpg123-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libogg-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libopenblas.KZGMSHIV2CB7DB4HQYDV2LEPUALNSYMY.gfortran-win32.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libpng16-16.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libssl-1_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libtiff-5.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libvorbis-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libvorbisfile-3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libwebp-7.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/libwinpthread-1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/mfc140u.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/numpy/core/_multiarray_tests.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/numpy/core/multiarray.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/numpy/core/umath.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/numpy/fft/fftpack_lite.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/numpy/linalg/_umath_linalg.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/numpy/linalg/lapack_lite.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/numpy/random/mtrand.cp37-win32.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/output/bpconavg.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/output/brconavg.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/output/hpconavg.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/output/lpconavg.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/pyexpat.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/python37.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/pythoncom37.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/pywintypes37.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/select.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/test.kv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/unicodedata.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/win32api.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/win32com/shell/shell.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/win32file.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/win32gui.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/win32pdh.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/win32trace.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/win32ui.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/win32wnet.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/bodeador_ejecutable/zlib1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/datacursor_easy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/read_csv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/read_spice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/resolucion-de-sistemas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/sistema1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/sistemas_de_ecuaciones_ej1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/python-utilidades/sistemas_de_ecuaciones_ej2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/read_csv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/read_data_bode.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/read_spice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/read_xls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/utils/algebra.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/utils/etapas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/utils/gui/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/utils/gui/button_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../simulacion_ej5/util_python/utils/parse_float.py" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,7 +438,44 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MathUtils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="413">
+              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -19,20 +485,25 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>print</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/MathUtils.py" />
         <option value="$PROJECT_DIR$/main2.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1273" />
     <option name="width" value="1294" />
     <option name="height" value="1047" />
   </component>
@@ -57,7 +528,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../simulacion_ej5" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../itemA" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -72,7 +544,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.main2">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="itemB" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,6 +555,27 @@
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main2" type="PythonConfigurationType" factoryName="Python">
+      <module name="itemB" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main2.py" />
@@ -117,6 +610,7 @@
     </configuration>
     <list>
       <item itemvalue="Python.mainFFT" />
+      <item itemvalue="Python.main2" />
       <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
@@ -139,14 +633,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1273" y="0" width="1294" height="1047" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24341412" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.094813615" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32822758" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32822758" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -163,20 +657,17 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main2.py">
+    <entry file="file://$PROJECT_DIR$/util_python/datacursor_easy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="64" column="33" lean-forward="true" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="527">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MathUtils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        <state relative-caret-position="413">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -185,18 +676,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+        <state relative-caret-position="382">
+          <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util_python/datacursor_easy.py">
+    <entry file="file://$PROJECT_DIR$/main2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        <state relative-caret-position="192">
+          <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -147,7 +147,7 @@ def main():
             .placeLimits()\
             .addCSVPlot(
             filename="Mediciones basicas/"+filename+".csv",
-            name="Medición " + filename,
+            name="Medición",
             field=field,
             color="orange") \
             .plotAndSave(filename+".png")
