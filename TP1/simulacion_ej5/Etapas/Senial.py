@@ -16,6 +16,18 @@ class Senial:
                 if abs(self.xvar[i] - self.xvar[i-1] - self.separation) > eps:
                     raise Exception("separacion de tiempos no uniforme")
         self.shift = 0
+        self.xvarStart = 0
+        self.xvarEnd = None
+        self.mode = "no-filter"
+
+    def setMode(self, mode):
+        self.mode = mode
+
+    def setShowStartXvar(self, xvar):
+        self.xvarStart = xvar
+
+    def setShowEndXvar(self, xvar):
+        self.xvarEnd = xvar
 
     def setShift(self, shift):
         self.shift = shift
@@ -24,6 +36,41 @@ class Senial:
         self.xvar.append(timeIndex)
         self.values.append(valuesIndex)
 
+    def getSamplesBetweenLimits(self):
+        xvar = []
+        yvar = []
+        index = 0
+        for x in self.xvar:
+            if self.xvarStart < x < self.xvarEnd:
+                xvar.append(x)
+                yvar.append(self.values[index])
 
+            index += 1
+
+        return xvar, yvar
+
+    def getSamplesChangeXvar(self):
+        xvar = []
+        yvar = []
+
+        currentTime = self.xvarStart
+        index = 0
+
+        advance = 0
+
+        while index < len(self.xvar)-1 and advance < self.shift:
+            advance += self.xvar[index+1] - self.xvar[index]
+            index += 1
+
+        while index < len(self.xvar)-1 and (not self.xvarEnd or currentTime < self.xvarEnd):
+
+            xvar.append(currentTime)
+            yvar.append(self.values[index])
+
+            currentTime += self.xvar[index+1] - self.xvar[index]
+
+            index += 1
+
+        return xvar, yvar
 
 

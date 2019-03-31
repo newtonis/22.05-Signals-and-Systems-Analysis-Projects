@@ -10,7 +10,12 @@ def readSignal(filename):
     root = mydoc.childNodes[0]
     try:
         shift = float(root.attributes['shift'].value)
+        realStartTime = float(root.attributes['realStartTime'].value)
+        realEndTime = float(root.attributes['realEndTime'].value)
+
     except:
+        realStartTime = 0
+        realEndTime = None
         shift = 0
 
     samples = mydoc.getElementsByTagName("sample")
@@ -24,6 +29,9 @@ def readSignal(filename):
 
     senial = Senial(t, y)
     senial.setShift(shift)
+    senial.setShowEndXvar(realStartTime)
+    senial.setShowEndXvar(realEndTime)
+
     return senial
 
 
