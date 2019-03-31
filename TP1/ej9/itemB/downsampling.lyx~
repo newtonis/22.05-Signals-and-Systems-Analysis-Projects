@@ -231,7 +231,9 @@ sum_{k=0}^{N-1}2
 \backslash
 |cos(2
 \backslash
-pi f + X_k)$$
+pi f + 
+\backslash
+pha X_k)$$
 \end_layout
 
 \end_inset
@@ -421,6 +423,22 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename reconstruccion2.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename reconstruccion2decimate.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
 
 \end_layout
 
@@ -434,6 +452,120 @@ Señal 2 reconstruida con y sin downsampling
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso podemos observar que el downsampling provocá que la unica inferenci
+a que podamos hacer de la señal es que sea una constante, lo cual, en principio
+ no parece ser una inferencia adecuada.
+\end_layout
+
+\begin_layout Standard
+Esto se debe a que el ancho de banda de la señal original que buscamos inferir
+ es demasiado chico considerando la frecuencia de sampleo utilizada.
+ Más concretamente, mientras que la frecuencia de sampleo es 1/4, la frecuencia
+ de la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sin(2
+\backslash
+pi 0.25 t)$
+\end_layout
+
+\end_inset
+
+ es 1/4 tambien, cuando, por Niquist sabemos que la frecuencia de sampleo
+ debería ser al menos el doble.
+\end_layout
+
+\begin_layout Subsubsection
+Análisis espectral
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename downsampling2.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DTFT señal con y sin downsampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos observar que la señal con decimate carece de espectro, pues es una
+ constante nula.
+ 
+\end_layout
+
+\begin_layout Standard
+Hay una razón de este hecho.
+ Debido a que la frecuencia de sampleo de la señal con downsampling es menor
+ a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1/2=f_{niquist}$
+\end_layout
+
+\end_inset
+
+ la discretización provoca que el recorte del espectro de la señal continua
+ original, que ocurre en el rango 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$(-1/2 f_s, +1/2 f_s)=(-0.125 Hz, 0.125 Hz)$
+\end_layout
+
+\end_inset
+
+, no tome ningun armonico de la señal original (los cuales se encuentran
+ en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$(-0.25 Hz, 0.25 Hz)$
 \end_layout
 
 \end_inset
