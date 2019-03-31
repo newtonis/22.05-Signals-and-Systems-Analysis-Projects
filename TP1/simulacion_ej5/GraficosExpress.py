@@ -20,6 +20,11 @@ def csvToSignal(data, field):
 class CombinedPlot:
     def __init__(self):
         self.plotCount = []
+        self.title = ""
+
+    def setTitle(self, title):
+        self.title = title
+        return self
 
     def setXTitle(self, title):
         self.xAxisTitle = title
@@ -92,6 +97,8 @@ class CombinedPlot:
             )
         plt.legend(handles=patches)
 
+        plt.title(self.title)
+
         plt.minorticks_on()
         plt.grid(which='major', linestyle='-', linewidth=0.3, color='black')
         plt.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
@@ -103,37 +110,50 @@ class CombinedPlot:
 
 
 def main():
-    CombinedPlot()\
-        .setXTitle("tiempo (s)")\
-        .setYTitle("Tensión (V)")\
-        .addXMLPlot(
-            filename="med_01.xml",
-            name="Simulación",
-            color="blue"
-        )\
-        .placeLimits()\
-        .addCSVPlot(
-        filename="Mediciones basicas/med_01.csv",
-        name="Medición 1",
-        field="B",
-        color="orange") \
-        .plotAndSave("med01.png")
 
-    CombinedPlot() \
-        .setXTitle("tiempo (s)") \
-        .setYTitle("Tensión (V)") \
-        .addXMLPlot(
-        filename="med_02.xml",
-        name="Simulación",
-        color="blue"
-    ) \
-        .placeLimits() \
-        .addCSVPlot(
-        filename="Mediciones basicas/med_01.csv",
-        name="Medición",
-        field="2",
-        color="orange") \
-        .plotAndSave("med01out.png")
+    data = [
+        ["med_01", '2'],
+        ["med_02", '2'],
+        ["med_03", '2'],
+        ["med_04", '2'],
+        ["med_05", 'B'],
+        ["med_06", 'B'],
+        ["med_07", 'B'],
+        ["med_08", 'B'],
+        ["med_09", 'B'],
+        ["med_10", '1'],
+        ["med_11", '1'],
+        ["med_12", '2'],
+        ["med_13", '2'],
+        ["med_14", '2'],
+        ["med_15", '2'],
+        ["med_16", '2'],
+        ["med_17", '2']
+    ]
+
+    for di in data:
+        filename = di[0]
+        field = di[1]
+
+        CombinedPlot()\
+            .setXTitle("tiempo (s)")\
+            .setYTitle("Tensión (V)")\
+            .setTitle(filename)\
+            .addXMLPlot(
+                filename=filename+".xml",
+                name="Simulación",
+                color="blue"
+            )\
+            .placeLimits()\
+            .addCSVPlot(
+            filename="Mediciones basicas/"+filename+".csv",
+            name="Medición " + filename,
+            field=field,
+            color="orange") \
+            .plotAndSave(filename+".png")
+        print("done ", filename)
+
+
 
     #test01.addXMLPlot("ExpressInput/test01.xml")
     #test01.addXLSPlot("ExpressInput/Mediciones basicas/med_01.csv")
