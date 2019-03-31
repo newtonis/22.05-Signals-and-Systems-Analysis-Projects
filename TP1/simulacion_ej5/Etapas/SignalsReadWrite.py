@@ -17,7 +17,7 @@ def readSignal(filename):
         realStartTime = 0
         realEndTime = None
         shift = 0
-
+    #print(shift, realStartTime, realEndTime)
     samples = mydoc.getElementsByTagName("sample")
 
     t = []
@@ -29,8 +29,10 @@ def readSignal(filename):
 
     senial = Senial(t, y)
     senial.setShift(shift)
-    senial.setShowEndXvar(realStartTime)
+    senial.setShowStartXvar(realStartTime)
     senial.setShowEndXvar(realEndTime)
+    #print(realStartTime, realEndTime)
+    #print(senial.xvarStart, senial.xvarEnd)
 
     return senial
 

@@ -18,6 +18,10 @@ class Senial:
         self.shift = 0
         self.xvarStart = 0
         self.xvarEnd = None
+        self.mode = "no-filter"
+
+    def setMode(self, mode):
+        self.mode = mode
 
     def setShowStartXvar(self, xvar):
         self.xvarStart = xvar
@@ -37,7 +41,7 @@ class Senial:
         yvar = []
         index = 0
         for x in self.xvar:
-            if self.xvarStart < x < self.xvarEnd:
+            if not self.xvarEnd or self.xvarStart < x < self.xvarEnd:
                 xvar.append(x)
                 yvar.append(self.values[index])
 
@@ -68,5 +72,6 @@ class Senial:
             index += 1
 
         return xvar, yvar
+
 
 

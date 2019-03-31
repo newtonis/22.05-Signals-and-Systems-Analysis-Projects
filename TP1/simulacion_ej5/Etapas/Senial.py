@@ -70,7 +70,8 @@ class Senial:
             currentTime += self.xvar[index+1] - self.xvar[index]
 
             index += 1
-
+        #print(self.xvarStart)
+        #print(xvar, yvar)
         return xvar, yvar
 
 

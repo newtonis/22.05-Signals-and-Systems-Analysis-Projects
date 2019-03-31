@@ -32,6 +32,7 @@ class CombinedPlot:
     def addCSVPlot(self, filename, field, name, color):
         data = read_csv.read_csv_bode(inputDirectory + "/" + filename)
         signal = csvToSignal(data, field)
+        signal.mode = "csv"
 
         self.plotCount.append({
             "signal": signal,
@@ -43,6 +44,7 @@ class CombinedPlot:
 
     def addXMLPlot(self, filename, name, color):
         signal = SignalsReadWrite.readSignal(inputDirectory + "/" + filename)
+        signal.mode = "teorica"
 
         self.plotCount.append(
             {
@@ -66,16 +68,15 @@ class CombinedPlot:
                 practica = case1
             if teorica.xvarEnd:
                 practica.setShowStartXvar(teorica.xvarStart)
-                teorica.setShowEndXvar(teorica.xvarEnd)
+                practica.setShowEndXvar(teorica.xvarEnd)
+        return self
 
     def plotAndSave(self, filename):
         patches = []
-
-
         fig, ax1 = plt.subplots()
         for plot in self.plotCount:
             if plot["signal"].mode == "teorica":
-                xvalues, yvalues = plot["signal"].getSamplesFiltered()
+                xvalues, yvalues = plot["signal"].getSamplesChangeXvar()
             elif plot["signal"].mode == "csv":
                 xvalues, yvalues = plot["signal"].getSamplesBetweenLimits()
             else:
@@ -106,7 +107,7 @@ def main():
         .setXTitle("tiempo (s)")\
         .setYTitle("Tensión (V)")\
         .addXMLPlot(
-            filename="Signals/AM_1.0Hz.xml",
+            filename="med_01.xml",
             name="Simulación",
             color="blue"
         )\
@@ -117,6 +118,22 @@ def main():
         field="B",
         color="orange") \
         .plotAndSave("med01.png")
+
+    CombinedPlot() \
+        .setXTitle("tiempo (s)") \
+        .setYTitle("Tensión (V)") \
+        .addXMLPlot(
+        filename="med_02.xml",
+        name="Simulación",
+        color="blue"
+    ) \
+        .placeLimits() \
+        .addCSVPlot(
+        filename="Mediciones basicas/med_01.csv",
+        name="Medición",
+        field="2",
+        color="orange") \
+        .plotAndSave("med01out.png")
 
     #test01.addXMLPlot("ExpressInput/test01.xml")
     #test01.addXLSPlot("ExpressInput/Mediciones basicas/med_01.csv")
