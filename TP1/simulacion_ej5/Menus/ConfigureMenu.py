@@ -104,6 +104,7 @@ class ConfigureMenu(tk.Frame):
             config.GetConfigData().setSampleCycle(self.slider2.getValue())
 
             config.GetConfigData().save()
+            config.GetConfigData().load()
 
             self.button.configure(state=tk.DISABLED)
 

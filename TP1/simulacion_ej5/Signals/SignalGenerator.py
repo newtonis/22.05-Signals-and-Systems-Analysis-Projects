@@ -21,7 +21,7 @@ def GenerateCos(freq, a, b, vp):
 
     SignalsReadWrite.writeSignal(
         Senial.Senial(times, values),
-        "Signals/Coseno_"+str(freq/1000)+"k.xml"
+        "Signals/Coseno_"+str(freq/1000)+"k_"+str(vp)+"Vp.xml"
     )
 
 
@@ -57,7 +57,7 @@ def GenerateExp(f, t0, tf, vp):
             t -= (ceil(t/T)-1)*T
             if t > T/2:
                 t -= T
-        values.append(vp*exp(-abs(t)))
+        values.append(vp * exp(-abs(t * (10 * f))))
 
     SignalsReadWrite.writeSignal(
         Senial.Senial(times, values),
