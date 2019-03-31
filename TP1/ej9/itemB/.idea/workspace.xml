@@ -609,8 +609,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.mainFFT" />
       <item itemvalue="Python.main2" />
+      <item itemvalue="Python.mainFFT" />
       <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
