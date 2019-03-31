@@ -1,5 +1,7 @@
 from Etapas.SignalsReadWrite import readSignal
 from Signals import SignalGenerator
+from numpy import linspace, ceil, exp
+from matplotlib import pyplot as plt
 
 #signal = readSignal("Signals/sine.xml")
 
@@ -12,6 +14,8 @@ k = 1e3
 f0 = 500
 fexp = 10
 fp = 1.5e3
+
+
 
 SignalGenerator.GenerateCos(f0, 0, 10/f0, 3)
 

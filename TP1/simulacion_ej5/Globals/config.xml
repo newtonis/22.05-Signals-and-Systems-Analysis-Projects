@@ -1,2 +1,1 @@
-<config FAAFreq="1600.0" HoldTime="0.74" SampleFreq="2605" SampleTime="0.26" Transitorio="0.0" />
-
+<config FAAFreq="1600.0" HoldTime="0.75" SampleFreq="1700" SampleTime="0.25" Transitorio="0.0" />
