@@ -27,7 +27,8 @@ def GenerateCos(freq, a, b, vp):
 
 def Generate32Sine(freq, a, b, vp):
     times = linspace(a, b, 100000)
-    values = [vp*Sine32(2*pi*freq*t) for t in times]
+    T = 2/3/freq
+    values = [vp*Sine32(t, T) for t in times]
 
     SignalsReadWrite.writeSignal(
         Senial.Senial(times, values),
@@ -83,12 +84,10 @@ def square(t, start, end):
         return 0
 
 
-def Sine32(t):
-    dec = t / 3 / pi
+def Sine32(t, T):
+    t = abs(t)
+    t2 = 3/2*T
+    if t > t2:
+        t -= (ceil(t / t2) - 1) * t2
+    return sin(2*pi*t/T)
 
-    dec = int(dec)
-    dec = dec % 2
-    if dec == 0:
-        return sin(t)
-    else:
-        return -sin(t)

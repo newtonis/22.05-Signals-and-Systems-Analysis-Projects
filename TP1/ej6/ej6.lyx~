@@ -1,0 +1,380 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Mediciones basicas
+\end_layout
+
+\begin_layout Standard
+Se estudió el comportamiento de la placa con tres señales de entrada distintas,
+ las cuales fueron
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a(t)= V_{max}cos(2
+\backslash
+pi f_{in}t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b(t)= V_{max} 3/2 sin (2
+\backslash
+pi f_{in}t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c(t)= V_{max} e^{
+\backslash
+|x
+\backslash
+|}$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Salida proporcional a la entrada 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$F_s=2k$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se simuló y midió la salida con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=2k$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in}=500Hz$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$V_{max}=1V$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se conectaron tanto el filtro antialias como el recuperador; en el primer
+ caso se utilizó la llave analógica mientras que en el segundo se utilizó
+ el sample and hold.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_01.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_02.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ Llave analógica (izquierda), Sample and Hold (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observa que la amplitud de las señales medidas fue menor que la de las
+ señales simuladas debido a que los filtros analogicos de la placa atenuearon
+ más la señal de lo esperado segun la transferencia
+\end_layout
+
+\begin_layout Standard
+(Justificación fs, duty cycle)
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se repitió el procedimiento con la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_03.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_04.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda), Sample and Hold (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda), Sample and Hold (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
