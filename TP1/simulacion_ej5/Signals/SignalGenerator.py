@@ -70,7 +70,7 @@ def GenerateAM(fp, fm, t0, tf, vp):
     values = [vp*(cos(2*pi*fp*t) + cos(2*pi*(fp-fm)*t)/2 + cos(2*pi*(fp+fm)*t)/2) for t in times]
     SignalsReadWrite.writeSignal(
         Senial.Senial(times, values),
-        "Signals/AM_" + str(fp / 1000) + "Hz.xml"
+        "Signals/AM_" + str(fp / 1000) + "kHz.xml"
     )
 
 

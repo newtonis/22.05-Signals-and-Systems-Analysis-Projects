@@ -8,7 +8,7 @@ def fourierTransform(senial):
 
     frecuencyStep = 1 / ((len(senial.xvar)-1) * senial.separation)#la senial debe estar mostrada de manera equiespaciada
 
-    fftOutput = abs(fft(senial.values))
+    fftOutput = 1/len(senial.values) * abs(fft(senial.values))
 
     iValsPositive = []
     ampPositive = []
