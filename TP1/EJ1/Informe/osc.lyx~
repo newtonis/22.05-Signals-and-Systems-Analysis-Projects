@@ -581,7 +581,7 @@ Valores de componentes
 \[
 V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 5.1V & en\,inversa\\
-0.7 & en\,inversa
+0.7 & en\,directa
 \end{cases}
 \]
 
@@ -753,6 +753,10 @@ R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
