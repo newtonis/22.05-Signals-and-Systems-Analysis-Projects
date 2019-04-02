@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 <config FAAFreq="1500.0" HoldTime="0.020000000000000018" SampleFreq="1500" SampleTime="0.98" Transitorio="0.0" />
-=======
-<config FAAFreq="1500.0" HoldTime="0.75" SampleFreq="1690" SampleTime="0.25" Transitorio="0.0" />
->>>>>>> 1951360b922a326f5ce9634448edafc989c92b58
