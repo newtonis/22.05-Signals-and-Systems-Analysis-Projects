@@ -5,9 +5,19 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\usepackage{lscape}
+\pagestyle{fancy}
+\lhead{Análisis de Señales y Sistemas Digitales 22.05}
+\chead{TPL1}
+\rhead{ITBA}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -26,10 +36,12 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement H
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -53,11 +65,15 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2.25cm
+\topmargin 2.25cm
+\rightmargin 2cm
+\bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -71,12 +87,12 @@
 \begin_body
 
 \begin_layout Section
-Mediciones basicas
+Mediciones básicas
 \end_layout
 
 \begin_layout Standard
-Se estudió el comportamiento de la placa con tres señales de entrada distintas,
- las cuales fueron
+Se estudió el comportamiento del sistema con tres señales de entrada distintas,
+ las cuales fueron:
 \end_layout
 
 \begin_layout Standard
@@ -85,9 +101,11 @@ status open
 
 \begin_layout Plain Layout
 
-$X_a(t)= V_{max}cos(2
+$$X_a(t)= A 
 \backslash
-pi f_{in}t)$
+cdot cos(2
+\backslash
+pi f_{in}t)$$
 \end_layout
 
 \end_inset
@@ -101,9 +119,11 @@ status open
 
 \begin_layout Plain Layout
 
-$X_b(t)= V_{max} 3/2 sin (2
+$$X_b(t)= A 
 \backslash
-pi f_{in}t)$
+cdot 3/2 sin (2
+\backslash
+pi f_{in}t)$$
 \end_layout
 
 \end_inset
@@ -117,46 +137,111 @@ status open
 
 \begin_layout Plain Layout
 
-$X_c(t)= V_{max} e^{
+$$X_c(t)= A 
 \backslash
-|x
+cdot e^{
 \backslash
-|}$
+|t
+\backslash
+|}$$
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Se debe recordar nuevamente que los filtros reales implementados tienen
+ una ligera atenuación de como máximo 2dB en la banda de paso cerca de la
+ frecuencia 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+ debido a las dificultades en su calibración, dadas las desviaciones en
+ los valores de los componentes reales.
+ Por ello, las señales recuperadas tendrán una atenuación mínima en todos
+ los casos.
+ Como se mencionó previamente en el diseño de los filtros, se busca analizar
+ los efectos del muestreo y recuperación de la señal a partir del espectro
+ en banda base, por lo que no se lo consideró un problema.
 \end_layout
 
 \begin_layout Subsection
-Salida proporcional a la entrada 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$F_s=2k$
-\end_layout
-
-\end_inset
-
-
+Caso con variables óptimas
 \end_layout
 
 \begin_layout Standard
-Se simuló y midió la salida con 
+Para definir la amplitud máxima de las señales de entrada, se tiene en cuenta
+ la máxima amplitud que puede tener la señal que ingresa al filtro antialiasing
+ sin sufrir distorsión apreciable.
+ Se consideró entonces una máxima amplitud de 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-$f_s=2k$
+$1Vp$
 \end_layout
 
 \end_inset
 
-, 
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Partiendo en cada caso de una 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+ que cumpla el teorema de Nyquist del muestreo, se utilizó una un poco mayor
+ dado que se debe tener en cuenta un cierto margen de frecuencia debido
+ a que los filtros no son ideales, sino de orden finito, por lo que la caída
+ de los mismos es finita y, en consecuencia, en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_a$
+\end_layout
+
+\end_inset
+
+ no se tiene atenuación infinita.
+ Se varió el duty del oscilador hasta conseguir que la señal recuperada
+ tuviera la máxima amplitud posible (recuperando la mayor potencia posible).
+ 
+\end_layout
+
+\begin_layout Standard
+Finalmente se utilizó una 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=2KHz$
+\end_layout
+
+\end_inset
+
+, siendo la 
 \begin_inset ERT
 status open
 
@@ -167,18 +252,45 @@ $f_{in}=500Hz$
 
 \end_inset
 
-, 
+ correspondiente al número de grupo (para las señales 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-$V_{max}=1V$
+$X_a$
 \end_layout
 
 \end_inset
 
+ y 
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+), y un valor de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$A=1Vp$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Se tomaron mediciones tanto de la salida como de la entrada, para ambos
+ casos: FAA + LLAVE + FR, y FAA + S&H + FR.
 \end_layout
 
 \begin_layout Subsubsection
@@ -197,12 +309,6 @@ $X_a(t)$
 \end_layout
 
 \begin_layout Standard
-Se conectaron tanto el filtro antialias como el recuperador; en el primer
- caso se utilizó la llave analógica mientras que en el segundo se utilizó
- el sample and hold.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -212,15 +318,15 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_01.png
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_01.png
 	lyxscale 30
-	scale 30
+	scale 50
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_02.png
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_02.png
 	lyxscale 30
 	scale 50
 
@@ -233,7 +339,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
- Llave analógica (izquierda), Sample and Hold (derecha)
+ Caso con Llave analógica (izquierda) - Duty 24%, y Sample and Hold (derecha)
+ - Duty 40%
 \end_layout
 
 \end_inset
@@ -247,13 +354,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-Se observa que la amplitud de las señales medidas fue menor que la de las
- señales simuladas debido a que los filtros analogicos de la placa atenuearon
- más la señal de lo esperado segun la transferencia
-\end_layout
-
-\begin_layout Standard
-(Justificación fs, duty cycle)
+En ambos casos se recupera la senoidal original (con menos potencia naturalmente
+) tal como se esperaba sin armónicos adicionales.
 \end_layout
 
 \begin_layout Subsubsection
@@ -283,7 +385,7 @@ $X_b(t)$
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -296,7 +398,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_03.png
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_24.png
 	lyxscale 30
 	scale 50
 
@@ -304,7 +406,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_04.png
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_25.png
 	lyxscale 30
 	scale 50
 
@@ -317,7 +419,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Llave analógica (izquierda), Sample and Hold (derecha)
+Caso con Llave analógica (izquierda) - Duty 20%, Sample and Hold (derecha)
+ - Duty 20%
 \end_layout
 
 \end_inset
@@ -328,6 +431,10 @@ Llave analógica (izquierda), Sample and Hold (derecha)
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+#NO PUEDO DECIR NADA POR LA PRIMERA
 \end_layout
 
 \begin_layout Subsubsection
@@ -355,7 +462,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_05.png
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_12.png
 	lyxscale 30
 	scale 50
 
@@ -363,7 +470,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_06.png
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_14.png
 	lyxscale 30
 	scale 50
 
@@ -382,6 +489,566 @@ Llave analógica (izquierda), Sample and Hold (derecha)
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En ambos casos se observa que se recupera la forma de la señal, pero no
+ es igual a la original dado que la función 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$3/2 sen$
+\end_layout
+
+\end_inset
+
+ posee infinitos armónicos.
+ Si se tiene en cuenta que 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} = 500Hz$
+\end_layout
+
+\end_inset
+
+, a través del FAA sólo pasan las frecuencias 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in}$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2 
+\backslash
+cdot f_{in}$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$3 
+\backslash
+cdot f_{in}$
+\end_layout
+
+\end_inset
+
+.
+ Para observar mejor esto, se halla la transformada de Fourier de la señal
+ en cuestión.
+ Dado que es una señal periódica, basta con calcular en primer lugar los
+ coeficientes de su desarrollo en serie:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_0 = $$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_n = $$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede ver en todos los casos que se recupera mayor potencia utilizando
+ el sample and hold que con la llave analógica.
+ En el caso de la llave analógica, se puede modelar como la señal multiplicada
+ por un tren de pulsos de ancho 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x^* (t) = x(t) 
+\backslash
+cdot 
+\backslash
+Pi_T$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde el tren de pulsos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+sum_{n = -
+\backslash
+infty}^{
+\backslash
+infty} 
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t-2n
+\backslash
+tau}{
+\backslash
+tau} 
+\backslash
+right)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mediante la transformada de Fourier para hallar el espectro resultante se
+ tiene que el producto en el dominio del tiempo resulta la convolución de
+ las transformadas en el dominio de la frecuencia:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X^*(f) = X(f) * 
+\backslash
+mathcal{F}[
+\backslash
+Pi_T]$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo tanto, se necesita transformar el tren de pulsos periódico.
+ Para ello se calculan los coeficientes de su desarrollo en serie:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_n = 
+\backslash
+frac{1}{2
+\backslash
+tau} 
+\backslash
+int_0^{2
+\backslash
+tau} 
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t-2n
+\backslash
+tau}{
+\backslash
+tau} 
+\backslash
+right) dt = $$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo que la transformada de Fourier del tren periódico de pulsos resulta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+mathcal{F}[
+\backslash
+Pi_T] = 
+\backslash
+sum_{n = -
+\backslash
+infty}^{
+\backslash
+infty}X_n 
+\backslash
+cdot 
+\backslash
+delta(f-n 
+\backslash
+frac{1}{2
+\backslash
+tau}) = $$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo tanto el espectro de la señal muestreada resulta periódico:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_T(f) = X(f) * $$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es decir que en cada delta se tendrá una réplica del espectro de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X(f)$
+\end_layout
+
+\end_inset
+
+, afectado por la envolvente de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sinc$
+\end_layout
+
+\end_inset
+
+.
+ Si el ancho del pulso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+ se aproxima a 0, el lóbulo principal del 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sinc$
+\end_layout
+
+\end_inset
+
+ será más ancho, aproximándose al caso ideal de un tren de deltas períodico.
+\end_layout
+
+\begin_layout Subsection
+Caso con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s = f_a$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso, se cambia la frecuencia de sampleo; considerando además que
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} 
+\backslash
+leq 
+\backslash
+frac{f_p}{2}$
+\end_layout
+
+\end_inset
+
+, se mantuvo la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in}$
+\end_layout
+
+\end_inset
+
+ del ítem anterior.
+\end_layout
+
+\begin_layout Standard
+#FOTOS Y DEMAS ANALISIS
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Caso con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} = f_s$
+\end_layout
+
+\end_inset
+
+ - Aliasing con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora se toma sólo la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
+\end_layout
+
+\end_inset
+
+, es decir la senoidal básica.
+ Dado que en este caso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} = f_s$
+\end_layout
+
+\end_inset
+
+, no se está cumpliendo Nyquist.
+ Por lo tanto, se esperará observar los efectos del solapamiento entre las
+ repeticiones del espectro de la señal en cuestión a la salida del sistema.
+\end_layout
+
+\begin_layout Standard
+#FOTOS Y DEMAS ANALISIS
+\end_layout
+
+\begin_layout Subsection
+Caso con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+ fija - Aliasing con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c(t)$
 \end_layout
 
 \end_inset

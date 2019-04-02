@@ -1,4 +1,6 @@
 TP1/simulacion_ej5/.idea/*
+TP1\simulacion_ej5\Globals\config.xml
+TP1\simulacion_ej5\Signals\*.xml
 *.raw
 *.log
 *.Zip
