@@ -34,14 +34,6 @@ class CombinedPlot:
         self.yAxisTitle = title
         return self
 
-    def addSignalPlot(self, signal, color, name):
-        self.plotCount.append({
-            "signal": signal,
-            "color": color,
-            "name": name
-        })
-        return self
-
     def addCSVPlot(self, filename, field, name, color):
         data = read_csv.read_csv_bode(inputDirectory + "/" + filename)
         signal = csvToSignal(data, field)
