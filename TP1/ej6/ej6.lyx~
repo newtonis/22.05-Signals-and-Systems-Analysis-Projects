@@ -776,19 +776,7 @@ tau}$
 \end_layout
 
 \begin_layout Standard
-El espectro resultante se repite en forma periódica.
- Es decir que en cada delta se tendrá una copia del espectro de 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$X(f)$
-\end_layout
-
-\end_inset
-
- atenuado por la 
+Se puede ver que espectro resultante se encuentra envuelto por una 
 \begin_inset ERT
 status open
 
@@ -799,7 +787,7 @@ $sinc$
 
 \end_inset
 
-.
+ .
 \end_layout
 
 \begin_layout Standard
@@ -1021,6 +1009,8 @@ status open
 
 $$X_T(f) = 
 \backslash
+underbrace{
+\backslash
 tau 
 \backslash
 cdot sinc(
@@ -1045,7 +1035,9 @@ cdot X(f -
 \backslash
 frac{n}{2
 \backslash
-tau}) + 
+tau})}_{Sample} + 
+\backslash
+underbrace{
 \backslash
 tau 
 \backslash
@@ -1063,7 +1055,7 @@ infty} 2
 \backslash
 pi f_s 
 \backslash
-cdot X(f-n f_s)$$
+cdot X(f-n f_s)}_{Hold}$$
 \end_layout
 
 \end_inset
