@@ -117,7 +117,7 @@ status open
 
 \begin_layout Plain Layout
 
-$X_c(t)= V_{max} e^{
+$X_c(t)= V_{max} e^{-
 \backslash
 |x
 \backslash
@@ -151,7 +151,7 @@ status open
 
 \begin_layout Plain Layout
 
-$f_s=2k$
+$f_s=2k>f_{niquist}$
 \end_layout
 
 \end_inset
@@ -188,7 +188,9 @@ status open
 
 \begin_layout Plain Layout
 
-$X_a(t)$
+$X_a(t)=cos(2
+\backslash
+pi f_{in}t)$
 \end_layout
 
 \end_inset
@@ -263,7 +265,72 @@ status open
 
 \begin_layout Plain Layout
 
-$X_b(t)$
+$X_b(t) = 3/2 sin (2
+\backslash
+pi f_{in}t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_12.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_14.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda), Sample and Hold (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c(t)=e^{-
+\backslash
+|x
+\backslash
+|}$
 \end_layout
 
 \end_inset
@@ -322,52 +389,6 @@ Llave analógica (izquierda), Sample and Hold (derecha)
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Señal 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$X_c(t)$
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Llave analógica (izquierda), Sample and Hold (derecha)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
