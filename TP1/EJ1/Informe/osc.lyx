@@ -147,10 +147,6 @@ Generador de onda diente de sierra
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -753,6 +749,14 @@ R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection
+Mediciones
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
