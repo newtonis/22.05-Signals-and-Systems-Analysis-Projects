@@ -825,9 +825,7 @@ C
 \end_inset
 
 de valor bajo se pueda obtener una frecuencia más grande sin deformar la
- señal.
- Lo que genera la deformación de la señal es la demanda de corriente que
- es proporcional al capacitor.
+ señal por x.
  
 \end_layout
 

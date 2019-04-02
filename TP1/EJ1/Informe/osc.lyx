@@ -313,10 +313,6 @@ Generador de onda triangular
 
 \end_layout
 
-\begin_layout Subsubsection*
-Generador de onda triangular
-\end_layout
-
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -329,11 +325,15 @@ V_{TR}=-V_{IN}\frac{1}{sC_{1}R_{1}}
 \end_layout
 
 \begin_layout Standard
-Como la salida del schmitt trigger es una señal cuadrada, V
+Si ajustamos la ventana del schmitt trigger adecuadamente, 
+\begin_inset Formula $V_{ST}$
+\end_inset
+
+ es una señal cuadrada y provoca que V
 \begin_inset Formula $_{TR}$
 \end_inset
 
- es una señal triangular.
+ sea una señal triangular.
 \end_layout
 
 \begin_layout Standard
@@ -350,7 +350,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename triangular.svg
-	scale 120
 
 \end_inset
 
@@ -599,7 +598,7 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
+<lyxtabular version="3" rows="7" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -608,7 +607,7 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $R_{2}$
+\begin_inset Formula $R_{2},R_{7},R_{8}$
 \end_inset
 
 
@@ -708,7 +707,7 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -720,11 +719,63 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $9V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10\ y\ 220nf$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100nf$
 \end_inset
 
 
@@ -760,6 +811,24 @@ R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+C
+\begin_inset Formula $_{1}$
+\end_inset
+
+ tiene dos valores debido a que uno es para un rango de frecuencias bajas
+ (400Hz-30kHz) y otro para altas (30KHz-125KHz) esto es de modo tal que
+ frente una misma R
+\begin_inset Formula $_{1}$
+\end_inset
+
+de valor bajo se pueda obtener una frecuencia más grande sin deformar la
+ señal.
+ Lo que genera la deformación de la señal es la demanda de corriente que
+ es proporcional al capacitor, por lo cual es una limitación para este circuito.
+ 
 \end_layout
 
 \begin_layout Subsection
