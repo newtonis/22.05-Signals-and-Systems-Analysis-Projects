@@ -1,7 +1,24 @@
 from xml.dom import minidom
 import xml.etree.ElementTree as ET
-
+from util_python import read_csv
 from Etapas.Senial import Senial
+
+
+def csvToSignal(data, field):
+    while len(data["x-axis"]) > len(data[field]):
+        data["x-axis"].pop()
+
+    senial = Senial(data["x-axis"], data[field])
+
+    return senial
+
+
+def readSignalCsv(csvfile, field):
+    data = read_csv.read_csv_bode(csvfile)
+    signal = csvToSignal(data, field)
+    signal.mode = "csv"
+
+    return signal
 
 
 def readSignal(filename):
@@ -47,6 +64,6 @@ def writeSignal(signal, filename):
 
     myData = ET.tostring(data)
     myFile = open(filename, "wb")
-    print(myData)
+    #print(myData)
     myFile.write(myData)
 

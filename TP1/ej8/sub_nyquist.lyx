@@ -439,6 +439,10 @@ $f_c=2.4kHz$
 \end_layout
 
 \begin_layout Subsection
+Breve idea teórica
+\end_layout
+
+\begin_layout Subsection
 Cálculo de 
 \begin_inset ERT
 status open
@@ -910,7 +914,9 @@ status open
 
 \begin_layout Plain Layout
 
-$Duty cycle=25%$
+$Duty cycle=25
+\backslash
+%$
 \end_layout
 
 \end_inset
@@ -960,7 +966,7 @@ $f_s=3.48kHz (m=1)$
 
 \end_inset
 
-(izquierda), 
+ (izquierda), 
 \begin_inset ERT
 status open
 
@@ -1061,7 +1067,9 @@ status open
 
 \begin_layout Plain Layout
 
-$duty cycle=5%$
+$duty cycle=5
+\backslash
+%$
 \end_layout
 
 \end_inset
@@ -1207,12 +1215,110 @@ $f_s=1.068Khz (m=4)$
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observa que los espectros de la banda central son de una amplitud mayor
+ que en el caso de la llave analógica.
+\end_layout
+
+\begin_layout Subsection
+Mediciones
+\end_layout
+
+\begin_layout Standard
+Se procedió a medir los espectros para el caso 
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
+
+$m=4 (f_s=1.07Khz)$
+\end_layout
+
+\end_inset
+
+ con llave analógica con duty 25%, y sample and hold con duty 5%
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/espectro_subniquist1.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/espectro_subniquist2.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mediciones sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.07Khz$
+\end_layout
+
+\end_inset
+
+ solo sample and hold (izquierda), solo llave analógica (derecha)
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+Se observa que se verificó que la llave analógica atenuó en una medida mucho
+ mayor las frecuencias bajas, que fue lo mismo que se observó en la simulación.
+ Esto se debe a que la llave analogica en general tiende a disminuir en
+ una medida mucho mayor el valor medio de la señal debido a que produce
+ que la señal sea nula en una importante proporción del periodo, al mismo
+ tiempo que provoca una cantidad considerable de saltos abruptos en la señal,
+ lo cuál se traduce en la prescencia de frecuencias altas que en la entrada
+ no estaban.
+\end_layout
+
+\begin_layout Standard
+El sample and hold en ese sentido es menos invasivo, debido a que no produce
+ saltos abrutos tan pronunciados y por lo tanto no ampifica tanto las altas
+ frecuencias, pero no obstante amplifica en una mayor medida la continua
+ ya que produce que la señal permanezca constante en algunos intervalos
+ de tiempo.
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
