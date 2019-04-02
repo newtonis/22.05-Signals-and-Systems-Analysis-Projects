@@ -77,45 +77,25 @@
 \begin_body
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-%%
+%%%% AGREGAR AL PREAMBULO para que ande 
 \backslash
-documentclass{article} 
+nicefrac:
 \end_layout
 
 \begin_layout Plain Layout
 
-%
+%%%% 
 \backslash
-begin{document}
+usepackage{units}
 \end_layout
 
 \begin_layout Plain Layout
 
-%
-\backslash
-maketitle
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-section{Elecci
-\backslash
-'on de $f_p$}
 \end_layout
 
 \begin_layout Plain Layout
@@ -133,100 +113,24 @@ Para determinar $f_p$, se busc
 \backslash
 ~nales originales.
  Se estudió, pues, el espectro de las señales que se utilizarían en la entrada,
- a saber: un seno en $f_0=$500Hz, un $
+ a saber: un seno en 500Hz, un $
 \backslash
 nicefrac{3}{2}$ seno en la misma frecuencia, y una exponencial decreciente
  de per
 \backslash
-'iodo 10s, as
+'iodo 10s.
+ La primera de estas se
 \backslash
-'i como una se
-\backslash
-~nal de AM.
- 
-\backslash
-par 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-La primera de estas se
-\backslash
-~nales, el seno, nos permite determinar que el filtro antialiasing debe
- dejar pasar al menos se
+~nales nos permite determinar que el filtro antialiasing debe dejar pasar
+ al menos se
 \backslash
 ~nales de 500Hz.
- Por otro lado, la se
 \backslash
-~nal de AM es:
+par
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-[ x(t) = 
-\backslash
-frac{1}{2} 
-\backslash
-cdot 
-\backslash
-cos{
-\backslash
-left(2
-\backslash
-pi
-\backslash
-cdot 1.8f_0 
-\backslash
-cdot t
-\backslash
-right)} + 
-\backslash
-cos{
-\backslash
-left(2
-\backslash
-pi
-\backslash
-cdot 2f_0 
-\backslash
-cdot t
-\backslash
-right)} +
-\backslash
-frac{1}{2} 
-\backslash
-cdot 
-\backslash
-cos{
-\backslash
-left(2
-\backslash
-pi
-\backslash
-cdot 2.2f_0 
-\backslash
-cdot t
-\backslash
-right)} 
-\backslash
-]
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-De esto sabemos que $f_p$ debe ser al menos $2.2f_0=1.1$kHz.
- Para dejar un margen de error, consideramos por ahora que $f_p$ debe ser
- al menos 1.5kHz.
 \end_layout
 
 \begin_layout Plain Layout
@@ -238,6 +142,10 @@ De esto sabemos que $f_p$ debe ser al menos $2.2f_0=1.1$kHz.
 En cuanto a la se
 \backslash
 ~nal exponencial:
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -264,9 +172,7 @@ leq 5
 La frecuencia fundamental de la misma es 0.1Hz, con lo cual teniendo en cuenta
  la restricci
 \backslash
-'on anterior, sabemos que van a pasar m
-\backslash
-'as de 5000 de sus arm
+'on anterior, sabemos que van a pasar al menos 4999 de sus arm
 \backslash
 'onicos, con lo cual en principio esta se
 \backslash
@@ -279,6 +185,10 @@ La frecuencia fundamental de la misma es 0.1Hz, con lo cual teniendo en cuenta
  esta funci
 \backslash
 'on, resultando:
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -310,18 +220,13 @@ right)^2}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 Sabiendo que la potencia correspondiente al en
 \backslash
 'esimo arm
 \backslash
 'onico es $2 
 \backslash
-cdot |X_n|^2$ (salvo para $n=0$, donde no se duplica el valor del coeficiente),
- se confirm
+cdot |X_n|^2$, se confirm
 \backslash
 'o que la misma se hace absolutamente despreciable a partir del octavo arm
 \backslash
@@ -333,98 +238,13 @@ cdot |X_n|^2$ (salvo para $n=0$, donde no se duplica el valor del coeficiente),
  Por lo tanto, esta se
 \backslash
 ~nal no impone restricciones al filtro antialiasing.
+ 
+\backslash
+par
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure}[htb]     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-centering     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-includegraphics[scale=0.45]{armonicos/exp_potencia.png}     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-includegraphics[scale=0.45]{armonicos/exp_funcion.png}     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-caption{Potencia en funci
-\backslash
-'on del n
-\backslash
-'umero de arm
-\backslash
-'onico de la se
-\backslash
-~nal exponencial (izquierda), y se
-\backslash
-~nal reconstruida con 50 arm
-\backslash
-'onicos (derecha), superpuesta a la se
-\backslash
-~nal original (no llegan a distinguirse).}     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-label{fig:armonicos_exp} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Considerando que incluso con una frecuencia 100 veces mayor, de 10Hz, se
- recuperan 50 arm
-\backslash
-'onicos y la se
-\backslash
-~nal se recupera de manera virtualmente completa (como se observa en la
- figura 
-\backslash
-ref{fig:armonicos_exp}), se decidi
-\backslash
-'o trabajar esta frecuencia m
-\backslash
-'as r
-\backslash
-'apida, a fin de no tener que esperar 10 segundos para medir un per
-\backslash
-'iodo.
 \end_layout
 
 \begin_layout Plain Layout
@@ -435,14 +255,24 @@ ref{fig:armonicos_exp}), se decidi
 
 En el caso del $
 \backslash
-nicefrac{3}{2}$ seno, la frecuencia fundamental es en cambio 500Hz, con
- lo cual por un filtro con $f_p=1500
+nicefrac{3}{2}$ seno, la frecuencia fundamental es en cambio 333Hz, con
+ lo cual por un filtro con $f_p=500
 \backslash
-mathrm{Hz}$ pasar
+mathrm{Hz}$ no pasar
 \backslash
-'ia la fundamental y los siguientes 2 arm
+'ia ning
 \backslash
-'onicos.
+'un arm
+\backslash
+'onico, y se conservar
+\backslash
+'ia s
+\backslash
+'olo una arm
+\backslash
+'onica con un 
+\backslash
+textit{offset}, lo cual no consideramos aceptable.
  Para analizar el espectro en este caso se utiliz
 \backslash
 'o la serie trigonom
@@ -450,6 +280,10 @@ mathrm{Hz}$ pasar
 'etrica de Fourier, obteni
 \backslash
 'endose:
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -487,82 +321,14 @@ quad b_n=0
 
 \begin_layout Plain Layout
 
-
+Se obtuvo, pues, que hasta 333Hz se tiene el 67
 \backslash
-begin{figure}[htb]     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
+% de la potencia, hasta 667Hz el 97
 \backslash
-centering     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-includegraphics[scale=0.45]{armonicos/32seno_potencia.png}     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-includegraphics[scale=0.45]{armonicos/32seno_funcion.png}     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-caption{Potencia en funci
-\backslash
-'on del n
-\backslash
-'umero de arm
-\backslash
-'onico del 
-\backslash
-nicefrac{3}{2} (izquierda), y se
-\backslash
-~nal reconstruida con 3 arm
-\backslash
-'onicos incluyendo la fundamental (derecha, naranja), supuerpuesta a la
- se
-\backslash
-~nal original (azul).}     
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-label{fig:armonicos_32} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Se obtuvo, pues, que hasta 500Hz se tiene el 67
-\backslash
-% de la potencia, hasta 1kHz el 97
-\backslash
-%, y hasta 1.5kHz el 99
+%, y hasta 1kHz el 99
 \backslash
 %.
- Por lo tanto, siendo que con $f_p=1.5
+ Por lo tanto, siendo que con $f_p=1
 \backslash
 mathrm{kHz}$ se puede conservar m
 \backslash
@@ -572,18 +338,8 @@ mathrm{kHz}$ se puede conservar m
 \backslash
 ~nales de entrada, se utiliz
 \backslash
-'o este valor, con el cual se recupera la se
-\backslash
-~nal tal como se observa en la figura 
-\backslash
-ref{fig:armonicos_32}.
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\backslash
-end{document} 
+'o este valor.
+ 
 \end_layout
 
 \end_inset

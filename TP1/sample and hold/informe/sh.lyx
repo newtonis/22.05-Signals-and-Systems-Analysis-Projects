@@ -1,0 +1,803 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%
+\backslash
+documentclass{article} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% PACKAGES QUE USE, APARTE DE LOS OBVIOS COMO FLOAT, GRAPHICX, AMSMATH,
+ BABEL
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+usepackage{units} % permite usar nicefrac 
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+usepackage{url}   % para poner links
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{document}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+section{Sample and hold}
+\end_layout
+
+\begin_layout Plain Layout
+
+La etapa de sample and hold, o track and hold, cumple la funci
+\backslash
+'on de mantener la se
+\backslash
+~nal constante por un tiempo suficiente como para medir su valor.
+ Este proceso se divide en dos:
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 
+\backslash
+underline{Sample o track:} la salida es igual a la entrada.
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item 
+\backslash
+underline{Hold:} la salida se mantiene constante en el valor que ten
+\backslash
+'ia cuando se recibi
+\backslash
+'o la se
+\backslash
+~nal de hold.
+ 
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Para este fin se utiliz
+\backslash
+'o, de acuerdo a lo pautado por la c
+\backslash
+'atedra, el integrado LF398
+\backslash
+footnote{Hoja de datos consultada: 
+\backslash
+url{http://www.ti.com/lit/ds/symlink/lf398-n.pdf}.}.
+ Al mismo se lo controla con una se
+\backslash
+~nal cuadrada: cuando la misma toma un valor superior al de la referencia
+ l
+\backslash
+'ogica (con un threshold de 1.4V) se opera en modo sample, y con valor inferior
+ a la referencia, en modo hold.
+ Sus principales limitaciones est
+\backslash
+'an dadas por:    
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}      
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item La salida debe mantenerse dentro de los valores de tensi
+\backslash
+'on de la alimentaci
+\backslash
+'on.
+      
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Para frecuencias bajas debe tenerse en cuenta el droop rate, es decir
+ qu
+\backslash
+'e tan r
+\backslash
+'apido se descarga el capacitor de hold.
+      
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+item Para frecuencias altas, pueden surgir problemas con el slew rate y/o
+ con el tiempo de establecimiento  y de adquisici
+\backslash
+'on de la se
+\backslash
+~nal en hold.
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Para satisfacer los requerimientos que se tengan en frecuencia, se debe
+ elegir el capacitor de hold apropiadamente.
+ Esto se debe a que cuanto mayor sea el capacitor, m
+\backslash
+'as estable ser
+\backslash
+'a la se
+\backslash
+~nal de salida (se reducir
+\backslash
+'an el droop rate y el tiempo de establecimiento), pero el sistema ser
+\backslash
+'a m
+\backslash
+'as lento a cambios en la entrada en el momento de sample (empeorar
+\backslash
+'a el tiempo de adquisici
+\backslash
+'on).
+ Un droop rate elevado impide trabajar a bajas frecuencias, mientras que
+ cuanto mayores sean los tiempos de adquisici
+\backslash
+'on y establecimiento, menor ser
+\backslash
+'a la m
+\backslash
+'axima frecuencia a la que el integrado funciona correctamente.
+ 
+\backslash
+par
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Se procedi
+\backslash
+'o, pues, a realizar mediciones de tiempo de establecimiento y tiempo de
+ adquisici
+\backslash
+'on con distintos capacitores (tabla 
+\backslash
+ref{table:sh_mediciones}).
+ En cuanto al droop rate, dado que al computar la derivada de la tensi
+\backslash
+'on, se arrojaban valores poco representativos de la se
+\backslash
+~nal debido a la presencia de ruido, se decidi
+\backslash
+'o utilizar los valores de la hoja de datos del integrado para realizar
+ la comparaci
+\backslash
+'on.
+ Se utiliz
+\backslash
+'o el gr
+\backslash
+'afico proporcionado por el fabricante, que se observa en la figura 
+\backslash
+ref{fig:droop_rate}.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{table}[htb]     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{tabular}{|c|c|c|}         
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+hline         Capacidad & Tiempo de establecimiento (s) & Tiempo de adquisici
+\backslash
+'on (s)  
+\backslash
+
+\backslash
+ 
+\backslash
+hline 
+\backslash
+hline         
+\end_layout
+
+\begin_layout Plain Layout
+
+	100pF     & $9
+\backslash
+times 10^{-7}$             & $1.4
+\backslash
+times 10^{-6}$                                   
+\backslash
+
+\backslash
+ 
+\backslash
+hline         
+\end_layout
+
+\begin_layout Plain Layout
+
+	10nF      & $
+\backslash
+leq 1.3
+\backslash
+times 10^{-8}$      & $8.0
+\backslash
+times 10^{-6}$                                                   
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+	100nF     & $
+\backslash
+leq 1.3
+\backslash
+times 10^{-8}$      & $1.3
+\backslash
+times 10^{-4}$                                                 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+end{tabular}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{Par
+\backslash
+'ametros del LF398 para distintos valores de $
+\backslash
+mathrm{C}_
+\backslash
+mathrm{h}$}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+label{table:sh_mediciones} 
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{table}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[scale=0.7]{sh/droop_rate.jpg}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{Droop rate en funci
+\backslash
+'on de $C_h$ para el LF398}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+label{fig:droop_rate} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+En primer lugar, cabe aclarar que las mediciones de tiempo de establecimiento
+ se vieron limitadas por los instrumentos de medici
+\backslash
+'on utilizados: puesto que el rise time del generador utilizado para realizar
+ las mediciones es de 13ns, es imposible con este instrumento medir un tiempo
+ de establecimiento del mismo orden que este valor.
+ Sin embargo, s
+\backslash
+'i se pudo realizar esta medici
+\backslash
+'on para el capacitor m
+\backslash
+'as peque
+\backslash
+~no.
+\backslash
+par
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Resulta claro de estas mediciones que el capacitor de 100nF, por su tiempo
+ de adquisici
+\backslash
+'on, no permitir
+\backslash
+'ia trabajar con frecuencias mayores a aproximadamente 3.5kHz con duty del
+ 50
+\backslash
+%, lo cual es inaceptable considerando que $f_p=1.5$kHz: s
+\backslash
+'olo se podr
+\backslash
+'ia muestrear en el l
+\backslash
+'imite establecido por el teorema de Nyquist, casi sin margen de error alguno.
+ Con este capacitor, adem
+\backslash
+'as, se hace demasiado notorio el problema de la absorci
+\backslash
+'on diel
+\backslash
+'ectrica, por el cual en la etapa de hold el capacitor tiende a volver al
+ valor de hold anterior.
+ Este efecto se observa en la figura 
+\backslash
+ref{fig:1k6}.
+ 
+\backslash
+par
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[scale=0.25]{sh/1k6_100p.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[scale=0.25]{sh/1k6_100n.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{Salida del sample and hold (verde) con entrada senoidal de 1.6KHz
+ (amarillo).
+ Izquierda: capacitor de 100pF.
+ Derecha: capacitor de 100nF.}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+label{fig:1k6} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Por otro lado, con el capacitor de 100pF, si bien los tiempos medidos fueron
+ peque
+\backslash
+~nos, esto es en desmedro de la estabilidad de la se
+\backslash
+~nal en hold.
+ En la figura 
+\backslash
+ref{fig:240k}, se observa c
+\backslash
+'omo para frecuencias elevadas el capacitor no mantiene correctamente el
+ valor de la se
+\backslash
+~nal.
+ En cuanto al droop rate documentado para este valor de $
+\backslash
+mathrm{C}_
+\backslash
+mathrm{h}=$100pF, de $0.3
+\backslash
+nicefrac{V}{s}$, provocar
+\backslash
+'ia que caiga 1.2mV trabajando a 500Hz con 50
+\backslash
+% de duty, que es la m
+\backslash
+'inima frecuencia sub nyquist que se utilizar
+\backslash
+'a, con lo cual en principio esto no deber
+\backslash
+'ia ser un problema.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[scale=0.25]{sh/240k_100p.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[scale=0.25]{sh/240k_100n.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{Salida del sample and hold (verde) con entrada senoidal de 240KHz
+ (amarillo).
+ Izquierda: capacitor de 100pF.
+ Derecha: capacitor de 100nF.}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+label{fig:240k} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Por 
+\backslash
+'ultimo, con el capacitor de 10nF recomendado por el fabricante, se consigue
+ un droop rate de 4mV/s, completamente despreciable para nuestra aplicaci
+\backslash
+'on, mientras que la frecuencia m
+\backslash
+'axima a la que se puede trabajar sube a 62.5kHz, lo cual permite tomar 40
+ muestras por per
+\backslash
+'iodo de una se
+\backslash
+~nal con $f_{in}=f_p$.
+ Con este capacitor, adem
+\backslash
+'as, la se
+\backslash
+~nal resulta mucho menos ruidosa que la del capacitor de 100pF.
+ Por lo tanto, este es el valor que se decidi
+\backslash
+'o utilizar.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+En cuanto a la tecnolog
+\backslash
+'ia de este componenete, se sigui
+\backslash
+'o tambi
+\backslash
+'en la recomendaci
+\backslash
+'on del fabricante de usar un capacitor film, debido a que su diel
+\backslash
+'ectrico tiene bajas p
+\backslash
+'erdidas y mejor comportamiento en cuanto a absorci
+\backslash
+'on diel
+\backslash
+'ectrica que en otros tipos de capacitores.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{document}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
