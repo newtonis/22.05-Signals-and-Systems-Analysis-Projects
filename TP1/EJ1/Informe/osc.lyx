@@ -5,6 +5,17 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\usepackage{lscape}
+\usepackage{units}
+\pagestyle{fancy}
+\lhead{Análisis de Señales y Sistemas Digitales 22.05}
+\chead{TPL1}
+\rhead{ITBA}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language spanish
@@ -55,10 +66,10 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 1cm
-\topmargin 1cm
-\rightmargin 1cm
-\bottommargin 1cm
+\leftmargin 2.25cm
+\topmargin 2.25cm
+\rightmargin 2cm
+\bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -269,6 +280,22 @@ Experimentalmente se pudo comparar el comportamiento de los dos circuitos
  determinó qué circuito se utilizó.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Señal triangular
 \end_layout
@@ -325,7 +352,8 @@ V_{TR}=-V_{IN}\frac{1}{sC_{1}R_{1}}
 \end_layout
 
 \begin_layout Standard
-Si ajustamos la ventana del schmitt trigger adecuadamente, 
+Si ajustamos la ventana del schmitt trigger adecuadamente (es decir, dentro
+ del rango de alimentación), 
 \begin_inset Formula $V_{ST}$
 \end_inset
 
@@ -415,7 +443,7 @@ De esta forma se puede lograr
 \series bold
 variar la frecuencia
 \series default
- de la señal por ejemplo variando el valor de 
+ de la señal variando el valor de 
 \series bold
 R
 \begin_inset Formula $_{1}$
@@ -524,11 +552,11 @@ Circuito comparador
 
 \begin_layout Standard
 Variando P
-\begin_inset Formula $_{1}$
+\begin_inset Formula $_{9}$
 \end_inset
 
  y P
-\begin_inset Formula $_{2}$
+\begin_inset Formula $_{10}$
 \end_inset
 
  se pueden 
@@ -548,20 +576,7 @@ El propósito de este último circuito es generar dos señales con misma base
 \end_layout
 
 \begin_layout Standard
-De esta forma tenemos dos opciones:
-\end_layout
-
-\begin_layout Itemize
-Tomar V
-\begin_inset Formula $_{OUT_{1}}$
-\end_inset
-
-y conectarlo tanto en la entrada de la llave analógica como la de sample
- and hold.
-\end_layout
-
-\begin_layout Itemize
-V
+De esta forma se conecta V
 \begin_inset Formula $_{OUT_{1}}$
 \end_inset
 
@@ -570,11 +585,10 @@ en la entrada de la llave analógica y V
 \end_inset
 
  en la de sample and hold (o viceversa).
-\end_layout
-
-\begin_layout Standard
-De esta forma podemos obtener un muestreo que evite el transitorio llamado
- settling time variando adecuadamente el duty de cada señal.
+ Ajustando adecuadamente el duty de cada señal, se puede realizar el muestreo
+ con sample and hold y luego remuestreo con la llave analógica dándole tiempo
+ al sample and hold para establecer el valor en tiempo de hold antes de
+ cerrar la llave.
 \end_layout
 
 \begin_layout Subsection
@@ -749,7 +763,7 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $10\ y\ 220nf$
+\begin_inset Formula $10nf\ y\ 220nf$
 \end_inset
 
 
@@ -818,13 +832,13 @@ C
 \begin_inset Formula $_{1}$
 \end_inset
 
- tiene dos valores debido a que uno es para un rango de frecuencias bajas
- (400Hz-30kHz) y otro para altas (30KHz-125KHz) esto es de modo tal que
- frente una misma R
+ tiene dos valores (se eligen mediante un jumper) debido a que uno es para
+ un rango de frecuencias bajas (400Hz-30kHz) y otro para altas (30KHz-125KHz)
+ esto es de modo tal que frente una misma R
 \begin_inset Formula $_{1}$
 \end_inset
 
-de valor bajo se pueda obtener una frecuencia más grande sin deformar la
+ de valor bajo se pueda obtener una frecuencia más grande sin deformar la
  señal.
  Lo que genera la deformación de la señal es la demanda de corriente que
  es proporcional al capacitor, por lo cual es una limitación para este circuito.
@@ -1012,8 +1026,8 @@ reference "fig:osc2"
  corresponden a mediciones en distintas entradas.
  La señal naranja es la medida en la entrada de control de la llave analógica
  y la señal azul es la medida en la entrada de control del sample and hold.
- Poseen distintas amplitudes ya que las dos entradas requieren alimentaciones
- distintas.
+ Poseen distintas amplitudes ya que las dos entradas de control requieren
+ tensiones distintas.
 \end_layout
 
 \end_body
