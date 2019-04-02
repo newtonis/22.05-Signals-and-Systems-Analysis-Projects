@@ -147,10 +147,6 @@ Generador de onda diente de sierra
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -263,11 +259,18 @@ El problema principal que surge con la colocación de la resistencia es que
  el comparador se complica llegar al duty cycle límite pedido por consigna
  (esto es porque los cambios son muy pequeños mientras decrece la señal
  acercandose a 0V).
- Además experimentalmente se pudo comparar el comportamiento de los dos
- circuitos propuestos a alta frecuencia y se pudo ver que a medida que aumenta
- la frecuencia se va deformando la señal diente de sierra mientras que la
- señal triangular mantiene su suavidad con un rango más amplio y esto fue
- lo que determinó qué circuito se utilizó.
+\end_layout
+
+\begin_layout Subsubsection*
+Justificación del circuito el elegido
+\end_layout
+
+\begin_layout Standard
+Además experimentalmente se pudo comparar el comportamiento de los dos circuitos
+ propuestos a alta frecuencia y se pudo ver que a medida que aumenta la
+ frecuencia se va deformando la señal diente de sierra mientras que la señal
+ triangular mantiene su suavidad con un rango más amplio y esto fue lo que
+ determinó qué circuito se utilizó.
 \end_layout
 
 \begin_layout Subsubsection
@@ -756,8 +759,189 @@ R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
+Mediciones
+\end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename min_f_min_d.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename min_f_max_d.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:minflim"
+
+\end_inset
+
+Límite de duty cycle para las frecuencias mínimas de operación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename max_f_min_d.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename max_f_max_d.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:maxflim"
+
+\end_inset
+
+Límite de duty cycle para las frecuencias máximas de operación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede observar en las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:minflim"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:maxflim"
+
+\end_inset
+
+ que al variar el duty cycle se ve alterada la frecuencia de la señal, lo
+ cual en principio indicaría que no son independientes, sin embargo en la
+ generalidad de los casos se puede aceptar esa mínima desviación respecto
+ de la frecuencia o sino calibrar mediante variaciones graduales la frecuencia
+ y el duty hasta que se aproxime al valor deseado.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 2osc.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:osc2"
+
+\end_inset
+
+Señales con distintos duty dado el circuito propuesto de duty configurable
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las señales en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:osc2"
+
+\end_inset
+
+ corresponden a mediciones en distintas entradas.
+ La señal naranja es la medida en la entrada de control de la llave analógica
+ y la señal azul es la medida en la entrada de control del sample and hold.
+ Poseen distintas amplitudes ya que las dos entradas requieren alimentaciones
+ distintas.
 \end_layout
 
 \end_body
