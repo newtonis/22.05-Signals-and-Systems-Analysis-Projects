@@ -142,11 +142,7 @@ status open
 
 $$X_c(t)= A 
 \backslash
-cdot e^{
-\backslash
-|t
-\backslash
-|}$$
+cdot e^{|t|}$$
 \end_layout
 
 \end_inset
@@ -422,8 +418,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Caso con Llave analógica (izquierda) - Duty 20%, Sample and Hold (derecha)
- - Duty 20%
+Llave analógica (izquierda) - Duty 20%, Sample and Hold (derecha) - Duty
+ 20%
 \end_layout
 
 \end_inset
@@ -899,6 +895,193 @@ tau})$$
 \end_layout
 
 \begin_layout Standard
+Es decir que en cada delta se tendrá una copia del espectro de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X(f)$
+\end_layout
+
+\end_inset
+
+ afectado por el factor 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+frac{1}{2 
+\backslash
+pi n} 
+\backslash
+left( e^{i 
+\backslash
+pi n}-1 
+\backslash
+right)$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En el caso del sample and hold, se tiene esa misma información sobre el
+ espectro más la que se obtiene durante el tiempo de hold, por lo que se
+ recupera mayor información.
+ El muestreo durante el tiempo de hold puede modelarse como la señal muestreada
+ con un tren de deltas periódico 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+delta_T(t)$
+\end_layout
+
+\end_inset
+
+ convolucionado con un pulso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t}{
+\backslash
+tau} 
+\backslash
+right)$
+\end_layout
+
+\end_inset
+
+.
+ En fórmulas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x^*(t) = [x(t) 
+\backslash
+cdot 
+\backslash
+delta_T(t)]*
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t}{
+\backslash
+tau} 
+\backslash
+right)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde aplicando la transformada de Fourier se obtiene:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X^*(f) = (X(f) * 
+\backslash
+delta_{
+\backslash
+omega_s}(f) ) 
+\backslash
+cdot 
+\backslash
+tau sinc(
+\backslash
+tau f) = 
+\backslash
+left( X(f) * 
+\backslash
+sum_{n = -
+\backslash
+infty}^{
+\backslash
+infty} 2
+\backslash
+pi f_s 
+\backslash
+cdot 
+\backslash
+delta(f - n f_s) 
+\backslash
+right) 
+\backslash
+cdot 
+\backslash
+tau sinc(
+\backslash
+tau f)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X^*(f) = 
+\backslash
+tau sinc(
+\backslash
+tau f) 
+\backslash
+cdot 
+\backslash
+sum_{n = -
+\backslash
+infty}^{
+\backslash
+infty} 2
+\backslash
+pi f_s 
+\backslash
+cdot X(f-n f_s)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Es decir que en cada delta se tendrá una réplica del espectro de 
 \begin_inset ERT
 status open
@@ -950,26 +1133,55 @@ $sinc$
 \end_layout
 
 \begin_layout Standard
-En el caso del sample and hold, se tiene esa misma información sobre el
- espectro más la que se obtiene durante el tiempo de hold.
- El muestreo durante el tiempo de hold puede modelarse como la señal muestreada
- con un tren de deltas periódico convolucionado con un pulso 
+Sumando los efectos del muestreo en tiempo de sample más el del tiempo de
+ hold se tiene finalmente:
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-$$
+$$X_T(f) = 
 \backslash
-Pi 
+frac{1}{2}X(f) + 
 \backslash
-left( 
+sum_{n 
 \backslash
-frac{t - }{
+neq 0} 
 \backslash
-tau} 
+frac{1}{2 
 \backslash
-right)$$
+pi n} 
+\backslash
+left( e^{i 
+\backslash
+pi n}-1 
+\backslash
+right) 
+\backslash
+cdot X(f-
+\backslash
+frac{n}{2
+\backslash
+tau}) + 
+\backslash
+tau sinc(
+\backslash
+tau f) 
+\backslash
+cdot 
+\backslash
+sum_{n = -
+\backslash
+infty}^{
+\backslash
+infty} 2
+\backslash
+pi f_s 
+\backslash
+cdot X(f-n f_s)$$
 \end_layout
 
 \end_inset
@@ -1021,10 +1233,29 @@ $f_{in}$
 \end_inset
 
  del ítem anterior.
+ Se muestran los casos representativos con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
 \end_layout
 
-\begin_layout Standard
-#FOTOS Y DEMAS ANALISIS
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1035,6 +1266,54 @@ status open
 \begin_layout Plain Layout
 
 $X_a(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_19.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_18.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda) - Duty 88%, Sample and Hold (derecha) - Duty
+ 71%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1057,19 +1336,100 @@ $X_b(t)$
 
 \end_layout
 
-\begin_layout Subsubsection
-Señal 
-\begin_inset ERT
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_26.png
+	lyxscale 30
+	scale 50
 
-$X_c(t)$
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_27.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda) - Duty 30%, Sample and Hold (derecha) - Duty
+ 15%
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al igual que en el caso de muestreo natural con llave analógica, se recuperan
+ las señales originales sin armónicos adicionales como era de esperar.
+ En este caso se recupera más potencia, ya que el 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+ del pulso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Pi(
+\backslash
+frac{t}{
+\backslash
+tau})$
+\end_layout
+
+\end_inset
+
+ es menor al haber aumentado la frecuencia de muestreo, lo que resulta en
+ que el lóbulo principal de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sinc$
+\end_layout
+
+\end_inset
+
+ es más ancho y distorsiona menos el espectro.
 \end_layout
 
 \begin_layout Subsection
@@ -1128,7 +1488,49 @@ $f_{in} = f_s$
 \end_layout
 
 \begin_layout Standard
-#FOTOS Y DEMAS ANALISIS
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_09.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso con llave analógica (muestreo natural)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observa que efectivamente, tanto en simulación como medición hay aliasing
+ entre las repeticiones del espectro de la senoidal original.
+ Al pasar por el filtro recuperador, se obtuvieron dos espectros solapados,
+ produciendo una senoidal montada sobre otra, como se mostró en la figura.
 \end_layout
 
 \begin_layout Subsection
@@ -1168,14 +1570,100 @@ $X_c$
 
 \end_layout
 
-\begin_layout Subsubsection
-Señal 
+\begin_layout Standard
+En este caso, dada una 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-$X_b(t)$
+$f_s$
+\end_layout
+
+\end_inset
+
+ fija, se varía la frecuencia de las señales 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+ hasta observar efectos de aliasing a la salida del filtro recuperador,
+ realizado tanto para el caso de muestreo natural como el instantáneo con
+ sample and hold.
+ Se muestran los efectos producidos con la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_16.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_17.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso de aliasing en señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+.
+ Muestreo natural (izquierda), y muestreo instantáneo (derecha).
 \end_layout
 
 \end_inset
@@ -1183,19 +1671,41 @@ $X_b(t)$
 
 \end_layout
 
-\begin_layout Subsubsection
-Señal 
-\begin_inset ERT
-status open
-
 \begin_layout Plain Layout
 
-$X_c(t)$
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+En el caso de muestreo natural, con el aliasing la señal obtenida se asemeja
+ a una de mayor frecuencia modulada por la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+, mientras que en el caso de muestreo instantáneo se tiene una señal montada
+ sobre la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
