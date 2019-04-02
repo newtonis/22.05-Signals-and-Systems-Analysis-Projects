@@ -910,7 +910,9 @@ status open
 
 \begin_layout Plain Layout
 
-$Duty cycle=25%$
+$Duty cycle=25
+\backslash
+%$
 \end_layout
 
 \end_inset
@@ -1061,7 +1063,9 @@ status open
 
 \begin_layout Plain Layout
 
-$duty cycle=5%$
+$duty cycle=5
+\backslash
+%$
 \end_layout
 
 \end_inset
