@@ -27,11 +27,9 @@ class LlaveAnalogica(Etapa):
 
             aux += paso
             if ti % 1000 == 0:
-                if loadingModel:
-                    loadingModel.update(aux)
-                    aux = 0
-        if loadingModel:
-            loadingModel.update(aux)
+                loadingModel.update(aux)
+                aux = 0
+        loadingModel.update(aux)
 
         return Senial.Senial(inputSignal.xvar, output)
 
