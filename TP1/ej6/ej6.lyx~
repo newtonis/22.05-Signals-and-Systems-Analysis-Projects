@@ -433,7 +433,8 @@ Llave analógica (izquierda) - Duty 20%, Sample and Hold (derecha) - Duty
 \end_layout
 
 \begin_layout Standard
-#NO PUEDO DECIR NADA POR LA PRIMERA
+Se logra recuperar la exponencial en ambos casos (con menos potencia también)
+ como era de esperarse.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1614,6 +1615,18 @@ status open
 \begin_layout Plain Layout
 
 $X_c$
+\end_layout
+
+\end_inset
+
+.
+ Las frecuencia de muestreo utilizada en este caso es de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s = 1.5KHz$
 \end_layout
 
 \end_inset
