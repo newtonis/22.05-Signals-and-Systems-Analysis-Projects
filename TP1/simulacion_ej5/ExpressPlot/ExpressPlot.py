@@ -20,6 +20,7 @@ class CombinedPlot:
         self.title = ""
         self.xAxisTitle = ""
         self.yAxisTitle = ""
+        self.func = None
 
     def setTitle(self, title):
         self.title = title
@@ -86,6 +87,12 @@ class CombinedPlot:
     def plotAndSave(self, filename):
         patches = []
         fig, ax1 = plt.subplots()
+
+        if self.func:
+            func, args = self.func
+            args["ax"] = ax1
+            func(args)
+
         for plot in self.plotCount:
             if plot["signal"].mode == "teorica":
                 xvalues, yvalues = plot["signal"].getSamplesChangeXvar()
@@ -114,3 +121,8 @@ class CombinedPlot:
         plt.ylabel(self.yAxisTitle)
 
         fig.savefig(filename, dpi=300)
+
+    def extraPlot(self, func, args):
+        self.func = func, args
+
+        return self

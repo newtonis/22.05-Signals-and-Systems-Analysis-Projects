@@ -1,3 +1,4 @@
-from IndividualTests import sub_niquist1
+from IndividualTests import sub_niquist1, subniquist2
 
-sub_niquist1.subniquistTest()
+subniquist2.subniquistTest2()
+
