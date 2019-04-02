@@ -8,6 +8,7 @@
 \begin_preamble
 \usepackage{fancyhdr}
 \usepackage{lscape}
+\usepackage{units}
 \pagestyle{fancy}
 \lhead{Análisis de Señales y Sistemas Digitales 22.05}
 \chead{TPL1}
@@ -121,7 +122,9 @@ status open
 
 $$X_b(t)= A 
 \backslash
-cdot 3/2 sin (2
+cdot 
+\backslash
+nicefrac{3}{2} sin (2
 \backslash
 pi f_{in}t)$$
 \end_layout
@@ -559,6 +562,25 @@ cdot f_{in}$
 \end_inset
 
 .
+ Como se explicó anteriormente en los criterios de selección de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+, la mayor potencia de dicha señal se recupera con los 3 primeros armónicos;
+ sin embargo, la señal recuperada es distorsionada por la no planicidad
+ en banda de paso de los filtros reales, como se explicó durante el análisis
+ de los filtros.
+ El efecto se observa también en la simulación dado que para ambos filtros
+ se cargó la transferencia aproximada con Legendre (y no una ventana cuadrada
+ ideal).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -670,6 +692,42 @@ status open
 
 \begin_layout Plain Layout
 
+$$X_0 = 
+\backslash
+frac{1}{2
+\backslash
+tau} 
+\backslash
+int_0^{2
+\backslash
+tau} 
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t-2n
+\backslash
+tau}{
+\backslash
+tau} 
+\backslash
+right) dt = 
+\backslash
+frac{1}{2}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 $$X_n = 
 \backslash
 frac{1}{2
@@ -690,7 +748,25 @@ tau}{
 \backslash
 tau} 
 \backslash
-right) dt = $$
+right) 
+\backslash
+cdot e^{i2
+\backslash
+pi 
+\backslash
+frac{1}{2
+\backslash
+tau} nt} dt = 
+\backslash
+frac{1}{2 
+\backslash
+pi n} 
+\backslash
+left( e^{i 
+\backslash
+pi n}-1 
+\backslash
+right)$$
 \end_layout
 
 \end_inset
@@ -712,13 +788,15 @@ $$
 \backslash
 mathcal{F}[
 \backslash
-Pi_T] = 
+Pi_T] = X_0 
 \backslash
-sum_{n = -
+cdot 
 \backslash
-infty}^{
+delta(f) + 
 \backslash
-infty}X_n 
+sum_{n 
+\backslash
+neq 0} X_n 
 \backslash
 cdot 
 \backslash
@@ -726,7 +804,53 @@ delta(f-n
 \backslash
 frac{1}{2
 \backslash
-tau}) = $$
+tau})$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+mathcal{F}[
+\backslash
+Pi_T] = 
+\backslash
+frac{1}{2} 
+\backslash
+cdot 
+\backslash
+delta(f) + 
+\backslash
+sum_{n 
+\backslash
+neq 0} 
+\backslash
+frac{1}{2 
+\backslash
+pi n} 
+\backslash
+left( e^{i 
+\backslash
+pi n}-1 
+\backslash
+right) 
+\backslash
+cdot 
+\backslash
+delta(f- 
+\backslash
+frac{n}{2
+\backslash
+tau})$$
 \end_layout
 
 \end_inset
@@ -744,7 +868,29 @@ status open
 
 \begin_layout Plain Layout
 
-$$X_T(f) = X(f) * $$
+$$X_T(f) = 
+\backslash
+frac{1}{2}X(f) + 
+\backslash
+sum_{n 
+\backslash
+neq 0} 
+\backslash
+frac{1}{2 
+\backslash
+pi n} 
+\backslash
+left( e^{i 
+\backslash
+pi n}-1 
+\backslash
+right) 
+\backslash
+cdot X(f-
+\backslash
+frac{n}{2
+\backslash
+tau})$$
 \end_layout
 
 \end_inset
@@ -801,6 +947,34 @@ $sinc$
 \end_inset
 
  será más ancho, aproximándose al caso ideal de un tren de deltas períodico.
+\end_layout
+
+\begin_layout Standard
+En el caso del sample and hold, se tiene esa misma información sobre el
+ espectro más la que se obtiene durante el tiempo de hold.
+ El muestreo durante el tiempo de hold puede modelarse como la señal muestreada
+ con un tren de deltas periódico convolucionado con un pulso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t - }{
+\backslash
+tau} 
+\backslash
+right)$$
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
