@@ -317,7 +317,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_01.png
+	filename ../simulacion_ej5/ExpressOutput/med_01.png
 	lyxscale 30
 	scale 50
 
@@ -325,7 +325,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_02.png
+	filename ../simulacion_ej5/ExpressOutput/med_02.png
 	lyxscale 30
 	scale 50
 
@@ -398,7 +398,7 @@ status open
 \align center
 #REMEDIR LA IZQUIERDA
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_25.png
+	filename ../simulacion_ej5/ExpressOutput/med_25.png
 	lyxscale 30
 	scale 50
 
@@ -455,7 +455,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_12.png
+	filename ../simulacion_ej5/ExpressOutput/med_12.png
 	lyxscale 30
 	scale 50
 
@@ -463,7 +463,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_14.png
+	filename ../simulacion_ej5/ExpressOutput/med_14.png
 	lyxscale 30
 	scale 50
 
@@ -614,21 +614,84 @@ $$
 \backslash
 Pi_T(t) = 
 \backslash
-sum_{n = -
+Pi 
 \backslash
-infty}^{
+left( 
 \backslash
-infty} 
+frac{t}{
+\backslash
+tau} 
+\backslash
+right) * 
+\backslash
+delta_{2
+\backslash
+tau}(t) $$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+delta_{2
+\backslash
+tau}(t)$
+\end_layout
+
+\end_inset
+
+ es el tren de deltas periódico de período 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+.
+ Entonces se tiene que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x^* (t) = x(t) 
+\backslash
+cdot 
+\backslash
+left( 
 \backslash
 Pi 
 \backslash
 left( 
 \backslash
-frac{t-2n
-\backslash
-tau}{
+frac{t}{
 \backslash
 tau} 
+\backslash
+right) * 
+\backslash
+delta_{2
+\backslash
+tau}(t) 
 \backslash
 right)$$
 \end_layout
@@ -640,8 +703,7 @@ right)$$
 
 \begin_layout Standard
 Mediante la transformada de Fourier para hallar el espectro resultante se
- tiene que el producto en el dominio del tiempo resulta la convolución de
- las transformadas en el dominio de la frecuencia:
+ obtiene:
 \end_layout
 
 \begin_layout Standard
@@ -650,184 +712,39 @@ status open
 
 \begin_layout Plain Layout
 
-$$X^*(f) = X(f) * 
+$$X^*(f) = X(f) * (
 \backslash
-mathcal{F}[
+tau 
 \backslash
-Pi_T]$$
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Por lo tanto, se necesita transformar el tren de pulsos periódico.
- Para ello se calculan los coeficientes de su desarrollo en serie:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$$X_0 = 
+cdot sinc(
 \backslash
-frac{1}{2
-\backslash
-tau} 
-\backslash
-int_0^{2
-\backslash
-tau} 
-\backslash
-Pi 
-\backslash
-left( 
-\backslash
-frac{t-2n
-\backslash
-tau}{
-\backslash
-tau} 
-\backslash
-right) dt = 
-\backslash
-frac{1}{2}$$
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$$X_n = 
-\backslash
-frac{1}{2
-\backslash
-tau} 
-\backslash
-int_0^{2
-\backslash
-tau} 
-\backslash
-Pi 
-\backslash
-left( 
-\backslash
-frac{t-2n
-\backslash
-tau}{
-\backslash
-tau} 
-\backslash
-right) 
-\backslash
-cdot e^{i2
-\backslash
-pi 
-\backslash
-frac{1}{2
-\backslash
-tau} nt} dt = 
-\backslash
-frac{1}{2 
-\backslash
-pi n} 
-\backslash
-left( e^{i 
-\backslash
-pi n}-1 
-\backslash
-right)$$
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Por lo que la transformada de Fourier del tren periódico de pulsos resulta:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$$
-\backslash
-mathcal{F}[
-\backslash
-Pi_T] = X_0 
+tau f) 
 \backslash
 cdot 
 \backslash
-delta(f) + 
+delta_{f_s}) = 
 \backslash
-sum_{n 
+tau 
 \backslash
-neq 0} X_n 
+cdot sinc(
 \backslash
-cdot 
-\backslash
-delta(f-n 
-\backslash
-frac{1}{2
-\backslash
-tau})$$
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$$
-\backslash
-mathcal{F}[
-\backslash
-Pi_T] = 
-\backslash
-frac{1}{2} 
+tau f) 
 \backslash
 cdot 
 \backslash
-delta(f) + 
+sum_{n=-
 \backslash
-sum_{n 
+infty}^{
 \backslash
-neq 0} 
+infty} 
 \backslash
-frac{1}{2 
+frac{
 \backslash
-pi n} 
+pi}{
 \backslash
-left( e^{i 
+tau} 
 \backslash
-pi n}-1 
-\backslash
-right) 
-\backslash
-cdot 
-\backslash
-delta(f- 
+cdot X(f - 
 \backslash
 frac{n}{2
 \backslash
@@ -840,47 +757,27 @@ tau})$$
 \end_layout
 
 \begin_layout Standard
-Por lo tanto el espectro de la señal muestreada resulta periódico:
-\end_layout
-
-\begin_layout Standard
+Donde 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-$$X_T(f) = 
-\backslash
-frac{1}{2}X(f) + 
-\backslash
-sum_{n 
-\backslash
-neq 0} 
+$f_s = 
 \backslash
 frac{1}{2 
 \backslash
-pi n} 
-\backslash
-left( e^{i 
-\backslash
-pi n}-1 
-\backslash
-right) 
-\backslash
-cdot X(f-
-\backslash
-frac{n}{2
-\backslash
-tau})$$
+tau}$
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-Es decir que en cada delta se tendrá una copia del espectro de 
+El espectro resultante se repite en forma periódica.
+ Es decir que en cada delta se tendrá una copia del espectro de 
 \begin_inset ERT
 status open
 
@@ -891,23 +788,13 @@ $X(f)$
 
 \end_inset
 
- atenuado por el factor 
+ atenuado por la 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-$
-\backslash
-frac{1}{2 
-\backslash
-pi n} 
-\backslash
-left( e^{i 
-\backslash
-pi n}-1 
-\backslash
-right)$
+$sinc$
 \end_layout
 
 \end_inset
@@ -1026,7 +913,9 @@ right)
 \backslash
 cdot 
 \backslash
-tau sinc(
+tau 
+\backslash
+cdot sinc(
 \backslash
 tau f)$$
 \end_layout
@@ -1044,7 +933,9 @@ status open
 
 $$X^*(f) = 
 \backslash
-tau sinc(
+tau 
+\backslash
+cdot  sinc(
 \backslash
 tau f) 
 \backslash
@@ -1130,29 +1021,35 @@ status open
 
 $$X_T(f) = 
 \backslash
-frac{1}{2}X(f) + 
+tau 
 \backslash
-sum_{n 
+cdot sinc(
 \backslash
-neq 0} 
+tau f) 
 \backslash
-frac{1}{2 
+cdot 
 \backslash
-pi n} 
+sum_{n=-
 \backslash
-left( e^{i 
+infty}^{
 \backslash
-pi n}-1 
+infty} 
 \backslash
-right) 
+frac{
 \backslash
-cdot X(f-
+pi}{
+\backslash
+tau} 
+\backslash
+cdot X(f - 
 \backslash
 frac{n}{2
 \backslash
 tau}) + 
 \backslash
-tau sinc(
+tau 
+\backslash
+cdot  sinc(
 \backslash
 tau f) 
 \backslash
@@ -1166,11 +1063,7 @@ infty} 2
 \backslash
 pi f_s 
 \backslash
-cdot X(f- 
-\backslash
-frac{(n-1)}{2
-\backslash
-tau} )$$
+cdot X(f-n f_s)$$
 \end_layout
 
 \end_inset
@@ -1271,7 +1164,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_19.png
+	filename ../simulacion_ej5/ExpressOutput/med_19.png
 	lyxscale 30
 	scale 50
 
@@ -1279,7 +1172,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_18.png
+	filename ../simulacion_ej5/ExpressOutput/med_18.png
 	lyxscale 30
 	scale 50
 
@@ -1334,7 +1227,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_26.png
+	filename ../simulacion_ej5/ExpressOutput/med_26.png
 	lyxscale 30
 	scale 50
 
@@ -1342,7 +1235,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_27.png
+	filename ../simulacion_ej5/ExpressOutput/med_27.png
 	lyxscale 30
 	scale 50
 
@@ -1485,7 +1378,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_09.png
+	filename ../simulacion_ej5/ExpressOutput/med_09.png
 	lyxscale 30
 	scale 50
 
@@ -1640,7 +1533,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_17.png
+	filename ../simulacion_ej5/ExpressOutput/med_17.png
 	lyxscale 30
 	scale 50
 
