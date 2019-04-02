@@ -1,0 +1,37 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
+
+\usepackage[total={6in, 9in}]{geometry}
+\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+
+
+
+\begin{document}
+
+\section{Remuestreo} \label{sec:remuestreo}
+
+En esta secci\'on, analizaremos los efectos del muestreo instant\'aneo en una se\~nal AM. La misma es de la forma:
+
+\begin{equation}
+	X_C(t) = \frac{\mathrm{A}_\mathrm{MAX}}{2} \cdot 
+	\left(  \frac{1}{2} \cdot \cos{\left( 2\pi \cdot(f_p-f_m) \cdot t\right)} +
+	\cos{\left( 2\pi f_p\cdot t\right)} +
+	\frac{1}{2} \cdot \cos{\left( 2\pi \cdot (f_p+f_m)\cdot t\right)}
+	\right)
+\end{equation}
+
+En este caso, se utiliz\'o $f_p=1$kHz y $f_m=100$Hz.  
+
+Para lograr el muestreo instant\'aneo, primero se pasa la se\~nal por el sample and hold. Luego, se la vuelve a muestrear, pero esta vez con la llave anal\'ogica, de manera tal que a la salida se anule la totalidad del tiempo de sample y se conserve s\'olo el de hold. Idealmente, esto es equivalente a multiplicar la se\~nal por un tren de pulsos, cuyo duty cycle coincide con el de la llave anal\'ogica. 
+\footnote{Dependiendo de la bibliograf\'ia, puede encontrarse que a esto se refiere como muestreo ``flat top", mientras que con muestreo instant\'aneo se considera al caso de producto con tren de deltas.}
+
+
+
+\end{document}
