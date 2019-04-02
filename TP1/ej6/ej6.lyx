@@ -776,19 +776,7 @@ tau}$
 \end_layout
 
 \begin_layout Standard
-El espectro resultante se repite en forma periódica.
- Es decir que en cada delta se tendrá una copia del espectro de 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$X(f)$
-\end_layout
-
-\end_inset
-
- atenuado por la 
+Se puede ver que espectro resultante se encuentra envuelto por una 
 \begin_inset ERT
 status open
 
@@ -799,7 +787,7 @@ $sinc$
 
 \end_inset
 
- envolvente.
+ .
 \end_layout
 
 \begin_layout Standard
