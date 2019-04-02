@@ -799,7 +799,7 @@ $sinc$
 
 \end_inset
 
-.
+ envolvente.
 \end_layout
 
 \begin_layout Standard
@@ -1021,6 +1021,8 @@ status open
 
 $$X_T(f) = 
 \backslash
+underbrace{
+\backslash
 tau 
 \backslash
 cdot sinc(
@@ -1045,7 +1047,7 @@ cdot X(f -
 \backslash
 frac{n}{2
 \backslash
-tau}) + 
+tau})}_{tiempo de sample} + 
 \backslash
 tau 
 \backslash

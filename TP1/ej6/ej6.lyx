@@ -1021,6 +1021,8 @@ status open
 
 $$X_T(f) = 
 \backslash
+underbrace{
+\backslash
 tau 
 \backslash
 cdot sinc(
@@ -1045,7 +1047,9 @@ cdot X(f -
 \backslash
 frac{n}{2
 \backslash
-tau}) + 
+tau})}_{Sample} + 
+\backslash
+underbrace{
 \backslash
 tau 
 \backslash
@@ -1063,7 +1067,7 @@ infty} 2
 \backslash
 pi f_s 
 \backslash
-cdot X(f-n f_s)$$
+cdot X(f-n f_s)}_{Hold}$$
 \end_layout
 
 \end_inset
