@@ -1,3 +1,3 @@
-from IndividualTests import sub_niquist1
+from IndividualTests.test_subplot_rochi import testsubplot as start
 
-sub_niquist1.subniquistTest()
+start()
