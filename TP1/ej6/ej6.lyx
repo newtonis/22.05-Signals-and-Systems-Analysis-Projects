@@ -491,18 +491,7 @@ Llave analógica (izquierda), Sample and Hold (derecha)
 
 \begin_layout Standard
 En ambos casos se observa que se recupera la forma de la señal, pero no
- es igual a la original dado que la función 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$3/2 sen$
-\end_layout
-
-\end_inset
-
- posee infinitos armónicos.
+ es igual a la original.
  Si se tiene en cuenta que 
 \begin_inset ERT
 status open
@@ -603,7 +592,7 @@ $$x^* (t) = x(t)
 \backslash
 cdot 
 \backslash
-Pi_T$$
+Pi_T(t)$$
 \end_layout
 
 \end_inset
@@ -622,6 +611,8 @@ status open
 \begin_layout Plain Layout
 
 $$
+\backslash
+Pi_T(t) = 
 \backslash
 sum_{n = -
 \backslash
@@ -900,7 +891,7 @@ $X(f)$
 
 \end_inset
 
- afectado por el factor 
+ atenuado por el factor 
 \begin_inset ERT
 status open
 
@@ -1175,7 +1166,11 @@ infty} 2
 \backslash
 pi f_s 
 \backslash
-cdot X(f-n f_s)$$
+cdot X(f- 
+\backslash
+frac{(n-1)}{2
+\backslash
+tau} )$$
 \end_layout
 
 \end_inset
@@ -1496,14 +1491,15 @@ status open
 
 \end_inset
 
-
+#FALTA TAMBIEN ESA
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Caso con llave analógica (muestreo natural)
+Caso con llave analógica (muestreo natural) a la izquierda, y muestreo con
+ sample and hold a la derecha.
 \end_layout
 
 \end_inset
