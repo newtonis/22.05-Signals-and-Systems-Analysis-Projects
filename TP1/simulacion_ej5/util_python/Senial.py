@@ -1,5 +1,6 @@
-
-
+from numpy import cos, angle, pi
+from scipy.fftpack import fft
+import numpy as np
 eps = 1E-5
 
 
@@ -74,4 +75,16 @@ class Senial:
         return xvar, yvar
 
 
+    def fourierEvaluarReconstruccion(self, t, fs = 1):
+        self.coef = fft(self.values)
 
+        t = t - self.xvar[0]
+        sm = 0
+
+        for k in range(len(self.coef)//2): #len(self.coef)):
+            xk = self.coef[k]
+            f = k*fs/len(self.coef)
+
+            sm += 2 * abs(xk) * cos(2 * pi * t * f + np.angle(xk)) # * exp(1j*2*pi*t*f)
+
+        return 1/len(self.coef) * sm
