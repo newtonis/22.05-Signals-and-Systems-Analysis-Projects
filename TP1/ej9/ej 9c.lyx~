@@ -782,7 +782,7 @@ y que
 
 \begin_layout Standard
 Como se puede ver, se cumplen las condiciones mencionadas anteriormente
- para obtener el retardo de grupo constante, h(n) es real, finita, de largo
+ para obtener el retardo de grupo lineal, h(n) es real, finita, de largo
  7 (con M=6 par) y con simetría par respecto de 
 \begin_inset Formula $n=\frac{M}{2}=3$
 \end_inset
