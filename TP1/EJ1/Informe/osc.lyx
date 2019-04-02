@@ -244,10 +244,6 @@ Circuito con resistencia de 500
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -259,11 +255,18 @@ El problema principal que surge con la colocación de la resistencia es que
  el comparador se complica llegar al duty cycle límite pedido por consigna
  (esto es porque los cambios son muy pequeños mientras decrece la señal
  acercandose a 0V).
- Además experimentalmente se pudo comparar el comportamiento de los dos
- circuitos propuestos a alta frecuencia y se pudo ver que a medida que aumenta
- la frecuencia se va deformando la señal diente de sierra mientras que la
- señal triangular mantiene su suavidad con un rango más amplio y esto fue
- lo que determinó qué circuito se utilizó.
+\end_layout
+
+\begin_layout Subsubsection*
+Justificación del circuito el elegido
+\end_layout
+
+\begin_layout Standard
+Experimentalmente se pudo comparar el comportamiento de los dos circuitos
+ propuestos a alta frecuencia y se pudo ver que a medida que aumenta la
+ frecuencia se va deformando la señal diente de sierra mientras que la señal
+ triangular mantiene su suavidad con un rango más amplio y esto fue lo que
+ determinó qué circuito se utilizó.
 \end_layout
 
 \begin_layout Subsubsection
@@ -311,7 +314,7 @@ Generador de onda triangular
 \end_layout
 
 \begin_layout Subsubsection*
-Bloque integrador
+Generador de onda triangular
 \end_layout
 
 \begin_layout Standard
@@ -326,17 +329,59 @@ V_{TR}=-V_{IN}\frac{1}{sC_{1}R_{1}}
 \end_layout
 
 \begin_layout Standard
-Luego, si la salida del schmitt trigger es una señal cuadrada, V
+Como la salida del schmitt trigger es una señal cuadrada, V
 \begin_inset Formula $_{TR}$
 \end_inset
 
- es una señal triangular cuya frecuencia
+ es una señal triangular.
+\end_layout
+
+\begin_layout Standard
+Analizando medio período:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename triangular.svg
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Señal triangular resultante
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-f=\frac{1}{2C_{1}R_{1}}
+\frac{T}{2}\frac{1}{C\cdot R_{1}}V_{IN}=V_{Ventana}
 \]
 
 \end_inset
@@ -345,16 +390,9 @@ f=\frac{1}{2C_{1}R_{1}}
 \end_layout
 
 \begin_layout Standard
-Agregandole un offset a la señal se obtiene que:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
-V_{TR}(t)=\begin{cases}
--V_{IN}\frac{t}{C_{1}R_{1}} & 0<t<\frac{T}{2}\\
-V_{IN}\frac{t}{C_{1}R_{1}} & \frac{T}{2}<t<T
-\end{cases}
+\frac{T}{2}\frac{1}{C\cdot R_{1}}V_{ST}=V_{ST}\frac{R_{2}}{R_{3}}
 \]
 
 \end_inset
@@ -365,7 +403,7 @@ V_{IN}\frac{t}{C_{1}R_{1}} & \frac{T}{2}<t<T
 \begin_layout Standard
 \begin_inset Formula 
 \[
-V_{TR}(t)=V_{TR}(t+T)\ \forall t\epsilon\mathbb{R}
+f=\left(\frac{1}{2C_{1}R_{1}}\right)\frac{R_{3}}{R_{2}}
 \]
 
 \end_inset
@@ -378,7 +416,7 @@ De esta forma se puede lograr
 \series bold
 variar la frecuencia
 \series default
- de la señal variando el valor de 
+ de la señal por ejemplo variando el valor de 
 \series bold
 R
 \begin_inset Formula $_{1}$
@@ -387,35 +425,6 @@ R
 
 \series default
 .
-\end_layout
-
-\begin_layout Subsubsection*
-Schmitt trigger no inversor
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-V^{+}=V_{TR}(\frac{R_{3}}{R_{2}+R_{3}})+V_{ST}(\frac{R_{2}}{R_{2}+R_{3}})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-V_{ST}=\begin{cases}
-V_{ST_{MAX}} & V^{+}>0V\\
-V_{ST_{MIN}} & otro\ caso
-\end{cases}
-\]
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -472,7 +481,8 @@ El clamper logra elevar la señal por encima de 0V de forma tal que se pueda
 \begin_inset Formula $_{6}$
 \end_inset
 
- se ajustan de manera tal que la salida esté efectivamente sobre 0V.
+ se ajustan de manera tal que la salida esté efectivamente sobre 0V debido
+ a que el clampler no es ideal.
 \end_layout
 
 \begin_layout Subsection
@@ -757,7 +767,184 @@ Mediciones
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename min_f_min_d.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename min_f_max_d.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:minflim"
+
+\end_inset
+
+Límite de duty cycle para las frecuencias mínimas de operación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename max_f_min_d.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename max_f_max_d.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:maxflim"
+
+\end_inset
+
+Límite de duty cycle para las frecuencias máximas de operación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede observar en las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:minflim"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:maxflim"
+
+\end_inset
+
+ que al variar el duty cycle se ve alterada la frecuencia de la señal, lo
+ cual en principio indicaría que no son independientes, sin embargo en la
+ generalidad de los casos se puede aceptar esa mínima desviación respecto
+ de la frecuencia o sino calibrar mediante variaciones graduales la frecuencia
+ y el duty hasta que se aproxime al valor deseado.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 2osc.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:osc2"
+
+\end_inset
+
+Señales con distintos duty dado el circuito propuesto de duty configurable
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las señales en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:osc2"
+
+\end_inset
+
+ corresponden a mediciones en distintas entradas.
+ La señal naranja es la medida en la entrada de control de la llave analógica
+ y la señal azul es la medida en la entrada de control del sample and hold.
+ Poseen distintas amplitudes ya que las dos entradas requieren alimentaciones
+ distintas.
 \end_layout
 
 \end_body

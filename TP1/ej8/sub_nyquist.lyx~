@@ -898,16 +898,321 @@ $f_s$
 \end_layout
 
 \begin_layout Subsection
-Simulaciones
+Simulaciones con Llave analógica
 \end_layout
 
 \begin_layout Standard
 Se estudió mediante software el efecto sobre el espectro de la señal AM
- a muestrear al aplicar un muestreo a frecuencias subniquist.
+ a muestrear al aplicar un muestreo a distintas frecuencias subniquist utilizand
+o llave analógica con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Duty cycle=25%$
+\end_layout
+
+\end_inset
+
  Se muestran a continuación los resultados
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN1.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN2.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación Sub-niquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=3.48kHz (m=1)$
+\end_layout
+
+\end_inset
+
+(izquierda), 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.94kHz (m=2)$
+\end_layout
+
+\end_inset
+
+ (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN3.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN4.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación Sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.38kHz (m=3)$
+\end_layout
+
+\end_inset
+
+ (izquierda), 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.068kHz (m=4)$
+\end_layout
+
+\end_inset
+
+ (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Simulaciones con sample and Hold
+\end_layout
+
+\begin_layout Standard
+Se simuló sample and hold con un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+duty cycle=$5%$
+\end_layout
+
+\end_inset
+
+ para distintos valores de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N1.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N2.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=3.48kHz (m=1)$
+\end_layout
+
+\end_inset
+
+ (izquierda) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.94kHz (m=2)$
+\end_layout
+
+\end_inset
+
+ (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N3.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N4.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.38kHz (m=3)$
+\end_layout
+
+\end_inset
+
+ (izquierda), 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.068Khz (m=4)$
+\end_layout
+
+\end_inset
+
+ (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 

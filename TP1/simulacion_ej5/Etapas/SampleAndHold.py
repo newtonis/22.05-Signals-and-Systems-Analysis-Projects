@@ -31,9 +31,11 @@ class SampleAndHold(Etapa):
                     output[i] = 0
             aux += paso
             if i % 1000 == 0:
-                loadingModel.update(aux)
-                aux = 0
-        loadingModel.update(aux)
+                if loadingModel:
+                    loadingModel.update(aux)
+                    aux = 0
+        if loadingModel:
+            loadingModel.update(aux)
 
         return Senial.Senial(inputSignal.xvar, output)
 
