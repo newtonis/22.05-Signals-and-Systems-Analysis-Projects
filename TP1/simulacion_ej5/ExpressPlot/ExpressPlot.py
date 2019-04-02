@@ -45,7 +45,7 @@ class CombinedPlot:
     def addCSVPlot(self, filename, field, name, color):
         data = read_csv.read_csv_bode(filename)
         signal = csvToSignal(data, field)
-        signal.mode = "csv"
+        #signal.mode = "csv"
 
         self.plotCount.append({
             "signal": signal,

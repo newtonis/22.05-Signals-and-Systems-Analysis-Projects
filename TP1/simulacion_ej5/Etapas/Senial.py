@@ -41,7 +41,7 @@ class Senial:
         yvar = []
         index = 0
         for x in self.xvar:
-            if self.xvarStart < x < self.xvarEnd:
+            if not self.xvarEnd or self.xvarStart < x < self.xvarEnd:
                 xvar.append(x)
                 yvar.append(self.values[index])
 
