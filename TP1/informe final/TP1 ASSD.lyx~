@@ -177,7 +177,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/diente_sierra.jpg
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/diente_sierra.jpg
 	scale 120
 
 \end_inset
@@ -252,7 +252,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/sinR.png
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/sinR.png
 	scale 70
 
 \end_inset
@@ -294,7 +294,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/conRde500.png
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/conRde500.png
 	scale 70
 
 \end_inset
@@ -398,7 +398,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/VTRgen.svg
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/VTRgen.svg
 	scale 60
 
 \end_inset
@@ -474,7 +474,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/triangular.svg
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/triangular.svg
 
 \end_inset
 
@@ -583,7 +583,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/clamper.svg
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/clamper.svg
 	scale 40
 
 \end_inset
@@ -652,7 +652,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/comparadores.svg
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/comparadores.svg
 	scale 40
 
 \end_inset
@@ -1041,14 +1041,14 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/min_f_min_d.png
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/min_f_min_d.png
 	scale 60
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../EJ1/Informe/min_f_max_d.png
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/min_f_max_d.png
 	scale 60
 
 \end_inset
@@ -1100,14 +1100,14 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/max_f_min_d.png
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/max_f_min_d.png
 	scale 60
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../EJ1/Informe/max_f_max_d.png
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/max_f_max_d.png
 	scale 60
 
 \end_inset
@@ -1180,7 +1180,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../EJ1/Informe/2osc.png
+	filename ../Desktop/INFORMES_ASSD/TP1/EJ1/Informe/2osc.png
 	scale 60
 
 \end_inset
@@ -1563,7 +1563,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../Filtro LP/Dibujos/ventanaCuadrada.png
+	filename ../Desktop/INFORMES_ASSD/TP1/Filtro LP/Dibujos/ventanaCuadrada.png
 	display false
 	scale 50
 
@@ -2588,7 +2588,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../Filtro LP/Dibujos/KHNCircuito.png
+	filename ../Desktop/INFORMES_ASSD/TP1/Filtro LP/Dibujos/KHNCircuito.png
 	display false
 	scale 50
 
@@ -3303,7 +3303,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../Filtro LP/Dibujos/SallenKeyCircuito.png
+	filename ../Desktop/INFORMES_ASSD/TP1/Filtro LP/Dibujos/SallenKeyCircuito.png
 	display false
 	scale 50
 
@@ -4442,7 +4442,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../Filtro LP/Dibujos/bodeFiltrosCaso2.png
+	filename ../Desktop/INFORMES_ASSD/TP1/Filtro LP/Dibujos/bodeFiltrosCaso2.png
 	display false
 	scale 75
 
@@ -4489,7 +4489,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../Filtro LP/Dibujos/bodeFiltrosCaso3.png
+	filename ../Desktop/INFORMES_ASSD/TP1/Filtro LP/Dibujos/bodeFiltrosCaso3.png
 	display false
 	scale 75
 
@@ -4563,7 +4563,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../Filtro LP/Dibujos/bodeFiltrosZoomIn.png
+	filename ../Desktop/INFORMES_ASSD/TP1/Filtro LP/Dibujos/bodeFiltrosZoomIn.png
 	display false
 	scale 60
 
@@ -4643,7 +4643,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../Filtro LP/Dibujos/Montecarlo.pdf
+	filename ../Desktop/INFORMES_ASSD/TP1/Filtro LP/Dibujos/Montecarlo.pdf
 	display false
 	scale 40
 
@@ -4668,17 +4668,18 @@ Curvas de montecarlo
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-FALTA LO DE ARMONICOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!
-\end_layout
 
-\begin_layout Standard
+\lang spanish
 \begin_inset ERT
 status open
 
@@ -5706,7 +5707,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_01.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_01.png
 	lyxscale 30
 	scale 50
 
@@ -5714,7 +5715,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_02.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_02.png
 	lyxscale 30
 	scale 50
 
@@ -5801,7 +5802,7 @@ status open
 \lang spanish
 #REMEDIR LA IZQUIERDA
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_25.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_25.png
 	lyxscale 30
 	scale 50
 
@@ -5870,7 +5871,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_12.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_12.png
 	lyxscale 30
 	scale 50
 
@@ -5878,7 +5879,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_14.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_14.png
 	lyxscale 30
 	scale 50
 
@@ -6621,7 +6622,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_19.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_19.png
 	lyxscale 30
 	scale 50
 
@@ -6629,7 +6630,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_18.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_18.png
 	lyxscale 30
 	scale 50
 
@@ -6694,7 +6695,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_26.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_26.png
 	lyxscale 30
 	scale 50
 
@@ -6702,7 +6703,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_27.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_27.png
 	lyxscale 30
 	scale 50
 
@@ -6860,7 +6861,7 @@ status open
 \lang spanish
 #FALTA TAMBIEN ESA
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_09.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_09.png
 	lyxscale 30
 	scale 50
 
@@ -7021,7 +7022,7 @@ status open
 
 \lang spanish
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_16.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_16.png
 	lyxscale 30
 	scale 50
 
@@ -7029,7 +7030,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../simulacion_ej5/ExpressOutput/med_17.png
+	filename ../Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/med_17.png
 	lyxscale 30
 	scale 50
 
@@ -7170,7 +7171,7 @@ Item a
 \end_layout
 
 \begin_layout Standard
-Este ejercicio se entregó en la guía de sistemas discretos
+Este ejercicio se entregó en la guía de sistemas discretos.
 \end_layout
 
 \begin_layout Subsection
@@ -7353,7 +7354,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../ej9/itemB/reconstruccion1.png
+	filename ../Desktop/INFORMES_ASSD/TP1/ej9/itemB/reconstruccion1.png
 	lyxscale 50
 	scale 50
 
@@ -7361,7 +7362,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../ej9/itemB/reconstruccion1decimate.png
+	filename ../Desktop/INFORMES_ASSD/TP1/ej9/itemB/reconstruccion1decimate.png
 	lyxscale 50
 	scale 50
 
@@ -7411,7 +7412,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../ej9/itemB/downsampling1.png
+	filename ../Desktop/INFORMES_ASSD/TP1/ej9/itemB/downsampling1.png
 	scale 50
 
 \end_inset
@@ -7520,7 +7521,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../ej9/itemB/reconstruccion2.png
+	filename ../Desktop/INFORMES_ASSD/TP1/ej9/itemB/reconstruccion2.png
 	lyxscale 50
 	scale 50
 
@@ -7528,7 +7529,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../ej9/itemB/reconstruccion2decimate.png
+	filename ../Desktop/INFORMES_ASSD/TP1/ej9/itemB/reconstruccion2decimate.png
 	lyxscale 50
 	scale 50
 
@@ -7595,7 +7596,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../ej9/itemB/downsampling2.png
+	filename ../Desktop/INFORMES_ASSD/TP1/ej9/itemB/downsampling2.png
 	lyxscale 50
 	scale 50
 
@@ -7668,10 +7669,6 @@ $(-0.25 Hz, 0.25 Hz)$
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsection
 Item c
 \end_layout
@@ -7713,7 +7710,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/ej9/itemC/9c.PNG
+	filename ../Desktop/INFORMES_ASSD/TP1/ej9/itemC/9c.PNG
 
 \end_inset
 
