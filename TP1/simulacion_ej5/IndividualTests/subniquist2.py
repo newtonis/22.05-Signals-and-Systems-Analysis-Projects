@@ -13,7 +13,7 @@ from Globals import config
 def plotFunction(args):
     for i in np.arange(-3.5, 3.5, 1):
         xi = i * args["fs"]
-        args["ax"].plot([xi, xi], [0, 0.2], color="black")
+        args["ax"].plot([xi, xi], [0, 0.05], color="black")
 
 
 def SubniquistSpectrum(input, fs, filename):
@@ -70,4 +70,72 @@ def subniquistTest2():
     plt.show()
 
 
+def subniquistMediciones():
+    entrada = SignalsReadWrite.readSignalCsv(
+        "ExpressInput/Mediciones basicas/med_22.csv",
+        "1"
+    )
+    signal = SignalsReadWrite.readSignalCsv(
+        "ExpressInput/Mediciones basicas/med_22.csv",
+        "2"
+    )
+    f_entrada = FourierTransform.fourierTransform(entrada)
+    f_signal = FourierTransform.fourierTransform(signal)
+    fs = 1070
+
+    ExpressPlot.CombinedPlot()\
+        .setTitle("Mediciones espectro $f_s=1.07k$")\
+        .setXTitle("Frecuencia (Hz)")\
+        .setYTitle("Amplitud (% del total)") \
+        .extraPlot(
+        plotFunction,
+        {"fs": fs}) \
+        .addSignalPlot(
+            signal=f_entrada,
+            color="green",
+            name="Entrada"
+        )\
+        .addSignalPlot(
+        signal=f_signal,
+        color="orange",
+        name="Medicion llave analógica")\
+        .plotAndSave(
+            filename="ExpressOutput/espectro_subniquist1.png"
+        )
+
+    plt.show()
+
+    entrada = SignalsReadWrite.readSignalCsv(
+        "ExpressInput/Mediciones basicas/med_23.csv",
+        "1"
+    )
+    signal = SignalsReadWrite.readSignalCsv(
+        "ExpressInput/Mediciones basicas/med_23.csv",
+        "2"
+    )
+    f_entrada = FourierTransform.fourierTransform(entrada)
+    f_signal = FourierTransform.fourierTransform(signal)
+    fs = 1070
+
+    ExpressPlot.CombinedPlot() \
+        .setTitle("Mediciones espectro $f_s=1.07k$") \
+        .setXTitle("Frecuencia (Hz)") \
+        .setYTitle("Amplitud (% del total)") \
+        .extraPlot(
+        plotFunction,
+        {"fs": fs}) \
+        .addSignalPlot(
+        signal=f_entrada,
+        color="green",
+        name="Entrada"
+    ) \
+        .addSignalPlot(
+        signal=f_signal,
+        color="orange",
+        name="Medicion sample and hold") \
+        .plotAndSave(
+        filename="ExpressOutput/espectro_subniquist2.png"
+    )
+
+    plt.show()
 

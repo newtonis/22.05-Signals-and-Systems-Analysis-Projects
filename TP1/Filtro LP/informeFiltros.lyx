@@ -2952,7 +2952,14 @@ status open
 
 \begin_layout Plain Layout
 \align center
-#GRAFICO MODULO#
+\begin_inset Graphics
+	filename Dibujos/bodeFiltros.png
+	display false
+	scale 75
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -2974,11 +2981,6 @@ FAA - Módulo
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Como se puede observar, el filtro antialiasing pudo ser calibrado correctamente
- disminuyendo el ripple y ajustando la ganacia a su salida.
 \end_layout
 
 \begin_layout Standard
@@ -3014,9 +3016,8 @@ FR - Módulo
 \end_layout
 
 \begin_layout Standard
-En el caso del filtro recuperador, debido a las desviaciones en los valores
- de los componentes no fue posible ajustarlo correctamente para eliminar
- el ripple.
+Debido a las desviaciones en los valores de los componentes no fue posible
+ ajustarlos correctamente para eliminar el ripple.
  No obstante, como se mencionó anteriormente en el diseño, se tuvo en cuenta
  que podía ocurrir un inconveniente de este tipo, por lo que se definió
  la 

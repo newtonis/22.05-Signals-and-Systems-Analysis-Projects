@@ -8,6 +8,8 @@ from Globals import config
 class TF:
     def __init__(self):
         self.tf = []
+        self.exp = []
+        self.generalTf = None
 
     def loadTf(self):
         s = sp.symbols("s")
@@ -22,11 +24,35 @@ class TF:
         return self.tf
 
     def addTf(self, exp, s):
+        self.var = s
+        self.exp.append(exp)
+
         self.tf.append(algebra.conseguir_tf(exp, s))
+
+    def generateCombinedTf(self):
+        total = 1
+        for expi in self.exp:
+            total *= expi
+
+        self.generalTf = algebra.conseguir_tf(total, self.var)
+
+    def getGeneralTf(self):
+        if not self.generalTf:
+            self.generateCombinedTf()
+
+        return self.generalTf
 
 
 tf = None
 
+
+def getGeneralTf():
+    global tf
+    if not tf:
+        tf = TF()
+        tf.loadTf()
+
+    return tf.getGeneralTf()
 
 def getTf():
     global tf

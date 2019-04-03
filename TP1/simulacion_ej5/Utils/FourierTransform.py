@@ -29,12 +29,12 @@ def fourierTransform(senial):
     iValsNegative = []
     ampNegative = []
 
-    for i in range(len(fftOutput)//20):
+    for i in range(len(fftOutput)//4):
         iValsPositive.append(i)
         ampPositive.append(fftOutput[i])
 
     i = -1
-    while len(iValsNegative) + len(iValsPositive) < len(fftOutput)//10:
+    while len(iValsNegative) + len(iValsPositive) < len(fftOutput)//2:
         iValsNegative.append(i)
         ampNegative.append(fftOutput[i])
         i = i - 1
