@@ -33,14 +33,6 @@ def makeBodes():
             mode=ExpressPlot.MAG
         )\
         .addCSVQuotient(
-            filename="ExpressInput/Mediciones/Filtro FAA/bode_moduloFAA.csv",
-            fieldX="Frequency (Hz)",
-            fieldA="Channel 1 Magnitude (dB)",
-            fieldB="Channel 2 Magnitude (dB)",
-            color="green",
-            name="Medición FR",
-        )\
-        .addCSVQuotient(
             filename="ExpressInput/Mediciones/Filtro FR/bode_moduloFR.csv",
             fieldX="Frequency (Hz)",
             fieldA="Channel 1 Magnitude (dB)",
@@ -48,6 +40,6 @@ def makeBodes():
             color="orange",
             name="Medición FAA",
         )\
-        .plotAndSave(filename="ExpressOutput/bodeFiltrosMag.png")
+        .plotAndSave(filename="ExpressOutput/bodeFiltrosCaso2.png")
 
     plt.show()
