@@ -404,7 +404,7 @@ status open
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -879,7 +879,9 @@ omega_s}(f) )
 \backslash
 cdot 
 \backslash
-tau sinc(
+tau 
+\backslash
+cdot sinc(
 \backslash
 tau f) = 
 \backslash

@@ -724,25 +724,21 @@ cdot
 \backslash
 delta_{f_s}) = 
 \backslash
-tau 
-\backslash
-cdot sinc(
-\backslash
-tau f) 
-\backslash
-cdot 
-\backslash
 sum_{n=-
 \backslash
 infty}^{
 \backslash
 infty} 
 \backslash
-frac{
+pi 
 \backslash
-pi}{
+cdot sinc
 \backslash
-tau} 
+left(
+\backslash
+frac{n}{2}
+\backslash
+right) 
 \backslash
 cdot X(f - 
 \backslash
@@ -879,7 +875,9 @@ omega_s}(f) )
 \backslash
 cdot 
 \backslash
-tau sinc(
+tau 
+\backslash
+cdot sinc(
 \backslash
 tau f) = 
 \backslash
