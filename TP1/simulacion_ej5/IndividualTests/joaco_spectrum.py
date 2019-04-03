@@ -18,10 +18,7 @@ def joaco_spectrum():
     #config.GetConfigData().setFs(fs)
     #config.GetConfigData().setSampleCycle(5)
 
-    input = SignalsReadWrite.readSignalCsv(
-        "ExpressInput/Mediciones basicas/med_09.csv",
-        "B"
-    )
+    input = SignalsReadWrite.readSignal()
 
     inputSpectrum = FourierTransform.fourierTransform(input)
 
