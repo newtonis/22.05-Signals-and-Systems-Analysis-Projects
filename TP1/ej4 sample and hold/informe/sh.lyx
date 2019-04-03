@@ -760,6 +760,51 @@ Por
 
 \begin_layout Plain Layout
 
+
+\backslash
+begin{figure}[htb]     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+includegraphics[width=0.5
+\backslash
+textwidth]{sh/sh_10n.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+caption{Salida del sample and hold (verde) con entrada senoidal de 1.6KHz
+ (amarillo).
+ Capacitor de 10nF.}     	
+\backslash
+label{fig:sh_10n} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
 En cuanto a la tecnolog
 \backslash
 'ia de este componenete, se sigui
@@ -781,6 +826,25 @@ En cuanto a la tecnolog
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+En la figura 
+\backslash
+ref{fig:sh_10n}, se observa c
+\backslash
+'omo se comporta el integrado con el capacitor elegido.
+ La se
+\backslash
+~nal se ve mucho m
+\backslash
+'as estable en hold que para el capacitor de 100pF, sin los problemas de
+ absorci
+\backslash
+'on diel
+\backslash
+'ectrica manifestados por el de 100nF.
 \end_layout
 
 \begin_layout Plain Layout
