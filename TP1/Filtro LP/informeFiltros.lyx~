@@ -2953,7 +2953,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Dibujos/bodeFiltros.png
+	filename Dibujos/bodeFiltrosCaso2.png
 	display false
 	scale 75
 
@@ -2991,7 +2991,14 @@ status open
 
 \begin_layout Plain Layout
 \align center
-#GRAFICO MODULO#
+\begin_inset Graphics
+	filename Dibujos/bodeFiltrosCaso3.png
+	display false
+	scale 75
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -3016,9 +3023,8 @@ FR - Módulo
 \end_layout
 
 \begin_layout Standard
-En el caso del filtro recuperador, debido a las desviaciones en los valores
- de los componentes no fue posible ajustarlo correctamente para eliminar
- el ripple.
+Debido a las desviaciones en los valores de los componentes no fue posible
+ ajustarlos correctamente para eliminar el ripple.
  No obstante, como se mencionó anteriormente en el diseño, se tuvo en cuenta
  que podía ocurrir un inconveniente de este tipo, por lo que se definió
  la 
@@ -3037,7 +3043,51 @@ $f_p$
  de la señal.
  Como los aspectos a analizar se centran en el muestreo y recuperación,
  no se lo consideró un problema grave.
- En la siguiente gráfica se muestra el análisis de montecarlo tomando como
+ En la siguiente gráfica se muestran ambas curvas, de forma tal que se observe
+ que tan similares resultaron en la práctica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Dibujos/bodeFiltrosZoomIn.png
+	display false
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+FAA y FR
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la siguiente gráfica se muestra el análisis de montecarlo tomando como
  referencia una tolerancia de 
 \begin_inset ERT
 status open
@@ -3078,7 +3128,7 @@ status open
 \begin_inset Graphics
 	filename Dibujos/Montecarlo.pdf
 	display false
-	scale 60
+	scale 40
 
 \end_inset
 

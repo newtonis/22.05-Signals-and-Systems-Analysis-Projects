@@ -1241,7 +1241,7 @@ $m=4 (f_s=1.07Khz)$
 
 \end_inset
 
-
+ con llave analógica con duty 25%, y sample and hold con duty 5%
 \end_layout
 
 \begin_layout Standard
@@ -1301,7 +1301,25 @@ $f_s=1.07Khz$
 
 \begin_layout Standard
 Se observa que se verificó que la llave analógica atenuó en una medida mucho
- mayor las frecuencias 
+ mayor las frecuencias bajas, que fue lo mismo que se observó en la simulación.
+ Esto se debe a que la llave analogica en general tiende a disminuir en
+ una medida mucho mayor el valor medio de la señal debido a que produce
+ que la señal sea nula en una importante proporción del periodo, al mismo
+ tiempo que provoca una cantidad considerable de saltos abruptos en la señal,
+ lo cuál se traduce en la prescencia de frecuencias altas que en la entrada
+ no estaban.
+\end_layout
+
+\begin_layout Standard
+El sample and hold en ese sentido es menos invasivo, debido a que no produce
+ saltos abrutos tan pronunciados y por lo tanto no ampifica tanto las altas
+ frecuencias, pero no obstante amplifica en una mayor medida la continua
+ ya que produce que la señal permanezca constante en algunos intervalos
+ de tiempo.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body

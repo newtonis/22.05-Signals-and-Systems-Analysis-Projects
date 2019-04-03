@@ -31,5 +31,9 @@ SignalGenerator.GenerateCos(f0, 0, 2/f0, 2)
 # SignalGenerator.GenerateAM(2*f0, 0.2*f0, 0, 10/(0.2*f0), 1/2)
 # SignalGenerator.GenerateAM(2*0.8*fp, 2*0.08*f0, 0, 10/(2*0.08*fp), 1/2)
 
+SignalGenerator.GenerateAM(2400, 240, 0, 10/(2*0.08*fp), 1/2)
+SignalGenerator.GenerateAM(360, 240, 0, 10/(2*0.08*fp), 1/2)
+#SignalGenerator.GenerateAM(240, 0, 0, 10/(2*0.08*fp), 1/2)
+
 #SignalGenerator.GenerateSquare(0.001, 0.002)
 
