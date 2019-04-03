@@ -396,7 +396,14 @@ status open
 
 \begin_layout Plain Layout
 \align center
-#REMEDIR LA IZQUIERDA
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6b_ll_exp.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_25.png
 	lyxscale 30
@@ -724,25 +731,21 @@ cdot
 \backslash
 delta_{f_s}) = 
 \backslash
-tau 
-\backslash
-cdot sinc(
-\backslash
-tau f) 
-\backslash
-cdot 
-\backslash
 sum_{n=-
 \backslash
 infty}^{
 \backslash
 infty} 
 \backslash
-frac{
+pi 
 \backslash
-pi}{
+cdot sinc
 \backslash
-tau} 
+left(
+\backslash
+frac{n}{2}
+\backslash
+right) 
 \backslash
 cdot X(f - 
 \backslash
@@ -1371,7 +1374,14 @@ status open
 
 \begin_layout Plain Layout
 \align center
-#FALTA TAMBIEN ESA
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6c_ll_sen.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_09.png
 	lyxscale 30
