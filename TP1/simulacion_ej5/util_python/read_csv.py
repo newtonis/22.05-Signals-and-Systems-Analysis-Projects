@@ -29,9 +29,10 @@ def read_csv_bode(filename):
                 try:
                     if not content in data:
                         data[content] = []
-
                     data[content].append(float(row[content]))
                 except ValueError:
+                    pass
+                except TypeError:
                     pass
 
     return data

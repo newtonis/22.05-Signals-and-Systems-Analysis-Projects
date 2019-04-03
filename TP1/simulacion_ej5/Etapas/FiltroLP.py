@@ -3,6 +3,7 @@ from scipy import signal
 from Globals import tf
 from Globals import config
 from Etapas.Senial import Senial
+from numpy import multiply
 
 
 class FiltroLP(Etapa):
@@ -19,9 +20,13 @@ class FiltroLP(Etapa):
         for tfi in tfList:
             t, y, x = signal.lsim(tfi, actual.values, actual.xvar)
             actual = Senial(t, y)
-            loadingModel.update(paso)
+            if loadingModel:
+                loadingModel.update(paso)
 
         return actual
+
+    def getBode(self, wAsked):
+        return signal.bode(tf.getGeneralTf(), wAsked)
 
 
 def getFiltroLP():
