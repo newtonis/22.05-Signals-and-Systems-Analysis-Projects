@@ -934,7 +934,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN1.png
+	filename ExpressOutput/simulacionN1.png
 	lyxscale 20
 	scale 50
 
@@ -942,7 +942,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN2.png
+	filename ExpressOutput/simulacionN2.png
 	lyxscale 20
 	scale 50
 
@@ -1000,7 +1000,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN3.png
+	filename ExpressOutput/simulacionN3.png
 	lyxscale 20
 	scale 50
 
@@ -1008,7 +1008,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN4.png
+	filename ExpressOutput/simulacionN4.png
 	lyxscale 20
 	scale 50
 
@@ -1098,7 +1098,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N1.png
+	filename ExpressOutput/simulacionSH_N1.png
 	lyxscale 20
 	scale 50
 
@@ -1106,7 +1106,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N2.png
+	filename ExpressOutput/simulacionSH_N2.png
 	lyxscale 20
 	scale 50
 
@@ -1164,7 +1164,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N3.png
+	filename ExpressOutput/simulacionSH_N3.png
 	lyxscale 20
 	scale 50
 
@@ -1172,7 +1172,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N4.png
+	filename ExpressOutput/simulacionSH_N4.png
 	lyxscale 20
 	scale 50
 
@@ -1254,7 +1254,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/espectro_subniquist1.png
+	filename ExpressOutput/espectro_subniquist1.png
 	lyxscale 20
 	scale 50
 
@@ -1262,7 +1262,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/espectro_subniquist2.png
+	filename ExpressOutput/espectro_subniquist2.png
 	lyxscale 20
 	scale 50
 
