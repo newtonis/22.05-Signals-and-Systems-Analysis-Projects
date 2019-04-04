@@ -396,7 +396,14 @@ status open
 
 \begin_layout Plain Layout
 \align center
-#REMEDIR LA IZQUIERDA
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6b_ll_exp.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_25.png
 	lyxscale 30
@@ -1367,7 +1374,14 @@ status open
 
 \begin_layout Plain Layout
 \align center
-#FALTA TAMBIEN ESA
+\begin_inset Graphics
+	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6c_ll_sen.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_09.png
 	lyxscale 30
@@ -1404,7 +1418,9 @@ Caso con llave analógica (muestreo natural) a la izquierda, y muestreo con
 Se observa que efectivamente, tanto en simulación como medición hay aliasing
  entre las repeticiones del espectro de la senoidal original.
  Al pasar por el filtro recuperador, se obtuvieron dos espectros solapados,
- produciendo una senoidal montada sobre otra, como se mostró en la figura.
+ produciendo una senoidal montada sobre otra, como se observa en el caso
+ con sample and hold.
+ En el caso con llave analógica, se obtuvo una señal modulada en amplitud.
 \end_layout
 
 \begin_layout Subsection
