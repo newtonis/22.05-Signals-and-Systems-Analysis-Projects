@@ -3,7 +3,7 @@
 
 \usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
 
-\usepackage[total={6in, 9in}]{geometry}
+%\usepackage[total={6in, 9in}]{geometry}
 \usepackage{amsmath}
 %\usepackage{amsfonts}
 %\usepackage{amssymb}
@@ -48,34 +48,51 @@ Sin embargo, hay que tener en cuenta que el S\&H debe estar en hold por m\'as ti
 
 Considerando que la m\'axima frecuencia que entra en el sistema por $X_C$ es $f_p+f_m=1.1$kHz, por Nyquist la frecuencia de sampleo debe ser mayor a 2.2kHz, y se decidi\'o establecerla en 3kHz, obteni\'endose un per\'iodo de 167$\mu$s. Por otro lado, sabemos por las mediciones realizadas en el LF398 que el tiempo de adquisici\'on del mismo es de 8$\mu$s, pero dejando un margen de error establecemos que no queremos un tiempo de sample inferior a 16$\mu$s. Se obtiene, entonces, que el S\&H debe estar en sample el 9.6\% del tiempo, y por lo tanto se toma 90\% de duty cycle para la llave anal\'ogica. 
 
-Se procedi\'o, pues a realizar mediciones en las condiciones ya mencionadas, a saber: sin el filtro antialiasing, con el sample and hold y la llave anal\'ogica, con $f_s=3$kHz, y un duty cycle del 90\%. Las mismas se observan en las figuras \ref{fig:ej7_llave} y \ref{fig:ej7_out}, que son la salida del sistema sin y con el filtro recuperador respectivamente, con $X_C$ en la entrada.
+Se procedi\'o, pues a realizar mediciones en las condiciones ya mencionadas, a saber: sin el filtro antialiasing, con el sample and hold y la llave anal\'ogica, con $f_s=3$kHz, y un duty cycle del 90\%, con $X_C$ en la entrada. El espectro de dicha se\~nal se observa en la figura \ref{fig:ej7_espectro_in}.
 
-\begin{figure}[htp]
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{ej7_meds/7_in.png}
+	\caption{Espectro de la entrada, medido con el analizador de espectro y simulado}
+	\label{fig:ej7_espectro_in}
+\end{figure}
+
+En primer lugar, se observa en la figura \ref{fig:ej7_llave} que, si bien la forma de la funci\'on es, a grandes rasgos, la misma (un tren de pulsos modulados por una AM), hay diferencias importantes en el alto de los pulsos. Esto se debe a que no se pudieron replicar exactamente las condiciones de la medici\'on, en cuanto a la fase entre la funci\'on y el clock de la llave y del S\&H, la cual no es una variable que se tuvo en cuenta en la simulaci\'on ni podamos controlar en la medici\'on. 
+
+Por otro lado, se observa en la medici\'on que el valor de la salida no se mantiene perfectamente constante en los momentos de hold. Considerando que s\'olo var\'ia unos pocos mV (menos de 5), esto puede atribuirse al piso de ruido del osciloscopio.
+
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ej7_meds/med_21.png}
 	\caption{Se\~nal AM a la salida de la llave anal\'ogica}
 	\label{fig:ej7_llave}
 \end{figure}
 
-En primer lugar, se observa en la figura \ref{fig:ej7_llave} que, si bien la forma de la funci\'on es, a grandes rasgos, la misma (un tren de pulsos modulados por una AM), hay diferencias improtantes en el alto de los pulsos. Esto se debe a que no se pudieron replicar exactamente las condiciones de la medici\'on, en cuanto a la fase entre la funci\'on y el clock de la llave y el S\&H, la cual no es una variable que se tuvo en cuenta en la simulaci\'on ni podamos controlar en la medici\'on. Asimismo, las diferencias entre el filtro real y el simulado provocan una diferencia en la atenuaci\'on de la salida. 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{ej7_meds/7_llave.png}
+	\caption{Espectro a la salida de la llave anal\'ogica, medido con el analizador de espectro y simulado}
+	\label{fig:ej7_espectro_llave}
+\end{figure}
 
-Por otro lado, se observa en la medici\'on que el valor de la salida no se mantiene perfectamente constante en los momentos de hold. Considerando que s\'olo var\'ia unos pocos mV (menos de 5), esto puede atribuirse al piso de ruido del osciloscopio.
+En cuanto a la frecuencia (figura \ref{fig:ej7_espectro_llave}), se observa que el espectro de la entrada se replica peri\'odicamente, pero con distintas atenuaciones. Este fen\'omeno puede explicarse recordando la modelizaci\'on matem\'atica del muestreo instant\'aneo: convoluci\'on entre la se\~nal muestreada idealmente (con deltas) y un pulso. Al muestrear idealmente la se\~nal, su espectro se hace peri\'odico, y al convolucionar esta nueva se\~nal con un pulso, en frecuencia se multiplica su espectro por un sinc. Por lo tanto, la periodicidad de este espectro proviene de discretizar la se\~nal en el tiempo, mientras que las distintas alturas de cada repetici\'on se deben  a la modulaci\'on por un sinc.
 
-\begin{figure}[htp]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ej7_meds/med_20.png}
 	\caption{Se\~nal AM a la salida del filtro recuperador}
 	\label{fig:ej7_out}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.7\textwidth]{ej7_meds/7_in.png}
-	\includegraphics[width=0.7\textwidth]{ej7_meds/7_llave.png}
-	\includegraphics[width=0.7\textwidth]{ej7_meds/7_out.png}
-	\caption{Espectros medidos con el analizador de espectro y simulados: entrada (arriba), salida de la llave anal\'ogica (centro), salida }
-	\label{fig:ej7_out}
+	\includegraphics[width=0.9\textwidth]{ej7_meds/7_out.png}
+	\caption{Espectro de la salida del filtro recuperador, medido con el analizador de espectro y simulado}
+	\label{fig:ej7_espectro_out}
 \end{figure}
 
+Por \'ultimo, podemos observar la se\~nal a la salida del filtro recuperador en las figuras \ref{fig:ej7_out} (en el dominio del tiempo) y \ref{fig:ej7_espectro_out} (en el de la frecuencia). Al atenuar m\'as de 40dB las r\'eplicas del espectro de la se\~nal de entrada, la de salida deja de estar discretizada en el tiempo, y de esta manera se recupera la se\~nal de entrada.
+
+Si bien en la salida se conserva, en l\'ineas generales, la forma de la entrada, resulta claro de las mediciones espectrales que la se\~nal ha sido distorsionada, puesto que la potencia en $f_p+f_m$ no es igual a la de $f_p-f_m$. Esto puede explicarse teniendo en cuenta que en el filtro recuperador implementado no se logr\'o ganancia constante en la banda pasante, con lo cual cada componente de frecuencia se aten\'ua de manera diferente. Esto explica tambi\'en las diferencias entre la tensi\'on m\'axima en la simulaci\'on y en la medici\'on: mientras que idealmente el filtro planteado tiene ganancia pr\'acticamente unitaria en estas frecuencias, debido a la dispersi\'on en los valores de los componentes utilizados, no se logr\'o 
 
 \end{document}
