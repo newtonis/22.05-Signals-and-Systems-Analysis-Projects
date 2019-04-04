@@ -6,11 +6,19 @@
 \origin unavailable
 \textclass article
 \begin_preamble
+\usepackage{fancyhdr}
+\usepackage{lscape}
 \usepackage{units}
+\pagestyle{fancy}
+\lhead{Análisis de Señales y Sistemas Digitales 22.05}
+\chead{TPL1}
+\rhead{ITBA}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -58,18 +66,15 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2cm
-\topmargin 2cm
+\leftmargin 2.25cm
+\topmargin 2.25cm
 \rightmargin 2cm
 \bottommargin 2cm
-\headheight 2cm
-\headsep 2cm
-\footskip 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -108,68 +113,48 @@ newpage
 \end_layout
 
 \begin_layout Section
-
-\lang spanish
 Oscilador
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Introducción teórica
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En esta sección el objetivo es generar un oscilador con frecuencia y duty
- cycle variables e independientes uno de otro.
+ cicle variables e independientes uno de otro.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Frente a esta problemática se presentaron dos posibles soluciones:
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Generar una señal diente de sierra con frecuencia variable
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Generar una señal triangular con frecuencia variable
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-Para la opción de duty cycle se optó por utilizar un comparador.
+Para la opción de duty cicle se optó por utilizar un comparador.
  La señal generada excita una de las entradas del comparador y en la otra
  se coloca una tension referencia.
- El duty cycle de la señal a la salida del comparador será regulada mediante
+ El duty cicle de la señal a la salida del comparador será regulada mediante
  la variación de la referencia.
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Circuitos para generar las señales deseadas
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Diente de sierra
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -177,8 +162,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/diente_sierra.jpg
 	scale 120
@@ -189,13 +172,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Generador de onda diente de sierra
 \end_layout
 
@@ -214,37 +193,27 @@ Generador de onda diente de sierra
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang spanish
 Problema del diente de sierra con LM555
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El capacitor se descarga a través del transistor interno del 555, dando
  lugar a una gran pendiente negativa en la señal y como se está midiendo
  sobre un capacitor, esto resulta en una gran demanda de corriente.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Dado que se carga el capacitor con una fuente de corriente constante, el
  mismo va a extraer corriente a la fuente, haciendo que la tensión de alimentaci
 ón varíe.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Estos efectos se pueden mitigar, primero colocando una resistencia en serie
  en el pin de descarga del LM555 y luego poniendo un capacitor de desacople.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -252,8 +221,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/sinR.png
 	scale 70
@@ -264,13 +231,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Circuito sin resistencia en serie con el pin de descarga
 \end_layout
 
@@ -285,8 +248,6 @@ Circuito sin resistencia en serie con el pin de descarga
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -294,8 +255,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/conRde500.png
 	scale 70
@@ -306,13 +265,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Circuito con resistencia de 500
 \begin_inset Formula $\Omega$
 \end_inset
@@ -331,24 +286,18 @@ Circuito con resistencia de 500
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El problema principal que surge con la colocación de la resistencia es que
- si bien se logra suavizar la curva, a la hora de variar el duty cycle con
- el comparador se complica llegar al duty cycle límite pedido por consigna
+ si bien se logra suavizar la curva, a la hora de variar el duty cicle con
+ el comparador se complica llegar al duty cicle límite pedido por consigna
  (esto es porque los cambios son muy pequeños mientras decrece la señal
  acercandose a 0V).
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang spanish
 Justificación del circuito el elegido
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Experimentalmente se pudo comparar el comportamiento de los dos circuitos
  propuestos a alta frecuencia y se pudo ver que a medida que aumenta la
  frecuencia se va deformando la señal diente de sierra mientras que la señal
@@ -357,8 +306,6 @@ Experimentalmente se pudo comparar el comportamiento de los dos circuitos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -375,22 +322,16 @@ newpage
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Señal triangular
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A continuación se deja una figura del circuito propuesto con un bloque integrado
 r, un schmitt trigger no inversor y un bloque que independiza parte del
  circuito de VCC.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -398,8 +339,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/VTRgen.svg
 	scale 60
@@ -410,13 +349,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Generador de onda triangular
 \end_layout
 
@@ -431,8 +366,6 @@ Generador de onda triangular
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 V_{TR}=-V_{IN}\frac{1}{sC_{1}R_{1}}
@@ -444,8 +377,6 @@ V_{TR}=-V_{IN}\frac{1}{sC_{1}R_{1}}
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Si ajustamos la ventana del schmitt trigger adecuadamente (es decir, dentro
  del rango de alimentación), 
 \begin_inset Formula $V_{ST}$
@@ -459,14 +390,10 @@ Si ajustamos la ventana del schmitt trigger adecuadamente (es decir, dentro
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Analizando medio período:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -474,8 +401,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/triangular.svg
 
@@ -485,13 +410,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Señal triangular resultante
 \end_layout
 
@@ -510,8 +431,6 @@ Señal triangular resultante
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \frac{T}{2}\frac{1}{C\cdot R_{1}}V_{IN}=V_{Ventana}
@@ -523,8 +442,6 @@ Señal triangular resultante
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \frac{T}{2}\frac{1}{C\cdot R_{1}}V_{ST}=V_{ST}\frac{R_{2}}{R_{3}}
@@ -536,8 +453,6 @@ Señal triangular resultante
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 f=\left(\frac{1}{2C_{1}R_{1}}\right)\frac{R_{3}}{R_{2}}
@@ -549,8 +464,6 @@ f=\left(\frac{1}{2C_{1}R_{1}}\right)\frac{R_{3}}{R_{2}}
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 De esta forma se puede lograr 
 \series bold
 variar la frecuencia
@@ -567,15 +480,11 @@ R
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang spanish
 Clamper
 \end_layout
 
 \begin_layout Standard
 \align center
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -583,8 +492,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/clamper.svg
 	scale 40
@@ -595,13 +502,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Circuito clamper
 \end_layout
 
@@ -620,8 +523,6 @@ Circuito clamper
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El clamper logra elevar la señal por encima de 0V de forma tal que se pueda
  aprovechar la excursión de la señal.
  R
@@ -637,14 +538,10 @@ El clamper logra elevar la señal por encima de 0V de forma tal que se pueda
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Comparador
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -652,8 +549,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/comparadores.svg
 	scale 40
@@ -664,13 +559,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Circuito comparador
 \end_layout
 
@@ -685,8 +576,6 @@ Circuito comparador
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Variando P
 \begin_inset Formula $_{9}$
 \end_inset
@@ -697,7 +586,7 @@ Variando P
 
  se pueden 
 \series bold
-regular los duty cycle
+regular los duty cicle
 \series default
  
 \series bold
@@ -707,15 +596,11 @@ de la señales
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El propósito de este último circuito es generar dos señales con misma base
  de tiempo, desfasadas 180° y con duty regulable.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 De esta forma se conecta V
 \begin_inset Formula $_{OUT_{1}}$
 \end_inset
@@ -732,14 +617,10 @@ en la entrada de la llave analógica y V
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Valores de componentes
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
@@ -755,8 +636,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 
 \begin_layout Standard
 \align center
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features tabularvalignment="middle">
@@ -767,8 +646,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $R_{2},R_{7},R_{8}$
 \end_inset
 
@@ -781,8 +658,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $1K\Omega$
 \end_inset
 
@@ -797,8 +672,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $R_{3}$
 \end_inset
 
@@ -811,8 +684,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $8.2K\Omega$
 \end_inset
 
@@ -827,8 +698,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $V_{ST_{MAX}}$
 \end_inset
 
@@ -841,8 +710,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $5.8V$
 \end_inset
 
@@ -857,8 +724,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $V_{ST_{MIN}}$
 \end_inset
 
@@ -871,8 +736,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $-5.8V$
 \end_inset
 
@@ -887,8 +750,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $V_{CC}$
 \end_inset
 
@@ -901,8 +762,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $9V$
 \end_inset
 
@@ -917,8 +776,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $C_{1}$
 \end_inset
 
@@ -931,8 +788,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $10nf\ y\ 220nf$
 \end_inset
 
@@ -947,8 +802,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $C_{2}$
 \end_inset
 
@@ -961,8 +814,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $100nf$
 \end_inset
 
@@ -980,8 +831,6 @@ V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 I_{O_{TL084}}|_{MAX}\approx30mA
@@ -993,8 +842,6 @@ I_{O_{TL084}}|_{MAX}\approx30mA
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
@@ -1006,8 +853,6 @@ R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 C
 \begin_inset Formula $_{1}$
 \end_inset
@@ -1026,14 +871,10 @@ C
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Mediciones
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -1041,8 +882,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/min_f_min_d.png
 	scale 60
@@ -1060,20 +899,16 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:minflim"
 
 \end_inset
 
-Límite de duty cycle para las frecuencias mínimas de operación
+Límite de duty cicle para las frecuencias mínimas de operación
 \end_layout
 
 \end_inset
@@ -1091,8 +926,6 @@ Límite de duty cycle para las frecuencias mínimas de operación
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -1100,8 +933,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/max_f_min_d.png
 	scale 60
@@ -1119,20 +950,16 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:maxflim"
 
 \end_inset
 
-Límite de duty cycle para las frecuencias máximas de operación
+Límite de duty cicle para las frecuencias máximas de operación
 \end_layout
 
 \end_inset
@@ -1146,8 +973,6 @@ Límite de duty cycle para las frecuencias máximas de operación
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se puede observar en las figuras 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1162,7 +987,7 @@ reference "fig:maxflim"
 
 \end_inset
 
- que al variar el duty cycle se ve alterada la frecuencia de la señal, lo
+ que al variar el duty cicle se ve alterada la frecuencia de la señal, lo
  cual en principio indicaría que no son independientes, sin embargo en la
  generalidad de los casos se puede aceptar esa mínima desviación respecto
  de la frecuencia o sino calibrar mediante variaciones graduales la frecuencia
@@ -1171,8 +996,6 @@ reference "fig:maxflim"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -1180,8 +1003,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../EJ1/Informe/2osc.png
 	scale 60
@@ -1192,13 +1013,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:osc2"
@@ -1224,8 +1041,6 @@ Señales con distintos duty dado el circuito propuesto de duty configurable
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las señales en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1241,8 +1056,6 @@ reference "fig:osc2"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1259,20 +1072,14 @@ newpage
 \end_layout
 
 \begin_layout Section
-
-\lang spanish
 Filtros
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Antialiasing
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para el muestreo de señales analógicas, partimos de la base que éstas deben
  poseer un ancho de banda limitado, de manera tal que de acuerdo al teorema
  de Nyquist del muestreo, la frecuencia de muestreo debe ser el doble del
@@ -1282,8 +1089,6 @@ Para el muestreo de señales analógicas, partimos de la base que éstas deben
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1300,8 +1105,6 @@ geq 2B$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para observar mejor esto, llamando al período de muestreo 
 \begin_inset ERT
 status open
@@ -1317,8 +1120,6 @@ $T$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1343,8 +1144,6 @@ delta(t-nT)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para el muestreo de una señal en tiempo continuo 
 \begin_inset ERT
 status open
@@ -1360,8 +1159,6 @@ $x(t)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1390,8 +1187,6 @@ delta(t-nT)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde 
 \begin_inset ERT
 status open
@@ -1408,8 +1203,6 @@ $x^{*}(t)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1434,14 +1227,10 @@ omega)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1484,8 +1273,6 @@ pi}{T}$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Es decir que al convolucionar el espectro de la señal muestreada con el
  tren de deltas se obtiene el espectro de dicha señal replicado cada 
 \begin_inset ERT
@@ -1507,8 +1294,6 @@ omega_s$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La función del filtro antialiasing pasa bajos consiste entonces en, teniendo
  una frecuencia de muestreo fija, limitar en banda a la señal de entrada,
  de manera tal que si la señal que ingresa al sistema tiene un ancho 
@@ -1554,8 +1339,6 @@ frac{B}{2}$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -1563,8 +1346,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../Filtro LP/Dibujos/ventanaCuadrada.png
 	display false
@@ -1576,13 +1357,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Transferencia del ideal del filtro
 \end_layout
 
@@ -1597,14 +1374,10 @@ Transferencia del ideal del filtro
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Recuperador
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una vez muestreada la señal, como se mencionó anteriormente se tiene el
  espectro de la misma replicado en cada posición del tren de pulsos, separados
  en 
@@ -1666,8 +1439,6 @@ frac{B}{2}$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para recuperar el espectro en banda base, se multiplica la transferencia
  del filtro 
 \begin_inset ERT
@@ -1686,8 +1457,6 @@ omega)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1710,8 +1479,6 @@ omega)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el filtro real, al no tener pendiente infinita en 
 \begin_inset ERT
 status open
@@ -1729,27 +1496,19 @@ $f_p$
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Diseño
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Parámetros
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para el diseño de los filtros, se tienen en cuenta los siguientes parámetros
  de frecuencias y atenuación:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
@@ -1757,8 +1516,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="4">
 <features tabularvalignment="middle">
@@ -1771,8 +1528,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1792,8 +1547,6 @@ $f_p$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1813,8 +1566,6 @@ $A_p$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1834,8 +1585,6 @@ $f_a$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1857,8 +1606,6 @@ $A_a$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1878,8 +1625,6 @@ $1.5KHz$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1899,8 +1644,6 @@ $1dB$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1920,8 +1663,6 @@ $2.25KHz$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -1946,13 +1687,9 @@ $41dB$
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Parámetros de diseño
 \end_layout
 
@@ -1971,8 +1708,6 @@ Parámetros de diseño
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La elección de dichos valores se basa en poder abarcar, con un poco de margen,
  el ancho de banda de las señales a utilizar para ingresar al sistema y
  posterior recuperación.
@@ -2061,14 +1796,10 @@ $1.5KHz$
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Aproximación teórica
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para obtener la función transferencia teórica del filtro, se utilizó la
  aproximación de Legendre, dado que utilizando la misma se obtiene un orden
  razonable para la transferencia (lo cual facilita la implementación y calibraci
@@ -2081,8 +1812,6 @@ Para obtener la función transferencia teórica del filtro, se utilizó la
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Considerando los parámetros dados, se realizó la aproximación utilizando
  una plantilla un poco más reestrictiva, para tener un margen de corrección
  a la hora de realizar la implementación real.
@@ -2102,8 +1831,6 @@ $N = 10$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2126,8 +1853,6 @@ cdot S^{n}}$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde de acuerdo a los coeficientes 
 \begin_inset ERT
 status open
@@ -2144,8 +1869,6 @@ $a_n$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
@@ -2153,8 +1876,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
 <features tabularvalignment="middle">
@@ -2166,8 +1887,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Etapa
 \end_layout
 
@@ -2177,8 +1896,6 @@ Etapa
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2198,8 +1915,6 @@ $f_0$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2221,8 +1936,6 @@ $Q$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1
 \end_layout
 
@@ -2232,8 +1945,6 @@ $Q$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2253,8 +1964,6 @@ $1621.86Hz$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2276,8 +1985,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 2
 \end_layout
 
@@ -2287,8 +1994,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2308,8 +2013,6 @@ $1473Hz$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2331,8 +2034,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 3
 \end_layout
 
@@ -2342,8 +2043,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2363,8 +2062,6 @@ $1214.37Hz$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2386,8 +2083,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 4
 \end_layout
 
@@ -2397,8 +2092,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2418,8 +2111,6 @@ $902.65Hz$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2441,8 +2132,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 5
 \end_layout
 
@@ -2452,8 +2141,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2473,8 +2160,6 @@ $658.14Hz$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2499,13 +2184,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Detalles de cada etapa
 \end_layout
 
@@ -2520,27 +2201,19 @@ Detalles de cada etapa
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Etapas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para la implementación se utilizaron una celda KHN y celdas Sallen-Key,
  implementadas en los operacionales integrados TL082 yTL084.
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 Etapa 1 - Celda KHN
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para la primer etapa, dado que el 
 \begin_inset ERT
 status open
@@ -2579,8 +2252,6 @@ $Q$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -2588,8 +2259,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../Filtro LP/Dibujos/KHNCircuito.png
 	display false
@@ -2601,13 +2270,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Celda KHN
 \end_layout
 
@@ -2622,14 +2287,10 @@ Celda KHN
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Considerando para el diseño lo siguiente:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2660,14 +2321,10 @@ cdot C}$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 De forma tal que queda:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2682,8 +2339,6 @@ $$R_4 = R_3(2Q-1)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Por lo que asignando valores para 
 \begin_inset ERT
 status open
@@ -2732,8 +2387,6 @@ $R_6$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
@@ -2741,8 +2394,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
 <features tabularvalignment="middle">
@@ -2754,8 +2405,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Componente
 \end_layout
 
@@ -2765,8 +2414,6 @@ Componente
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Valor calculado
 \end_layout
 
@@ -2776,8 +2423,6 @@ Valor calculado
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Normalizado
 \end_layout
 
@@ -2789,8 +2434,6 @@ Normalizado
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2810,8 +2453,6 @@ $C$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2831,8 +2472,6 @@ $100nF$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2854,8 +2493,6 @@ $100nF$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2875,8 +2512,6 @@ $R_1 = R_2$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2898,8 +2533,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2923,8 +2556,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2944,8 +2575,6 @@ $R_3$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2967,8 +2596,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -2992,8 +2619,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3013,8 +2638,6 @@ $R_4$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3036,8 +2659,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3074,8 +2695,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3095,8 +2714,6 @@ $R_5 = R_6$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3118,8 +2735,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3146,13 +2761,9 @@ Omega$
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Valores de componentes
 \end_layout
 
@@ -3171,8 +2782,6 @@ Valores de componentes
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Dado que 
 \begin_inset ERT
 status open
@@ -3211,8 +2820,6 @@ $R_2$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para el ajuste de 
 \begin_inset ERT
 status open
@@ -3250,8 +2857,6 @@ $R_4$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Dado que el sobrepico de la etapa alcanza los 25dB, se añadió a la salida
  de la misma un divisor resistivo fijo (separado de la etapa siguiente con
  un buffer) para atenuar la señal 20dB, ya que las 2 etapas siguientes tienen
@@ -3270,14 +2875,10 @@ $Q$
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 Etapas 2, 3, 4 y 5 - Celda Sallen Key
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para las etapas siguientes, se optó por implementarlas utilizando la celda
  Sallen Key, dado que los 
 \begin_inset ERT
@@ -3294,8 +2895,6 @@ $Q$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -3303,8 +2902,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../Filtro LP/Dibujos/SallenKeyCircuito.png
 	display false
@@ -3316,13 +2913,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Celda Sallen-Key
 \end_layout
 
@@ -3341,8 +2934,6 @@ Celda Sallen-Key
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Tomando 
 \begin_inset ERT
 status open
@@ -3359,8 +2950,6 @@ $R_1 = R_2$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3393,8 +2982,6 @@ right)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se eligen los valores de 
 \begin_inset ERT
 status open
@@ -3444,8 +3031,6 @@ $R_B$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
@@ -3453,8 +3038,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="7">
 <features tabularvalignment="middle">
@@ -3470,8 +3053,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Etapa
 \end_layout
 
@@ -3481,8 +3062,6 @@ Etapa
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3502,8 +3081,6 @@ $C$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3523,8 +3100,6 @@ $R$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3544,8 +3119,6 @@ $R - Norm.$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3565,8 +3138,6 @@ $R_A$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3586,8 +3157,6 @@ $R_B$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3609,8 +3178,6 @@ $R_B - Norm.$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 2
 \end_layout
 
@@ -3620,8 +3187,6 @@ $R_B - Norm.$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3641,8 +3206,6 @@ $100nF$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3664,8 +3227,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3700,8 +3261,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3723,8 +3282,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3746,8 +3303,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3784,8 +3339,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 3
 \end_layout
 
@@ -3795,8 +3348,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3816,8 +3367,6 @@ $100nF$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3839,8 +3388,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3875,8 +3422,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3898,8 +3443,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3921,8 +3464,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3959,8 +3500,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 4
 \end_layout
 
@@ -3970,8 +3509,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -3991,8 +3528,6 @@ $100nF$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4014,8 +3549,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4050,8 +3583,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4073,8 +3604,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4096,8 +3625,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4121,8 +3648,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 5
 \end_layout
 
@@ -4132,8 +3657,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4153,8 +3676,6 @@ $100nF$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4176,8 +3697,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4199,8 +3718,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4222,8 +3739,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4245,8 +3760,6 @@ Omega$
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -4273,13 +3786,9 @@ Omega$
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Valores de componentes
 \end_layout
 
@@ -4298,8 +3807,6 @@ Valores de componentes
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se buscó utilizar un mismo valor de capacitor para todos los 
 \begin_inset ERT
 status open
@@ -4366,14 +3873,10 @@ Omega$
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Acoplamiento y ajuste de ganancia
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Dado que las impedancias de entrada de las etapas con Sallen-Key resultan
  mayores a 
 \begin_inset ERT
@@ -4407,21 +3910,15 @@ Omega$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A la salida del filtro, se colocó otro divisor resistivo, acoplado a un
  buffer de salida, con un preset para realizar un ajuste a la ganancia general.
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Respuesta en frecuencia
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Teniendo la implementación real de los dos filtros, se midió la respuesta
  en frecuencia (módulo), comparando con la teórica y la simulada en las
  siguientes gráficas.
@@ -4433,8 +3930,6 @@ ción.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -4442,8 +3937,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../Filtro LP/Dibujos/bodeFiltrosCaso2.png
 	display false
@@ -4455,13 +3948,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 FAA - Módulo
 \end_layout
 
@@ -4480,8 +3969,6 @@ FAA - Módulo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -4489,8 +3976,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../Filtro LP/Dibujos/bodeFiltrosCaso3.png
 	display false
@@ -4502,13 +3987,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 FR - Módulo
 \end_layout
 
@@ -4527,8 +4008,6 @@ FR - Módulo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Debido a las desviaciones en los valores de los componentes no fue posible
  ajustarlos correctamente para eliminar el ripple.
  No obstante, como se mencionó anteriormente en el diseño, se tuvo en cuenta
@@ -4554,8 +4033,6 @@ $f_p$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -4563,8 +4040,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../Filtro LP/Dibujos/bodeFiltrosZoomIn.png
 	display false
@@ -4576,13 +4051,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 FAA y FR
 \end_layout
 
@@ -4601,8 +4072,6 @@ FAA y FR
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En la siguiente gráfica se muestra el análisis de montecarlo tomando como
  referencia una tolerancia de 
 \begin_inset ERT
@@ -4634,8 +4103,6 @@ $10
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -4643,8 +4110,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../Filtro LP/Dibujos/Montecarlo.pdf
 	display false
@@ -4656,13 +4121,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Curvas de montecarlo
 \end_layout
 
@@ -5002,6 +4463,13 @@ end{figure}
 
 \begin_layout Plain Layout
 
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
 Se obtuvo, pues, que hasta 500Hz se tiene el 67
 \backslash
 % de la potencia, hasta 1kHz el 97
@@ -5024,12 +4492,16 @@ mathrm{kHz}$ se puede conservar m
 ~nal tal como se observa en la figura 
 \backslash
 ref{fig:armonicos_32}.
- 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
@@ -5686,7 +5158,7 @@ Entre todos los modelos disponibles se priorizó la llave con menor Ron y
 \end_layout
 
 \begin_layout Standard
-donde el caso más crítico se obtiene con el menor Duty Cycle a la mayor
+donde el caso más crítico se obtiene con el menor Duty cicle a la mayor
  frecuencia a la cual se quiere muestrear, donde la velocidad de conmutación
  de la llave cobra mucha importancia.
 \end_layout
@@ -5750,10 +5222,6 @@ status open
 
 \backslash
 newpage
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -6208,23 +5676,6 @@ ref{fig:sh_10n}, se observa c
 'on diel
 \backslash
 'ectrica manifestados por el de 100nF.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-newpage
 \end_layout
 
 \end_inset
@@ -6244,10 +5695,8 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
-	filename C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/gui1.PNG
+	filename ../simulacion_ej5/ExpressOutput/gui1.PNG
 	lyxscale 30
 	scale 25
 
@@ -6255,19 +5704,17 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/gui2.PNG
+	filename ../simulacion_ej5/ExpressOutput/gui2.PNG
 	lyxscale 30
 	scale 25
 
 \end_inset
 
-
-\lang english
 
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-GUI
+GUI - Ventanas de usuario
 \end_layout
 
 \end_inset
@@ -6282,6 +5729,19 @@ GUI
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+La GUI para realizar las simulaciones fue implementada en Python.
+ La imagen de la derecha presenta la ventana principal, donde se configuran
+ los parámetros del sistema para simular.
+ Se puede elegir el modo de muestreo, además de la frecuencia de sampleo
+ y el duty cicle del oscilador.
+ Al hacer click en aceptar, se procesa la simulación y se muestra con una
+ barra verde en la parte inferior de la ventana mientras se carga.
+ Una vez terminada, se pueden observar los gráficos resultantes de la señal
+ en los diferentes puntos del sistema, tanto en el dominio del tiempo como
+ en el de la frecuencia.
 \end_layout
 
 \begin_layout Standard
@@ -6301,21 +5761,15 @@ newpage
 \end_layout
 
 \begin_layout Section
-
-\lang spanish
 Mediciones básicas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se estudió el comportamiento del sistema con tres señales de entrada distintas,
  las cuales fueron:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -6334,8 +5788,6 @@ pi f_{in}t)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -6356,8 +5808,6 @@ pi f_{in}t)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -6374,8 +5824,6 @@ cdot e^{|t|}$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se debe recordar nuevamente que los filtros reales implementados tienen
  una ligera atenuación de como máximo 2dB en la banda de paso cerca de la
  frecuencia 
@@ -6399,14 +5847,10 @@ $f_p$
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Caso con variables óptimas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para definir la amplitud máxima de las señales de entrada, se tiene en cuenta
  la máxima amplitud que puede tener la señal que ingresa al filtro antialiasing
  sin sufrir distorsión apreciable.
@@ -6426,8 +5870,6 @@ $1Vp$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Partiendo en cada caso de una 
 \begin_inset ERT
 status open
@@ -6460,8 +5902,6 @@ $f_a$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Finalmente se utilizó una 
 \begin_inset ERT
 status open
@@ -6521,15 +5961,11 @@ $A=1Vp$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se tomaron mediciones tanto de la salida como de la entrada, para ambos
  casos: FAA + LLAVE + FR, y FAA + S&H + FR.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para la potencia, se expresó la potencia recuperada respecto de la entrada,
  es decir el porcentaje relativo.
  En el cálculo parcial se utilizó el hecho de ser señales periódicas, por
@@ -6537,8 +5973,6 @@ Para la potencia, se expresó la potencia recuperada respecto de la entrada,
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -6559,8 +5993,6 @@ int_{0}^{T}|x(t)|^2 dt$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para las señales 
 \begin_inset ERT
 status open
@@ -6587,8 +6019,6 @@ $X_b$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -6613,8 +6043,6 @@ frac{A^2}{2}$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -6649,14 +6077,10 @@ frac{A^2}{10}$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Y la potencia relativa se obtiene como:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -6681,8 +6105,6 @@ dot 100$$
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Señal 
 \begin_inset ERT
 status open
@@ -6698,8 +6120,6 @@ $X_a(t)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 placement H
 wide false
@@ -6708,8 +6128,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_01.png
 	lyxscale 30
@@ -6729,13 +6147,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
  Caso con Llave analógica (izquierda) - Duty 24%, y Sample and Hold (derecha)
  - Duty 40%
 \end_layout
@@ -6751,8 +6165,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En ambos casos se recupera la senoidal original (con menos potencia naturalmente
 ) tal como se esperaba sin armónicos adicionales.
  En el caso de la llave analógica, la potencia relativa recuperada es del
@@ -6786,8 +6198,6 @@ $56
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Señal 
 \begin_inset ERT
 status open
@@ -6803,8 +6213,6 @@ $X_b(t)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se repitió el procedimiento con la señal 
 \begin_inset ERT
 status open
@@ -6820,8 +6228,6 @@ $X_b(t)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 placement H
 wide false
@@ -6830,10 +6236,8 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
-	filename C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6b_ll_exp.png
+	filename ../simulacion_ej5/ExpressOutput/6b_ll_exp.png
 	lyxscale 30
 	scale 50
 
@@ -6851,13 +6255,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Llave analógica (izquierda) - Duty 20%, Sample and Hold (derecha) - Duty
  20%
 \end_layout
@@ -6873,8 +6273,6 @@ Llave analógica (izquierda) - Duty 20%, Sample and Hold (derecha) - Duty
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se logra recuperar la exponencial en ambos casos (con menos potencia también)
  como era de esperarse.
  En el caso de la llave analógica se recupera un 
@@ -6907,8 +6305,6 @@ $76
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Señal 
 \begin_inset ERT
 status open
@@ -6924,8 +6320,6 @@ $X_c(t)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 placement H
 wide false
@@ -6934,8 +6328,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_12.png
 	lyxscale 30
@@ -6955,13 +6347,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Llave analógica (izquierda), Sample and Hold (derecha)
 \end_layout
 
@@ -6976,8 +6364,6 @@ Llave analógica (izquierda), Sample and Hold (derecha)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En ambos casos se observa que se recupera la forma de la señal, pero no
  es igual a la original.
  Si se tiene en cuenta que 
@@ -7054,8 +6440,6 @@ $f_p$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se puede ver en todos los casos que se recupera mayor potencia utilizando
  el sample and hold que con la llave analógica.
  En el caso de la llave analógica, se puede modelar como la señal multiplicada
@@ -7076,8 +6460,6 @@ tau$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -7096,14 +6478,10 @@ Pi_T(t)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde el tren de pulsos:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -7134,8 +6512,6 @@ tau}(t) $$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde 
 \begin_inset ERT
 status open
@@ -7169,8 +6545,6 @@ tau$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -7205,15 +6579,11 @@ right)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Mediante la transformada de Fourier para hallar el espectro resultante se
  obtiene:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -7260,8 +6630,6 @@ tau})$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde 
 \begin_inset ERT
 status open
@@ -7281,8 +6649,6 @@ tau}$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se puede ver que espectro resultante se encuentra envuelto por una 
 \begin_inset ERT
 status open
@@ -7298,8 +6664,6 @@ $sinc$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el caso del sample and hold, se tiene esa misma información sobre el
  espectro más la que se obtiene durante el tiempo de hold, por lo que se
  recupera mayor información.
@@ -7343,8 +6707,6 @@ right)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -7373,14 +6735,10 @@ right)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde aplicando la transformada de Fourier se obtiene:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -7431,8 +6789,6 @@ tau f)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -7465,8 +6821,6 @@ cdot X(f-n f_s)$$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Es decir que en cada delta se tendrá una réplica del espectro de 
 \begin_inset ERT
 status open
@@ -7518,15 +6872,11 @@ $sinc$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Sumando los efectos del muestreo en tiempo de sample más el del tiempo de
  hold se tiene finalmente:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset ERT
 status open
 
@@ -7589,8 +6939,6 @@ cdot X(f-n f_s)}_{Hold}$$
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Caso con 
 \begin_inset ERT
 status open
@@ -7606,8 +6954,6 @@ $f_s = f_a$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En este caso, se cambia la frecuencia de sampleo; considerando además que
  
 \begin_inset ERT
@@ -7662,8 +7008,6 @@ $X_b$
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Señal 
 \begin_inset ERT
 status open
@@ -7679,8 +7023,6 @@ $X_a(t)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -7688,8 +7030,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_19.png
 	lyxscale 30
@@ -7709,13 +7049,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Llave analógica (izquierda) - Duty 88%, Sample and Hold (derecha) - Duty
  71%
 \end_layout
@@ -7735,8 +7071,6 @@ Llave analógica (izquierda) - Duty 88%, Sample and Hold (derecha) - Duty
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el caso de la llave analógica, se recupera una potencia realtiva del
  
 \begin_inset ERT
@@ -7768,8 +7102,6 @@ $64
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Señal 
 \begin_inset ERT
 status open
@@ -7785,8 +7117,6 @@ $X_b(t)$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -7794,8 +7124,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_26.png
 	lyxscale 30
@@ -7815,13 +7143,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Llave analógica (izquierda) - Duty 30%, Sample and Hold (derecha) - Duty
  15%
 \end_layout
@@ -7841,8 +7165,6 @@ Llave analógica (izquierda) - Duty 30%, Sample and Hold (derecha) - Duty
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Al igual que en el caso de muestreo natural con llave analógica, se recuperan
  las señales originales sin armónicos adicionales como era de esperar.
  En este caso se recupera más potencia, ya que el 
@@ -7891,8 +7213,6 @@ $sinc$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para el caso con llave analógica, se recupera un 
 \begin_inset ERT
 status open
@@ -7923,8 +7243,6 @@ $76
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Caso con 
 \begin_inset ERT
 status open
@@ -7951,8 +7269,6 @@ $X_a$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Ahora se toma sólo la señal 
 \begin_inset ERT
 status open
@@ -7982,8 +7298,6 @@ $f_{in} = f_s$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -7991,10 +7305,8 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
-	filename C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6c_ll_sen.png
+	filename ../simulacion_ej5/ExpressOutput/6c_ll_sen.png
 	lyxscale 30
 	scale 50
 
@@ -8012,13 +7324,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Caso con llave analógica (muestreo natural) a la izquierda, y muestreo con
  sample and hold a la derecha.
 \end_layout
@@ -8038,8 +7346,6 @@ Caso con llave analógica (muestreo natural) a la izquierda, y muestreo con
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se observa que efectivamente, tanto en simulación como medición hay aliasing
  entre las repeticiones del espectro de la senoidal original.
  Al pasar por el filtro recuperador, se obtuvieron dos espectros solapados,
@@ -8049,8 +7355,6 @@ Se observa que efectivamente, tanto en simulación como medición hay aliasing
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Caso con 
 \begin_inset ERT
 status open
@@ -8088,8 +7392,6 @@ $X_c$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En este caso, dada una 
 \begin_inset ERT
 status open
@@ -8153,8 +7455,6 @@ $f_s = 1.5KHz$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -8162,8 +7462,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\lang spanish
 \begin_inset Graphics
 	filename ../simulacion_ej5/ExpressOutput/med_16.png
 	lyxscale 30
@@ -8183,13 +7481,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Caso de aliasing en señal 
 \begin_inset ERT
 status open
@@ -8220,8 +7514,6 @@ $X_c$
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el caso de muestreo natural, con el aliasing la señal obtenida se asemeja
  a una de mayor frecuencia modulada por la 
 \begin_inset ERT
@@ -8438,7 +7730,7 @@ Si bien en el caso ideal basta con abrir la llave la totalidad del tiempo
 
 \begin_layout Plain Layout
 
-En cuanto al duty cycle de estas mediciones, cuanto m
+En cuanto al duty cicle de estas mediciones, cuanto m
 \backslash
 'as tiempo est
 \backslash
@@ -8489,7 +7781,7 @@ mu$s.
 \backslash
 % del tiempo, y por lo tanto se toma 90
 \backslash
-% de duty cycle para la llave anal
+% de duty cicle para la llave anal
 \backslash
 'ogica.
  
@@ -8502,7 +7794,7 @@ Se procedi
 'o, pues a realizar mediciones en las condiciones ya mencionadas, a saber:
  sin el filtro antialiasing, con el sample and hold y la llave anal
 \backslash
-'ogica, con $f_s=3$kHz, y un duty cycle del 90
+'ogica, con $f_s=3$kHz, y un duty cicle del 90
 \backslash
 %, con $X_C$ en la entrada.
  El espectro de dicha se
@@ -9131,11 +8423,7 @@ $f_c=2.4kHz$
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsection
-Breve idea teórica
+.
 \end_layout
 
 \begin_layout Subsection
@@ -9184,7 +8472,7 @@ $f_s$
 \end_inset
 
  permitidos para el muestreo subniquist.
- Los resultados fueron los siguientes
+ Los resultados fueron los siguientes:
 \end_layout
 
 \begin_layout Standard
@@ -9275,7 +8563,7 @@ status open
 
 \begin_layout Plain Layout
 
-$niquist$
+$nyquist$
 \end_layout
 
 \end_inset
@@ -9603,21 +8891,22 @@ Simulaciones con Llave analógica
 
 \begin_layout Standard
 Se estudió mediante software el efecto sobre el espectro de la señal AM
- a muestrear al aplicar un muestreo a distintas frecuencias subniquist utilizand
+ a muestrear al aplicar un muestreo a distintas frecuencias subnyquist utilizand
 o llave analógica con 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-$Duty cycle=25
+$Duty cicle=25
 \backslash
 %$
 \end_layout
 
 \end_inset
 
- Se muestran a continuación los resultados
+.
+ Se muestran a continuación los resultados.
 \end_layout
 
 \begin_layout Standard
@@ -9651,7 +8940,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Simulación Sub-niquist 
+Simulación Sub-nyquist 
 \begin_inset ERT
 status open
 
@@ -9763,7 +9052,7 @@ status open
 
 \begin_layout Plain Layout
 
-$duty cycle=5
+$duty cicle=5
 \backslash
 %$
 \end_layout
@@ -9781,7 +9070,7 @@ $f_s$
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -9937,7 +9226,7 @@ $m=4 (f_s=1.07Khz)$
 
 \end_inset
 
- con llave analógica con duty 25%, y sample and hold con duty 5%
+ con llave analógica con duty 25%, y sample and hold con duty 5%.
 \end_layout
 
 \begin_layout Standard
@@ -10039,7 +9328,7 @@ Item a
 \end_layout
 
 \begin_layout Standard
-Este ejercicio se entregó en la guía de sistemas discretos
+Este ejercicio se entregó en la guía de sistemas discretos.
 \end_layout
 
 \begin_layout Subsection
@@ -10259,6 +9548,22 @@ Señal 1 reconstruida con y sin decimate aplicado
 \begin_layout Standard
 Se observá que, intuitivamente, es mucho más creible la fórma de la señal
  inferida en la señal original sin decimate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
