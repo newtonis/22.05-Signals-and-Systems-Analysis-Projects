@@ -6232,8 +6232,55 @@ newpage
 
 \end_layout
 
+\begin_layout Section
+GUI
+\end_layout
+
 \begin_layout Standard
-EJ 5
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Graphics
+	filename C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/gui1.PNG
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_02.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -760,6 +760,9 @@ $f_p$
  El efecto se observa también en la simulación dado que para ambos filtros
  se cargó la transferencia aproximada con Legendre (y no una ventana cuadrada
  ideal).
+ Dado que la señal no mantiene su formato original no puede inferirse fácilmente
+ una función que la defina, por lo que no se realizó el cálculo numérico
+ de la potencia recuperada.
  
 \end_layout
 

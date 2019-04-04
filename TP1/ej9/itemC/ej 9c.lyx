@@ -278,7 +278,9 @@ omega}) = e^{-j
 \backslash
 omega
 \backslash
-frac{M}{2}} [h(0)e^{j
+frac{M}{2}} 
+\backslash
+left[h(0)e^{j
 \backslash
 omega
 \backslash
@@ -309,6 +311,8 @@ right)}+ h(0)e^{-j
 omega 
 \backslash
 frac{M}{2}}
+\backslash
+right]
 \backslash
 ] 
 \end_layout
@@ -361,7 +365,9 @@ omega}) = e^{-j
 \backslash
 omega
 \backslash
-frac{M}{2}} [2 h(0)
+frac{M}{2}} 
+\backslash
+left[2 h(0)
 \backslash
 cos
 \backslash
@@ -393,6 +399,8 @@ left(
 frac{M}{2}
 \backslash
 right)
+\backslash
+right]
 \backslash
 ]
 \end_layout
@@ -531,8 +539,6 @@ omega k)
 \end_inset
 
 
-\backslash
-[
 \end_layout
 
 \begin_layout Standard
@@ -707,7 +713,9 @@ status open
 
 
 \backslash
-[ tau_g = -
+[ 
+\backslash
+tau_g = -
 \backslash
 frac {d
 \backslash
@@ -715,7 +723,7 @@ phi(
 \backslash
 omega)}{d
 \backslash
-omega} = -
+omega} = 
 \backslash
 frac{M}{2}
 \backslash
@@ -804,7 +812,7 @@ status open
 \backslash
 [ 
 \backslash
-tau_g = -3 
+tau_g = 3 
 \backslash
 ]
 \end_layout

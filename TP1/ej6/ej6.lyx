@@ -564,7 +564,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6b_ll_exp.png
+	filename C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6b_ll_exp.png
 	lyxscale 30
 	scale 50
 
@@ -1418,7 +1418,9 @@ status open
 
 \begin_layout Plain Layout
 
-$64%$
+$64
+\backslash
+%$
 \end_layout
 
 \end_inset
@@ -1631,7 +1633,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Marcelo/Documents/GitHub/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6c_ll_sen.png
+	filename C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/6c_ll_sen.png
 	lyxscale 30
 	scale 50
 
