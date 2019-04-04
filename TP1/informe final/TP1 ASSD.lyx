@@ -5745,6 +5745,10 @@ La GUI para realizar las simulaciones fue implementada en Python.
 \end_layout
 
 \begin_layout Standard
+Para correr el programa, se debe utilizar el archivo UI.py.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 

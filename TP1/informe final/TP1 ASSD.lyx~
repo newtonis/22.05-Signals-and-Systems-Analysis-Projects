@@ -5226,10 +5226,6 @@ newpage
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 section{Sample and hold} La etapa de sample and hold, o track and hold,
@@ -5746,6 +5742,10 @@ La GUI para realizar las simulaciones fue implementada en Python.
  Una vez terminada, se pueden observar los gráficos resultantes de la señal
  en los diferentes puntos del sistema, tanto en el dominio del tiempo como
  en el de la frecuencia.
+\end_layout
+
+\begin_layout Standard
+Para correr el programa, se debe utilizar el archivo UI.py
 \end_layout
 
 \begin_layout Standard
