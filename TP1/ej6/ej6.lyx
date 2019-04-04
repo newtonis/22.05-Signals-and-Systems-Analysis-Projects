@@ -292,6 +292,145 @@ Se tomaron mediciones tanto de la salida como de la entrada, para ambos
  casos: FAA + LLAVE + FR, y FAA + S&H + FR.
 \end_layout
 
+\begin_layout Standard
+Para la potencia, se expresó la potencia recuperada respecto de la entrada,
+ es decir el porcentaje relativo.
+ En el cálculo parcial se utilizó el hecho de ser señales periódicas, por
+ lo que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$P_x = 
+\backslash
+frac{1}{T} 
+\backslash
+cdot 
+\backslash
+int_{0}^{T}|x(t)|^2 dt$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para las señales 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$P_a = f_{in} 
+\backslash
+cdot 
+\backslash
+int_{0}^{T} A^2 
+\backslash
+cdot sin^2(2
+\backslash
+pi f_{in} t) dt = 
+\backslash
+frac{A^2}{2}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$P_b = f_{in} 
+\backslash
+cdot 
+\backslash
+int_{-
+\backslash
+frac{T}{2}}^{
+\backslash
+frac{T}{2}} 
+\backslash
+left( e^{-|t 
+\backslash
+cdot 5 
+\backslash
+cdot 2f_{in}|} 
+\backslash
+right) ^2 dt 
+\backslash
+approx 
+\backslash
+frac{A^2}{10}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y la potencia relativa se obtiene como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$Pr(
+\backslash
+%) = 
+\backslash
+left( 
+\backslash
+frac{P_{r}}{P_{in}} 
+\backslash
+right) 
+\backslash
+dot 100$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Señal 
 \begin_inset ERT
@@ -355,6 +494,34 @@ status open
 \begin_layout Standard
 En ambos casos se recupera la senoidal original (con menos potencia naturalmente
 ) tal como se esperaba sin armónicos adicionales.
+ En el caso de la llave analógica, la potencia relativa recuperada es del
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$30
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+, y en el del sample and hold es de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$56
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -435,6 +602,33 @@ Llave analógica (izquierda) - Duty 20%, Sample and Hold (derecha) - Duty
 \begin_layout Standard
 Se logra recuperar la exponencial en ambos casos (con menos potencia también)
  como era de esperarse.
+ En el caso de la llave analógica se recupera un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$16
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+ de la potencia, y en el caso con sample and hold 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$76
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -566,6 +760,9 @@ $f_p$
  El efecto se observa también en la simulación dado que para ambos filtros
  se cargó la transferencia aproximada con Legendre (y no una ventana cuadrada
  ideal).
+ Dado que la señal no mantiene su formato original no puede inferirse fácilmente
+ una función que la defina, por lo que no se realizó el cálculo numérico
+ de la potencia recuperada.
  
 \end_layout
 
@@ -1200,6 +1397,35 @@ Llave analógica (izquierda) - Duty 88%, Sample and Hold (derecha) - Duty
 
 \end_layout
 
+\begin_layout Standard
+En el caso de la llave analógica, se recupera una potencia realtiva del
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$49
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+, y en el del sample and hold del 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$64%$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsubsection
 Señal 
 \begin_inset ERT
@@ -1309,6 +1535,36 @@ $sinc$
 \end_inset
 
  es más ancho y distorsiona menos el espectro.
+\end_layout
+
+\begin_layout Standard
+Para el caso con llave analógica, se recupera un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$7
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+, y en el caso del sample and hold un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$76
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
