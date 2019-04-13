@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/newtonis/CLionProjects/test01
+# Install script for directory: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/fft/test01
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/newtonis/CLionProjects/test01/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/fft/test01/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
