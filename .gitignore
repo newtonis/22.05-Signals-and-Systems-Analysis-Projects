@@ -9,5 +9,9 @@ TP2\fft\test01\CMakeLists.txt
 *.log
 *.Zip
 *.pyc
-
+*.toc
+*.aux
+*.synctex.gz
+*.gz
+*.out
 

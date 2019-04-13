@@ -13,6 +13,8 @@ def diffEq(alpha, beta, x2, y1, y2):# output is y0
 
 maxn = 30
 
+#Descomentamos y comentamos segun el caso en el que estemos
+
 [alpha,beta]=[1,-1/2]
 #[alpha,beta]=[1/2,-1/8]
 #[alpha,beta]=[5/4,-25/32]
@@ -36,12 +38,13 @@ pulse = [0, 0]
 for i in range(0, maxn):
     step.append(diffEq(alpha, beta, 1, step[-1], step[-2]))
     pulse.append(diffEq(alpha, beta, i == 0, pulse[-1], pulse[-2]))
+#-------------------------------------------------
+
+#graficamos 
 # -------------------------------------------------
 
-#plt.plot(range(0,len(y)),y, label="analitico")
 
 markerline, stemlines, baseline = plt.stem(range(0,len(y)),y, '-.',label="analitico")
-# setting property of baseline with color red and linewidth 2
 plt.setp(baseline, color='r', linewidth=0.5)
 
 plt.plot(range(0,len(pulse)),pulse,'g^',label="simulado",color="orange")
