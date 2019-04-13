@@ -13,6 +13,8 @@ def diffEq(alpha, beta, x2, y1, y2):# output is y0
 
 maxn = 30
 
+#Descomentamos y comentamos segun el caso en el que estemos
+
 [alpha,beta]=[1,-1/2]
 #[alpha,beta]=[1/2,-1/8]
 #[alpha,beta]=[5/4,-25/32]
@@ -46,11 +48,12 @@ for i in range(0, maxn):
     pulse.append(diffEq(alpha, beta, i == 0, pulse[-1], pulse[-2]))
 # -------------------------------------------------
 
+#graficamos 
+# -------------------------------------------------
 markerline, stemlines, baseline = plt.stem(range(0,len(y)),y, '-.',label="analitico")
 plt.setp(baseline, color='r', linewidth=0.5)
 plt.plot(range(0,len(step)),step,'g^',label="simulado",color="orange")
 plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=2, mode="expand", borderaxespad=0.)
-#------------------------
 plt.xlim(1,maxn)
 plt.ylabel("Respuesta al escalón(n)")
 plt.xlabel("n")
