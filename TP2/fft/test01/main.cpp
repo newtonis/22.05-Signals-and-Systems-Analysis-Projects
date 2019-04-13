@@ -97,7 +97,7 @@ void fftOld(vector<complex<float>>& in, vector<complex<float>>& out){
         int maxj = n/pow2[i], maxk = pow2[i];
 
         for (int j = 0;j < maxj;j++){
-            for (int k = 0;k < maxk;k++){
+            for (int k = 0;k < maxk/2;k++){
                 float p1 = wReal[k*maxj%n]*dpReal[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
                 float p2 = wIm[k*maxj%n]*dpIm[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
 
@@ -107,6 +107,9 @@ void fftOld(vector<complex<float>>& in, vector<complex<float>>& out){
                 float p4 = wIm[k*maxj%n]*dpReal[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
 
                 dpIm[i%2][j + k*maxj] = dpIm[(i-1)%2][j+k%maxkLast*maxjLast] + p3 + p4;
+
+                dpReal[i%2][j + (k+ maxk/2)*maxj] = dpReal[(i-1)%2][j+k%maxkLast*maxjLast] - p1 + p2;
+                dpIm[i%2][j + (k+maxk/2)*maxj ] = dpIm[(i-1)%2][j+k%maxkLast*maxjLast] - p3 - p4;
             }
         }
         maxjLast = maxj;
