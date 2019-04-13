@@ -1,0 +1,785 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Llave analógica 
+\end_layout
+
+\begin_layout Standard
+La llave analógica es la que realiza el muestreo y el reemuestreo de la
+ señal.
+ 
+\end_layout
+
+\begin_layout Subsection
+Elección del integrado 
+\end_layout
+
+\begin_layout Standard
+Los parámetros que se tuvieron en cuenta para la elección del integrado
+ a utilizar afueron los siguientes:
+\end_layout
+
+\begin_layout Enumerate
+Resistencia de encendido (
+\begin_inset Formula $R_{on}$
+\end_inset
+
+): en una llave ideal es nula, cuando la llave está cerrada no debería de
+ producirse ninguna caída de tensión cuando la señal pasa a través de la
+ llave.
+ Buscamos que sea lo mas baja posible para que no se degrade mucho la señal.
+ También es importante que sea constante para evitar alteraciones de la
+ señal de entrada a la salida debido a diferentes atenuaciones que puedan
+ producirse por variaciones en esta resistencia y que tenga menor distorsión
+ armónica.
+\end_layout
+
+\begin_layout Enumerate
+Resistencia de apagado (
+\begin_inset Formula $R_{off}$
+\end_inset
+
+): en una llave ideal es infinita, cuando la llave está abierta no debería
+ de circular corriente y debería bloquear por completo el paso de la señal
+ a través de la llave.
+ Por lo ello buscamos que sea lo más alta posible, para poder aislar lo
+ mejor posible la señal de entrada con la salida.
+ Est;a relacionada con la corriente de fuga cuando la llave está en corte.
+\end_layout
+
+\begin_layout Enumerate
+Niveles lógicos: deben ser compatibles con los niveles de tensión generados
+ por el oscilador del sistema.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Velocidad de conmutación: debe ser lo más rápida posible para poder muestrear
+ señales de alta frecuencia, minimizar la distorsión de la señal y evitar
+ errores en el muestreo.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Voltaje máximo de entrada: las máximas amplitudes de éstas tienen que ser
+ compatibles con la llave analógica elegida, estas coinciden con la alimentación
+ que se use para la misma.
+\end_layout
+
+\begin_layout Enumerate
+Señales de ruido: se encuentran el crosstalk y el feedthrough desde el control
+ de entrada hacia la salida, idealmente se desea que no exista tal interferencia.
+\end_layout
+
+\begin_layout Subsection
+Llave analógica elegida
+\end_layout
+
+\begin_layout Standard
+Se compararon las hojas de datos de tres integrados distintos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integrado
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CD4016
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CD4066
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MAX320
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Resistencia de encendido (
+\begin_inset Formula $\Omega$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+280
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+125 (flat over full signal-input range)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta R_{on}$
+\end_inset
+
+ (
+\begin_inset Formula $\Omega$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Corriente de fuga en corte
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100pA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10pA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10pA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Propagation Delay (from input to output)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20ns
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20ns
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{on}/t_{off}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20ns
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20ns
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+65ns/35ns
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cut off frequency (-3dB)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40MHz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40MHz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tensión de alimentación (max.
+ recomendado)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VSS+18V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VSS+18V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VSS+17V
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feedthrough Frequency (-50dB)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.25MHz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1MHz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Crosstalk (control input to signal-output)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50mV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50mV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Capacitance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4pF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8pF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+THD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Encapsulado
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+THT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+THT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SMD
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparación de las características de los integrados
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entre todos los modelos disponibles se priorizó la llave con menor Ron y
+ mayor velocidad de conmutación para tener menor distorsión armónica en
+ las señales de alta frecuencia, ya que, el ancho del pulso de la señal
+ de control será: 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $T_{0}=\frac{DC}{f}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde el caso más crítico se obtiene con el menor Duty Cycle a la mayor
+ frecuencia a la cual se quiere muestrear, donde la velocidad de conmutación
+ de la llave cobra mucha importancia.
+\end_layout
+
+\begin_layout Standard
+La llave MAX320 resulta una buena opción debido a la pequeña Ron que tiene
+ en comparación con las otras dos, pero se optó por la CD4066, ya que también
+ tiene buenas características y no es de montaje superficial como la anterior
+ mencionada, lo que le da practicidad al armado de la placa.
+ Otra característica a tener en cuenta es la corriente de fuga en corte,
+ en este aspecto la del integrado CD4066 es menor que la del integrado CD4016.
+ Otra ventaja del CD4066 son los tiempos de apertura y cierre de la llave,
+ muy importantes para el correcto muestreo de una señal, ya que no se puede
+ switchear la llave a un tiempo menor a este.
+ Como se puede ver en la tabla, estos tiempos son menores que los del MAX320.
+ Por otra parte, el tiempo de propagación entre la entrada y la salida,
+ no fué encontradao en la hoja de datos del MAX320.
+ El factor de Crosstalk, no resulta ser crítico dado que se cuenta con un
+ filtro recuperador pasa bajos, por lo que elimina el ruido de alta frecuencia
+ característico del Crosstalk.
+ Un punto a contemplar son los niveles de tensión a utilizar.
+ Eligiendo alimentación con fuente partida de ±9v se garantiza que ésta
+ caiga dentro de los límites de la tensión de alimentación recomendada en
+ la hoja de datos.
+ Y como existe la restricción de que la llave no admite tensiones mayores
+ a su alimentación, se verifica que este rango sea mayor que la máxima amplitud
+ de las señales de entrada a tratar.
+\end_layout
+
+\begin_layout Subsection
+Configuración
+\end_layout
+
+\begin_layout Standard
+Para el correcto funcionamiento, se incluyó una resistencia de pull-down
+ a la salida de la llave para garantizar que cuando esté en alta impedancia
+ (llave abierta), la salida sea de 0 V y no quede en un estado flotante.
+ Esta resistencia no debe ser muy chica, dado que provocaría que corrientes
+ de gran valor circulen por la llave analógica.
+ Debe ser lo suficientemente mayor que la RON, para poder despreciar el
+ divisor resistivo que se forma al considerar ambas resistencias.
+ Por otro lado, si el valor fuera muy elevado, el circuito RC que se forma
+ con la capacidad de salida de la llave tendría un tiempo característico
+ muy alto en comparación con el ancho del pulso de la señal de control cuando
+ la frecuencia de muestreo es alta, lo que haría que la señal no se termine
+ de establecer.
+ Por esta relación de compromiso, se va a notar una leve diferencia entre
+ la amplitud de la señal maestreada y la señal de entrada por el divisor
+ resistido formado.
+ Se debe garantizar, además, que la impudencia de entrada del filtro recuperador
+ sea de ordenes de magnitud mas grande que esta resistencia para que la
+ transferencia de dicho filtro no se vea modificada.
+\end_layout
+
+\end_body
+\end_document

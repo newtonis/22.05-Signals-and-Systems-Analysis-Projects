@@ -1,0 +1,373 @@
+#LyX file created by tex2lyx 2.2
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin C:/Users/Martina/Desktop/INFORMES_ASSD/TP1/Armonicos señales de entrada/informe/
+\textclass article
+\begin_preamble
+
+
+\usepackage{units}
+
+
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Elección de 
+\begin_inset Formula $f_p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para determinar 
+\begin_inset Formula $f_p$
+\end_inset
+
+, se buscó minimizar este valor a fin de filtrar la mayor cantidad de ruido posible, pero teniendo en cuenta también la necesidad de recuperar las señales originales. Se estudió, pues, el espectro de las señales que se utilizarían en la entrada, a saber: un seno en 
+\begin_inset Formula $f_0=$
+\end_inset
+
+500Hz, un 
+\begin_inset Formula $\nicefrac{3}{2}$
+\end_inset
+
+ seno en la misma frecuencia, y una exponencial decreciente de período 10s, así como una señal de AM. 
+\end_layout
+
+\begin_layout Standard
+La primera de estas señales, el seno, nos permite determinar que el filtro antialiasing debe dejar pasar al menos señales de 500Hz. Por otro lado, la señal de AM es: 
+\begin_inset Formula \[ x(t) = \frac{1}{2} \cdot \cos{\left(2\pi\cdot 1.8f_0 \cdot t\right)} + \cos{\left(2\pi\cdot 2f_0 \cdot t\right)} +\frac{1}{2} \cdot \cos{\left(2\pi\cdot 2.2f_0 \cdot t\right)} \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De esto sabemos que 
+\begin_inset Formula $f_p$
+\end_inset
+
+ debe ser al menos 
+\begin_inset Formula $2.2f_0=1.1$
+\end_inset
+
+kHz. Para dejar un margen de error, consideramos por ahora que 
+\begin_inset Formula $f_p$
+\end_inset
+
+ debe ser al menos 1.5kHz.
+\end_layout
+
+\begin_layout Standard
+En cuanto a la señal exponencial: 
+\begin_inset Formula \[ x(t) = e^{-|t|}, \quad -5 \leq t \leq 5 \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La frecuencia fundamental de la misma es 0.1Hz, con lo cual teniendo en cuenta la restricción anterior, sabemos que van a pasar más de 5000 de sus armónicos, con lo cual en principio esta señal no sería un problema. Para comprobar esta suposición, se obtuvieron los coeficientes de la serie exponencial de Fourier de esta función, resultando: 
+\begin_inset Formula \[ X_n = \frac{2}{T} \cdot \frac{1 - (-1)^n \cdot e^{-\nicefrac{T}{2}}}{1 + \left(\frac{2\pi n}{T}\right)^2} \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sabiendo que la potencia correspondiente al enésimo armónico es 
+\begin_inset Formula $2 \cdot |X_n|^2$
+\end_inset
+
+ (salvo para 
+\begin_inset Formula $n=0$
+\end_inset
+
+, donde no se duplica el valor del coeficiente), se confirmó que la misma se hace absolutamente despreciable a partir del octavo armónico, hasta donde se encuentra más del 99% de la potencia. Por lo tanto, esta señal no impone restricciones al filtro antialiasing.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement htb
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename armonicos/exp_potencia.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename armonicos/exp_funcion.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Potencia en función del número de armónico de la señal exponencial (izquierda), y señal reconstruida con 50 armónicos (derecha), superpuesta a la señal original (no llegan a distinguirse).
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:armonicos_exp"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Considerando que incluso con una frecuencia 100 veces mayor, de 10Hz, se recuperan 50 armónicos y la señal se recupera de manera virtualmente completa (como se observa en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:armonicos_exp"
+
+\end_inset
+
+), se decidió trabajar esta frecuencia más rápida, a fin de no tener que esperar 10 segundos para medir un período.
+\end_layout
+
+\begin_layout Standard
+En el caso del 
+\begin_inset Formula $\nicefrac{3}{2}$
+\end_inset
+
+ seno, la frecuencia fundamental es en cambio 500Hz, con lo cual por un filtro con 
+\begin_inset Formula $f_p=1500\mathrm{Hz}$
+\end_inset
+
+ pasaría la fundamental y los siguientes 2 armónicos. Para analizar el espectro en este caso se utilizó la serie trigonométrica de Fourier, obteniéndose: 
+\begin_inset Formula \[ a_0 = \frac{2}{3\pi},\quad a_n=\frac{12}{\pi} \cdot \left(\frac{1}{9-4n^2}\right) , \quad b_n=0 \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement htb
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename armonicos/32seno_potencia.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename armonicos/32seno_funcion.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Potencia en función del número de armónico del 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+nicefrac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ (izquierda), y señal reconstruida con 3 armónicos incluyendo la fundamental (derecha, naranja), supuerpuesta a la señal original (azul).
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:armonicos_32"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se obtuvo, pues, que hasta 500Hz se tiene el 67% de la potencia, hasta 1kHz el 97%, y hasta 1.5kHz el 99%. Por lo tanto, siendo que con 
+\begin_inset Formula $f_p=1.5\mathrm{kHz}$
+\end_inset
+
+ se puede conservar más del 99% de la potencia de las 3 señales de entrada, se utilizó este valor, con el cual se recupera la señal tal como se observa en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:armonicos_32"
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

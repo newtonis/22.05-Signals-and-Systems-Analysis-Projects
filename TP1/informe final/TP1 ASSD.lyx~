@@ -1,0 +1,10593 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\usepackage{lscape}
+\usepackage{units}
+\pagestyle{fancy}
+\lhead{Análisis de Señales y Sistemas Digitales 22.05}
+\chead{TPL1}
+\rhead{ITBA}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.25cm
+\topmargin 2.25cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Oscilador
+\end_layout
+
+\begin_layout Subsection
+Introducción teórica
+\end_layout
+
+\begin_layout Standard
+En esta sección el objetivo es generar un oscilador con frecuencia y duty
+ cicle variables e independientes uno de otro.
+ 
+\end_layout
+
+\begin_layout Standard
+Frente a esta problemática se presentaron dos posibles soluciones:
+\end_layout
+
+\begin_layout Itemize
+Generar una señal diente de sierra con frecuencia variable
+\end_layout
+
+\begin_layout Itemize
+Generar una señal triangular con frecuencia variable
+\end_layout
+
+\begin_layout Standard
+Para la opción de duty cicle se optó por utilizar un comparador.
+ La señal generada excita una de las entradas del comparador y en la otra
+ se coloca una tension referencia.
+ El duty cicle de la señal a la salida del comparador será regulada mediante
+ la variación de la referencia.
+\end_layout
+
+\begin_layout Subsection
+Circuitos para generar las señales deseadas
+\end_layout
+
+\begin_layout Subsubsection
+Diente de sierra
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/diente_sierra.jpg
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Generador de onda diente de sierra
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsubsection*
+Problema del diente de sierra con LM555
+\end_layout
+
+\begin_layout Standard
+El capacitor se descarga a través del transistor interno del 555, dando
+ lugar a una gran pendiente negativa en la señal y como se está midiendo
+ sobre un capacitor, esto resulta en una gran demanda de corriente.
+\end_layout
+
+\begin_layout Standard
+Dado que se carga el capacitor con una fuente de corriente constante, el
+ mismo va a extraer corriente a la fuente, haciendo que la tensión de alimentaci
+ón varíe.
+\end_layout
+
+\begin_layout Standard
+Estos efectos se pueden mitigar, primero colocando una resistencia en serie
+ en el pin de descarga del LM555 y luego poniendo un capacitor de desacople.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/sinR.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito sin resistencia en serie con el pin de descarga
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/conRde500.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito con resistencia de 500
+\begin_inset Formula $\Omega$
+\end_inset
+
+ en serie con el pin de descarga
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El problema principal que surge con la colocación de la resistencia es que
+ si bien se logra suavizar la curva, a la hora de variar el duty cicle con
+ el comparador se complica llegar al duty cicle límite pedido por consigna
+ (esto es porque los cambios son muy pequeños mientras decrece la señal
+ acercandose a 0V).
+\end_layout
+
+\begin_layout Subsubsection*
+Justificación del circuito el elegido
+\end_layout
+
+\begin_layout Standard
+Experimentalmente se pudo comparar el comportamiento de los dos circuitos
+ propuestos a alta frecuencia y se pudo ver que a medida que aumenta la
+ frecuencia se va deformando la señal diente de sierra mientras que la señal
+ triangular mantiene su suavidad con un rango más amplio y esto fue lo que
+ determinó qué circuito se utilizó.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal triangular
+\end_layout
+
+\begin_layout Standard
+A continuación se deja una figura del circuito propuesto con un bloque integrado
+r, un schmitt trigger no inversor y un bloque que independiza parte del
+ circuito de VCC.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/VTRgen.svg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Generador de onda triangular
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{TR}=-V_{IN}\frac{1}{sC_{1}R_{1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si ajustamos la ventana del schmitt trigger adecuadamente (es decir, dentro
+ del rango de alimentación), 
+\begin_inset Formula $V_{ST}$
+\end_inset
+
+ es una señal cuadrada y provoca que V
+\begin_inset Formula $_{TR}$
+\end_inset
+
+ sea una señal triangular.
+\end_layout
+
+\begin_layout Standard
+Analizando medio período:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/triangular.svg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Señal triangular resultante
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{T}{2}\frac{1}{C\cdot R_{1}}V_{IN}=V_{Ventana}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{T}{2}\frac{1}{C\cdot R_{1}}V_{ST}=V_{ST}\frac{R_{2}}{R_{3}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f=\left(\frac{1}{2C_{1}R_{1}}\right)\frac{R_{3}}{R_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De esta forma se puede lograr 
+\series bold
+variar la frecuencia
+\series default
+ de la señal variando el valor de 
+\series bold
+R
+\begin_inset Formula $_{1}$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Clamper
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/clamper.svg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito clamper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El clamper logra elevar la señal por encima de 0V de forma tal que se pueda
+ aprovechar la excursión de la señal.
+ R
+\begin_inset Formula $_{5}$
+\end_inset
+
+ y R
+\begin_inset Formula $_{6}$
+\end_inset
+
+ se ajustan de manera tal que la salida esté efectivamente sobre 0V debido
+ a que el clampler no es ideal.
+\end_layout
+
+\begin_layout Subsection
+Comparador
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/comparadores.svg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito comparador
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Variando P
+\begin_inset Formula $_{9}$
+\end_inset
+
+ y P
+\begin_inset Formula $_{10}$
+\end_inset
+
+ se pueden 
+\series bold
+regular los duty cicle
+\series default
+ 
+\series bold
+de la señales
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+El propósito de este último circuito es generar dos señales con misma base
+ de tiempo, desfasadas 180° y con duty regulable.
+\end_layout
+
+\begin_layout Standard
+De esta forma se conecta V
+\begin_inset Formula $_{OUT_{1}}$
+\end_inset
+
+en la entrada de la llave analógica y V
+\begin_inset Formula $_{OUT_{2}}$
+\end_inset
+
+ en la de sample and hold (o viceversa).
+ Ajustando adecuadamente el duty de cada señal, se puede realizar el muestreo
+ con sample and hold y luego remuestreo con la llave analógica dándole tiempo
+ al sample and hold para establecer el valor en tiempo de hold antes de
+ cerrar la llave.
+\end_layout
+
+\begin_layout Subsection
+Valores de componentes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{Z_{2}}=V_{Z_{1}}=\begin{cases}
+5.1V & en\,inversa\\
+0.7 & en\,directa
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{2},R_{7},R_{8}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1K\Omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.2K\Omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{ST_{MAX}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.8V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{ST_{MIN}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5.8V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{CC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10nf\ y\ 220nf$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100nf$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{O_{TL084}}|_{MAX}\approx30mA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R_{lim}\approx\frac{V_{CC}-|V_{ST_{MAX}}|}{I_{O_{TL084}}|_{MAX}}=100\Omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+C
+\begin_inset Formula $_{1}$
+\end_inset
+
+ tiene dos valores (se eligen mediante un jumper) debido a que uno es para
+ un rango de frecuencias bajas (400Hz-30kHz) y otro para altas (30KHz-125KHz)
+ esto es de modo tal que frente una misma R
+\begin_inset Formula $_{1}$
+\end_inset
+
+ de valor bajo se pueda obtener una frecuencia más grande sin deformar la
+ señal.
+ Lo que genera la deformación de la señal es la demanda de corriente que
+ es proporcional al capacitor, por lo cual es una limitación para este circuito.
+ 
+\end_layout
+
+\begin_layout Subsection
+Mediciones
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/min_f_min_d.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../EJ1/Informe/min_f_max_d.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:minflim"
+
+\end_inset
+
+Límite de duty cicle para las frecuencias mínimas de operación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/max_f_min_d.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../EJ1/Informe/max_f_max_d.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:maxflim"
+
+\end_inset
+
+Límite de duty cicle para las frecuencias máximas de operación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede observar en las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:minflim"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:maxflim"
+
+\end_inset
+
+ que al variar el duty cicle se ve alterada la frecuencia de la señal, lo
+ cual en principio indicaría que no son independientes, sin embargo en la
+ generalidad de los casos se puede aceptar esa mínima desviación respecto
+ de la frecuencia o sino calibrar mediante variaciones graduales la frecuencia
+ y el duty hasta que se aproxime al valor deseado.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../EJ1/Informe/2osc.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:osc2"
+
+\end_inset
+
+Señales con distintos duty dado el circuito propuesto de duty configurable
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las señales en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:osc2"
+
+\end_inset
+
+ corresponden a mediciones en distintas entradas.
+ La señal naranja es la medida en la entrada de control de la llave analógica
+ y la señal azul es la medida en la entrada de control del sample and hold.
+ Poseen distintas amplitudes ya que las dos entradas de control requieren
+ tensiones distintas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Filtros
+\end_layout
+
+\begin_layout Subsection
+Antialiasing
+\end_layout
+
+\begin_layout Standard
+Para el muestreo de señales analógicas, partimos de la base que éstas deben
+ poseer un ancho de banda limitado, de manera tal que de acuerdo al teorema
+ de Nyquist del muestreo, la frecuencia de muestreo debe ser el doble del
+ ancho de banda (B) de la señal (en el caso de que el filtro sea ideal)
+ para que las repeticiones del espectro de la señal en cuestión no se solapen,
+ es decir:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$f_s 
+\backslash
+geq 2B$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para observar mejor esto, llamando al período de muestreo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$T$
+\end_layout
+
+\end_inset
+
+, se tiene el tren de pulsos periódico:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+delta_T = 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} 
+\backslash
+delta(t-nT)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para el muestreo de una señal en tiempo continuo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(t)$
+\end_layout
+
+\end_inset
+
+, se tiene:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x^{*}(t) = x(t) 
+\backslash
+cdot 
+\backslash
+delta_T = 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} x(nT) 
+\backslash
+cdot 
+\backslash
+delta(t-nT)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x^{*}(t)$
+\end_layout
+
+\end_inset
+
+ es la señal muestreada.
+ Si se aplica la transformada de Fourier resulta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_T(
+\backslash
+omega) = X(
+\backslash
+omega)*
+\backslash
+delta_{
+\backslash
+omega_s}(
+\backslash
+omega)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+delta_{
+\backslash
+omega_s}(
+\backslash
+omega) = 
+\backslash
+omega_s 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} 
+\backslash
+delta(
+\backslash
+omega - n
+\backslash
+omega_s) 
+\backslash
+hspace{2cm} 
+\backslash
+omega_s = 
+\backslash
+frac{2
+\backslash
+pi}{T}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es decir que al convolucionar el espectro de la señal muestreada con el
+ tren de deltas se obtiene el espectro de dicha señal replicado cada 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$n
+\backslash
+omega_s$
+\end_layout
+
+\end_inset
+
+.
+ Suponiendo que el espectro tiene un ancho total B, para que no se solapen
+ las repeticiones (es decir, ocurra alias entre los espectros) se debe cumplir
+ el teorema en cuestión.
+\end_layout
+
+\begin_layout Standard
+La función del filtro antialiasing pasa bajos consiste entonces en, teniendo
+ una frecuencia de muestreo fija, limitar en banda a la señal de entrada,
+ de manera tal que si la señal que ingresa al sistema tiene un ancho 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$B < f_p$
+\end_layout
+
+\end_inset
+
+ (donde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+ es la frecuencia de paso del filtro) no ocurre ningún inconveniente.
+ En el caso contrario se perderían algunas componentes de la señal, pero
+ se asegura de esta manera que no ocurra el solapamiento entre espectros.
+ En el caso ideal puede modelarse como una ventana cuadrada en el dominio
+ de la frecuencia, donde entre 0 y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+frac{B}{2}$
+\end_layout
+
+\end_inset
+
+ dicha ventana vale 1, y fuera del mismo vale 0.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../Filtro LP/Dibujos/ventanaCuadrada.png
+	display false
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Transferencia del ideal del filtro
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Recuperador
+\end_layout
+
+\begin_layout Standard
+Una vez muestreada la señal, como se mencionó anteriormente se tiene el
+ espectro de la misma replicado en cada posición del tren de pulsos, separados
+ en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+omega_s$
+\end_layout
+
+\end_inset
+
+.
+ Para recuperar la señal original, basta con quedarse solamente con el espectro
+ en banda base, descartando el resto.
+ Para ello se utiliza el filtro recuperador, el cual resulta idéntico al
+ filtro antialiasing dado que, justamente lo que se busca es recuperar el
+ espectro original cuyo ancho en el peor caso es 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$B$
+\end_layout
+
+\end_inset
+
+ (entre 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-
+\backslash
+frac{B}{2}$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+frac{B}{2}$
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Para recuperar el espectro en banda base, se multiplica la transferencia
+ del filtro 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$H(
+\backslash
+omega)$
+\end_layout
+
+\end_inset
+
+ por el espectro periódico de la señal muestreada:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_R(
+\backslash
+omega) = X_T(
+\backslash
+omega) 
+\backslash
+cdot H(
+\backslash
+omega)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el filtro real, al no tener pendiente infinita en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+ y poseer cierta atenuación en dicha frecuencia, se debe considerar dar
+ un margen de frecuencia al momento del diseño, lo cual se explica en la
+ sección siguiente.
+\end_layout
+
+\begin_layout Subsection
+Diseño
+\end_layout
+
+\begin_layout Subsubsection
+Parámetros
+\end_layout
+
+\begin_layout Standard
+Para el diseño de los filtros, se tienen en cuenta los siguientes parámetros
+ de frecuencias y atenuación:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$A_p$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_a$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$A_a$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.5KHz$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1dB$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.25KHz$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$41dB$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Parámetros de diseño
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La elección de dichos valores se basa en poder abarcar, con un poco de margen,
+ el ancho de banda de las señales a utilizar para ingresar al sistema y
+ posterior recuperación.
+ Tomando el caso de la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_C$
+\end_layout
+
+\end_inset
+
+, teniendo en cuenta que la frecuencia 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} = 500Hz$
+\end_layout
+
+\end_inset
+
+, las frecuencias que la componen son 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$900Hz$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1KHz$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.1KHz$
+\end_layout
+
+\end_inset
+
+, por lo que en un principio se tomaría como 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p = 1.1KHz$
+\end_layout
+
+\end_inset
+
+.
+ Para tener en cuenta la caía de la respuesta en frecuencia en dicho punto
+ y que el filtro real implementado puede poseer un poco de ripple debido
+ a las tolerancias de los componentes, se decidió correrla a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.5KHz$
+\end_layout
+
+\end_inset
+
+ de manera que ambas cuestiones no afecten a la señal, en caso de no poder
+ calibrarlo correctamente.
+\end_layout
+
+\begin_layout Subsubsection
+Aproximación teórica
+\end_layout
+
+\begin_layout Standard
+Para obtener la función transferencia teórica del filtro, se utilizó la
+ aproximación de Legendre, dado que utilizando la misma se obtiene un orden
+ razonable para la transferencia (lo cual facilita la implementación y calibraci
+ón, teniendo en cuenta que es el mismo filtro tanto para antialiasing como
+ para recuperador) y, idealmente, no posee ripple.
+ Utilizando la aproximación de Chebyshev se obtiene una mayor caída con
+ menor orden, pero posee ripple, y utilizando Butterworth no se tiene ripple
+ (máxima planicie en banda de paso) pero el orden resulta casi el doble
+ del obtenido para Legendre.
+\end_layout
+
+\begin_layout Standard
+Considerando los parámetros dados, se realizó la aproximación utilizando
+ una plantilla un poco más reestrictiva, para tener un margen de corrección
+ a la hora de realizar la implementación real.
+ El orden resultante es 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$N = 10$
+\end_layout
+
+\end_inset
+
+, que se buscará implementar en 5 etapas de segundo orden.
+ La transferencia teórica resulta, ya desnormalizada con el formato:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$H(S) = 
+\backslash
+frac{k}{
+\backslash
+displaystyle
+\backslash
+sum_{n=0}^{9}a_n 
+\backslash
+cdot S^{n}}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde de acuerdo a los coeficientes 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$a_n$
+\end_layout
+
+\end_inset
+
+ y factorizando, se tienen las frecuencias y selectividades características
+ de cada etapa:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Etapa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_0$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1621.86Hz$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+9.06
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1473Hz$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+2.82
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1214.37Hz$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+1.45
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$902.65Hz$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+0.84
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$658.14Hz$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+0.54
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Detalles de cada etapa
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Etapas
+\end_layout
+
+\begin_layout Standard
+Para la implementación se utilizaron una celda KHN y celdas Sallen-Key,
+ implementadas en los operacionales integrados TL082 yTL084.
+\end_layout
+
+\begin_layout Paragraph
+Etapa 1 - Celda KHN
+\end_layout
+
+\begin_layout Standard
+Para la primer etapa, dado que el 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+ resulta elevado, se optó por implementarla con dicha celda ya que permite
+ un control independiente del factor de selectividad sin afectar a la ganancia
+ de la celda (aunque el circuito resulte más grande, ya que posee 3 amplificador
+es operacionales), y se la había utilizado con anterioridad en la materia
+ 
+\begin_inset Quotes fld
+\end_inset
+
+Teoría de Circuitos
+\begin_inset Quotes frd
+\end_inset
+
+ para una etapa con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+ más elevado que en este caso y dio resultados satisfactorios.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../Filtro LP/Dibujos/KHNCircuito.png
+	display false
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Celda KHN
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Considerando para el diseño lo siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$R_5 = R_6 
+\backslash
+hspace{2cm} R_1 = R_2 = R 
+\backslash
+hspace{2cm} C_1 = C_2 = C 
+\backslash
+hspace{2cm} R = 
+\backslash
+frac{1}{2 
+\backslash
+cdot 
+\backslash
+pi 
+\backslash
+cdot f_0 
+\backslash
+cdot C}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De forma tal que queda:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$R_4 = R_3(2Q-1)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo que asignando valores para 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_3$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_5$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_6$
+\end_layout
+
+\end_inset
+
+ resulta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Componente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Valor calculado
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalizado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$100nF$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$100nF$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_1 = R_2$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$981
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_3$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$3.3K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$3.3K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_4$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$56.5K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$47K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ + Preset 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$20K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_5 = R_6$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$10K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$10K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Valores de componentes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dado que 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_0$
+\end_layout
+
+\end_inset
+
+ tiene una sensibilidad significativa frente a variaciones de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_1$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_2$
+\end_layout
+
+\end_inset
+
+, se busco que ambas fueran cercanas al valor teórico calculado midiéndolas
+ previo al soldado.
+\end_layout
+
+\begin_layout Standard
+Para el ajuste de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+, ya que se considera 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_3$
+\end_layout
+
+\end_inset
+
+ fija, se agregó un preset en serie a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_4$
+\end_layout
+
+\end_inset
+
+ para realizar dicha calibración.
+\end_layout
+
+\begin_layout Standard
+Dado que el sobrepico de la etapa alcanza los 25dB, se añadió a la salida
+ de la misma un divisor resistivo fijo (separado de la etapa siguiente con
+ un buffer) para atenuar la señal 20dB, ya que las 2 etapas siguientes tienen
+ también un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+ elevado y se perdería más rango dinámico.
+\end_layout
+
+\begin_layout Paragraph
+Etapas 2, 3, 4 y 5 - Celda Sallen Key
+\end_layout
+
+\begin_layout Standard
+Para las etapas siguientes, se optó por implementarlas utilizando la celda
+ Sallen Key, dado que los 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+ no son muy altos y el circuito de dicha celda es más simple.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../Filtro LP/Dibujos/SallenKeyCircuito.png
+	display false
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Celda Sallen-Key
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tomando 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_1 = R_2$
+\end_layout
+
+\end_inset
+
+ para simplificar los cálculos y tener una menor dispersión de valores,
+ se parte de las ecuaciones:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$C = 
+\backslash
+frac{1}{2 
+\backslash
+cdot 
+\backslash
+pi 
+\backslash
+cdot f_0 
+\backslash
+cdot R} 
+\backslash
+hspace{2cm} R_B = R_A 
+\backslash
+left(2 - 
+\backslash
+frac{1}{Q}
+\backslash
+right)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se eligen los valores de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_A$
+\end_layout
+
+\end_inset
+
+, definiendo así a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R$
+\end_layout
+
+\end_inset
+
+ y a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_B$
+\end_layout
+
+\end_inset
+
+.
+ En la siguiente tabla se muestran los valores obtenidos y normalizados.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Etapa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R - Norm.$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_A$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_B$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_B - Norm.$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$100nF$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.08K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ + 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$82
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.2K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.97K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.8K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ + Preset 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$200
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$100nF$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.31K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.2K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ + 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$100
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.2K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.57K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ + 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$560
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$100nF$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.76K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.5K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ + 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$270
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.5K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.21K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.2K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$100nF$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.42K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.4K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ (1%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$15K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.22K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.2K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Valores de componentes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se buscó utilizar un mismo valor de capacitor para todos los 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C$
+\end_layout
+
+\end_inset
+
+, de forma tal de minimizar la diversidad de valores mientras las resistencias
+ resultantes se mantuvieran en el mismo orden (de los 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+).
+ Dado que la etapa 2 posee un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Q$
+\end_layout
+
+\end_inset
+
+ más alto respecto de las otras, resulta significativamente sensible a las
+ variaciones sobre 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$R_B$
+\end_layout
+
+\end_inset
+
+, por lo que se decidió configurarla con el preset de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$200
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ para un ajuste más fino.
+\end_layout
+
+\begin_layout Subsubsection
+Acoplamiento y ajuste de ganancia
+\end_layout
+
+\begin_layout Standard
+Dado que las impedancias de entrada de las etapas con Sallen-Key resultan
+ mayores a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1K
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+ y las de salida del orden de los 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Omega$
+\end_layout
+
+\end_inset
+
+, no hay inconveniente para acoplar dichas etapas en cascada, por lo que
+ no se las separó mediante buffers, excepto la primer etapa KHN con la segunda,
+ dado que se incorporó el divisor resistivo mencionado anteriormente.
+\end_layout
+
+\begin_layout Standard
+A la salida del filtro, se colocó otro divisor resistivo, acoplado a un
+ buffer de salida, con un preset para realizar un ajuste a la ganancia general.
+\end_layout
+
+\begin_layout Subsection
+Respuesta en frecuencia
+\end_layout
+
+\begin_layout Standard
+Teniendo la implementación real de los dos filtros, se midió la respuesta
+ en frecuencia (módulo), comparando con la teórica y la simulada en las
+ siguientes gráficas.
+ Se midió únicamente la respuesta en módulo ya que para la aplicación que
+ se tiene va a ser de interés si modifica o no la amplitud de la señal a
+ la entrada.
+ La fase introducida no es de interés para el análisis del muestreo y reconstruc
+ción.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../Filtro LP/Dibujos/bodeFiltrosCaso2.png
+	display false
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+FAA - Módulo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../Filtro LP/Dibujos/bodeFiltrosCaso3.png
+	display false
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+FR - Módulo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debido a las desviaciones en los valores de los componentes no fue posible
+ ajustarlos correctamente para eliminar el ripple.
+ No obstante, como se mencionó anteriormente en el diseño, se tuvo en cuenta
+ que podía ocurrir un inconveniente de este tipo, por lo que se definió
+ la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+ con un valor más grande, de manera tal que la señal sufra lo menos posible
+ la distorión que provoca el sobrepico de la curva de respuesta en el espectro
+ de la señal.
+ Como los aspectos a analizar se centran en el muestreo y recuperación,
+ no se lo consideró un problema grave.
+ En la siguiente gráfica se muestran ambas curvas, de forma tal que se observe
+ que tan similares resultaron en la práctica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../Filtro LP/Dibujos/bodeFiltrosZoomIn.png
+	display false
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+FAA y FR
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la siguiente gráfica se muestra el análisis de montecarlo tomando como
+ referencia una tolerancia de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+ en las resistencias y del 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$10
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+ en los capacitores.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../Filtro LP/Dibujos/Montecarlo.pdf
+	display false
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Curvas de montecarlo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+subsection{Elecci
+\backslash
+'on de $f_p$}
+\end_layout
+
+\begin_layout Plain Layout
+
+Para determinar $f_p$, se busc
+\backslash
+'o minimizar este valor a fin de filtrar la mayor cantidad de ruido posible,
+ pero teniendo en cuenta tambi
+\backslash
+'en la necesidad de recuperar las se
+\backslash
+~nales originales.
+ Se estudió, pues, el espectro de las señales que se utilizarían en la entrada,
+ a saber: un seno en $f_0=$500Hz, un $
+\backslash
+nicefrac{3}{2}$ seno en la misma frecuencia, y una exponencial decreciente
+ de per
+\backslash
+'iodo 10s, as
+\backslash
+'i como una se
+\backslash
+~nal de AM.
+ 
+\backslash
+par 
+\end_layout
+
+\begin_layout Plain Layout
+
+La primera de estas se
+\backslash
+~nales, el seno, nos permite determinar que el filtro antialiasing debe
+ dejar pasar al menos se
+\backslash
+~nales de 500Hz.
+ Por otro lado, la se
+\backslash
+~nal de AM es: 
+\backslash
+[ x(t) = 
+\backslash
+frac{1}{2} 
+\backslash
+cdot 
+\backslash
+cos{
+\backslash
+left(2
+\backslash
+pi
+\backslash
+cdot 1.8f_0 
+\backslash
+cdot t
+\backslash
+right)} + 
+\backslash
+cos{
+\backslash
+left(2
+\backslash
+pi
+\backslash
+cdot 2f_0 
+\backslash
+cdot t
+\backslash
+right)} +
+\backslash
+frac{1}{2} 
+\backslash
+cdot 
+\backslash
+cos{
+\backslash
+left(2
+\backslash
+pi
+\backslash
+cdot 2.2f_0 
+\backslash
+cdot t
+\backslash
+right)} 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+De esto sabemos que $f_p$ debe ser al menos $2.2f_0=1.1$kHz.
+ Para dejar un margen de error, consideramos por ahora que $f_p$ debe ser
+ al menos 1.5kHz.
+\end_layout
+
+\begin_layout Plain Layout
+
+En cuanto a la se
+\backslash
+~nal exponencial: 
+\backslash
+[ x(t) = e^{-|t|}, 
+\backslash
+quad -5 
+\backslash
+leq t 
+\backslash
+leq 5 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+La frecuencia fundamental de la misma es 0.1Hz, con lo cual teniendo en cuenta
+ la restricci
+\backslash
+'on anterior, sabemos que van a pasar m
+\backslash
+'as de 5000 de sus arm
+\backslash
+'onicos, con lo cual en principio esta se
+\backslash
+~nal no ser
+\backslash
+'ia un problema.
+ Para comprobar esta suposici
+\backslash
+'on, se obtuvieron los coeficientes de la serie exponencial de Fourier de
+ esta funci
+\backslash
+'on, resultando: 
+\backslash
+[ X_n = 
+\backslash
+frac{2}{T} 
+\backslash
+cdot 
+\backslash
+frac{1 - (-1)^n 
+\backslash
+cdot e^{-
+\backslash
+nicefrac{T}{2}}}{1 + 
+\backslash
+left(
+\backslash
+frac{2
+\backslash
+pi n}{T}
+\backslash
+right)^2} 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+Sabiendo que la potencia correspondiente al en
+\backslash
+'esimo arm
+\backslash
+'onico es $2 
+\backslash
+cdot |X_n|^2$ (salvo para $n=0$, donde no se duplica el valor del coeficiente),
+ se confirm
+\backslash
+'o que la misma se hace absolutamente despreciable a partir del octavo arm
+\backslash
+'onico, hasta donde se encuentra m
+\backslash
+'as del 99
+\backslash
+% de la potencia.
+ Por lo tanto, esta se
+\backslash
+~nal no impone restricciones al filtro antialiasing.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]      	
+\backslash
+centering      	
+\backslash
+includegraphics[scale=0.45]{armonicos/exp_potencia.png}      	
+\backslash
+includegraphics[scale=0.45]{armonicos/exp_funcion.png}      	
+\backslash
+caption{Potencia en funci
+\backslash
+'on del n
+\backslash
+'umero de arm
+\backslash
+'onico de la se
+\backslash
+~nal exponencial (izquierda), y se
+\backslash
+~nal reconstruida con 50 arm
+\backslash
+'onicos (derecha), superpuesta a la se
+\backslash
+~nal original (no llegan a distinguirse).}      	
+\backslash
+label{fig:armonicos_exp}  
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+Considerando que incluso con una frecuencia 100 veces mayor, de 10Hz, se
+ recuperan 50 arm
+\backslash
+'onicos y la se
+\backslash
+~nal se recupera de manera virtualmente completa (como se observa en la
+ figura 
+\backslash
+ref{fig:armonicos_exp}), se decidi
+\backslash
+'o trabajar esta frecuencia m
+\backslash
+'as r
+\backslash
+'apida, a fin de no tener que esperar 10 segundos para medir un per
+\backslash
+'iodo.
+\end_layout
+
+\begin_layout Plain Layout
+
+En el caso del $
+\backslash
+nicefrac{3}{2}$ seno, la frecuencia fundamental es en cambio 500Hz, con
+ lo cual por un filtro con $f_p=1500
+\backslash
+mathrm{Hz}$ pasar
+\backslash
+'ia la fundamental y los siguientes 2 arm
+\backslash
+'onicos.
+ Para analizar el espectro en este caso se utiliz
+\backslash
+'o la serie trigonom
+\backslash
+'etrica de Fourier, obteni
+\backslash
+'endose: 
+\backslash
+[ a_0 = 
+\backslash
+frac{2}{3
+\backslash
+pi},
+\backslash
+quad a_n=
+\backslash
+frac{12}{
+\backslash
+pi} 
+\backslash
+cdot 
+\backslash
+left(
+\backslash
+frac{1}{9-4n^2}
+\backslash
+right) , 
+\backslash
+quad b_n=0 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]      	
+\backslash
+centering      	
+\backslash
+includegraphics[scale=0.45]{armonicos/32seno_potencia.png}      	
+\backslash
+includegraphics[scale=0.45]{armonicos/32seno_funcion.png}      	
+\backslash
+caption{Potencia en funci
+\backslash
+'on del n
+\backslash
+'umero de arm
+\backslash
+'onico del 
+\backslash
+nicefrac{3}{2} (izquierda), y se
+\backslash
+~nal reconstruida con 3 arm
+\backslash
+'onicos incluyendo la fundamental (derecha, naranja), supuerpuesta a la
+ se
+\backslash
+~nal original (azul).}      	
+\backslash
+label{fig:armonicos_32}  
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+Se obtuvo, pues, que hasta 500Hz se tiene el 67
+\backslash
+% de la potencia, hasta 1kHz el 97
+\backslash
+%, y hasta 1.5kHz el 99
+\backslash
+%.
+ Por lo tanto, siendo que con $f_p=1.5
+\backslash
+mathrm{kHz}$ se puede conservar m
+\backslash
+'as del 99
+\backslash
+% de la potencia de las 3 se
+\backslash
+~nales de entrada, se utiliz
+\backslash
+'o este valor, con el cual se recupera la se
+\backslash
+~nal tal como se observa en la figura 
+\backslash
+ref{fig:armonicos_32}.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Llave analógica 
+\end_layout
+
+\begin_layout Standard
+La llave analógica es la que realiza el muestreo y el reemuestreo de la
+ señal.
+ 
+\end_layout
+
+\begin_layout Subsection
+Elección del integrado 
+\end_layout
+
+\begin_layout Standard
+Los parámetros que se tuvieron en cuenta para la elección del integrado
+ a utilizar afueron los siguientes:
+\end_layout
+
+\begin_layout Enumerate
+Resistencia de encendido (
+\begin_inset Formula $R_{on}$
+\end_inset
+
+): en una llave ideal es nula, cuando la llave está cerrada no debería de
+ producirse ninguna caída de tensión cuando la señal pasa a través de la
+ llave.
+ Buscamos que sea lo mas baja posible para que no se degrade mucho la señal.
+ También es importante que sea constante para evitar alteraciones de la
+ señal de entrada a la salida debido a diferentes atenuaciones que puedan
+ producirse por variaciones en esta resistencia y que tenga menor distorsión
+ armónica.
+\end_layout
+
+\begin_layout Enumerate
+Resistencia de apagado (
+\begin_inset Formula $R_{off}$
+\end_inset
+
+): en una llave ideal es infinita, cuando la llave está abierta no debería
+ de circular corriente y debería bloquear por completo el paso de la señal
+ a través de la llave.
+ Por lo ello buscamos que sea lo más alta posible, para poder aislar lo
+ mejor posible la señal de entrada con la salida.
+ Est;a relacionada con la corriente de fuga cuando la llave está en corte.
+\end_layout
+
+\begin_layout Enumerate
+Niveles lógicos: deben ser compatibles con los niveles de tensión generados
+ por el oscilador del sistema.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Velocidad de conmutación: debe ser lo más rápida posible para poder muestrear
+ señales de alta frecuencia, minimizar la distorsión de la señal y evitar
+ errores en el muestreo.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Voltaje máximo de entrada: las máximas amplitudes de éstas tienen que ser
+ compatibles con la llave analógica elegida, estas coinciden con la alimentación
+ que se use para la misma.
+\end_layout
+
+\begin_layout Enumerate
+Señales de ruido: se encuentran el crosstalk y el feedthrough desde el control
+ de entrada hacia la salida, idealmente se desea que no exista tal interferencia.
+\end_layout
+
+\begin_layout Standard
+Se compararon las hojas de datos de tres integrados distintos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integrado
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CD4016
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CD4066
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MAX320
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Resistencia de encendido (
+\begin_inset Formula $\Omega$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+280
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+125 (flat over full signal-input range)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta R_{on}$
+\end_inset
+
+ (
+\begin_inset Formula $\Omega$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Corriente de fuga en corte
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100pA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10pA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10pA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Propagation Delay (from input to output)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20ns
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20ns
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{on}/t_{off}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20ns
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20ns
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+65ns/35ns
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cut off frequency (-3dB)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40MHz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40MHz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tensión de alimentación (max.
+ recomendado)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VSS+18V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VSS+18V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VSS+17V
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feedthrough Frequency (-50dB)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.25MHz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1MHz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Crosstalk (control input to signal-output)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50mV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50mV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Capacitance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4pF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8pF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+THD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Encapsulado
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+THT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+THT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SMD
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparación de las características de los integrados
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entre todos los modelos disponibles se priorizó la llave con menor Ron y
+ mayor velocidad de conmutación para tener menor distorsión armónica en
+ las señales de alta frecuencia, ya que, el ancho del pulso de la señal
+ de control será: 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $T_{0}=\frac{DC}{f}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde el caso más crítico se obtiene con el menor Duty cicle a la mayor
+ frecuencia a la cual se quiere muestrear, donde la velocidad de conmutación
+ de la llave cobra mucha importancia.
+\end_layout
+
+\begin_layout Standard
+La llave MAX320 resulta una buena opción debido a la pequeña Ron que tiene
+ en comparación con las otras dos, pero se optó por la CD4066, ya que también
+ tiene buenas características y no es de montaje superficial como la anterior
+ mencionada, lo que le da practicidad al armado de la placa.
+ Otra característica a tener en cuenta es la corriente de fuga en corte,
+ en este aspecto la del integrado CD4066 es menor que la del integrado CD4016.
+ Otra ventaja del CD4066 son los tiempos de apertura y cierre de la llave,
+ muy importantes para el correcto muestreo de una señal, ya que no se puede
+ switchear la llave a un tiempo menor a este.
+ Como se puede ver en la tabla, estos tiempos son menores que los del MAX320.
+ Por otra parte, el tiempo de propagación entre la entrada y la salida,
+ no fué encontradao en la hoja de datos del MAX320.
+ El factor de Crosstalk, no resulta ser crítico dado que se cuenta con un
+ filtro recuperador pasa bajos, por lo que elimina el ruido de alta frecuencia
+ característico del Crosstalk.
+ Un punto a contemplar son los niveles de tensión a utilizar.
+ Eligiendo alimentación con fuente partida de ±9v se garantiza que ésta
+ caiga dentro de los límites de la tensión de alimentación recomendada en
+ la hoja de datos.
+ Y como existe la restricción de que la llave no admite tensiones mayores
+ a su alimentación, se verifica que este rango sea mayor que la máxima amplitud
+ de las señales de entrada a tratar.
+\end_layout
+
+\begin_layout Subsection
+Configuración de la llave analógica
+\end_layout
+
+\begin_layout Standard
+Para el correcto funcionamiento, se incluyó una resistencia de pull-down
+ a la salida de la llave para garantizar que cuando esté en alta impedancia
+ (llave abierta), la salida sea de 0 V y no quede en un estado flotante.
+ Esta resistencia no debe ser muy chica, dado que provocaría que corrientes
+ de gran valor circulen por la llave analógica.
+ Debe ser lo suficientemente mayor que la RON, para poder despreciar el
+ divisor resistivo que se forma al considerar ambas resistencias.
+ Por otro lado, si el valor fuera muy elevado, el circuito RC que se forma
+ con la capacidad de salida de la llave tendría un tiempo característico
+ muy alto en comparación con el ancho del pulso de la señal de control cuando
+ la frecuencia de muestreo es alta, lo que haría que la señal no se termine
+ de establecer.
+ Por esta relación de compromiso, se va a notar una leve diferencia entre
+ la amplitud de la señal maestreada y la señal de entrada por el divisor
+ resistido formado.
+ Se debe garantizar, además, que la impudencia de entrada del filtro recuperador
+ sea de ordenes de magnitud mas grande que esta resistencia para que la
+ transferencia de dicho filtro no se vea modificada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+section{Sample and hold} La etapa de sample and hold, o track and hold,
+ cumple la funci
+\backslash
+'on de mantener la se
+\backslash
+~nal constante por un tiempo suficiente como para medir su valor.
+ Este proceso se divide en dos: 
+\backslash
+begin{itemize}      	
+\backslash
+item 
+\backslash
+underline{Sample o track:} la salida es igual a la entrada.
+      	
+\backslash
+item 
+\backslash
+underline{Hold:} la salida se mantiene constante en el valor que ten
+\backslash
+'ia cuando se recibi
+\backslash
+'o la se
+\backslash
+~nal de hold.
+  
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+Para este fin se utiliz
+\backslash
+'o, de acuerdo a lo pautado por la c
+\backslash
+'atedra, el integrado LF398
+\backslash
+footnote{Hoja de datos consultada: http://www.ti.com/lit/ds/symlink/lf398-n.pdf.}.
+ Al mismo se lo controla con una se
+\backslash
+~nal cuadrada: cuando la misma toma un valor superior al de la referencia
+ l
+\backslash
+'ogica (con un threshold de 1.4V) se opera en modo sample, y con valor inferior
+ a la referencia, en modo hold.
+ Sus principales limitaciones est
+\backslash
+'an dadas por:     
+\backslash
+begin{itemize}       	
+\backslash
+item La salida debe mantenerse dentro de los valores de tensi
+\backslash
+'on de la alimentaci
+\backslash
+'on.
+       	
+\backslash
+item Para frecuencias bajas debe tenerse en cuenta el droop rate, es decir
+ qu
+\backslash
+'e tan r
+\backslash
+'apido se descarga el capacitor de hold.
+       	
+\backslash
+item Para frecuencias altas, pueden surgir problemas con el slew rate y/o
+ con el tiempo de establecimiento  y de adquisici
+\backslash
+'on de la se
+\backslash
+~nal en hold.
+    
+\backslash
+end{itemize}   
+\end_layout
+
+\begin_layout Plain Layout
+
+Para satisfacer los requerimientos que se tengan en frecuencia, se debe
+ elegir el capacitor de hold apropiadamente.
+ Esto se debe a que cuanto mayor sea el capacitor, m
+\backslash
+'as estable ser
+\backslash
+'a la se
+\backslash
+~nal de salida (se reducir
+\backslash
+'an el droop rate y el tiempo de establecimiento), pero el sistema ser
+\backslash
+'a m
+\backslash
+'as lento a cambios en la entrada en el momento de sample (empeorar
+\backslash
+'a el tiempo de adquisici
+\backslash
+'on).
+ Un droop rate elevado impide trabajar a bajas frecuencias, mientras que
+ cuanto mayores sean los tiempos de adquisici
+\backslash
+'on y establecimiento, menor ser
+\backslash
+'a la m
+\backslash
+'axima frecuencia a la que el integrado funciona correctamente.
+ 
+\backslash
+par
+\end_layout
+
+\begin_layout Plain Layout
+
+Se procedi
+\backslash
+'o, pues, a realizar mediciones de tiempo de establecimiento y tiempo de
+ adquisici
+\backslash
+'on con distintos capacitores (tabla 
+\backslash
+ref{table:sh_mediciones}).
+ En cuanto al droop rate, dado que al computar la derivada de la tensi
+\backslash
+'on, se arrojaban valores poco representativos de la se
+\backslash
+~nal debido a la presencia de ruido, se decidi
+\backslash
+'o utilizar los valores de la hoja de datos del integrado para realizar
+ la comparaci
+\backslash
+'on.
+ Se utiliz
+\backslash
+'o el gr
+\backslash
+'afico proporcionado por el fabricante, que se observa en la figura 
+\backslash
+ref{fig:droop_rate}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{table}[htb]      	
+\backslash
+centering      	
+\backslash
+begin{tabular}{|c|c|c|}          	
+\backslash
+hline         Capacidad & Tiempo de establecimiento (s) & Tiempo de adquisici
+\backslash
+'on (s)  
+\backslash
+
+\backslash
+ 
+\backslash
+hline 
+\backslash
+hline          	100pF     & $9
+\backslash
+times 10^{-7}$             & $1.4
+\backslash
+times 10^{-6}$                                   
+\backslash
+
+\backslash
+ 
+\backslash
+hline          	10nF      & $
+\backslash
+leq 1.3
+\backslash
+times 10^{-8}$      & $8.0
+\backslash
+times 10^{-6}$                                                   
+\backslash
+
+\backslash
+ 
+\backslash
+hline 	100nF     & $
+\backslash
+leq 1.3
+\backslash
+times 10^{-8}$      & $1.3
+\backslash
+times 10^{-4}$                                                 
+\backslash
+
+\backslash
+ 
+\backslash
+hline     
+\backslash
+end{tabular}      	
+\backslash
+caption{Par
+\backslash
+'ametros del LF398 para distintos valores de $
+\backslash
+mathrm{C}_
+\backslash
+mathrm{h}$}      	
+\backslash
+label{table:sh_mediciones}  
+\backslash
+end{table}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]      	
+\backslash
+centering      	
+\backslash
+includegraphics[scale=0.7]{sh/droop_rate.jpg}      	
+\backslash
+caption{Droop rate en funci
+\backslash
+'on de $C_h$ para el LF398}      	
+\backslash
+label{fig:droop_rate}  
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+En primer lugar, cabe aclarar que las mediciones de tiempo de establecimiento
+ se vieron limitadas por los instrumentos de medici
+\backslash
+'on utilizados: puesto que el rise time del generador utilizado para realizar
+ las mediciones es de 13ns, es imposible con este instrumento medir un tiempo
+ de establecimiento del mismo orden que este valor.
+ Sin embargo, s
+\backslash
+'i se pudo realizar esta medici
+\backslash
+'on para el capacitor m
+\backslash
+'as peque
+\backslash
+~no.
+\backslash
+par
+\end_layout
+
+\begin_layout Plain Layout
+
+Resulta claro de estas mediciones que el capacitor de 100nF, por su tiempo
+ de adquisici
+\backslash
+'on, no permitir
+\backslash
+'ia trabajar con frecuencias mayores a aproximadamente 3.5kHz con duty del
+ 50
+\backslash
+%, lo cual es inaceptable considerando que $f_p=1.5$kHz: s
+\backslash
+'olo se podr
+\backslash
+'ia muestrear en el l
+\backslash
+'imite establecido por el teorema de Nyquist, casi sin margen de error alguno.
+ Con este capacitor, adem
+\backslash
+'as, se hace demasiado notorio el problema de la absorci
+\backslash
+'on diel
+\backslash
+'ectrica, por el cual en la etapa de hold el capacitor tiende a volver al
+ valor de hold anterior.
+ Este efecto se observa en la figura 
+\backslash
+ref{fig:1k6}.
+ 
+\backslash
+par
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]      	
+\backslash
+centering      	
+\backslash
+includegraphics[scale=0.25]{sh/1k6_100p.png}      	
+\backslash
+includegraphics[scale=0.25]{sh/1k6_100n.png}      	
+\backslash
+caption{Salida del sample and hold (verde) con entrada senoidal de 1.6KHz
+ (amarillo).
+ Izquierda: capacitor de 100pF.
+ Derecha: capacitor de 100nF.}      	
+\backslash
+label{fig:1k6}  
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+Por otro lado, con el capacitor de 100pF, si bien los tiempos medidos fueron
+ peque
+\backslash
+~nos, esto es en desmedro de la estabilidad de la se
+\backslash
+~nal en hold.
+ En la figura 
+\backslash
+ref{fig:240k}, se observa c
+\backslash
+'omo para frecuencias elevadas el capacitor no mantiene correctamente el
+ valor de la se
+\backslash
+~nal.
+ En cuanto al droop rate documentado para este valor de $
+\backslash
+mathrm{C}_
+\backslash
+mathrm{h}=$100pF, de $0.3
+\backslash
+nicefrac{V}{s}$, provocar
+\backslash
+'ia que caiga 1.2mV trabajando a 500Hz con 50
+\backslash
+% de duty, que es la m
+\backslash
+'inima frecuencia sub nyquist que se utilizar
+\backslash
+'a, con lo cual en principio esto no deber
+\backslash
+'ia ser un problema.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]      	
+\backslash
+centering      	
+\backslash
+includegraphics[scale=0.25]{sh/240k_100p.png}      	
+\backslash
+includegraphics[scale=0.25]{sh/240k_100n.png}      	
+\backslash
+caption{Salida del sample and hold (verde) con entrada senoidal de 240KHz
+ (amarillo).
+ Izquierda: capacitor de 100pF.
+ Derecha: capacitor de 100nF.}      	
+\backslash
+label{fig:240k}  
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+Por 
+\backslash
+'ultimo, con el capacitor de 10nF recomendado por el fabricante, se consigue
+ un droop rate de 4mV/s, completamente despreciable para nuestra aplicaci
+\backslash
+'on, mientras que la frecuencia m
+\backslash
+'axima a la que se puede trabajar sube a 62.5kHz, lo cual permite tomar 40
+ muestras por per
+\backslash
+'iodo de una se
+\backslash
+~nal con $f_{in}=f_p$.
+ Con este capacitor, adem
+\backslash
+'as, la se
+\backslash
+~nal resulta mucho menos ruidosa que la del capacitor de 100pF.
+ Por lo tanto, este es el valor que se decidi
+\backslash
+'o utilizar.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb]      	
+\backslash
+centering      	
+\backslash
+includegraphics[width=0.5
+\backslash
+textwidth]{sh/sh_10n.png}      	
+\backslash
+caption{Salida del sample and hold (verde) con entrada senoidal de 1.6KHz
+ (amarillo).
+ Capacitor de 10nF.}     	 	
+\backslash
+label{fig:sh_10n}  
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+En cuanto a la tecnolog
+\backslash
+'ia de este componenete, se sigui
+\backslash
+'o tambi
+\backslash
+'en la recomendaci
+\backslash
+'on del fabricante de usar un capacitor film, debido a que su diel
+\backslash
+'ectrico tiene bajas p
+\backslash
+'erdidas y mejor comportamiento en cuanto a absorci
+\backslash
+'on diel
+\backslash
+'ectrica que en otros tipos de capacitores.
+\end_layout
+
+\begin_layout Plain Layout
+
+En la figura 
+\backslash
+ref{fig:sh_10n}, se observa c
+\backslash
+'omo se comporta el integrado con el capacitor elegido.
+ La se
+\backslash
+~nal se ve mucho m
+\backslash
+'as estable en hold que para el capacitor de 100pF, sin los problemas de
+ absorci
+\backslash
+'on diel
+\backslash
+'ectrica manifestados por el de 100nF.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+GUI
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/gui1.PNG
+	lyxscale 30
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/gui2.PNG
+	lyxscale 30
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+GUI - Ventanas de usuario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La GUI para realizar las simulaciones fue implementada en Python.
+ La imagen de la derecha presenta la ventana principal, donde se configuran
+ los parámetros del sistema para simular.
+ Se puede elegir el modo de muestreo, además de la frecuencia de sampleo
+ y el duty cicle del oscilador.
+ Al hacer click en aceptar, se procesa la simulación y se muestra con una
+ barra verde en la parte inferior de la ventana mientras se carga.
+ Una vez terminada, se pueden observar los gráficos resultantes de la señal
+ en los diferentes puntos del sistema, tanto en el dominio del tiempo como
+ en el de la frecuencia.
+\end_layout
+
+\begin_layout Standard
+Para correr el programa, se debe utilizar el archivo UI.py.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mediciones básicas
+\end_layout
+
+\begin_layout Standard
+Se estudió el comportamiento del sistema con tres señales de entrada distintas,
+ las cuales fueron:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_a(t)= A 
+\backslash
+cdot cos(2
+\backslash
+pi f_{in}t)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_b(t)= A 
+\backslash
+cdot 
+\backslash
+nicefrac{3}{2} sin (2
+\backslash
+pi f_{in}t)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_c(t)= A 
+\backslash
+cdot e^{|t|}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se debe recordar nuevamente que los filtros reales implementados tienen
+ una ligera atenuación de como máximo 2dB en la banda de paso cerca de la
+ frecuencia 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+ debido a las dificultades en su calibración, dadas las desviaciones en
+ los valores de los componentes reales.
+ Por ello, las señales recuperadas tendrán una atenuación mínima en todos
+ los casos.
+ Como se mencionó previamente en el diseño de los filtros, se busca analizar
+ los efectos del muestreo y recuperación de la señal a partir del espectro
+ en banda base, por lo que no se lo consideró un problema.
+\end_layout
+
+\begin_layout Subsection
+Caso con variables óptimas
+\end_layout
+
+\begin_layout Standard
+Para definir la amplitud máxima de las señales de entrada, se tiene en cuenta
+ la máxima amplitud que puede tener la señal que ingresa al filtro antialiasing
+ sin sufrir distorsión apreciable.
+ Se consideró entonces una máxima amplitud de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1Vp$
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Partiendo en cada caso de una 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+ que cumpla el teorema de Nyquist del muestreo, se utilizó una un poco mayor
+ dado que se debe tener en cuenta un cierto margen de frecuencia debido
+ a que los filtros no son ideales, sino de orden finito, por lo que la caída
+ de los mismos es finita y, en consecuencia, en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_a$
+\end_layout
+
+\end_inset
+
+ no se tiene atenuación infinita.
+ Se varió el duty del oscilador hasta conseguir que la señal recuperada
+ tuviera la máxima amplitud posible (recuperando la mayor potencia posible).
+ 
+\end_layout
+
+\begin_layout Standard
+Finalmente se utilizó una 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=2KHz$
+\end_layout
+
+\end_inset
+
+, siendo la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in}=500Hz$
+\end_layout
+
+\end_inset
+
+ correspondiente al número de grupo (para las señales 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+), y un valor de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$A=1Vp$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Se tomaron mediciones tanto de la salida como de la entrada, para ambos
+ casos: FAA + LLAVE + FR, y FAA + S&H + FR.
+\end_layout
+
+\begin_layout Standard
+Para la potencia, se expresó la potencia recuperada respecto de la entrada,
+ es decir el porcentaje relativo.
+ En el cálculo parcial se utilizó el hecho de ser señales periódicas, por
+ lo que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$P_x = 
+\backslash
+frac{1}{T} 
+\backslash
+cdot 
+\backslash
+int_{0}^{T}|x(t)|^2 dt$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para las señales 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$P_a = f_{in} 
+\backslash
+cdot 
+\backslash
+int_{0}^{T} A^2 
+\backslash
+cdot sin^2(2
+\backslash
+pi f_{in} t) dt = 
+\backslash
+frac{A^2}{2}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$P_b = f_{in} 
+\backslash
+cdot 
+\backslash
+int_{-
+\backslash
+frac{T}{2}}^{
+\backslash
+frac{T}{2}} 
+\backslash
+left( e^{-|t 
+\backslash
+cdot 5 
+\backslash
+cdot 2f_{in}|} 
+\backslash
+right) ^2 dt 
+\backslash
+approx 
+\backslash
+frac{A^2}{10}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y la potencia relativa se obtiene como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$Pr(
+\backslash
+%) = 
+\backslash
+left( 
+\backslash
+frac{P_{r}}{P_{in}} 
+\backslash
+right) 
+\backslash
+dot 100$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_01.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_02.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ Caso con Llave analógica (izquierda) - Duty 24%, y Sample and Hold (derecha)
+ - Duty 40%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En ambos casos se recupera la senoidal original (con menos potencia naturalmente
+) tal como se esperaba sin armónicos adicionales.
+ En el caso de la llave analógica, la potencia relativa recuperada es del
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$30
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+, y en el del sample and hold es de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$56
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se repitió el procedimiento con la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b(t)$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/6b_ll_exp.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_25.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda) - Duty 20%, Sample and Hold (derecha) - Duty
+ 20%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se logra recuperar la exponencial en ambos casos (con menos potencia también)
+ como era de esperarse.
+ En el caso de la llave analógica se recupera un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$16
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+ de la potencia, y en el caso con sample and hold 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$76
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_12.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_14.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda), Sample and Hold (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En ambos casos se observa que se recupera la forma de la señal, pero no
+ es igual a la original.
+ Si se tiene en cuenta que 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} = 500Hz$
+\end_layout
+
+\end_inset
+
+, a través del FAA sólo pasan las frecuencias 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in}$
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2 
+\backslash
+cdot f_{in}$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$3 
+\backslash
+cdot f_{in}$
+\end_layout
+
+\end_inset
+
+.
+ Como se explicó anteriormente en los criterios de selección de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_p$
+\end_layout
+
+\end_inset
+
+, la mayor potencia de dicha señal se recupera con los 3 primeros armónicos;
+ sin embargo, la señal recuperada es distorsionada por la no planicidad
+ en banda de paso de los filtros reales, como se explicó durante el análisis
+ de los filtros.
+ El efecto se observa también en la simulación dado que para ambos filtros
+ se cargó la transferencia aproximada con Legendre (y no una ventana cuadrada
+ ideal).
+ Dado que la señal no mantiene su formato original no puede inferirse fácilmente
+ una función que la defina, por lo que no se realizó el cálculo numérico
+ de la potencia recuperada.
+ 
+\end_layout
+
+\begin_layout Standard
+Se puede ver en todos los casos que se recupera mayor potencia utilizando
+ el sample and hold que con la llave analógica.
+ En el caso de la llave analógica, se puede modelar como la señal multiplicada
+ por un tren de pulsos de ancho 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x^* (t) = x(t) 
+\backslash
+cdot 
+\backslash
+Pi_T(t)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde el tren de pulsos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+Pi_T(t) = 
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t}{
+\backslash
+tau} 
+\backslash
+right) * 
+\backslash
+delta_{2
+\backslash
+tau}(t) $$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+delta_{2
+\backslash
+tau}(t)$
+\end_layout
+
+\end_inset
+
+ es el tren de deltas periódico de período 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+.
+ Entonces se tiene que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x^* (t) = x(t) 
+\backslash
+cdot 
+\backslash
+left( 
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t}{
+\backslash
+tau} 
+\backslash
+right) * 
+\backslash
+delta_{2
+\backslash
+tau}(t) 
+\backslash
+right)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mediante la transformada de Fourier para hallar el espectro resultante se
+ obtiene:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X^*(f) = X(f) * (
+\backslash
+tau 
+\backslash
+cdot sinc(
+\backslash
+tau f) 
+\backslash
+cdot 
+\backslash
+delta_{f_s}) = 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} 
+\backslash
+pi 
+\backslash
+cdot sinc
+\backslash
+left(
+\backslash
+frac{n}{2}
+\backslash
+right) 
+\backslash
+cdot X(f - 
+\backslash
+frac{n}{2
+\backslash
+tau})$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s = 
+\backslash
+frac{1}{2 
+\backslash
+tau}$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Se puede ver que espectro resultante se encuentra envuelto por una 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sinc$
+\end_layout
+
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+En el caso del sample and hold, se tiene esa misma información sobre el
+ espectro más la que se obtiene durante el tiempo de hold, por lo que se
+ recupera mayor información.
+ El muestreo durante el tiempo de hold puede modelarse como la señal muestreada
+ con un tren de deltas periódico 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+delta_T(t)$
+\end_layout
+
+\end_inset
+
+ convolucionado con un pulso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t}{
+\backslash
+tau} 
+\backslash
+right)$
+\end_layout
+
+\end_inset
+
+.
+ En fórmulas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x^*(t) = [x(t) 
+\backslash
+cdot 
+\backslash
+delta_T(t)]*
+\backslash
+Pi 
+\backslash
+left( 
+\backslash
+frac{t}{
+\backslash
+tau} 
+\backslash
+right)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde aplicando la transformada de Fourier se obtiene:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X^*(f) = (X(f) * 
+\backslash
+delta_{
+\backslash
+omega_s}(f) ) 
+\backslash
+cdot 
+\backslash
+tau 
+\backslash
+cdot sinc(
+\backslash
+tau f) = 
+\backslash
+left( X(f) * 
+\backslash
+sum_{n = -
+\backslash
+infty}^{
+\backslash
+infty} 2
+\backslash
+pi f_s 
+\backslash
+cdot 
+\backslash
+delta(f - n f_s) 
+\backslash
+right) 
+\backslash
+cdot 
+\backslash
+tau 
+\backslash
+cdot sinc(
+\backslash
+tau f)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X^*(f) = 
+\backslash
+tau 
+\backslash
+cdot  sinc(
+\backslash
+tau f) 
+\backslash
+cdot 
+\backslash
+sum_{n = -
+\backslash
+infty}^{
+\backslash
+infty} 2
+\backslash
+pi f_s 
+\backslash
+cdot X(f-n f_s)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es decir que en cada delta se tendrá una réplica del espectro de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X(f)$
+\end_layout
+
+\end_inset
+
+, afectado por la envolvente de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sinc$
+\end_layout
+
+\end_inset
+
+.
+ Si el ancho del pulso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+ se aproxima a 0, el lóbulo principal del 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sinc$
+\end_layout
+
+\end_inset
+
+ será más ancho, aproximándose al caso ideal de un tren de deltas períodico.
+\end_layout
+
+\begin_layout Standard
+Sumando los efectos del muestreo en tiempo de sample más el del tiempo de
+ hold se tiene finalmente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X_T(f) = 
+\backslash
+underbrace{
+\backslash
+tau 
+\backslash
+cdot sinc(
+\backslash
+tau f) 
+\backslash
+cdot 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} 
+\backslash
+frac{
+\backslash
+pi}{
+\backslash
+tau} 
+\backslash
+cdot X(f - 
+\backslash
+frac{n}{2
+\backslash
+tau})}_{Sample} + 
+\backslash
+underbrace{
+\backslash
+tau 
+\backslash
+cdot  sinc(
+\backslash
+tau f) 
+\backslash
+cdot 
+\backslash
+sum_{n = -
+\backslash
+infty}^{
+\backslash
+infty} 2
+\backslash
+pi f_s 
+\backslash
+cdot X(f-n f_s)}_{Hold}$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Caso con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s = f_a$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso, se cambia la frecuencia de sampleo; considerando además que
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} 
+\backslash
+leq 
+\backslash
+frac{f_p}{2}$
+\end_layout
+
+\end_inset
+
+, se mantuvo la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in}$
+\end_layout
+
+\end_inset
+
+ del ítem anterior.
+ Se muestran los casos representativos con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_19.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_18.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda) - Duty 88%, Sample and Hold (derecha) - Duty
+ 71%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso de la llave analógica, se recupera una potencia realtiva del
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$49
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+, y en el del sample and hold del 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$64
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b(t)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_26.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_27.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Llave analógica (izquierda) - Duty 30%, Sample and Hold (derecha) - Duty
+ 15%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al igual que en el caso de muestreo natural con llave analógica, se recuperan
+ las señales originales sin armónicos adicionales como era de esperar.
+ En este caso se recupera más potencia, ya que el 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+tau$
+\end_layout
+
+\end_inset
+
+ del pulso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Pi(
+\backslash
+frac{t}{
+\backslash
+tau})$
+\end_layout
+
+\end_inset
+
+ es menor al haber aumentado la frecuencia de muestreo, lo que resulta en
+ que el lóbulo principal de la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sinc$
+\end_layout
+
+\end_inset
+
+ es más ancho y distorsiona menos el espectro.
+\end_layout
+
+\begin_layout Standard
+Para el caso con llave analógica, se recupera un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$7
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+, y en el caso del sample and hold un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$76
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Caso con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} = f_s$
+\end_layout
+
+\end_inset
+
+ - Aliasing con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora se toma sólo la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_a$
+\end_layout
+
+\end_inset
+
+, es decir la senoidal básica.
+ Dado que en este caso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in} = f_s$
+\end_layout
+
+\end_inset
+
+, no se está cumpliendo Nyquist.
+ Por lo tanto, se esperará observar los efectos del solapamiento entre las
+ repeticiones del espectro de la señal en cuestión a la salida del sistema.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/6c_ll_sen.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_09.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso con llave analógica (muestreo natural) a la izquierda, y muestreo con
+ sample and hold a la derecha.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observa que efectivamente, tanto en simulación como medición hay aliasing
+ entre las repeticiones del espectro de la senoidal original.
+ Al pasar por el filtro recuperador, se obtuvieron dos espectros solapados,
+ produciendo una senoidal montada sobre otra, como se observa en el caso
+ con sample and hold.
+ En el caso con llave analógica, se obtuvo una señal modulada en amplitud.
+\end_layout
+
+\begin_layout Subsection
+Caso con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+ fija - Aliasing con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso, dada una 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+ fija, se varía la frecuencia de las señales 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_b$
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+ hasta observar efectos de aliasing a la salida del filtro recuperador,
+ realizado tanto para el caso de muestreo natural como el instantáneo con
+ sample and hold.
+ Se muestran los efectos producidos con la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+.
+ Las frecuencia de muestreo utilizada en este caso es de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s = 1.5KHz$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_16.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../simulacion_ej5/ExpressOutput/med_17.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso de aliasing en señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+.
+ Muestreo natural (izquierda), y muestreo instantáneo (derecha).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso de muestreo natural, con el aliasing la señal obtenida se asemeja
+ a una de mayor frecuencia modulada por la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+, mientras que en el caso de muestreo instantáneo se tiene una señal montada
+ sobre la 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$X_c$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+section{Remuestreo} 
+\backslash
+label{sec:remuestreo}
+\end_layout
+
+\begin_layout Plain Layout
+
+En esta secci
+\backslash
+'on, analizaremos los efectos del muestreo instant
+\backslash
+'aneo en una se
+\backslash
+~nal AM.
+ La misma es de la forma:
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation} 	X_C(t) = 
+\backslash
+frac{
+\backslash
+mathrm{A}_
+\backslash
+mathrm{MAX}}{2} 
+\backslash
+cdot  	
+\backslash
+left(  
+\backslash
+frac{1}{2} 
+\backslash
+cdot 
+\backslash
+cos{
+\backslash
+left( 2
+\backslash
+pi 
+\backslash
+cdot(f_p-f_m) 
+\backslash
+cdot t
+\backslash
+right)} + 	
+\backslash
+cos{
+\backslash
+left( 2
+\backslash
+pi f_p
+\backslash
+cdot t
+\backslash
+right)} + 	
+\backslash
+frac{1}{2} 
+\backslash
+cdot 
+\backslash
+cos{
+\backslash
+left( 2
+\backslash
+pi 
+\backslash
+cdot (f_p+f_m)
+\backslash
+cdot t
+\backslash
+right)} 	
+\backslash
+right) 
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+En este caso, se utiliz
+\backslash
+'o $f_p=1$kHz y $f_m=100$Hz.
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+Para lograr el muestreo instant
+\backslash
+'aneo, primero se pasa la se
+\backslash
+~nal por el sample and hold.
+ Luego, se la vuelve a muestrear, pero esta vez con la llave anal
+\backslash
+'ogica, de manera tal que a la salida se anule la totalidad del tiempo de
+ sample y se conserve s
+\backslash
+'olo el de hold.
+ Idealmente, esto es equivalente a multiplicar la se
+\backslash
+~nal por un tren de deltas (muestreo ideal), y luego convolucionar con un
+ pulso.
+ 
+\backslash
+footnote{Dependiendo de la bibliograf
+\backslash
+'ia, puede encontrarse que a esto lo llama ``muestreo flat top'', mientras
+ que con muestreo instant
+\backslash
+'aneo se refiere al caso de producto con tren de deltas.} Gr
+\backslash
+'aficamente, donde hab
+\backslash
+'ia deltas se obtienen pulsos con el ancho del pulso original y la altura
+ del delta que se reemplaza.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb] 	
+\backslash
+centering 	
+\backslash
+includegraphics[width=0.8
+\backslash
+textwidth]{muestreo_inst.png} 	
+\backslash
+caption{Efecto en una se
+\backslash
+~nal de entrada (arriba) de pasar primero por un sample and hold (centro),
+ y luego por la llave anal
+\backslash
+'ogica (abajo), considerando todo ideal.} 	
+\backslash
+label{fig:muestreo_inst} 
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+Si bien en el caso ideal basta con abrir la llave la totalidad del tiempo
+ que el S
+\backslash
+&H est
+\backslash
+'a en hold y viceversa, al tener en cuenta las limitaciones de los integrados
+ surgen otras consideraciones.
+ A fines de garantizar que la se
+\backslash
+~nal se mantenga lo m
+\backslash
+'as constante posible en cada muestra, se quiere evitar que a la salida
+ se observe el tiempo de establecimiento del sample and hold.
+ Por lo tanto, se decidi
+\backslash
+'o usar en las mediciones un duty levemente menor para la llave que para
+ el S
+\backslash
+&H.
+\end_layout
+
+\begin_layout Plain Layout
+
+En cuanto al duty cicle de estas mediciones, cuanto m
+\backslash
+'as tiempo est
+\backslash
+'e abierta la llave, m
+\backslash
+'as potencia se recuperar
+\backslash
+'a a la salida.
+  Sin embargo, hay que tener en cuenta que el S
+\backslash
+&H debe estar en hold por m
+\backslash
+'as tiempo que la llave est
+\backslash
+'a abierta por lo anteriormente discutido, pero si esto se lleva al extremo
+ es posible que el integrado no llegue a seguir a la se
+\backslash
+~nal en sample y la salida no sea correcta.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Considerando que la m
+\backslash
+'axima frecuencia que entra en el sistema por $X_C$ es $f_p+f_m=1.1$kHz,
+ por Nyquist la frecuencia de sampleo debe ser mayor a 2.2kHz, y se decidi
+\backslash
+'o establecerla en 3kHz, obteni
+\backslash
+'endose un per
+\backslash
+'iodo de 167$
+\backslash
+mu$s.
+ Por otro lado, sabemos por las mediciones realizadas en el LF398 que el
+ tiempo de adquisici
+\backslash
+'on del mismo es de 8$
+\backslash
+mu$s, pero dejando un margen de error establecemos que no queremos un tiempo
+ de sample inferior a 16$
+\backslash
+mu$s.
+ Se obtiene, entonces, que el S
+\backslash
+&H debe estar en sample el 9.6
+\backslash
+% del tiempo, y por lo tanto se toma 90
+\backslash
+% de duty cicle para la llave anal
+\backslash
+'ogica.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Se procedi
+\backslash
+'o, pues a realizar mediciones en las condiciones ya mencionadas, a saber:
+ sin el filtro antialiasing, con el sample and hold y la llave anal
+\backslash
+'ogica, con $f_s=3$kHz, y un duty cicle del 90
+\backslash
+%, con $X_C$ en la entrada.
+ El espectro de dicha se
+\backslash
+~nal se observa en la figura 
+\backslash
+ref{fig:ej7_espectro_in}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb] 	
+\backslash
+centering 	
+\backslash
+includegraphics[width=0.9
+\backslash
+textwidth]{ej7_meds/7_in.png} 	
+\backslash
+caption{Espectro de la entrada, medido con el analizador de espectro y simulado}
+ 	
+\backslash
+label{fig:ej7_espectro_in} 
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+En primer lugar, se observa en la figura 
+\backslash
+ref{fig:ej7_llave} que, si bien la forma de la funci
+\backslash
+'on es, a grandes rasgos, la misma (un tren de pulsos modulados por una
+ AM), hay diferencias importantes en el alto de los pulsos.
+ Esto se debe a que no se pudieron replicar exactamente las condiciones
+ de la medici
+\backslash
+'on, en cuanto a la fase entre la funci
+\backslash
+'on y el clock de la llave y del S
+\backslash
+&H, la cual no es una variable que se tuvo en cuenta en la simulaci
+\backslash
+'on ni podamos controlar en la medici
+\backslash
+'on.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Por otro lado, se observa en la medici
+\backslash
+'on que el valor de la salida no se mantiene perfectamente constante en
+ los momentos de hold.
+ Considerando que s
+\backslash
+'olo var
+\backslash
+'ia unos pocos mV (menos de 5), esto puede atribuirse al piso de ruido del
+ osciloscopio.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb] 	
+\backslash
+centering 	
+\backslash
+includegraphics[width=0.7
+\backslash
+textwidth]{ej7_meds/med_21.png} 	
+\backslash
+caption{Se
+\backslash
+~nal AM a la salida de la llave anal
+\backslash
+'ogica} 	
+\backslash
+label{fig:ej7_llave} 
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb] 	
+\backslash
+centering 	
+\backslash
+includegraphics[width=0.9
+\backslash
+textwidth]{ej7_meds/7_llave.png} 	
+\backslash
+caption{Espectro a la salida de la llave anal
+\backslash
+'ogica, medido con el analizador de espectro y simulado} 	
+\backslash
+label{fig:ej7_espectro_llave} 
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+En cuanto a la frecuencia (figura 
+\backslash
+ref{fig:ej7_espectro_llave}), se observa que el espectro de la entrada se
+ replica peri
+\backslash
+'odicamente, pero con distintas atenuaciones.
+ Este fen
+\backslash
+'omeno puede explicarse recordando la modelizaci
+\backslash
+'on matem
+\backslash
+'atica del muestreo instant
+\backslash
+'aneo: convoluci
+\backslash
+'on entre la se
+\backslash
+~nal muestreada idealmente (con deltas) y un pulso.
+ Al muestrear idealmente la se
+\backslash
+~nal, su espectro se hace peri
+\backslash
+'odico, y al convolucionar esta nueva se
+\backslash
+~nal con un pulso, en frecuencia se multiplica su espectro por un sinc.
+ Por lo tanto, la periodicidad de este espectro proviene de discretizar
+ la se
+\backslash
+~nal en el tiempo, mientras que las distintas alturas de cada repetici
+\backslash
+'on se deben  a la modulaci
+\backslash
+'on por un sinc.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb] 	
+\backslash
+centering 	
+\backslash
+includegraphics[width=0.7
+\backslash
+textwidth]{ej7_meds/med_20.png} 	
+\backslash
+caption{Se
+\backslash
+~nal AM a la salida del filtro recuperador} 	
+\backslash
+label{fig:ej7_out} 
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[htb] 	
+\backslash
+centering 	
+\backslash
+includegraphics[width=0.9
+\backslash
+textwidth]{ej7_meds/7_out.png} 	
+\backslash
+caption{Espectro de la salida del filtro recuperador, medido con el analizador
+ de espectro y simulado} 	
+\backslash
+label{fig:ej7_espectro_out} 
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+Por 
+\backslash
+'ultimo, podemos observar la se
+\backslash
+~nal a la salida del filtro recuperador en las figuras 
+\backslash
+ref{fig:ej7_out} (en el dominio del tiempo) y 
+\backslash
+ref{fig:ej7_espectro_out} (en el de la frecuencia).
+ Al atenuar m
+\backslash
+'as de 40dB las r
+\backslash
+'eplicas del espectro de la se
+\backslash
+~nal de entrada, la de salida deja de estar discretizada en el tiempo, y
+ de esta manera se recupera la se
+\backslash
+~nal de entrada.
+\end_layout
+
+\begin_layout Plain Layout
+
+Si bien en la salida se conserva, en l
+\backslash
+'ineas generales, la forma de la entrada, resulta claro de las mediciones
+ espectrales que la se
+\backslash
+~nal ha sido distorsionada, puesto que la potencia en $f_p+f_m$ no es igual
+ a la de $f_p-f_m$.
+ Esto puede explicarse teniendo en cuenta que en el filtro recuperador implement
+ado no se logr
+\backslash
+'o ganancia constante en la banda pasante, con lo cual cada componente de
+ frecuencia se aten
+\backslash
+'ua de manera diferente.
+ Esto explica tambi
+\backslash
+'en las diferencias entre la tensi
+\backslash
+'on m
+\backslash
+'axima en la simulaci
+\backslash
+'on y en la medici
+\backslash
+'on: mientras que idealmente el filtro planteado tiene ganancia pr
+\backslash
+'acticamente unitaria en estas frecuencias, debido a la dispersi
+\backslash
+'on en los valores de los componentes utilizados, no se logr
+\backslash
+'o  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Muestreo sub-nyquist
+\end_layout
+
+\begin_layout Subsection
+Señal a muestrar
+\end_layout
+
+\begin_layout Standard
+La señal a muestrar es
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$Xc(t)=A_{max}(
+\backslash
+frac{1}{2}cos(2
+\backslash
+pi 1.8 f_{in}) + cos(2
+\backslash
+pi 2 f_{in} t) + 
+\backslash
+frac{1}{2}cos(2
+\backslash
+pi 2.2f_{in}t)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{in}=1.2kHz$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La cuál la podemos pensar como una señal compuesta por tres componentes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Frecuencia (kHz)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fase (°)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Amplitud
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Potencia
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.4$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.4+0.24$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1/4$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1/4$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.4-0.24$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Composición de la señal AM de entrada
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo tanto, la señal a estudiar tiene un ancho de banda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$B=480Hz$
+\end_layout
+
+\end_inset
+
+ y una 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_c=2.4kHz$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Cálculo de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Utilizando la expresion conocida
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+frac{2f_s+B}{m+1} < f_s < 
+\backslash
+frac{2f_s-B}{m}$$
+\end_layout
+
+\end_inset
+
+ se calcularon los 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+ permitidos para el muestreo subniquist.
+ Los resultados fueron los siguientes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$m$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{min} (kHz)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_{max} (kHz)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$nyquist$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$5.28$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+infty$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.64$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$4.32$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.76$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$2.16$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$3$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.32$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.44$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$4$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.056$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1.08$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Frecuencias 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+ permitidas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Simulaciones con Llave analógica
+\end_layout
+
+\begin_layout Standard
+Se estudió mediante software el efecto sobre el espectro de la señal AM
+ a muestrear al aplicar un muestreo a distintas frecuencias subnyquist utilizand
+o llave analógica con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Duty cicle=25
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+.
+ Se muestran a continuación los resultados.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/simulacionN1.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/simulacionN2.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación Sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=3.48kHz (m=1)$
+\end_layout
+
+\end_inset
+
+ (izquierda), 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.94kHz (m=2)$
+\end_layout
+
+\end_inset
+
+ (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/simulacionN3.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/simulacionN4.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación Sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.38kHz (m=3)$
+\end_layout
+
+\end_inset
+
+ (izquierda), 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.068kHz (m=4)$
+\end_layout
+
+\end_inset
+
+ (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Simulaciones con sample and Hold
+\end_layout
+
+\begin_layout Standard
+Se simuló sample and hold con un 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$duty cicle=5
+\backslash
+%$
+\end_layout
+
+\end_inset
+
+ para distintos valores de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/simulacionSH_N1.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/simulacionSH_N2.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=3.48kHz (m=1)$
+\end_layout
+
+\end_inset
+
+ (izquierda) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.94kHz (m=2)$
+\end_layout
+
+\end_inset
+
+ (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/simulacionSH_N3.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/simulacionSH_N4.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.38kHz (m=3)$
+\end_layout
+
+\end_inset
+
+ (izquierda), 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.068Khz (m=4)$
+\end_layout
+
+\end_inset
+
+ (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observa que los espectros de la banda central son de una amplitud mayor
+ que en el caso de la llave analógica.
+\end_layout
+
+\begin_layout Subsection
+Mediciones
+\end_layout
+
+\begin_layout Standard
+Se procedió a medir los espectros para el caso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$m=4 (f_s=1.07Khz)$
+\end_layout
+
+\end_inset
+
+ con llave analógica con duty 25%, y sample and hold con duty 5%.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/espectro_subniquist1.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../ej8/ExpressOutput/espectro_subniquist2.png
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mediciones sub-nyquist 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$f_s=1.07Khz$
+\end_layout
+
+\end_inset
+
+ solo sample and hold (izquierda), solo llave analógica (derecha)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observa que se verificó que la llave analógica atenuó en una medida mucho
+ mayor las frecuencias bajas, que fue lo mismo que se observó en la simulación.
+ Esto se debe a que la llave analogica en general tiende a disminuir en
+ una medida mucho mayor el valor medio de la señal debido a que produce
+ que la señal sea nula en una importante proporción del periodo, al mismo
+ tiempo que provoca una cantidad considerable de saltos abruptos en la señal,
+ lo cuál se traduce en la prescencia de frecuencias altas que en la entrada
+ no estaban.
+\end_layout
+
+\begin_layout Standard
+El sample and hold en ese sentido es menos invasivo, debido a que no produce
+ saltos abrutos tan pronunciados y por lo tanto no ampifica tanto las altas
+ frecuencias, pero no obstante amplifica en una mayor medida la continua
+ ya que produce que la señal permanezca constante en algunos intervalos
+ de tiempo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ejercicio 9
+\end_layout
+
+\begin_layout Subsection
+Item a
+\end_layout
+
+\begin_layout Standard
+Este ejercicio se entregó en la guía de sistemas discretos.
+\end_layout
+
+\begin_layout Subsection
+Item b - Downsampling
+\end_layout
+
+\begin_layout Standard
+Se analizó el efecto sobre el espectro de dos señales al realizar un downsamplin
+g, es decir, al bajar la tasa de muestreo de las señales en un factor de
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$M=4$
+\end_layout
+
+\end_inset
+
+ aplicando la transformación 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$y(n)=x(nM)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Caso 1
+\end_layout
+
+\begin_layout Standard
+La señal a analizar fue 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)=sin(2
+\backslash
+pi 
+\backslash
+frac{0.125}{2}n)$
+\end_layout
+
+\end_inset
+
+ con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-50
+\backslash
+leq n 
+\backslash
+leq 50$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nota: se asumió arbitrariamente que la frecuencia de sampleo es 1 para la
+ señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)$
+\end_layout
+
+\end_inset
+
+ y 1/4 para la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$y(n)$
+\end_layout
+
+\end_inset
+
+, lo cual nos sirvió para hacer conclusiones utiles sobre la hipotetica
+ señal original
+\end_layout
+
+\begin_layout Subsubsection*
+Análisis temporal
+\end_layout
+
+\begin_layout Standard
+Se infirió la forma de la señal original mediante las muestras tanto con
+ la señal original 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)$
+\end_layout
+
+\end_inset
+
+ como la decimada, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$y(n)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El método que se utilizó consistió en primero calcular la dft de la señal
+ discreta, y luego la posterior reconstrucción de la misma mediante dichos
+ coeficientes utilizando series de fourier.
+\end_layout
+
+\begin_layout Standard
+La fórmula utilizada para la reconstrucción de la señal fue la siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$x(t)=
+\backslash
+sum_{k=0}^{N-1}2
+\backslash
+|X_k
+\backslash
+|cos(2
+\backslash
+pi f + 
+\backslash
+angle X_k)$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se intentó el uso de la versión de la fórmula exponencial compleja, pero
+ debido a dificultades técnicas que no se llegaron a resolver, se optó por
+ la versión real de la fórmula, la cual no recurre al cálculo complejo,
+ pero que para señales reales es equivalente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej9/itemB/reconstruccion1.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../ej9/itemB/reconstruccion1decimate.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Señal 1 reconstruida con y sin decimate aplicado
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observá que, intuitivamente, es mucho más creible la fórma de la señal
+ inferida en la señal original sin decimate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Análisis espectral
+\end_layout
+
+\begin_layout Standard
+Se cálculo la DTFT de la señal con y sin downsampling.
+ Los resultados fueron los siguientes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej9/itemB/downsampling1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DTFT señal con y sin downsampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos obserbar que como realizamos una DTFT en lugar de una FFT sobre
+ un período el espectro es continuo, pues la señal teórica analizada no
+ es periodica, se anula fuera de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$50
+\backslash
+leq n 
+\backslash
+leq 50$
+\end_layout
+
+\end_inset
+
+ para la DTFT
+\end_layout
+
+\begin_layout Standard
+Por otro lado, también se puede notar que las repeticiones del espectro
+ de la señal con downsampling se encuentran mucho mas cercanas entre si,
+ que las repeticiones del espectro de la señal sin el mismo; esto implica;
+ que para garatizar una reconstrucción adecuada de la señal con downsampling
+ se debe asumir que la señal original tenga un ancho de banda mas pequeño
+ (que si no tuviera el downsampling aplicado).
+ Este razonamiento es consecuencia del teorema de Niquist.
+\end_layout
+
+\begin_layout Subsubsection
+Caso 2
+\end_layout
+
+\begin_layout Standard
+Se repitió exactamente el mismo analisis pero con la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$x(n)=sin(2
+\backslash
+pi 0.25n)$
+\end_layout
+
+\end_inset
+
+ con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-50
+\backslash
+leq n 
+\backslash
+leq 50$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Análisis temporal
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej9/itemB/reconstruccion2.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../ej9/itemB/reconstruccion2decimate.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Señal 2 reconstruida con y sin downsampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso podemos observar que el downsampling provocá que la unica inferenci
+a que podamos hacer de la señal es que sea una constante, lo cual, en principio
+ no parece ser una inferencia adecuada.
+\end_layout
+
+\begin_layout Standard
+Esto se debe a que el ancho de banda de la señal original que buscamos inferir
+ es demasiado chico considerando la frecuencia de sampleo utilizada.
+ Más concretamente, mientras que la frecuencia de sampleo es 1/4, la frecuencia
+ de la señal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$sin(2
+\backslash
+pi 0.25 t)$
+\end_layout
+
+\end_inset
+
+ es 1/4 tambien, cuando, por Niquist sabemos que la frecuencia de sampleo
+ debería ser al menos el doble.
+\end_layout
+
+\begin_layout Subsubsection*
+Análisis espectral
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej9/itemB/downsampling2.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DTFT señal con y sin downsampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos observar que la señal con decimate carece de espectro, pues es una
+ constante nula.
+ 
+\end_layout
+
+\begin_layout Standard
+Hay una razón de este hecho.
+ Debido a que la frecuencia de sampleo de la señal con downsampling es menor
+ a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$1/2=f_{niquist}$
+\end_layout
+
+\end_inset
+
+ la discretización provoca que el recorte del espectro de la señal continua
+ original, que ocurre en el rango 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$(-1/2 f_s, +1/2 f_s)=(-0.125 Hz, 0.125 Hz)$
+\end_layout
+
+\end_inset
+
+, no tome ningun armonico de la señal original (los cuales se encuentran
+ en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$(-0.25 Hz, 0.25 Hz)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Item c
+\end_layout
+
+\begin_layout Standard
+Para el caso de una respuesta impulsiva real, finita, de largo M+1 (con
+ M par), con simetría par se tiene que:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $h(n)=\begin{cases}
+\begin{array}{c}
+h(M-n)\\
+0
+\end{array} & \begin{array}{c}
+0\leq n\leq M\\
+c.c.
+\end{array}\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El punto de simetría corresponde con 
+\begin_inset Formula $\frac{M}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../ej9/itemC/9c.PNG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Respuesta impulsiva finita con simetría par
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde su respuesta en frecuencia se puede calcular como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[H(e^{j
+\backslash
+omega}) = 
+\backslash
+sum 
+\backslash
+limits_{k=-
+\backslash
+infty}^{
+\backslash
+infty} h(k) e^{-j
+\backslash
+omega k} = 
+\backslash
+sum 
+\backslash
+limits_{k=0}^{M} h(k) e^{-j
+\backslash
+omega k}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[H(e^{j
+\backslash
+omega}) = h(0)+ h(1)e^{-j
+\backslash
+omega}+ ...
+ + h
+\backslash
+left(
+\backslash
+frac{M}{2}
+\backslash
+right)e^{-j
+\backslash
+omega
+\backslash
+frac{M}{2}}+ ...
+ + h(M-1)e^{-j
+\backslash
+omega M-1}+ h(M)e^{-j
+\backslash
+omega M}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[H(e^{j
+\backslash
+omega}) = h(0)+ h(1)e^{-j
+\backslash
+omega}+ ...
+ + h
+\backslash
+left(
+\backslash
+frac{M}{2}
+\backslash
+right)e^{-j
+\backslash
+omega
+\backslash
+frac{M}{2}} + ...
+ + h(1)e^{-j
+\backslash
+omega M-1}+ h(0)e^{-j
+\backslash
+omega M}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[H(e^{j
+\backslash
+omega}) = e^{-j
+\backslash
+omega
+\backslash
+frac{M}{2}} 
+\backslash
+left[h(0)e^{j
+\backslash
+omega
+\backslash
+frac{M}{2}}+ h(1)e^{j
+\backslash
+omega(
+\backslash
+frac{M}{2}-1)}+ ...
+ + h
+\backslash
+left(
+\backslash
+frac{M}{2}
+\backslash
+right)e^{-j
+\backslash
+omega 0} + ...
+ + h(1)e^{-j
+\backslash
+omega 
+\backslash
+left(
+\backslash
+frac{M}{2}-1
+\backslash
+right)}+ h(0)e^{-j
+\backslash
+omega 
+\backslash
+frac{M}{2}}
+\backslash
+right]
+\backslash
+] 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sabiendo que 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ 
+\backslash
+cos(
+\backslash
+omega) = 
+\backslash
+frac{e^{j
+\backslash
+omega}+e^{-j
+\backslash
+omega}}{2} 
+\backslash
+]
+\end_layout
+
+\end_inset
+
+ se puede escribir que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[H(e^{j
+\backslash
+omega}) = e^{-j
+\backslash
+omega
+\backslash
+frac{M}{2}} 
+\backslash
+left[2 h(0)
+\backslash
+cos
+\backslash
+left(
+\backslash
+omega
+\backslash
+frac{M}{2}
+\backslash
+right) + 2 h(1) 
+\backslash
+cos
+\backslash
+left(
+\backslash
+omega
+\backslash
+left(
+\backslash
+frac{M}{2}-1
+\backslash
+right)
+\backslash
+right) + ...
+ + h
+\backslash
+left(
+\backslash
+frac{M}{2}
+\backslash
+right)
+\backslash
+right]
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[H(e^{j
+\backslash
+omega}) = e^{-j
+\backslash
+omega
+\backslash
+frac{M}{2}}
+\backslash
+sum 
+\backslash
+limits_{k = 0}^{
+\backslash
+frac{M}{2}} a(k) 
+\backslash
+cos(
+\backslash
+omega k) 
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ a(0)= h
+\backslash
+left(
+\backslash
+frac{M}{2}
+\backslash
+right)
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ a(k)= 2 h
+\backslash
+left(
+\backslash
+frac{M}{2}- k
+\backslash
+right)
+\backslash
+]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[k = 1, 2, ..., 
+\backslash
+frac{M}{2}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Llamando 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+[ A(e^{j
+\backslash
+omega})= 
+\backslash
+sum 
+\backslash
+limits_{k = 0}^{
+\backslash
+frac{M}{2}} a(k) 
+\backslash
+cos(
+\backslash
+omega k) 
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede escribir que 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ H(e^{j
+\backslash
+omega}) = A(e^{j
+\backslash
+omega}) e^{-j
+\backslash
+omega
+\backslash
+frac{M}{2}}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ A(e^{j
+\backslash
+omega})$
+\end_layout
+
+\end_inset
+
+ es una función real, par y periódica de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+omega $
+\end_layout
+
+\end_inset
+
+, y puede tener fase de 0 o 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+pi$
+\end_layout
+
+\end_inset
+
+.
+ El segundo termino tiene una fase de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-
+\backslash
+omega
+\backslash
+frac{M}{2}$
+\end_layout
+
+\end_inset
+
+, por lo que la fase total de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$H(
+\backslash
+omega) $
+\end_layout
+
+\end_inset
+
+ puede ser:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ 
+\backslash
+phi(
+\backslash
+omega) = -
+\backslash
+omega
+\backslash
+frac{M}{2}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+o
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ 
+\backslash
+phi(
+\backslash
+omega) = -
+\backslash
+omega
+\backslash
+frac{M}{2}+ 
+\backslash
+pi
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo que se correspodnde a una fase lineal, y por lo tanto, el retardo de
+ grupo será
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ 
+\backslash
+tau_g = -
+\backslash
+frac {d
+\backslash
+phi(
+\backslash
+omega)}{d
+\backslash
+omega} = 
+\backslash
+frac{M}{2}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para calcular la respuesta impulsiva del sistema propuesto, se tomó a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ x(n) = 
+\backslash
+delta(n) = 
+\backslash
+begin{cases} 1 & 
+\backslash
+mbox{si $n = 0$}
+\backslash
+
+\backslash
+ 0 & 
+\backslash
+mbox{ $c.c.$} 
+\backslash
+end{cases} 
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De esta forma se obtiene que:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $h(0)=1,\,\,\,h(1)=2,\,\,\,h(2)=3,\,\,\,h(3)=4,\,\,\,h(4)=3,\,\,\,h(5)=2,\,\,\,h(6)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y que 
+\begin_inset Formula $h(n)=0\,\,\,si\,\,\,n<0\,\,\,o\,\,\,n>6$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Como se puede ver, se cumplen las condiciones mencionadas anteriormente
+ para obtener el retardo de grupo constante, h(n) es real, finita, de largo
+ 7 (con M=6 par) y con simetría par respecto de 
+\begin_inset Formula $n=\frac{M}{2}=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Por lo que el retardo de grupo será 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ 
+\backslash
+tau_g = 3 
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

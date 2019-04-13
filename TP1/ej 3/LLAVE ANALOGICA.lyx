@@ -150,10 +150,6 @@ Señales de ruido: se encuentran el crosstalk y el feedthrough desde el control
  de entrada hacia la salida, idealmente se desea que no exista tal interferencia.
 \end_layout
 
-\begin_layout Subsection
-Llave analógica elegida
-\end_layout
-
 \begin_layout Standard
 Se compararon las hojas de datos de tres integrados distintos:
 \end_layout
@@ -757,7 +753,7 @@ La llave MAX320 resulta una buena opción debido a la pequeña Ron que tiene
 \end_layout
 
 \begin_layout Subsection
-Configuración
+Configuración de la llave analógica
 \end_layout
 
 \begin_layout Standard

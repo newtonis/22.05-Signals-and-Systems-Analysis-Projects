@@ -925,6 +925,62 @@ $Duty cycle=25
 \end_layout
 
 \begin_layout Standard
+Recordamos que 
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$X^*(f) = X(f) * (
+\backslash
+tau 
+\backslash
+cdot sinc(
+\backslash
+tau f) 
+\backslash
+cdot 
+\backslash
+delta_{f_s}) = 
+\backslash
+sum_{n=-
+\backslash
+infty}^{
+\backslash
+infty} 
+\backslash
+pi 
+\backslash
+cdot sinc
+\backslash
+left(
+\backslash
+frac{n
+\backslash
+cdot
+\backslash
+pi}{2}
+\backslash
+right) 
+\backslash
+cdot X(f - 
+\backslash
+frac{n}{2
+\backslash
+tau})$$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -934,7 +990,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN1.png
+	filename ExpressOutput/simulacionN1.png
 	lyxscale 20
 	scale 50
 
@@ -942,7 +998,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN2.png
+	filename ExpressOutput/simulacionN2.png
 	lyxscale 20
 	scale 50
 
@@ -1000,7 +1056,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN3.png
+	filename ExpressOutput/simulacionN3.png
 	lyxscale 20
 	scale 50
 
@@ -1008,7 +1064,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionN4.png
+	filename ExpressOutput/simulacionN4.png
 	lyxscale 20
 	scale 50
 
@@ -1098,7 +1154,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N1.png
+	filename ExpressOutput/simulacionSH_N1.png
 	lyxscale 20
 	scale 50
 
@@ -1106,7 +1162,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N2.png
+	filename ExpressOutput/simulacionSH_N2.png
 	lyxscale 20
 	scale 50
 
@@ -1164,7 +1220,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N3.png
+	filename ExpressOutput/simulacionSH_N3.png
 	lyxscale 20
 	scale 50
 
@@ -1172,7 +1228,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/simulacionSH_N4.png
+	filename ExpressOutput/simulacionSH_N4.png
 	lyxscale 20
 	scale 50
 
@@ -1241,7 +1297,7 @@ $m=4 (f_s=1.07Khz)$
 
 \end_inset
 
-
+ con llave analógica con duty 25%, y sample and hold con duty 5%
 \end_layout
 
 \begin_layout Standard
@@ -1254,7 +1310,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/espectro_subniquist1.png
+	filename ExpressOutput/espectro_subniquist1.png
 	lyxscale 20
 	scale 50
 
@@ -1262,7 +1318,7 @@ status open
 
 
 \begin_inset Graphics
-	filename C:/Users/newto/INFORMES_ASSD/TP1/simulacion_ej5/ExpressOutput/espectro_subniquist2.png
+	filename ExpressOutput/espectro_subniquist2.png
 	lyxscale 20
 	scale 50
 
@@ -1301,7 +1357,21 @@ $f_s=1.07Khz$
 
 \begin_layout Standard
 Se observa que se verificó que la llave analógica atenuó en una medida mucho
- mayor las frecuencias 
+ mayor las frecuencias bajas, que fue lo mismo que se observó en la simulación.
+ Esto se debe a que la llave analogica en general tiende a disminuir en
+ una medida mucho mayor el valor medio de la señal debido a que produce
+ que la señal sea nula en una importante proporción del periodo, al mismo
+ tiempo que provoca una cantidad considerable de saltos abruptos en la señal,
+ lo cuál se traduce en la prescencia de frecuencias altas que en la entrada
+ no estaban.
+\end_layout
+
+\begin_layout Standard
+El sample and hold en ese sentido es menos invasivo, debido a que no produce
+ saltos abrutos tan pronunciados y por lo tanto no ampifica tanto las altas
+ frecuencias, pero no obstante amplifica en una mayor medida la continua
+ ya que produce que la señal permanezca constante en algunos intervalos
+ de tiempo.
 \end_layout
 
 \end_body
