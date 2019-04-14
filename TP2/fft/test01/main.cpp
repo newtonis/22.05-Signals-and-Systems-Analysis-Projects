@@ -19,6 +19,57 @@ void generateWn(float wReal[], float wIm[],int n){
     }
 }
 
+
+void fftLenta(vector<complex<float>>& in, vector<complex<float>>& out){
+    int n = in.size();
+    int log2n = 0, v = 1;
+    while (v < n){
+        v *= 2;
+        log2n ++;
+    }
+    int pow2[log2n+1]; // declaro variables
+
+    float dpReal[2][n], dpIm[2][n], wReal[n], wIm[n];
+
+    getPow2(pow2, log2n);
+    generateWn(wReal, wIm, n);
+
+    for (int j = 0;j < n;j++){
+        dpReal[0][j] = in[j].real();
+        dpIm[0][j] = in[j].imag();
+    }
+
+    int maxjLast = n, maxkLast=1;
+    for (int i = 1;i <= log2n;i++){  // proceso
+        int maxj = n/pow2[i], maxk = pow2[i];
+
+        for (int j = 0;j < maxj;j++){
+            for (int k = 0;k < maxk;k++){
+                float p1 = wReal[k*maxj%n]*dpReal[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
+                float p2 = wIm[k*maxj%n]*dpIm[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
+
+                dpReal[i%2][j + k*maxj] = dpReal[(i-1)%2][j+k%maxkLast*maxjLast] + p1 - p2;
+
+                float p3 = wReal[k*maxj%n]*dpIm[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
+                float p4 = wIm[k*maxj%n]*dpReal[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
+
+                dpIm[i%2][j + k*maxj] = dpIm[(i-1)%2][j+k%maxkLast*maxjLast] + p3 + p4;
+
+
+            }
+        }
+        maxjLast = maxj;
+        maxkLast = maxk;
+    }
+
+    for (int k = 0;k < n;k++){
+        out[k].real(dpReal[log2n%2][k*maxjLast]);
+        out[k].imag(dpIm[log2n%2][k*maxjLast]);
+    }
+}
+
+
+
 // fft vieja
 void fft(vector<complex<float>>& in, vector<complex<float>>& out){
     // 2^log2n = n sino no funciona
@@ -95,15 +146,38 @@ int main() {
 //    arr.emplace_back(7);
 //    arr.emplace_back(8);
 
-    for (int i = 0;i < 131072;i++){
+    // medir tiempo
+    for (int i = 0;i < 4096;i++){
         arr.emplace_back(i);
     }
-    fft(arr, arr);
+
+    clock_t begin = clock();
+
+    for (int i = 0;i < 1000;i++) {
+        fft(arr, arr);
+    }
+
+    clock_t end = clock();
+    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+
+
+    cout << "time buterfly = " << elapsed_secs << '\n';
+
+    begin = clock();
+
+    for (int i = 0;i < 10000;i++) {
+        fftLenta(arr, arr);
+    }
+
+    end = clock();
+    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+
+    cout << "time original = " << elapsed_secs << '\n';
 
     //fftOld(arrReal, arrIm, n, log2n, ansReal, ansIm);
 
-    for (complex<float> item : arr){
-        cout<<item.real()<<" + "<<item.imag()<<"j"<<'\n';
-    }
+    //for (complex<float> item : arr){
+    //    cout<<item.real()<<" + "<<item.imag()<<"j"<<'\n';
+    //}
 
 }
