@@ -2,7 +2,7 @@ TP1/simulacion_ej5/.idea/*
 TP1\simulacion_ej5\Globals\config.xml
 TP1\simulacion_ej5\Signals\*.xml
 TP1\simulacion_ej5\IndividualTest.py
-TP2\fft\test01\.idea
+TP2\fft\test01\.idea\*
 TP2\fft\test01\cmake-build-debug
 TP2\fft\test01\CMakeLists.txt
 *.raw
@@ -14,4 +14,4 @@ TP2\fft\test01\CMakeLists.txt
 *.synctex.gz
 *.gz
 *.out
-
+*.xml
