@@ -44,7 +44,7 @@ void fftLenta(vector<complex<float>>& in, vector<complex<float>>& out){
         int maxj = n/pow2[i], maxk = pow2[i];
 
         for (int j = 0;j < maxj;j++){
-            for (int k = 0;k < maxk;k++){
+            for (int k = 0;k < maxk/2;k++){
                 float p1 = wReal[k*maxj%n]*dpReal[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
                 float p2 = wIm[k*maxj%n]*dpIm[(i-1)%2][j+maxj+k%maxkLast*maxjLast];
 
@@ -55,7 +55,8 @@ void fftLenta(vector<complex<float>>& in, vector<complex<float>>& out){
 
                 dpIm[i%2][j + k*maxj] = dpIm[(i-1)%2][j+k%maxkLast*maxjLast] + p3 + p4;
 
-
+                dpReal[i%2][j + (k+ maxk/2)*maxj] = dpReal[(i-1)%2][j+k%maxkLast*maxjLast] - p1 + p2;
+                dpIm[i%2][j + (k+maxk/2)*maxj ] = dpIm[(i-1)%2][j+k%maxkLast*maxjLast] - p3 - p4;
             }
         }
         maxjLast = maxj;
@@ -69,6 +70,7 @@ void fftLenta(vector<complex<float>>& in, vector<complex<float>>& out){
 }
 
 
+float dpReal[2][4096], dpIm[2][4096], wReal[4096], wIm[4096];
 
 // fft vieja
 void fft(vector<complex<float>>& in, vector<complex<float>>& out){
@@ -85,7 +87,17 @@ void fft(vector<complex<float>>& in, vector<complex<float>>& out){
     }
     int pow2[log2n+1]; // declaro variables
 
-    float dpReal[2][n], dpIm[2][n], wReal[n], wIm[n];
+    /*auto **dpReal = new float*[2];
+    dpReal[0] = new float[n];
+    dpReal[1] = new float[n];
+
+    auto **dpIm = new float*[2];
+    dpIm[0] = new float[n];
+    dpIm[1] = new float[n];
+
+    auto *wReal = new float[n];
+    auto *wIm = new float[n];*/
+
 
     getPow2(pow2, log2n);
     generateWn(wReal, wIm, n);
@@ -153,7 +165,7 @@ int main() {
 
     clock_t begin = clock();
 
-    for (int i = 0;i < 1000;i++) {
+    for (int i = 0;i < 100;i++) {
         fft(arr, arr);
     }
 
@@ -161,18 +173,18 @@ int main() {
     double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
 
-    cout << "time buterfly = " << elapsed_secs << '\n';
+    cout << "time global = " << elapsed_secs << '\n';
 
     begin = clock();
 
-    for (int i = 0;i < 10000;i++) {
+    for (int i = 0;i < 100;i++) {
         fftLenta(arr, arr);
     }
 
     end = clock();
     elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
-    cout << "time original = " << elapsed_secs << '\n';
+    cout << "time stack = " << elapsed_secs << '\n';
 
     //fftOld(arrReal, arrIm, n, log2n, ansReal, ansIm);
 

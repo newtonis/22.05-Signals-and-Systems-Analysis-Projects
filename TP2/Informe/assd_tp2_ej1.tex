@@ -5,7 +5,9 @@
 \section{FFT}
 
 \subsection{Enfoque}
-Se decidió desarrollar un algoritmo fft, ya que se contó con conocimiento del campo de ciencias de la computación. En las optimizaciones progresivas se llegó a un algoritmo con $\frac{n}{2}log_2{n}$ multiplicaciones, $6n$ memoria, en otras palabras, $\Theta(nlog(n))$ tiempo, $\Theta(n)$ memoria 
+Se decidió desarrollar un algoritmo fft, ya que se contó con conocimiento del campo de ciencias de la computación para resolver problemas de programación dinámica. Se mostrará la derivación de un algoritmo menos eficiente pero más entendible, y luego se describirán sus posteriores optimizaciones.
+En el resultado final se llegó a un algoritmo con $\frac{n}{2}log_2{n}$ multiplicaciones, $6n$ memoria, en otras palabras, 
+$\Theta(nlog(n))$ tiempo, $\Theta(n)$ memoria. 
 
 \subsection{El problema}
 El cálculo de la dft consiste en producir una la salida $X[k]$ de coeficientes mediante la entrada $x[n]$, ambos arreglos de igual longitud $N$. La fórmula que describe la dft que utilizamos fue
@@ -35,14 +37,59 @@ Si la longitud de la suceción, $N$ es par se puede escribir $X[k]$ como
 Donde $X[2n]=Y[n]$, $X[2n+1], Y[2n+1]$ son sub-suceciones de $X[n]$ tomando los indices pares e impares respectivamente.
 Podemos decir que descompusimos el problema de la DFT como dos problemas de DFT con suceciones de la mitad de tamaño, es decir, conseguimos una solución recursiva. Es importante observar que la unica forma de que la solucion sea viable es que $N$ sea una potencia de dos, para poder garantizar que al dividir los subproblemas siempre $N_i$ sea par.
 
-\subsection{Formalización}
-Ahora que ya se mostró la primera observación de interés, la cual mostró el caracter recursivo del problema, escribiremos dicha formulación de una forma precisa. En primer lugar a partir de ahora 
-\begin{equation}
-e^{i2\pi kn/N}=W[k][N]
-\end{equation}
-Además, cuando $N$ sea igual a la longitud de la subsecuencia más grande (la raiz del problema)
-\begin{equation}
-W[k][N]=W[k]
-\end{equation} 
+\subsection{Algoritmo conceptual}
+Si bien la formulación anterior da lugar a la implementación de un algoritmo recursivo "top-down" se procedió a desarrollar una fórmula "b ottom-up" para resolver el problema iterativamente, y por lo tanto provocar que la ejecución tenga una constante menor.
 
+Se definió el subproblema $DFT[i][j][k]$ como el $k$-ésimo coeficiente, de el subarreglo de longitud $2^i$ que comienza en el casillero $j$. Se puede mostrar mediante la ecuación 3 en esta formulación es equivalente a
+
+\begin{equation}
+	DFT[i][j][k] = \begin{cases}
+		 & 1\leq i \leq log_2{N} \\ DFT[i-1][j][k\%2^{i-1}] + W[2^i][k] DFT[i-1][j+N/2^{i}][k\%2^{i-1}] & 0\leq j < N/2^i \\ & 0\leq k<2^i \\
+		A[j] & i = 0 \\ & k = 0 \\
+\end{cases}
+\end{equation}
+Donde $W[N][k]=e^{-i2\pi k / N}$.
+Con esta precisa formulación se puede implementar con 3 sentencias for un algoritmo de $O(nlog n)$ tiempo y $O(n^2log n)$ memoria.
+
+\subsection{Optimizaciones de memoria}
+Se presentan dos modificacines superficiales y técnicas, no conceptuales, que no alteran la lógica escencial del algoritmo, pero que lo vuelven práctico.
+\subsubsection{Optimización 1}
+Se necesita reducir el orden de memoria de $\Theta(n^2)$, el cual es muy limitante. La primera optimización es mediante la observación de que de que para calcular $DFT[i]$ solo necesitamos tener previamente calculado $DFT[i-1]$. Por lo tanto podemos calcular en un arreglo el DFT siguiente y en la posterior iteración escribir de dicho arreglo al anterior, ``yendo y volviendo". De esta forma se reduce el uso de memoria a $\Theta(n^2)$. Este valor todavia no es conveniente, ya que la espectativa es que tanto el tiempo como la memoria del algoritmo sean subcuadráticos
+\subsubsection{Optimización 2}
+La observación necesaria para reducir el uso de memoria es que, en cada iteración $jk<N$ por lo que en realidad es posible almacenar todos los valores en un arreglo de longitud $N$ (es decir, "comprimiendo" la matriz). Como el número de filas y columnas de la matriz es variable para cada valor de $i$ es necesario implementar una lógica que se adapte a este hecho. ($mat[i][j]=arr[i*colsize+j]$).
+De esta forma se redujo la memoria del algoritmo a $\Theta(n)$
+
+\subsection{Optimizaciones de tiempo}
+Se mostrarán dos optimizaciones de tiempo que si bien no mejoran la complejidad del algoritmo en tiempo (De hecho, no son conocidos algoritmos mejores que $\Theta(nlogn)$, reducen, en una constante, su demorá.
+\subsubsection{Cálculo $W[n][k]=e^{-i2\pi k/n}$}
+Cálcular cada vez que se necesitan dichos factores si bien no modificaría la complejidad del algoritmo, si impacta en el tiempo total.
+Para ello se precalcula en el inicio del algoritmo $W[k]=e^{-2i\pi k/N}$ con el $N$ más grande. Como vale que
+\begin{equation}
+W[n][k]=e^{-i2\pi K/n}=e^{-i2\pi K/N*N/n}=W[K*N/n]=W[K*N/2^{i}]=W[K*N/2^{i}\%N]
+\end{equation}
+Por lo tanto calculando inicialmente $W[k]$ con $0\leq k <N$ ya se tiene información para obtener en una sola operación la exponencial correspondiente cuando sea necesario
+
+\subsubsection{Optimización Butterfly}
+Otra optimización importante que permitirá reducir a la mitad la cantidad de multiplicaciones complejas que realiza el algoritmo se denomina optimización ``Butterfly". Consiste en observar dos propiedades
+\begin{equation}
+W[n][k]=-W[n][k+n/2]
+\end{equation}
+\begin{equation}
+DFT[..][..][k\%2^{i-1}]=DFT[..][..][(k+n/2)\%2^{i-1}]
+\end{equation}
+La forma de utilizarla consiste en, computar en paralelo las siguientes expresiones
+\begin{equation}
+DFT[i][j][k] = DFT[i-1][j][k\%2^{i-1}] + W[2^i][k] DFT[i-1][j+N/2^{i}][k\%2^{i-1}] 
+\end{equation}
+\begin{equation}
+DFT[i][j][k+n/2] = DFT[i-1][j][k\%2^{i-1}] - W[2^i][k] DFT[i-1][j+N/2^{i}][k\%2^{i-1}]
+\end{equation}
+Realizando el producto $W[2^i][k] DFT[i-1][j+N/2^{i}][k\%2^{i-1}]$ una sola vez
+
+\section{Conclusión}
+Se llegó a un algoritmo muy optimizado ($6n$ memoria, $\frac{n}{2}log_2{n}$ tiempo) con una complejidad equivalente a las de los más utilizados.
+El codigo combinado con todas las optimizaciones es dificil de leer porque consiste en la combinacion de todos los detalles técnicos descritos juntos.
+Si bien es posible optimizar aun más la memoria utilizando un metodo in-place que no utilize arreglos adicionales para almacenar datos parciales, como de todos modos es necesario utilizar un arreglo de $N$ elementos para almacenar $W[k]$, dicha técnica no reduciría asintoticamente el uso de memoria adicional.
+El algoritmo final demoró, en una computadora moderna del 2015 con Windows 10 unos 127ms en calcular 100 ffts de 4096 puntos.
+Fue verificado su correcto funcionamiento en comparación con el resultado de librerias de python que calculaban fft.
 \end{document}
