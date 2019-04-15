@@ -5,6 +5,7 @@ TP1\simulacion_ej5\IndividualTest.py
 TP2\fft\test01\.idea\*
 TP2\fft\test01\cmake-build-debug
 TP2\fft\test01\CMakeLists.txt
+TP2\Software\.idea\*
 *.raw
 *.log
 *.Zip
