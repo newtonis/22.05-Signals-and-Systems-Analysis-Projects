@@ -72,6 +72,7 @@ void fftLenta(vector<complex<float>>& in, vector<complex<float>>& out){
 
 float dpReal[2][4096], dpIm[2][4096], wReal[4096], wIm[4096];
 
+
 // fft vieja
 void fft(vector<complex<float>>& in, vector<complex<float>>& out){
     // 2^log2n = n sino no funciona
