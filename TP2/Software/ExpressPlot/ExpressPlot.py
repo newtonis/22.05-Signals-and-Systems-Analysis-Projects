@@ -27,6 +27,7 @@ class CombinedPlot:
         self.yAxisTitle = ""
         self.func = None
         self.logarithmic = False
+        self.polar = False
         self.spiceData = dict()
 
     def setTitle(self, title):
@@ -190,5 +191,10 @@ class CombinedPlot:
 
     def setLogarithmic(self):
         self.logarithmic = True
+
+        return self
+
+    def setPolar(self):
+        self.polar = true
 
         return self

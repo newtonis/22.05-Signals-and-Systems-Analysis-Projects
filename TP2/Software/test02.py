@@ -2,13 +2,19 @@ from scipy import signal
 import matplotlib.pyplot as plt
 import numpy as np
 from math import pi
-from IPython.display import Audio
+import simpleaudio as sa
 
-fs = 10000
-
+fs = 44100
+T = 5
 
 rl = 1
-l = 10
+l = 30
+
+noise = np.random.normal(0, 1, l)
+times = np.linspace(0, T, fs*T)
+empty = [0] * (len(times) - len(noise))
+input = np.hstack([noise, empty])
+
 
 num = [0] * (l+2)
 den = [0] * (l+2)
@@ -26,18 +32,17 @@ sys = signal.dlti(
     dt=1/fs
 )
 
-
-w_values = np.linspace(0, pi, 100000)
-
-w, mag, pha = sys.bode(w_values)
-
-f = [i/2/pi for i in w]
-mag = [10**(i/20) for i in mag]
+t, y = signal.dlsim(sys, input, t=times)
 
 plt.minorticks_on()
 plt.grid(which='major', linestyle='-', linewidth=0.3, color='black')
 plt.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
-plt.plot(f, mag)
+y *= 32767 / max(abs(y))
+y = y.astype(np.int16)
+play_obj = sa.play_buffer(y, 1, 2, fs)
 
+play_obj.wait_done()
+
+plt.plot(t, y)
 plt.show()
