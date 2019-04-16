@@ -42,6 +42,10 @@ class CombinedPlot:
         self.yAxisTitle = title
         return self
 
+    def addPolesZerosPoints(self, poles, zeros, color):
+        
+        return self
+
     def addSignalPlot(self, signal, color, name):
         self.plotCount.append({
             "signal": signal,

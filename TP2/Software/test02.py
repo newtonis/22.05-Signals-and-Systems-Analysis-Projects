@@ -8,7 +8,7 @@ fs = 44100
 T = 5
 
 rl = 1
-l = 30
+l = 37
 
 noise = np.random.normal(0, 1, l)
 times = np.linspace(0, T, fs*T)
