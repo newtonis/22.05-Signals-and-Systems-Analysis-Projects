@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math
+from IPython.display import Audio
+#import math
+from numpy import *
+from math import *
 def woodenv(att,sus,rel,fs):
     #att = attack time es como 5tau
     tau_att = att/5
@@ -31,7 +34,26 @@ def woodenv(att,sus,rel,fs):
             y1[index] = (1/2)*np.exp(-(ti-(att+sus+rel/2))/(tau))
             y2[index] = 1
     return t,y1,y2
+def scale(t,ynorm,alpha,beta):
+    y = alpha*ynorm + beta
+    return t,y
+def getClarinet(A,I,fc,fm,fs):
+  phi_m = -pi/2
+  phi_c = -pi/2
+  t = np.linspace(0, 1, num=fs)
+  x = zeros(len(t))
+  for index,ti in enumerate(t):
+    x[index]=A[index]*cos(2*pi*fc*ti+I[index]*cos(2*pi*fm*ti+phi_m)+phi_c)
+  return x
 
-t,y1,y2 = woodenv(0.5,0.5,0.5,8000)
-plt.plot(t,y1)
-plt.show()
+fs = 8000
+t,y1,y2 = woodenv(0.2,0.1,0.1,fs)
+fc = 1000
+fm = (3/2)*fc
+alpha = -2
+beta = 4
+A = y1
+t,I = scale(t,y2,alpha,beta)
+x = getClarinet(A,I,fc,fm,fs)
+
+Audio(x, rate=fs)
