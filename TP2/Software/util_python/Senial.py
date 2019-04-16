@@ -1,11 +1,13 @@
 from numpy import cos, angle, pi
 from scipy.fftpack import fft
 import numpy as np
+import csv
+
 eps = 1E-5
 
 
 class Senial:
-    def __init__(self, xvar, values):
+    def __init__(self, xvar = [], values = []):
         self.xvar = xvar #arreglos de tiempo y valores
         self.values = values
 
@@ -91,3 +93,39 @@ class Senial:
             sm += 2 * abs(xk) * cos(2 * pi * t * f + np.angle(xk)) # * exp(1j*2*pi*t*f)
 
         return 1/len(self.coef) * sm
+
+    def writeCSV(self, filename, fieldA = "x", fieldB = "y"):
+        row = [fieldA, fieldB]
+
+        data = dict()
+        data[fieldA] = self.xvar
+        data[fieldB] = self.values
+
+        with open(filename) as csvFile:
+            fields = [fieldA, fieldB]
+            writer = csv.DictWriter(csvFile, fieldnames=fields)
+            writer.writeheader()
+            writer.writerows(data)
+
+        csvFile.close()
+
+
+    def loadFromCSV(self, filename, fieldA = "x", fieldB = "y"):
+        self.xvar = []
+        self.values = []
+
+        with open(filename, 'r') as csvFile:
+            reader = csv.reader(csvFile)
+            firstRow = False
+            content = dict()
+            for row in reader:
+                if firstRow:
+                    keys = row
+                else:
+                    for i in row:
+                        if not content.has_key(keys[i]):
+                            content[keys[i]] = []
+
+                        content[keys[i]].append(i)
+                self.xvar = content[fieldA]
+                self.values = content[fieldB]

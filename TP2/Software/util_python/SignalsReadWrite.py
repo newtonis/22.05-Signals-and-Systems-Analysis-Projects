@@ -1,7 +1,7 @@
 from xml.dom import minidom
 import xml.etree.ElementTree as ET
 from util_python import read_csv
-from Etapas.Senial import Senial
+from util_python.Senial import Senial
 
 
 def csvToSignal(data, field):
