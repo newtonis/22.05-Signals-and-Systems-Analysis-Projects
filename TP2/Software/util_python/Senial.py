@@ -97,35 +97,41 @@ class Senial:
     def writeCSV(self, filename, fieldA = "x", fieldB = "y"):
         row = [fieldA, fieldB]
 
-        data = dict()
-        data[fieldA] = self.xvar
-        data[fieldB] = self.values
+        data = []
+        for i in range(len(self.xvar)):
+            data.append({fieldA: self.xvar[i], fieldB: self.values[i]})
 
-        with open(filename) as csvFile:
+        with open(filename, "w", newline='') as csvFile:
             fields = [fieldA, fieldB]
             writer = csv.DictWriter(csvFile, fieldnames=fields)
             writer.writeheader()
             writer.writerows(data)
 
         csvFile.close()
-
+        return self
 
     def loadFromCSV(self, filename, fieldA = "x", fieldB = "y"):
+        self.mode = "comun"
+
         self.xvar = []
         self.values = []
 
         with open(filename, 'r') as csvFile:
             reader = csv.reader(csvFile)
-            firstRow = False
+            firstRow = True
             content = dict()
+            keys = []
             for row in reader:
                 if firstRow:
                     keys = row
-                else:
-                    for i in row:
-                        if not content.has_key(keys[i]):
+                    for i in range(len(keys)):
+                        if not keys[i] in content.keys():
                             content[keys[i]] = []
-
-                        content[keys[i]].append(i)
-                self.xvar = content[fieldA]
-                self.values = content[fieldB]
+                    #print(keys)
+                    firstRow = False
+                else:
+                    for i in range(len(row)):
+                        content[keys[i]].append(float(row[i]))
+                #print(content)
+            self.__init__(content[fieldA], content[fieldB])
+        return self
