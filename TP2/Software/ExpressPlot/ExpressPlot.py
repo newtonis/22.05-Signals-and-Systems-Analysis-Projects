@@ -27,6 +27,7 @@ class CombinedPlot:
         self.yAxisTitle = ""
         self.func = None
         self.logarithmic = False
+        self.polar = False
         self.spiceData = dict()
 
     def setTitle(self, title):
@@ -39,6 +40,10 @@ class CombinedPlot:
 
     def setYTitle(self, title):
         self.yAxisTitle = title
+        return self
+
+    def addPolesZerosPoints(self, poles, zeros, color):
+        
         return self
 
     def addSignalPlot(self, signal, color, name):
@@ -190,5 +195,10 @@ class CombinedPlot:
 
     def setLogarithmic(self):
         self.logarithmic = True
+
+        return self
+
+    def setPolar(self):
+        self.polar = true
 
         return self

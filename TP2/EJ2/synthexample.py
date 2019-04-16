@@ -1,5 +1,6 @@
 import time
 import fluidsynth
+
 fs = fluidsynth.Synth()
 fs.start()
 sfid = fs.sfload("example.sf2")
