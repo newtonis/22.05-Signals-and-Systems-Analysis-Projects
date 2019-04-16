@@ -8,7 +8,7 @@ fs = 44100
 T = 5
 
 rl = 1
-l = 37
+l = 200
 
 noise = np.random.normal(0, 1, l)
 times = np.linspace(0, T, fs*T)
@@ -20,11 +20,11 @@ num = [0] * (l+2)
 den = [0] * (l+2)
 
 num[0] = 1/2
-num[1] = -1/2
+num[1] = 1/2
 
 den[0] = 1
-den[-2] = 1/2 * rl
-den[-1] = 1/2 * rl
+den[-2] = -1/2 * rl
+den[-1] = -1/2 * rl
 
 sys = signal.dlti(
     [0.5, 0.5],

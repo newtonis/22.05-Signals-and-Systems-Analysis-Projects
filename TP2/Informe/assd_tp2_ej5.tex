@@ -5,9 +5,7 @@
 \section{Síntesis de sonidos mediante modelos f\'isicos}
 Se analizarán dos variantes del modelo Karplus-Strong en paralelo, tanto de manera teórica como práctica. 
 
-\subsection{Análisis de transferencias}
-
-\subsubsection{Bloque A Elemental}
+\subsection{Bloque A Elemental}
 Se resolverá, como cálculo auxiliar un bloque sencillo definido como:
 \begin{figure}[H]	
 	\centering
@@ -21,12 +19,13 @@ Este bloque solo promedia los dos ultimos valores de entrada. Su transferencia e
 x(n)=\frac{1}{2}x(n)+\frac{1}{2}x(n-1)
 \end{equation}
 \begin{equation}
-Y(z)=\frac{1}{2}X(z)+\frac{1}{2}X(z)z^{-1} \implies A(z)=\frac{Z+1}{Z}
+Y(z)=\frac{1}{2}X(z)+\frac{1}{2}X(z)z^{-1} \implies A(z)=\frac{z+1}{z}
 \end{equation}
 Se puede observar que el bloque A es pasa-bajos (cero en $Z=-1$); lo cual es, en principio, razonable, el bloque A suaviza la entrada.
 
-\subsubsection{Karplus Strong 1}
-Se resolverá un nuevo sistema, el cuál consiste en una adicion de realimentación al sistema anterior
+\subsection{Karplus Strong 1}
+\subsubsection{Análisis teórico}
+Se resolverá un nuevo sistema, denominado $S_1$, el cuál consiste en una adicion de realimentación al sistema anterior.
 \begin{figure}[H]	
 	\centering
 	\includegraphics[scale=1]{graficos/bloque2ej5.png}
@@ -34,10 +33,33 @@ Se resolverá un nuevo sistema, el cuál consiste en una adicion de realimentaci
 	\label{fig:bloqueElemental}
 \end{figure}
 
-Mediante teória de feedback, considerando que $B(z)=Z^{-L}R_L$ se llega a que
+Mediante teória de feedback, considerando que $B(z)=z^{-L}R_L$ se llega a que
 \begin{equation}
-S_1(z)=\frac{}{}
+S_1(z)=\frac{ \frac{1}{2} z^{L+1} - \frac{1}{2}z^L}{ z^{L+1} - \frac{1}{2}R_L z-\frac{1}{2}R_L } 
 \end{equation}
+
+Es decir, una expresión con $L+1$ polos y $L+1$ ceros, en otras palabras, una ecuación diferencial de orden $L+1$ con vector de longitud $L$ como condición inicial.
+ 
+\begin{figure}[H]	
+	\includegraphics[scale=0.45]{graficos/polos.png}
+	\includegraphics[scale=0.58]{graficos/freq_response.png}
+	\caption{Polos y ceros (derecha), Rta en frecuencia (izquierda), $S_1$ con $R_L=1$, $L=10$, $f_s=44.1kHz$}
+	\label{fig:polosCeros}
+\end{figure}
+
+Del diagrama de polos y ceros y la respuesta en frecuencia podemos observar que hay una frecuencia de resonancia $F_R=F_s/(L+\frac{1}{2})$ que tiende a cumplir las hipotesis del criterio de Barkhausen, y por lo tanto provocar oscilaciones, lo cuál es el objetivo del bloque; conseguir una salida que perdure en el tiempo a partir de una entrada de longitud $L$ muy corta.
+\subsubsection{Análisis mediante señales}
+ 
+Se procederá a estudiar como el sistema responde a diversas entradas, entre ellas, un impulso unitario, ruido gaussiano de longitud $L$, y ruido lineal de longitud $L$. Se decidió aumentar $L$ en estos casos a $50$ para conseguir frecuencias más cercanas a las audibles.
+ 
+\begin{figure}[H]
+	\includegraphics[scale=0.55]{graficos/impulsoBloqueS1.png}
+	\includegraphics[scale=0.41]{graficos/impulsoBloqueS1Zoom.png}
+	\caption{Respuesta al impulso con y sin zoom, $R_L=1$, $L=50$, $f_s=44.1kHz$}
+\end{figure}
+
+Se puede observar que, de todas las frecuencias pertenecientes al impulso, la más amplificada vale $865Hz \approx \frac{F_s}{1/2+L}$.
+
 
 \end{document}
 

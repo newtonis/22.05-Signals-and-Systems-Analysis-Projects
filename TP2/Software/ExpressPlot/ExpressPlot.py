@@ -2,6 +2,7 @@ from util_python import read_csv
 from util_python import Senial, read_spice
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import numpy as np
 
 MAG, \
 PHA, \
@@ -29,6 +30,7 @@ class CombinedPlot:
         self.logarithmic = False
         self.polar = False
         self.spiceData = dict()
+        self.fs = None
 
     def setTitle(self, title):
         self.title = title
@@ -42,15 +44,29 @@ class CombinedPlot:
         self.yAxisTitle = title
         return self
 
-    def addPolesZerosPoints(self, poles, zeros, color):
-        
+    def setFs(self, fs):
+        self.fs = fs
+
+        return self
+
+    def addPolarPlotFromComplex(self, points, itemCode, color, title):
+
+        self.plotCount.append({
+            "signal": Senial.Senial(np.angle(points), np.abs(points)),
+            "color": color,
+            "name": False,
+            "byPoints": itemCode
+        })
+
+        self.polar = True
         return self
 
     def addSignalPlot(self, signal, color, name):
         self.plotCount.append({
             "signal": signal,
             "color": color,
-            "name": name
+            "name": name,
+            "byPoints": False
         })
         return self
 
@@ -77,7 +93,8 @@ class CombinedPlot:
             {
                 "signal": signal,
                 "color": color,
-                "name": name
+                "name": name,
+                "byPoints": False
             }
         )
         return self
@@ -90,7 +107,8 @@ class CombinedPlot:
         self.plotCount.append({
             "signal": signal,
             "color": color,
-            "name": name
+            "name": name,
+            "byPoints": False
         })
 
         return self
@@ -109,7 +127,8 @@ class CombinedPlot:
             {
                 "signal": Senial.Senial(signal1.xvar, yvarFinal),
                 "color": color,
-                "name": name
+                "name": name,
+                "byPoints": False
             }
         )
         return self
@@ -122,7 +141,8 @@ class CombinedPlot:
             {
                 "signal": signal,
                 "color": color,
-                "name": name
+                "name": False,
+                "byPoints": False
             }
         )
         return self
@@ -145,7 +165,17 @@ class CombinedPlot:
 
     def plotAndSave(self, filename):
         patches = []
-        fig, ax1 = plt.subplots()
+
+        if self.polar:
+            ax1 = plt.subplot(111, projection='polar')
+            if self.fs:
+                xT=plt.xticks()[0]
+                xl = []
+                for i in range(8):
+                    xl.append("$"+str(int(i*self.fs/8/1000))+"kHz$")
+                plt.xticks(xT, xl)
+        else:
+            fig, ax1 = plt.subplots()
 
         if self.func:
             func, args = self.func
@@ -158,22 +188,31 @@ class CombinedPlot:
                 xvalues, yvalues = plot["signal"].getSamplesBetweenLimits()
             else:
                 xvalues, yvalues = plot["signal"].xvar, plot["signal"].values
-            if not self.logarithmic:
-                ax1.plot(
-                    xvalues,
-                    yvalues,
-                    plot["color"]
-                )
-            else:
+
+            if self.logarithmic:
                 ax1.semilogx(
                     xvalues,
                     yvalues,
                     plot["color"]
                 )
-            #patches.append(
-            #    mpatches.Patch(color=plot["color"], label=plot["name"])
-            #)
-        #plt.legend(handles=patches)
+            elif plot["byPoints"]:
+
+                ax1.plot(
+                    xvalues,
+                    yvalues,
+                    plot["byPoints"] + plot["color"]
+                )
+            else:
+                ax1.plot(
+                    xvalues,
+                    yvalues,
+                    plot["color"]
+                )
+            if plot["name"]:
+                patches.append(
+                   mpatches.Patch(color=plot["color"], label=plot["name"])
+                )
+        plt.legend(handles=patches)
 
         plt.title(self.title)
 
@@ -184,7 +223,7 @@ class CombinedPlot:
         plt.xlabel(self.xAxisTitle)
         plt.ylabel(self.yAxisTitle)
 
-        fig.savefig(filename, dpi=300)
+        plt.savefig(filename, dpi=300)
 
         return self
 
