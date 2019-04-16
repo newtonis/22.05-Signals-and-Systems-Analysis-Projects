@@ -3,7 +3,6 @@ from numpy import *
 import matplotlib.pyplot as plt
 import numpy as np
 from IPython.display import Audio
-
 def getBell(A0,I0,tau,fc,fm,fs):
     phi_m = -pi/2
     phi_c = -pi/2
@@ -21,8 +20,16 @@ fs = 8000
 A0 = 1
 I0 = 1
 tau = 0.2
-fc = 2000
+
 fm = 500
+fc = 2*fm
+deltaf = (fc-fm)/2
+I = deltaf/fm
+#fc = (n/m)*fm
+#se dice que solo son armonicos los
+# 1:N con N range(1,10) (solo hasta 9)
+
+fo = math.gcd(fc,fm) # a esto se le llama note frequency
 
 x = getBell(A0,I0,tau,fc,fm,fs)
 Audio(x, rate=fs)
