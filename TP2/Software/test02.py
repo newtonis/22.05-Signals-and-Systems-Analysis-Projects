@@ -39,7 +39,7 @@ plt.minorticks_on()
 plt.grid(which='major', linestyle='-', linewidth=0.3, color='black')
 plt.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
-playSound(y)
+#playSound(y)
 
 plt.plot(t, y)
 plt.show()
