@@ -1,19 +1,8 @@
-import numpy as np
 import mido
 from mido import MidiFile
-
 from math import *
 from numpy import *
 import matplotlib.pyplot as plt
-import numpy as np
-import matplotlib.pyplot as plt
-from IPython.display import Audio
-
-#  donde te pasan, para cada canal una funcion de sintesis que vos en tu programa llamas
-#  con dos parametros  nota y velocidad  y esas funciones te devuelven un arreglo
-#  de numeros vos basicamente combinas todos los arreglos de numeros en los distintos
-#  instantes donde suenan los instrumentos en un unico arreglo (o sea usando linealidad)
-#  y retornas un super arreglo con toda la cancion
 
 class noteParams:
     vel = None
@@ -37,7 +26,6 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
 
 # hasta aca tengo todos los ticks con velocidades y notas
 #IMPORTANTE : ------------------------------------------------------------------
-# cuanto es un tick en tiempos de fs?
 # como definir la longitud temporal de los arreglos? (es decir la duracion)
 #------------------------------------------------------------------------------
 
