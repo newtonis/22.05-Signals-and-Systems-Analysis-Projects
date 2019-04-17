@@ -35,7 +35,7 @@ Se resolverá un nuevo sistema, denominado $S_1$, el cuál consiste en una adici
 
 Mediante teória de feedback, considerando que $B(z)=z^{-L}R_L$ se llega a que
 \begin{equation}
-S_1(z)=\frac{ \frac{1}{2} z^{L+1} - \frac{1}{2}z^L}{ z^{L+1} - \frac{1}{2}R_L z-\frac{1}{2}R_L } 
+S_1(z)=\frac{ \frac{1}{2} z^{L+1} + \frac{1}{2}z^L}{ z^{L+1} - \frac{1}{2}R_L z-\frac{1}{2}R_L } 
 \end{equation}
 
 Es decir, una expresión con $L+1$ polos y $L+1$ ceros, en otras palabras, una ecuación diferencial de orden $L+1$ con vector de longitud $L$ como condición inicial.
@@ -58,8 +58,14 @@ Se procederá a estudiar como el sistema responde a diversas entradas, entre ell
 	\caption{Respuesta al impulso con y sin zoom, $R_L=1$, $L=50$, $f_s=44.1kHz$}
 \end{figure}
 
-Se puede observar que, de todas las frecuencias pertenecientes al impulso, la más amplificada vale $865Hz \approx \frac{F_s}{1/2+L}$.
+Se puede observar que, de todas las frecuencias pertenecientes al impulso, la más amplificada vale $865Hz \approx \frac{F_s}{1/2+L}$. Por otro lado es importante observar que la salida se encuentra montada sobre una tensión continua, más precisamente, nunca es menor que 0. Esto se debe a que cuando la excitación es exclusivamente positiva, como la realimentación es positiva y no hay inversiones la salida siempre será positiva. Por ello es importante que la excitación inicial sea tanto positiva como negativa para lograr que la salida este centrada en 0.
 
+\begin{figure}[H]
+	\includegraphics[scale=0.55]{graficos/gaussBloqueS1.png}
+	\includegraphics[scale=0.41]{graficos/gaussBloqueS1zoom.png}
+	\caption{Respuesta a entrada Gaussiana con y sin zoom, $R_L=1$, $L=50$, $f_s=44.1kHz$}
+\end{figure}
 
+Se puede ver que la salida fue a la misma frecuencia que en el caso anterior, al mismo tiempo que nuevamente, estuvo montada sobre una continua. No obstante la salida tuvo la posiblidad de tomar valores negativos.
 \end{document}
 

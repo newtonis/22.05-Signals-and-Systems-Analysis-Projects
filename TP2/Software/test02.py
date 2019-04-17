@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from math import pi
 import simpleaudio as sa
+from util_python import PlaySound
 
 fs = 44100
 T = 5
@@ -38,11 +39,7 @@ plt.minorticks_on()
 plt.grid(which='major', linestyle='-', linewidth=0.3, color='black')
 plt.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
 
-y *= 32767 / max(abs(y))
-y = y.astype(np.int16)
-play_obj = sa.play_buffer(y, 1, 2, fs)
-
-play_obj.wait_done()
+#playSound(y)
 
 plt.plot(t, y)
 plt.show()
