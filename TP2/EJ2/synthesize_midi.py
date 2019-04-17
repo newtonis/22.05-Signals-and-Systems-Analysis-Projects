@@ -59,7 +59,7 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     return time_arr,amp_arr
 
 fs = 44100
-track_synthesis = {"channel1":getBell,"channel2":getClarinet}
+track_synthesis = {"channel1":getClarinet}
 t,ytot = synthesize_midi("mary.mid",track_synthesis,fs)
 plt.plot(t,ytot)
 plt.show()

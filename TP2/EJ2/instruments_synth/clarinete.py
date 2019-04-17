@@ -6,9 +6,9 @@ def woodenv(att,sus,rel,fs):
     tau_rel = rel/5
     # = > t_att = 1-exp(-t/tau)
     total_t = att+sus+rel
-    t = np.linspace(0, total_t, num=fs)
-    y1 = np.zeros(len(t))
-    y2 = np.zeros(len(t))
+    t = linspace(0, total_t, num=fs)
+    y1 = zeros(len(t))
+    y2 = zeros(len(t))
     for index,ti in enumerate(t):
         if(ti<=att):
             t2 = att
@@ -50,7 +50,7 @@ def getClarinet(vel,fc,fs):
     t, I = linScale(t, y2, alpha, beta)
     phi_m = -pi/2
     phi_c = -pi/2
-    t = np.linspace(0, 1, num=fs)
+    t = linspace(0, 1, num=fs)
     x = zeros(len(t))
     for index,ti in enumerate(t):
         x[index]=A[index]*cos(2*pi*fc*ti+I[index]*cos(2*pi*fm*ti+phi_m)+phi_c)

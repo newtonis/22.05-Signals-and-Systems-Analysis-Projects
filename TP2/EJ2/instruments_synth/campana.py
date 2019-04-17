@@ -1,7 +1,7 @@
 from math import *
 from numpy import *
 import numpy as np
-def getBell(A0,tau,fm,fs):
+def getBell(vel,fm,fs):
     A0 = 1
     tau = 0.2
     fc = 2 * fm
