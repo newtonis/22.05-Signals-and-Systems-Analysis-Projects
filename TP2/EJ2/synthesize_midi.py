@@ -18,6 +18,9 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     midi_file = MidiFile(midiFilename)
     d = {}
     highest_tick = 0
+
+    # voy a guardar en d todos los ticks con las distintas velocidades y notas
+
     for i, track in enumerate(midi_file.tracks): #i es el nro de track
         for message in track:
             if(message.type == "note_on"):
@@ -27,7 +30,8 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
                 if(message.time>highest_tick):
                     highest_tick=message.time
 
-# hasta aca tengo todos los ticks con velocidades y notas
+
+    #aca voy a sumar todos los arreglos que corresponden al mismo tick
 
     tick_arrs={}
     ttot = np.linspace(0,1,fs)
@@ -42,7 +46,8 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
                 tick_arrs[tick_val]+=yaux
 
 
-    # la separacion de en el arreglo final es de 1/fs
+    #finalmente acá sumo todo segun su posicion en tiempo correspondiente
+    # (la separacion de en el arreglo final es de 1/fs)
 
     total_time =  highest_tick*(1/fs)+len(ttot)*(1/fs)
     time_arr = arange(0, total_time, 1 / fs)
