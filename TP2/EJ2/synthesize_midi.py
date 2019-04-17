@@ -1,8 +1,11 @@
-import mido
 from mido import MidiFile
-from math import *
 from numpy import *
+import numpy as np
 import matplotlib.pyplot as plt
+
+#importo las funciones de los intrumentos
+from instruments_synth.campana import getBell
+from instruments_synth.clarinete import getClarinet
 
 class noteParams:
     vel = None
@@ -25,9 +28,6 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
                     highest_tick=message.time
 
 # hasta aca tengo todos los ticks con velocidades y notas
-#IMPORTANTE : ------------------------------------------------------------------
-# como definir la longitud temporal de los arreglos? (es decir la duracion)
-#------------------------------------------------------------------------------
 
     tick_arrs={}
     ttot = np.linspace(0,1,fs)
@@ -53,26 +53,8 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
 
     return time_arr,amp_arr
 
-def getBell(A0,fm,fs):
-    tau = 0.2
-    fc = 2 * fm
-    deltaf = (fc - fm) / 2
-    I0 = deltaf / fm
-    phi_m = -pi/2
-    phi_c = -pi/2
-    t = np.linspace(0, 1, num=fs)
-    A = zeros(len(t))
-    I = zeros(len(t))
-    x = zeros(len(t))
-    for index,ti in enumerate(t):
-      A[index]=A0*exp(-ti/tau)
-      I[index]=I0*exp(-ti/tau)
-      x[index]=A[index]*cos(2*pi*fc*ti+I[index]*cos(2*pi*fm*ti+phi_m)+phi_c)
-
-    return x
-
-track_synthesis = {"channel1":getBell}
-t,ytot = synthesize_midi("mary.mid",track_synthesis,44100)
-
+fs = 44100
+track_synthesis = {"channel1":getBell,"channel2":getClarinet}
+t,ytot = synthesize_midi("mary.mid",track_synthesis,fs)
 plt.plot(t,ytot)
 plt.show()
