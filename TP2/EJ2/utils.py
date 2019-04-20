@@ -7,6 +7,9 @@ from pydub import AudioSegment
 #https://www.youtube.com/watch?v=pHR3ttH5t-w
 #Aca ponemos el path de donde este la carpeta FFMPEG
 
+#Link que hizo todo andar
+# https://stackoverflow.com/questions/51219531/pydub-unable-to-locte-ffprobe
+
 FFMPEGLoc = "C:\\FFMPEG\\bin\\"
 
 AudioSegment.converter = FFMPEGLoc+"ffmpeg.exe"
