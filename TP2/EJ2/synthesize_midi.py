@@ -2,12 +2,14 @@ from mido import MidiFile
 from numpy import *
 import numpy as np
 import matplotlib.pyplot as plt
+import simpleaudio as sa
+import numpy as np
+
 
 #importo las funciones de los intrumentos
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
-import simpleaudio as sa
-import numpy as np
+
 
 
 def playSound(arr, fs=44100):
