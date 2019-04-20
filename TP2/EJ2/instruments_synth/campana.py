@@ -1,7 +1,9 @@
 from math import *
 from numpy import *
-import numpy as np
-def getBell(vel,fm,fs):
+from envelopes.DecayExp import *
+from instruments_synth.fmModulation import *
+
+def getBell(vel, fm, fs):
     A0 = 1
     tau = 0.2
     fc = 2 * fm
@@ -9,12 +11,12 @@ def getBell(vel,fm,fs):
     I0 = deltaf / fm
     phi_m = -pi/2
     phi_c = -pi/2
-    t = np.linspace(0, 1, num=fs)
-    A = zeros(len(t))
-    I = zeros(len(t))
-    x = zeros(len(t))
-    for index,ti in enumerate(t):
-      A[index]=A0*exp(-ti/tau)
-      I[index]=I0*exp(-ti/tau)
-      x[index]=A[index]*cos(2*pi*fc*ti+I[index]*cos(2*pi*fm*ti+phi_m)+phi_c)
-    return x
+    duration = 5*tau
+
+    t = arange(0, duration, 1 / fs)
+    A = DecayExp(A0,tau,duration,fs)
+    I = DecayExp(I0,tau,duration,fs)
+
+    x = fmModulation(A,I,fc,fm,phi_m,phi_c,duration,fs)
+
+    return x,duration

@@ -34,32 +34,36 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     #aca voy a sumar todos los arreglos que corresponden al mismo tick
 
     tick_arrs={}
-    ttot = np.linspace(0,1,fs)
+
     for channel, function in tracks_synthesis.items():
         for tick_val,tick_group in d.items():
             for index,nparam in enumerate(tick_group): #  tick_group[index] es un nparam
                 vel = nparam.vel
                 note = nparam.note
+                yaux,duration = function(vel, note, fs)
+
                 if not(tick_val in tick_arrs):
-                    tick_arrs[tick_val]=np.zeros(len(ttot))
-                yaux=function(vel,note,fs)
+                    aux_ = np.arange(0,duration,1/fs)
+                    tick_arrs[tick_val]=zeros(len(aux_))
+                    if(tick_val==highest_tick):
+                        last_arr_len = len(aux_)
                 tick_arrs[tick_val]+=yaux
 
 
     #finalmente acá sumo todo segun su posicion en tiempo correspondiente
     # (la separacion de en el arreglo final es de 1/fs)
 
-    total_time =  highest_tick*(1/fs)+len(ttot)*(1/fs)
+    total_time =  highest_tick*(1/fs)+last_arr_len*(1/fs)
     time_arr = arange(0, total_time, 1 / fs)
     amp_arr = zeros(len(time_arr))
     for tick,arr in tick_arrs.items():
         for i in range(len(arr)):
             amp_arr[tick+i]+=arr[i]
-
     return time_arr,amp_arr
 
 fs = 44100
-track_synthesis = {"channel1":getClarinet}
-t,ytot = synthesize_midi("mary.mid",track_synthesis,fs)
+
+track_synthesis = {"channel1":getBell}
+t,ytot = synthesize_midi("2hits16.mid",track_synthesis,fs)
 plt.plot(t,ytot)
 plt.show()
