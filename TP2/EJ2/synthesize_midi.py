@@ -44,14 +44,10 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     #aca voy a sumar todos los arreglos que corresponden al mismo tick
 
     tick_arrs={}
-
     for channel, function in tracks_synthesis.items():
         for tick_val,tick_group in d.items():
-            for index,nparam in enumerate(tick_group): #  tick_group[index] es un nparam
-                vel = nparam.vel
-                note = nparam.note
-                yaux,duration = function(vel, note, fs)
-
+            for index,nparam in enumerate(tick_group):
+                yaux,duration = function(nparam.vel, nparam.note, fs)
                 if not(tick_val in tick_arrs):
                     aux_ = np.arange(0,duration,1/fs)
                     tick_arrs[tick_val]=zeros(len(aux_))
@@ -65,10 +61,12 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
 
     total_time =  highest_tick*(1/fs)+last_arr_len*(1/fs)
     time_arr = arange(0, total_time, 1 / fs)
+
     amp_arr = zeros(len(time_arr))
     for tick,arr in tick_arrs.items():
         for i in range(len(arr)):
             amp_arr[tick+i]+=arr[i]
+
     return time_arr,amp_arr
 
 fs = 44100
