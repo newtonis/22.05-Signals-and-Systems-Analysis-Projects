@@ -1,22 +1,11 @@
 from mido import MidiFile
 from numpy import *
-import numpy as np
 import matplotlib.pyplot as plt
-import simpleaudio as sa
 import numpy as np
-
 
 #importo las funciones de los intrumentos
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
-
-
-
-def playSound(arr, fs=44100):
-    arr *= 32767 / max(abs(arr))
-    arr = arr.astype(np.int16)
-    play_obj = sa.play_buffer(arr, 1, 2, fs)
-    play_obj.wait_done()
 
 class noteParams:
     vel = None
@@ -49,7 +38,7 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
             for index,nparam in enumerate(tick_group):
                 yaux,duration = function(nparam.vel, nparam.note, fs)
                 if not(tick_val in tick_arrs):
-                    aux_ = np.arange(0,duration,1/fs)
+                    aux_ = arange(0,duration,1/fs)
                     tick_arrs[tick_val]=zeros(len(aux_))
                     if(tick_val==highest_tick):
                         last_arr_len = len(aux_)
@@ -68,11 +57,3 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
             amp_arr[tick+i]+=arr[i]
 
     return time_arr,amp_arr
-
-fs = 44100
-
-track_synthesis = {"channel1":getBell}
-t,ytot = synthesize_midi("1hit.mid",track_synthesis,fs)
-#plt.plot(t,ytot)
-#plt.show()
-playSound(ytot)
