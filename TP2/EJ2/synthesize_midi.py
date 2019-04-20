@@ -6,6 +6,15 @@ import matplotlib.pyplot as plt
 #importo las funciones de los intrumentos
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
+import simpleaudio as sa
+import numpy as np
+
+
+def playSound(arr, fs=44100):
+    arr *= 32767 / max(abs(arr))
+    arr = arr.astype(np.int16)
+    play_obj = sa.play_buffer(arr, 1, 2, fs)
+    play_obj.wait_done()
 
 class noteParams:
     vel = None
@@ -29,7 +38,6 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
                 d[message.time].append(noteParams(message.velocity, message.note))
                 if(message.time>highest_tick):
                     highest_tick=message.time
-
 
     #aca voy a sumar todos los arreglos que corresponden al mismo tick
 
@@ -64,6 +72,7 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
 fs = 44100
 
 track_synthesis = {"channel1":getBell}
-t,ytot = synthesize_midi("2hits16.mid",track_synthesis,fs)
-plt.plot(t,ytot)
-plt.show()
+t,ytot = synthesize_midi("1hit.mid",track_synthesis,fs)
+#plt.plot(t,ytot)
+#plt.show()
+playSound(ytot)
