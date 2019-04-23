@@ -47,10 +47,17 @@ RM = "C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -E re
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
+CMAKE_SOURCE_DIR = C:\Users\newtonis\Documents\GitHub\INFORMES_ASSD\TP2\EJ1\test01
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = C:\Users\newtonis\Documents\GitHub\INFORMES_ASSD\TP2\EJ1\test01\cmake-build-debug
+=======
 CMAKE_SOURCE_DIR = C:\Users\newto\INFORMES_ASSD\TP2\EJ1\test01
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = C:\Users\newto\INFORMES_ASSD\TP2\EJ1\test01\cmake-build-debug
+>>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +86,15 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\newtonis\Documents\GitHub\INFORMES_ASSD\TP2\EJ1\test01\cmake-build-debug\CMakeFiles C:\Users\newtonis\Documents\GitHub\INFORMES_ASSD\TP2\EJ1\test01\cmake-build-debug\CMakeFiles\progress.marks
+	$(MAKE) -f CMakeFiles\Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\newtonis\Documents\GitHub\INFORMES_ASSD\TP2\EJ1\test01\cmake-build-debug\CMakeFiles 0
+=======
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\newto\INFORMES_ASSD\TP2\EJ1\test01\cmake-build-debug\CMakeFiles C:\Users\newto\INFORMES_ASSD\TP2\EJ1\test01\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\newto\INFORMES_ASSD\TP2\EJ1\test01\cmake-build-debug\CMakeFiles 0
+>>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
 .PHONY : all
 
 # The main clean target

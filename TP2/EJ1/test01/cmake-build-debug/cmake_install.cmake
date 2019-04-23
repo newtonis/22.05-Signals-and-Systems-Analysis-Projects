@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+# Install script for directory: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ1/test01
+=======
 # Install script for directory: C:/Users/newto/INFORMES_ASSD/TP2/EJ1/test01
+>>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +44,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
+file(WRITE "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ1/test01/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+=======
 file(WRITE "C:/Users/newto/INFORMES_ASSD/TP2/EJ1/test01/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ1/test01/cmake-build-debug/CMakeFiles/test01.dir
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ1/test01/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ1/test01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+=======
 C:/Users/newto/INFORMES_ASSD/TP2/EJ1/test01/cmake-build-debug/CMakeFiles/test01.dir
 C:/Users/newto/INFORMES_ASSD/TP2/EJ1/test01/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/newto/INFORMES_ASSD/TP2/EJ1/test01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+>>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
