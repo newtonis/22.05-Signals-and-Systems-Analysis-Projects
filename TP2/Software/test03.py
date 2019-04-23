@@ -1,10 +1,12 @@
 from Systems import Ej5SystemA
+
 from scipy import signal
 from ExpressPlot import ExpressPlot
 import matplotlib.pyplot as plt
 import numpy as np
 from util_python import Senial
 import simpleaudio as sa
+from numpy import sin
 
 sys = Ej5SystemA.getSystem(
     rl = 1,
@@ -91,15 +93,17 @@ sys = Ej5SystemA.getSystem(
 )
 
 
-T = 1
+T = 4
 
-noise = np.random.normal(0, 1, 50)
+tu = np.arange(0, 0.01, 1/fs)
+
+noise = sin(2*np.pi*44100/(50+1/2)*tu) ##np.random.normal(0, 1, 50)
 times = np.linspace(0, T, fs*T)
 empty = [0] * (len(times) - len(noise))
 input = np.hstack([noise, empty])
 
 
-t = np.linspace(0, 4, 4*fs)
+t = np.linspace(0, T, T*fs)
 t, y = signal.dlsim(sys, input, t=times)
 
 t *= 1000
@@ -109,15 +113,15 @@ ExpressPlot.CombinedPlot()\
     .addSignalPlot(
         Senial.Senial(t, y),
         color="blue",
-        name="Rta a ruido gaussiano"
+        name="Rta a ruido uniforme"
     )\
     .setTitle(
-        "Respuesta a ruido gaussiano longitud L=50"
+        "Respuesta a ruido uniforme longitud L=50"
     )\
     .setXTitle("Tiempo (ms)")\
     .setYTitle("Amplitud")\
     .plotAndSave(
-        "Output/rtaRuidoGauss.png"
+        "Output/rtaRuidoAleatorio.png"
     )\
 
 y *= 32767 / max(abs(y))

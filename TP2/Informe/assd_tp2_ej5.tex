@@ -33,13 +33,14 @@ Se resolverá un nuevo sistema, denominado $S_1$, el cuál consiste en una adici
 	\label{fig:bloqueElemental}
 \end{figure}
 
-Mediante teória de feedback, considerando que $B(z)=z^{-L}R_L$ se llega a que
+Mediante teoria de feedback a considerando que $B(z)=z^{-L}R_L$ se llega a que
 \begin{equation}
 S_1(z)=\frac{ \frac{1}{2} z^{L+1} + \frac{1}{2}z^L}{ z^{L+1} - \frac{1}{2}R_L z-\frac{1}{2}R_L } 
 \end{equation}
 
 Es decir, una expresión con $L+1$ polos y $L+1$ ceros, en otras palabras, una ecuación diferencial de orden $L+1$ con vector de longitud $L$ como condición inicial.
- 
+
+\subsubsection{Estudio de la distribución polos y ceros, respuesta en frecuencia}
 \begin{figure}[H]	
 	\includegraphics[scale=0.45]{graficos/polos.png}
 	\includegraphics[scale=0.58]{graficos/freq_response.png}
@@ -48,6 +49,14 @@ Es decir, una expresión con $L+1$ polos y $L+1$ ceros, en otras palabras, una e
 \end{figure}
 
 Del diagrama de polos y ceros y la respuesta en frecuencia podemos observar que hay una frecuencia de resonancia $F_R=F_s/(L+\frac{1}{2})$ que tiende a cumplir las hipotesis del criterio de Barkhausen, y por lo tanto provocar oscilaciones, lo cuál es el objetivo del bloque; conseguir una salida que perdure en el tiempo a partir de una entrada de longitud $L$ muy corta.
+
+\subsubsection{Cálculo de $F_R$}
+Se mostrará porque el sistema resuena en $F_r=F_s/(L+\frac{1}{2})$. En la sección anterior se observó que la frecuencia de resonancia debía ser aquella que tendiera a cumlir las hipotesis del criterio de barkhausen; en otras palabras; que la ganancia del lazo se aproxime a $1\phase 0$
+
+\subsubsection{Análisis de estabilidad}
+
+Se estudiaran condiciones para garantizar la estabilidad del sistema
+
 \subsubsection{Análisis mediante señales}
  
 Se procederá a estudiar como el sistema responde a diversas entradas, entre ellas, un impulso unitario, ruido gaussiano de longitud $L$, y ruido lineal de longitud $L$. Se decidió aumentar $L$ en estos casos a $50$ para conseguir frecuencias más cercanas a las audibles.
@@ -67,5 +76,37 @@ Se puede observar que, de todas las frecuencias pertenecientes al impulso, la m�
 \end{figure}
 
 Se puede ver que la salida fue a la misma frecuencia que en el caso anterior, al mismo tiempo que nuevamente, estuvo montada sobre una continua. No obstante la salida tuvo la posiblidad de tomar valores negativos.
+
+\begin{figure}[H]
+	\includegraphics[scale=0.55]{graficos/randomBloqueS1.png}
+	\includegraphics[scale=0.55]{graficos/randomBloqueS1zoom.png}
+	\caption{Respuesta a entrada Gaussiana con y sin zoom, $R_L=1$, $L=50$, $f_s=44.1kHz$}
+\end{figure}
+
+\subsection{Karplus Strong 2}
+
+\subsubsection{Analisis teórico elemental}
+Se estudiará un nuevo sistema con una pequeña modificación la cual consiste en agregar un multiplicador en el bloque realimentador, cuyo valor es aleatorio entre -1 y 1
+Escrito en lenguaje matemático
+
+\begin{equation}
+	A(z)=b(\frac{1}{2}+\frac{1}{2}z^{-1})
+\end{equation}
+\begin{equation}
+	B(z)=\frac{1}{2}z^{-l}
+\end{equation}
+
+Usando teória de feedback concluimos que
+
+\begin{equation}
+	H(z)=\frac{\frac{1}{2}b+\frac{1}{2}bz^{-L}}{1-\frac{1}{2}bR_Lz^{-L}-b\frac{1}{2}R_Lz^{-L-1}}
+\end{equation}
+
+\subsubsection{Cálculo $\phi(w)$}
+
+
+\subsubsection{Cálculo de $F_R$}
+Se procederán a realizar los cálculos para conseguir la frecuencia de resonancia del sistema.
+
 \end{document}
 

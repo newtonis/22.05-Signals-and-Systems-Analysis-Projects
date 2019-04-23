@@ -160,13 +160,13 @@ int main() {
 //    arr.emplace_back(8);
 
     // medir tiempo
-    for (int i = 0;i < 4096;i++){
+    for (int i = 0;i < 256;i++){
         arr.emplace_back(i);
     }
 
     clock_t begin = clock();
 
-    for (int i = 0;i < 100;i++) {
+    for (int i = 0;i < 10000;i++) {
         fft(arr, arr);
     }
 
@@ -178,7 +178,7 @@ int main() {
 
     begin = clock();
 
-    for (int i = 0;i < 100;i++) {
+    for (int i = 0;i < 10000;i++) {
         fftLenta(arr, arr);
     }
 
