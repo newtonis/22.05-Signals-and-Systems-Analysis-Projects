@@ -13,18 +13,39 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     ticks_per_beat = midi_file.ticks_per_beat
     bpm = 0
     tempo = 0
-    track_list=[]
-    for channel,function in tracks_synthesis.items():
-        for index,track in enumerate(midi_file.tracks):
-            if(index == 0):
-                track_list.append(individual_track(ticks_per_beat,function,fs)) #aca function no pincha ni corta
-                track_list[0].setFirstTrack(track)
-                bpm = track_list[0].bpm
-                tempo = track_list[0].tempo
-            if(index>0):
-                track_list.append(individual_track(ticks_per_beat,function,fs))
-                track_list[index].setTrack(track,bpm,tempo)
+    config_tracks=[]
+    note_tracks=[]
+    for index,track in enumerate(midi_file.tracks):
+        for MetaMessage in track:
+            if (MetaMessage.type == "set_tempo"):
+                bpm = mido.tempo2bpm(MetaMessage.tempo)
+                tempo = MetaMessage.tempo
+            else:
+                bpm = 130.1
+                tempo = mido.bpm2tempo(bpm)
 
-    # ACA FALTARIA SUMAR LOS TRACKLIST [i]
-    return track_list[1].time_arr,track_list[1].amp_arr
+        aux_track=individual_track(ticks_per_beat,fs)
+        aux_track.getNotes(track) # no hace nada si no hay note ons y off
+        if aux_track.isNoteTrack():
+            note_tracks.append(aux_track)
+        else:
+            config_tracks.append(aux_track)
+
+    for i,nt_track in enumerate(note_tracks):
+        channel = "channel" + str(1 + i)
+        nt_track.function = tracks_synthesis[channel]
+        nt_track.getAmpArr(bpm, tempo)
+
+    list_of_amp_arr = []
+
+    for index,track in enumerate(note_tracks):
+        list_of_amp_arr.append(track.amp_arr)
+
+    total_amp_arr=[sum(x) for x in zip(*list_of_amp_arr)]
+
+    max = abs(amax(total_amp_arr))
+    total_amp_arr = divide(total_amp_arr, max)
+    total_t_arr = (0,len(total_amp_arr),fs)
+
+    return total_t_arr,total_amp_arr
 
