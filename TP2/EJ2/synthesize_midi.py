@@ -8,6 +8,10 @@ import numpy as np
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
 
+def noteToFreq(note):
+    a = 440 #frequency of A (coomon value is 440Hz)
+    return (a / 32) * (2 ** ((note - 9) / 12))
+
 class noteParams:
     vel = None
     note = None
@@ -62,9 +66,12 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     for channel, function in tracks_synthesis.items():
         for notes, note_param_arr in t_on.items():
             for nparam in note_param_arr:
-                y = function(nparam.vel,nparam.note,nparam.delta_t,fs)
+                freq = noteToFreq(nparam.note)
+                y = function(nparam.vel,freq,nparam.delta_t,fs)
                 dx= int(floor(mido.tick2second(nparam.time,ticks_per_beat,tempo)*(fs)))
                 for i in range(len(y)):
                     amp_arr[i+dx]+=y[i]
 
+    max = abs(amax(amp_arr))
+    amp_arr = divide(amp_arr,max)
     return time_arr,amp_arr
