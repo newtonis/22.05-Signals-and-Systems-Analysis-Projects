@@ -1,6 +1,5 @@
 from scipy.fftpack import fft
 import numpy as np
-import Globals
 from scipy.signal import butter, lfilter
 from scipy.signal import freqs
 from util_python import Senial
@@ -51,9 +50,9 @@ def fourierTransform(senial):
     final_amp = []
 
     for i in range(len(frecuencies)):
-        if abs(frecuencies[i]) < 10*1e3:
-            final_freq.append(frecuencies[i])
-            final_amp.append(amplitud[i])
+        #if abs(frecuencies[i]) < 10*1e3:
+        final_freq.append(frecuencies[i])
+        final_amp.append(amplitud[i])
 
     senial = Senial.Senial(final_freq, final_amp)
 

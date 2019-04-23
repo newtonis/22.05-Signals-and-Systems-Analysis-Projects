@@ -41,18 +41,18 @@ w = w/2/np.pi * fs/1000
 
 
 
-# ExpressPlot.CombinedPlot()\
-#     .addSignalPlot(
-#         Senial.Senial(w, H),
-#         color="blue",
-#         name="Magnitud"
-#     )\
-#     .setTitle("Respuesta en frecuencia")\
-#     .setXTitle("Frecuencia (kHz)")\
-#     .setYTitle("Amplitud (veces)")\
-#     .plotAndSave(
-#         "Output/rtaFreq.png"
-#     )
+ExpressPlot.CombinedPlot()\
+    .addSignalPlot(
+        Senial.Senial(w, H),
+        color="blue",
+        name="Magnitud"
+    )\
+    .setTitle("Respuesta en frecuencia")\
+    .setXTitle("Frecuencia (kHz)")\
+    .setYTitle("Amplitud (veces)")\
+    .plotAndSave(
+        "Output/rtaFreq.png"
+    )
 
 sys = Ej5SystemA.getSystem(
     rl = 1,

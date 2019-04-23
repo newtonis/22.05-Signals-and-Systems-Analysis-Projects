@@ -1,6 +1,7 @@
+from numpy import random
 
 
-def processSystemB(x, rl, l):
+def processSystemB(x, rl, l, b = 1):
     y = [0] * len(x)
 
     for i in range(len(x)):
@@ -14,6 +15,12 @@ def processSystemB(x, rl, l):
         else:
             yl1 = 0
 
-        y[i] = 1/2 * x[i] + 1/2 * x[i-1] + 1/2 * rl * yl + 1/2 * rl * yl1
+        if i > 0:
+            xl = x[i - 1]
+        else:
+            xl = 0
+
+        r = 1 - 2 * random.choice(2, 1, p=[b, 1-b])
+        y[i] = r * (1/2 * x[i] + 1/2 * xl + 1/2 * rl * yl + 1/2 * rl * yl1)
 
     return y
