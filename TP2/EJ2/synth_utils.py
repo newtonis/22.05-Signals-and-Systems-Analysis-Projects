@@ -1,6 +1,13 @@
 import mido
 from numpy import *
 
+def normalize(arr):
+    maxval = abs(amax(arr))
+    minval = abs(amin(arr))
+    tot_max = max(maxval, minval)
+    total_amp_arr = divide(arr, tot_max)
+    return total_amp_arr
+
 def noteToFreq(note):
     a = 440 #frequency of A (coomon value is 440Hz)
     return (a / 32) * (2 ** ((note - 9) / 12))
@@ -29,6 +36,8 @@ class individual_track:
     time_arr = None
     total_time = None
     amp_arr = None
+    memory = None
+
     def __init__(self,ticks_per_beat_, fs):
         self.tempo = None
         self.ticks_per_beat = ticks_per_beat_
@@ -42,6 +51,7 @@ class individual_track:
         self.total_time = None
         self.amp_arr = None
         self.time_arr=None
+        self.memory = {}
 
     def isNoteTrack(self):
         return len(self.t_on) > 0
@@ -74,12 +84,16 @@ class individual_track:
         for notes, note_param_arr in self.t_on.items():
             for nparam in note_param_arr:
                 freq = noteToFreq(nparam.note)
-                y = self.function(nparam.vel,freq,nparam.delta_t,self.fs)
+                v,f,dt = nparam.vel,freq,nparam.delta_t
+                y = []
+                if not (v,f,dt) in self.memory:
+                    y = self.function(nparam.vel, freq, nparam.delta_t, self.fs)
+                    self.memory[(v,f,dt)]=y.copy()
+                else:
+                    y = self.memory[(v,f,dt)]
                 dx= int(floor(mido.tick2second(nparam.time,self.ticks_per_beat,self.tempo)*(self.fs)))
                 for i in range(len(y)):
                     self.amp_arr[i+dx]+=y[i]
 
-        max = abs(amax(self.amp_arr))
-        self.amp_arr = divide(self.amp_arr, max)
-
+        self.amp_arr = normalize(self.amp_arr)
 

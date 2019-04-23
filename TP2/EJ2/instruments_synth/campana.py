@@ -1,9 +1,7 @@
 from math import *
-from numpy import *
 from envelopes.DecayExp import *
 from instruments_synth.fmModulation import *
 
-import matplotlib.pyplot as plt
 
 def getBell(vel, fm, duration, fs):
 
@@ -16,7 +14,6 @@ def getBell(vel, fm, duration, fs):
     phi_m = -pi/2
     phi_c = -pi/2
 
-    t = arange(0, duration, 1 / fs)
     A = DecayExp(A0,tau,duration,fs)
     I = DecayExp(I0,tau,duration,fs)
 

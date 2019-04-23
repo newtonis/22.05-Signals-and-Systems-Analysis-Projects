@@ -1,12 +1,9 @@
 from mido import MidiFile
-from numpy import *
-import mido
 from synth_utils import *
-
-#importo las funciones de los intrumentos
+#
+# #importo las funciones de los intrumentos
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
-
 
 def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     midi_file = MidiFile(midiFilename)
@@ -43,8 +40,8 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
 
     total_amp_arr=[sum(x) for x in zip(*list_of_amp_arr)]
 
-    max = abs(amax(total_amp_arr))
-    total_amp_arr = divide(total_amp_arr, max)
+    total_amp_arr = normalize(total_amp_arr)
+
     total_t_arr = (0,len(total_amp_arr),fs)
 
     return total_t_arr,total_amp_arr

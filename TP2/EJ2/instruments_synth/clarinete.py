@@ -1,4 +1,3 @@
-from numpy import *
 from math import *
 from envelopes.woodEnv import *
 from instruments_synth.fmModulation import *
