@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 fs = 44100
 track_synthesis = {"channel1":getClarinet}
-t,ytot = synthesize_midi("midi-samples/pirates.mid",track_synthesis,fs)
+t,ytot = synthesize_midi("midi-samples/2difnotes.mid",track_synthesis,fs)
 #plt.plot(t,ytot)
 #plt.show()
 
