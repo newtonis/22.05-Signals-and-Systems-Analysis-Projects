@@ -8,6 +8,7 @@ TP2/Software\.idea\*.*
 TP2\fft\test01\cmake-build-debug
 TP2\fft\test01\CMakeLists.txt
 TP2\Software\.idea\*
+TP2\EJ1\test01\cmake-build-debug\*.*
 *.raw
 *.log
 *.Zip
