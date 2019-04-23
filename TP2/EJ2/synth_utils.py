@@ -43,6 +43,9 @@ class individual_track:
         self.amp_arr = None
         self.time_arr=None
 
+    def isNoteTrack(self):
+        return len(self.t_on) > 0
+
     def getNotes(self,track):
         for message in track:
             self.time_counter+=message.time

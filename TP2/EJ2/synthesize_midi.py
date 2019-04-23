@@ -13,7 +13,8 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     ticks_per_beat = midi_file.ticks_per_beat
     bpm = 0
     tempo = 0
-    track_list=[]
+    config_tracks=[]
+    note_tracks=[]
     for index,track in enumerate(midi_file.tracks):
         for MetaMessage in track:
             if (MetaMessage.type == "set_tempo"):
@@ -23,32 +24,31 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
                 bpm = 130.1
                 tempo = mido.bpm2tempo(bpm)
 
-        track_list.append(individual_track(ticks_per_beat,fs))
-        track_list[index].getNotes(track) # no hace nada si no hay note ons y off
-        if(len(track_list[index].t_on)>0):
+        aux_track=individual_track(ticks_per_beat,fs)
+        aux_track.getNotes(track) # no hace nada si no hay note ons y off
+        if aux_track.isNoteTrack():
             channel = "channel"+str(index)
-            track_list[index].function=tracks_synthesis[channel]
+            aux_track.function=tracks_synthesis[channel]
+            aux_track.getAmpArr(bpm, tempo)
+            note_tracks.append(aux_track)
+        else:
+            config_tracks.append(aux_track)
 
+    for i,nt_track in enumerate(note_tracks):
+        channel = "channel" + str(1 + i)
+        nt_track.function = tracks_synthesis[channel]
+        nt_track.getAmpArr(bpm, tempo)
 
-    for track_el in track_list:
-        if(len(track_el.t_on)>0): #esto significa que hay al menos una nota
-            track_el.getAmpArr(bpm,tempo)
+    list_of_amp_arr = []
 
-    total_t_arr = 0
-    total_amp_arr = 0
-    j = 0
-    for index,track_el in enumerate(track_list):
-        if (len(track_el.t_on) > 0):  # esto significa que hay al menos una nota
-            if(j==0):
-                total_amp_arr = track_el.amp_arr.copy()
-                total_t_arr = track_el.time_arr
-                j+=1
-            else:
-                total_amp_arr+=track_el.amp_arr
-                j+=1
+    for index,track in enumerate(note_tracks):
+        list_of_amp_arr.append(track.amp_arr)
+
+    total_amp_arr=[sum(x) for x in zip(*list_of_amp_arr)]
 
     max = abs(amax(total_amp_arr))
     total_amp_arr = divide(total_amp_arr, max)
-    # ACA FALTARIA SUMAR LOS TRACKLIST [i]
+    total_t_arr = (0,len(total_amp_arr),fs)
+
     return total_t_arr,total_amp_arr
 
