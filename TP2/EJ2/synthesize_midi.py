@@ -27,9 +27,6 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
         aux_track=individual_track(ticks_per_beat,fs)
         aux_track.getNotes(track) # no hace nada si no hay note ons y off
         if aux_track.isNoteTrack():
-            channel = "channel"+str(index)
-            aux_track.function=tracks_synthesis[channel]
-            aux_track.getAmpArr(bpm, tempo)
             note_tracks.append(aux_track)
         else:
             config_tracks.append(aux_track)
