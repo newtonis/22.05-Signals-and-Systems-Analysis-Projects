@@ -21,7 +21,6 @@ class noteParams:
 
 def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     midi_file = MidiFile(midiFilename)
-    d = {}
     bpm = 0
     ticks_per_beat = midi_file.ticks_per_beat
     tempo = 0
@@ -55,17 +54,17 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
 
     #finalmente acá sumo todo segun su posicion en tiempo correspondiente
 
-    #time_arr = arange(0,mido.tick2second(time_counter,ticks_per_beat,tempo),mido.tick2second(1,ticks_per_beat,tempo))
     time_arr = arange(0,mido.tick2second(time_counter,ticks_per_beat,tempo),1/fs)
-
     amp_arr = zeros(len(time_arr))
 
-    #for notes,note_param_arr in t_on.items():
+    segs_per_tick=mido.tick2second(1,ticks_per_beat,tempo)
+
     for channel, function in tracks_synthesis.items():
         for notes, note_param_arr in t_on.items():
-            for index, nparam in enumerate(note_param_arr):
+            for nparam in note_param_arr:
                 y = function(nparam.vel,nparam.note,nparam.delta_t,fs)
+                dx= int(floor(mido.tick2second(nparam.time,ticks_per_beat,tempo)*(fs)))
                 for i in range(len(y)):
-                    amp_arr[i+nparam.time]+=y[i]
+                    amp_arr[i+dx]+=y[i]
 
     return time_arr,amp_arr
