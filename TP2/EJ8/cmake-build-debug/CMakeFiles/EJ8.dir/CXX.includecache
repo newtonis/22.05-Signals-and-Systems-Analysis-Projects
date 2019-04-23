@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/informes_assd/TP2/EJ8/main.cpp
+iostream
+-
+portaudio.h
+C:/informes_assd/TP2/EJ8/portaudio.h
+

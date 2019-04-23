@@ -268,6 +268,7 @@ int main() {
 //    arr.emplace_back(8);
 
     // medir tiempo
+<<<<<<< HEAD
 //    generateWn(wReal, wIm, 4096);
 //
     for (int i = 0;i < 4096;i++){
@@ -275,6 +276,10 @@ int main() {
     }
     for (int i = 0;i < 256;i++){
         arr2.emplace_back(i*454%(i+1)+1j);
+=======
+    for (int i = 0;i < 256;i++){
+        arr.emplace_back(i);
+>>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
     }
 //
 //    clock_t begin = clock();
@@ -307,9 +312,14 @@ int main() {
 
     clock_t begin = clock();
 
+<<<<<<< HEAD
     for (int i = 0;i < 1000;i++){
         fftCormen(arr, out4);
         fftCormen(arr2, out3);
+=======
+    for (int i = 0;i < 10000;i++) {
+        fft(arr, arr);
+>>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
     }
     /*for (int i = 0;i < 1000;i++){
         fftCormen(arr2, out5);
@@ -317,7 +327,22 @@ int main() {
 
     clock_t end = clock();
 
+<<<<<<< HEAD
     double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+=======
+    cout << "time global = " << elapsed_secs << '\n';
+
+    begin = clock();
+
+    for (int i = 0;i < 10000;i++) {
+        fftLenta(arr, arr);
+    }
+
+    end = clock();
+    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+
+    cout << "time stack = " << elapsed_secs << '\n';
+>>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
 
     cout << "time fft 3 (cormen)= " << elapsed_secs << '\n';
     //fftOld(arrReal, arrIm, n, log2n, ansReal, ansIm);

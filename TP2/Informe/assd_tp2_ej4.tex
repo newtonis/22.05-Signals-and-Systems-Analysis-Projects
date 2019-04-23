@@ -12,6 +12,12 @@ Para los intrumentos de viento:
 \begin{eqnarray*}
 \displaystyle \phi_m=\phi_c=-\frac{\pi}{2}
 \end{eqnarray*}
+Resultando
+\begin{eqnarray*}
+\textstyle x(t)=A(t)sen(2\pi f_c t+I(t)sen(2\pi f_mt))
+\end{eqnarray*}
+
+
 Hay dos consideraciones adicionales a la hora de sintetizar un instrumento de viento:
 \begin{itemize}
   \item Para cada instrumento corresponden un A(t) e I(t).
@@ -29,8 +35,8 @@ Y también se encuentra $f_0$ (también conocida como note frequency) que result
 \displaystyle f_0=gcd(f_c,f_m)
 \end{eqnarray*}
 \subsection{Síntesis de clarinete}
-Para un clarinete se utiliza un esquema similar al ADSR con Attack Sustain y Release. En lugar de tratarse de una interpolación lineal entre puntos, se trata de una exponencial.
-\\
+Para un clarinete se utiliza un esquema similar al ADSR con Attack Sustain y Release. En lugar de tratarse de una interpolación lineal entre puntos, se trata de una interpolación exponencial.
+\subsection{Síntesis de campana}
 Para una campana se suele utilizar
 
 \end{document}
