@@ -4,8 +4,19 @@ import matplotlib.pyplot as plt
 import time
 fs = 44100
 start = time.time()
-track_synthesis = {"channel1":getClarinet,"channel2":getBell}
-t,ytot = synthesize_midi("midi-samples/pirates.mid",track_synthesis,fs)
+track_synthesis = {"channel1":getClarinet,
+                   "channel2":getClarinet,
+                   "channel3":getClarinet,
+                   "channel4":getClarinet,
+                   "channel5":getClarinet,
+                   "channel6":getClarinet,
+                   "channel7":getClarinet,
+                   "channel8":getClarinet,
+                   "channel9":getClarinet,
+                   "channel10":getClarinet,
+                   "channel11":getClarinet,
+                   "channel12":getClarinet}
+t,ytot = synthesize_midi("midi-samples/The_Pink_Panther.mid",track_synthesis,fs)
 #plt.plot(t,ytot)
 #plt.show()
 

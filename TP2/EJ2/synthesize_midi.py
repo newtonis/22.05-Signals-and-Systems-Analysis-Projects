@@ -17,9 +17,6 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
             if (MetaMessage.type == "set_tempo"):
                 bpm = mido.tempo2bpm(MetaMessage.tempo)
                 tempo = MetaMessage.tempo
-            else:
-                bpm = 130.1
-                tempo = mido.bpm2tempo(bpm)
 
         aux_track=individual_track(ticks_per_beat,fs)
         aux_track.getNotes(track) # no hace nada si no hay note ons y off

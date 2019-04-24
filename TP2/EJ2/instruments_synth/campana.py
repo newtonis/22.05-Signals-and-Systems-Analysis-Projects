@@ -5,7 +5,6 @@ from instruments_synth.fmModulation import *
 
 def getBell(vel, fm, duration, fs):
 
-    fm = 220
     A0 = 1
     tau = duration/5
     fc = 2 * fm

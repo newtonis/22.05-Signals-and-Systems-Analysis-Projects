@@ -73,9 +73,13 @@ class individual_track:
         self.tempo = tempo
         # ahora quiero obtener para cada nota un delta t dado por t_on y t_off
         for note, note_param_arr in self.t_on.items():  # note es la key del dict
-            for i in range(len(note_param_arr)):
-                note_param_arr[i].delta_t = mido.tick2second(abs(self.t_on[note][i].time - self.t_off[note][i].time),
-                                                             self.ticks_per_beat, self.tempo)
+            for ind,n_param in enumerate(note_param_arr):
+                time_on = self.t_on[note][ind].time
+                time_off = self.t_off[note][ind].time
+                delta_ticks = abs(time_on-time_off)
+                n_param.delta_t = mido.tick2second(delta_ticks,self.ticks_per_beat,tempo)
+
+        # aca lo que hice fue a t_on agregarle el delta t
 
         self.total_time = mido.tick2second(self.time_counter,self.ticks_per_beat,self.tempo)
         self.time_arr = arange(0, self.total_time, 1 / self.fs)
@@ -91,9 +95,11 @@ class individual_track:
                     self.memory[(v,f,dt)]=y.copy()
                 else:
                     y = self.memory[(v,f,dt)]
+
                 dx= int(floor(mido.tick2second(nparam.time,self.ticks_per_beat,self.tempo)*(self.fs)))
-                for i in range(len(y)):
-                    self.amp_arr[i+dx]+=y[i]
+
+                for j in range(len(y)):
+                    self.amp_arr[j+dx]+=y[j]
 
         self.amp_arr = normalize(self.amp_arr)
 
