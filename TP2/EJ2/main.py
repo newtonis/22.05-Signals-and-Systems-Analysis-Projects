@@ -11,7 +11,7 @@ for i in range(number_of_tracks):
     canal = "channel"+str(i)
     track_synthesis[canal]=getClarinet
 
-name = "pirates"
+name = "The_Pink_Panther"
 
 ytot = synthesize_midi('midi-samples/'+name+'.mid',track_synthesis,fs)
 # t = range(len(ytot))

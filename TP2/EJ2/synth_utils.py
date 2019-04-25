@@ -82,7 +82,12 @@ class individual_track:
                 if tick_original <= t:
                     last_tempo = self.tempo_dict[tick_original]
         else:
-            last_tempo = self.tempo_list[-1]
+            last_tempo = 1000000000
+            for tempo in self.tempo_list:
+                last_tempo= min(last_tempo,tempo)
+
+            print("hola")
+
         return last_tempo
 
     def tick2sec(self,tick,tempo):
