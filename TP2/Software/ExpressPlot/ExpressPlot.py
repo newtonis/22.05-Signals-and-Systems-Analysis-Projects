@@ -2,11 +2,12 @@ from util_python import read_csv
 from util_python import Senial, read_spice
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-import numpy as np
+from mpldatacursor import datacursor
 
 MAG, \
 PHA, \
-DB = range(3)
+DB,\
+BOTH = range(4)
 
 
 def csvToSignal(data, fieldY, fieldX="x_axis"):
@@ -26,11 +27,12 @@ class CombinedPlot:
         self.title = ""
         self.xAxisTitle = ""
         self.yAxisTitle = ""
+        self.y2AxisTitle = ""
+
         self.func = None
         self.logarithmic = False
-        self.polar = False
         self.spiceData = dict()
-        self.fs = None
+        self.fig = None
 
     def setTitle(self, title):
         self.title = title
@@ -40,33 +42,19 @@ class CombinedPlot:
         self.xAxisTitle = title
         return self
 
+    def setYTitle2(self, title):
+        self.y2AxisTitle = title
+        return self
+
     def setYTitle(self, title):
         self.yAxisTitle = title
-        return self
-
-    def setFs(self, fs):
-        self.fs = fs
-
-        return self
-
-    def addPolarPlotFromComplex(self, points, itemCode, color, title):
-
-        self.plotCount.append({
-            "signal": Senial.Senial(np.angle(points), np.abs(points)),
-            "color": color,
-            "name": False,
-            "byPoints": itemCode
-        })
-
-        self.polar = True
         return self
 
     def addSignalPlot(self, signal, color, name):
         self.plotCount.append({
             "signal": signal,
             "color": color,
-            "name": name,
-            "byPoints": False
+            "name": name
         })
         return self
 
@@ -75,28 +63,49 @@ class CombinedPlot:
             self.spiceData[filename] = read_spice.read_file_spice(filename)
         return self.spiceData[filename]
 
-    def addSpiceBodePlot(self, filename, name, color, mode):
+    def addSpiceBodePlot(self, filename, name, color, mode, color2 = None, name2 = None):
         spiceData = self.getSpiceData(filename)
+        suma = 0
+
+        for i in range(len(spiceData["pha"])):
+            if i > 0 and spiceData["pha"][i]+suma > 100 and spiceData["pha"][i-1] < -100:
+                suma += -360
+            spiceData["pha"][i] += suma
 
         if mode == MAG:
             xdata = spiceData["f"]
             ydata = spiceData["abs"]
         elif mode == PHA:
             xdata = spiceData["f"]
-            ydata = spiceData["abs"]
+            ydata = spiceData["pha"]
+        elif mode == BOTH:
+            xdata = spiceData["f"]
+            ydata2 = spiceData["abs"]
+            ydata = spiceData["pha"]
         else:
             raise Exception("Invalid mode ", mode, " selected")
 
         signal = Senial.Senial(xdata, ydata)
-
-        self.plotCount.append(
-            {
-                "signal": signal,
-                "color": color,
-                "name": name,
-                "byPoints": False
-            }
-        )
+        if mode != BOTH:
+            self.plotCount.append(
+                {
+                    "signal": signal,
+                    "color": color,
+                    "name": name
+                }
+            )
+        else:
+            signal2 = Senial.Senial(xdata, ydata2)
+            self.plotCount.append(
+                {
+                    "signal": signal,
+                    "signal2": signal2,
+                    "color": color2,
+                    "name": name2,
+                    "color2": color,
+                    "name2": name
+                }
+            )
         return self
 
     def addCSVPlot(self, filename, field, name, color):
@@ -107,8 +116,7 @@ class CombinedPlot:
         self.plotCount.append({
             "signal": signal,
             "color": color,
-            "name": name,
-            "byPoints": False
+            "name": name
         })
 
         return self
@@ -127,22 +135,7 @@ class CombinedPlot:
             {
                 "signal": Senial.Senial(signal1.xvar, yvarFinal),
                 "color": color,
-                "name": name,
-                "byPoints": False
-            }
-        )
-        return self
-
-    def addXMLPlot(self, filename, name, color):
-        signal = SignalsReadWrite.readSignal(filename)
-        signal.mode = "teorica"
-
-        self.plotCount.append(
-            {
-                "signal": signal,
-                "color": color,
-                "name": False,
-                "byPoints": False
+                "name": name
             }
         )
         return self
@@ -165,22 +158,16 @@ class CombinedPlot:
 
     def plotAndSave(self, filename):
         patches = []
-
-        if self.polar:
-            ax1 = plt.subplot(111, projection='polar')
-            if self.fs:
-                xT=plt.xticks()[0]
-                xl = []
-                for i in range(8):
-                    xl.append("$"+str(int(i*self.fs/8/1000))+"kHz$")
-                plt.xticks(xT, xl)
-        else:
-            fig, ax1 = plt.subplots()
+        fig, ax1 = plt.subplots()
 
         if self.func:
             func, args = self.func
             args["ax"] = ax1
             func(args)
+
+        if self.y2AxisTitle != "":
+            ax2 = ax1.twinx()
+
         for plot in self.plotCount:
             if plot["signal"].mode == "teorica":
                 xvalues, yvalues = plot["signal"].getSamplesChangeXvar()
@@ -188,44 +175,126 @@ class CombinedPlot:
                 xvalues, yvalues = plot["signal"].getSamplesBetweenLimits()
             else:
                 xvalues, yvalues = plot["signal"].xvar, plot["signal"].values
-
-            if self.logarithmic:
+            if not self.logarithmic:
+                ax1.plot(
+                    xvalues,
+                    yvalues,
+                    plot["color"]
+                )
+            else:
                 ax1.semilogx(
                     xvalues,
                     yvalues,
                     plot["color"]
                 )
-            elif plot["byPoints"]:
-
-                ax1.plot(
-                    xvalues,
-                    yvalues,
-                    plot["byPoints"] + plot["color"]
+            if "signal2" in plot:
+                ax2.semilogx(
+                    plot["signal2"].xvar,
+                    plot["signal2"].values,
+                    plot["color2"]
                 )
+                patches.append(
+                    mpatches.Patch(color=plot["color2"], label=plot["name2"])
+                )
+            patches.append(
+                mpatches.Patch(color=plot["color"], label=plot["name"])
+            )
+        plt.legend(handles=patches)
+
+        plt.title(self.title)
+
+        ax1.minorticks_on()
+        ax1.grid(which='major', linestyle='-', linewidth=0.3, color='black')
+        ax1.grid(axis="both", which='minor', linestyle=':', linewidth=0.1, color='black')
+        ax1.tick_params(axis='both', which='minor', bottom=False)
+
+        #plt.tick_params(axis='x', which='minor', bottom=False)
+
+        ax1.set_xlabel(self.xAxisTitle)
+        ax1.set_ylabel(self.yAxisTitle)
+
+        if self.y2AxisTitle != "":
+            ax2.set_ylabel(self.y2AxisTitle)
+
+        fig.savefig(filename, dpi=300)
+
+        return self
+
+    def plot(self):
+        patches = []
+        fig, ax1 = plt.subplots()
+
+        if self.func:
+            func, args = self.func
+            args["ax"] = ax1
+            func(args)
+
+        if self.y2AxisTitle != "":
+            ax2 = ax1.twinx()
+
+        for plot in self.plotCount:
+            if plot["signal"].mode == "teorica":
+                xvalues, yvalues = plot["signal"].getSamplesChangeXvar()
+            elif plot["signal"].mode == "csv":
+                xvalues, yvalues = plot["signal"].getSamplesBetweenLimits()
             else:
+                xvalues, yvalues = plot["signal"].xvar, plot["signal"].values
+            if not self.logarithmic:
                 ax1.plot(
                     xvalues,
                     yvalues,
                     plot["color"]
                 )
-            if plot["name"]:
-                patches.append(
-                   mpatches.Patch(color=plot["color"], label=plot["name"])
+            else:
+                ax1.semilogx(
+                    xvalues,
+                    yvalues,
+                    plot["color"]
                 )
+            if "signal2" in plot:
+                #print(plot["signal2"].values[0])
+                ax2.semilogx(
+                    plot["signal2"].xvar,
+                    plot["signal2"].values,
+                    plot["color2"]
+                )
+                patches.append(
+                    mpatches.Patch(color=plot["color2"], label=plot["name2"])
+                )
+            patches.append(
+                mpatches.Patch(color=plot["color"], label=plot["name"])
+            )
         plt.legend(handles=patches)
 
         plt.title(self.title)
 
-        plt.minorticks_on()
-        plt.grid(which='major', linestyle='-', linewidth=0.3, color='black')
-        plt.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
+        ax1.minorticks_on()
+        ax1.grid(which='major', linestyle='-', linewidth=0.3, color='black')
+        ax1.grid(axis="both", which='minor', linestyle=':', linewidth=0.1, color='black')
+        ax1.tick_params(axis='both', which='minor', bottom=False)
 
-        plt.xlabel(self.xAxisTitle)
-        plt.ylabel(self.yAxisTitle)
+        #plt.tick_params(axis='x', which='minor', bottom=False)
 
-        plt.savefig(filename, dpi=300)
+        ax1.set_xlabel(self.xAxisTitle)
+
+
+        if self.y2AxisTitle != "":
+            ax2.set_ylabel(self.y2AxisTitle)
+
+        ax1.set_ylabel(self.yAxisTitle)
+
+        self.fig = fig
+
+        self.ax1 = ax1
+        if self.y2AxisTitle:
+            self.ax2 = ax2
+
+        #fig.savefig(filename, dpi=300)
 
         return self
+
+    def save(self, filename):
+        self.fig.savefig(filename, dpi=300)
 
     def extraPlot(self, func, args):
         self.func = func, args
@@ -237,7 +306,41 @@ class CombinedPlot:
 
         return self
 
-    def setPolar(self):
-        self.polar = true
+    def addDataTip(self, titleX, titleY, unitX, unitY, ax):
+        #print("adding")
+        #self.plot()
+
+        datacursor(
+            axes=ax,
+            display='multiple',
+            tolerance=30,
+            formatter=(titleX+": {x:.3e}  "+unitX+" \n"+titleY+":{y:.1f} "+unitY).format,
+            draggable=True
+        )
 
         return self
+
+    def show(self):
+        plt.show()
+        return self
+
+    def addDataTipBodePha(self):
+        self.addDataTip(
+            ax=self.ax1,
+            titleX= "Freq",
+            titleY= "Fase",
+            unitX= "Hz",
+            unitY = "Grados"
+        )
+        return self
+
+    def addDataTipBodeMag(self):
+        self.addDataTip(
+            ax=self.ax2,
+            titleX="Freq",
+            titleY="Amp",
+            unitX="Hz",
+            unitY="Db"
+        )
+        return self
+

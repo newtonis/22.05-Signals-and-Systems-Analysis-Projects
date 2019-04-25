@@ -3,6 +3,7 @@ from Etapas import SignalsReadWrite
 from util_python import Senial
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from mpldatacursor import datacursor
 
 inputDirectory = "ExpressInput"
 outputDirectory = "ExpressOutput"
@@ -99,9 +100,9 @@ class CombinedPlot:
 
         plt.title(self.title)
 
-        plt.minorticks_on()
+        #plt.minorticks_on()
         plt.grid(which='major', linestyle='-', linewidth=0.3, color='black')
-        plt.grid(which='minor', linestyle=':', linewidth=0.1, color='black')
+        #plt.grid(which='minor', linestyle='-', linewidth=0.1, color='black')
 
         plt.xlabel(self.xAxisTitle)
         plt.ylabel(self.yAxisTitle)
