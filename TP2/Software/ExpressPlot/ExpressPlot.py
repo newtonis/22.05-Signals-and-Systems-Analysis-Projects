@@ -3,6 +3,7 @@ from util_python import Senial, read_spice
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from mpldatacursor import datacursor
+import pandas as pd
 
 MAG, \
 PHA, \
@@ -106,6 +107,16 @@ class CombinedPlot:
                     "name2": name
                 }
             )
+        return self
+
+    def addExcelPlot(self, filename, fieldX, fieldY, color, name):
+        info = pd.read_excel(filename)
+
+        self.plotCount.append({
+            "signal": Senial.Senial(info[fieldX], info[fieldY]),
+            "color": color,
+            "name": name
+        })
         return self
 
     def addCSVPlot(self, filename, field, name, color):
@@ -252,7 +263,6 @@ class CombinedPlot:
                     plot["color"]
                 )
             if "signal2" in plot:
-                #print(plot["signal2"].values[0])
                 ax2.semilogx(
                     plot["signal2"].xvar,
                     plot["signal2"].values,
@@ -306,12 +316,11 @@ class CombinedPlot:
 
         return self
 
-    def addDataTip(self, titleX, titleY, unitX, unitY, ax):
+    def addDataTip(self, titleX, titleY, unitX, unitY):
         #print("adding")
         #self.plot()
 
         datacursor(
-            axes=ax,
             display='multiple',
             tolerance=30,
             formatter=(titleX+": {x:.3e}  "+unitX+" \n"+titleY+":{y:.1f} "+unitY).format,
@@ -343,4 +352,3 @@ class CombinedPlot:
             unitY="Db"
         )
         return self
-
