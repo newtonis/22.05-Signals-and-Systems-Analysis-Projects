@@ -3,19 +3,22 @@ from envelopes.woodEnv import *
 from instruments_synth.fmModulation import *
 from audiolazy.lazy_midi import *
 
-def getClarinet(vel,fc,duration,fs):
+def getClarinet(vel,f0,duration,fs):
     #parámetros configurables para clarinete:
     #------------------------------------
-    fm = (3 / 2) * fc
-    #print("entre con ",freq2str(fc))
+    # fm = (3 / 2) * fc
     # fm = 3*f0
     # fc = 2*f0
+    fm = 3 * f0
+    fc = 2 * f0
 
     alpha = -2
     beta = 4
-    t_attack = 0.1*duration
-    t_sust = 0.6*duration
-    t_rel = 0.3*duration
+
+    t_attack = 0.05*duration
+    t_sust = 0.65*duration
+    t_rel = 0.30*duration
+
     #-------------------------------------
 
     y1, y2 = woodEnv(t_attack, t_sust, t_rel, fs)
