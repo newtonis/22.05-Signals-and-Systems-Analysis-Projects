@@ -15,9 +15,9 @@ def getClarinet(vel,f0,duration,fs):
     alpha = -2
     beta = 4
 
-    t_attack = 0.05*duration
-    t_sust = 0.65*duration
-    t_rel = 0.30*duration
+    t_attack = (1.1/9)*duration
+    t_sust = (6.9/9)*duration
+    t_rel = (2/9)*duration
 
     #-------------------------------------
 

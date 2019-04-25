@@ -21,25 +21,27 @@ class messageInfo:
         self.note = note_
         self.time = time_
 
+
 class noteParams:
     note = None
     v_on = None
     v_off = None
     time = None
+    tick_in_fs = None
     delta_t = None
-    def __init__(self,note,v_on,v_off,time,delta_t):
+    def __init__(self,note,v_on,v_off,time,delta_t,tick_in_fs):
         self.note = note
         self.v_on = v_on
         self.v_off = v_off
         self.time = time
         self.delta_t = delta_t
+        self.tick_in_fs =tick_in_fs
 
 
 class individual_track:
+    name = None
     noteParams = None
-    tempo = None
     ticks_per_beat = None
-    bpm = None
     time_counter = None
     t_on = None
     t_off = None
@@ -50,11 +52,12 @@ class individual_track:
     total_time = None
     amp_arr = None
     memory = None
+    tempo_dict = None
+    track = None
+    tempo_list = None
 
-    def __init__(self,ticks_per_beat_,bpm_,tempo_,total_time_, fs):
-        self.tempo = tempo_
+    def __init__(self,ticks_per_beat_,total_time_, fs):
         self.ticks_per_beat = ticks_per_beat_
-        self.bpm = bpm_
         self.time_counter = 0
         self.t_on = {}
         self.t_off = {}
@@ -67,39 +70,70 @@ class individual_track:
         self.memory = {}
         self.note_info = {}
         self.total_time = total_time_
+        self.tempo_dict = {}
+        self.tempo_list = []
 
-    def tick2sec(self,tick_):
-        return mido.tick2second(tick_, self.ticks_per_beat, self.tempo)
+    def getTempo(self,t):
+        last_tempo = None
+        if(len(self.tempo_dict)>0):
+            for tick_original in self.tempo_dict:
+                if last_tempo == None:
+                    last_tempo = self.tempo_dict[tick_original]
+                if tick_original <= t:
+                    last_tempo = self.tempo_dict[tick_original]
+        else:
+            last_tempo = self.tempo_list[-1]
+        return last_tempo
 
-    def tickintempo2tickinfs(self,time_tick):
-        return int(floor(mido.tick2second(time_tick, self.ticks_per_beat, self.tempo) * (self.fs)))
+    def tick2sec(self,tick,tempo):
+        return mido.tick2second(tick, self.ticks_per_beat,tempo)
+
+    def tickintempo2tickinfs(self,time_tick,tempo):
+        return int(floor(mido.tick2second(time_tick, self.ticks_per_beat,tempo) * (self.fs)))
 
     def isNoteTrack(self):
         return len(self.t_on) > 0
 
     def getNotes(self,track):
-        for message in track:
+        self.track = track
+        for message in self.track:
             self.time_counter+=message.time
+            if message.type == "set_tempo":
+                self.tempo_dict[self.time_counter] = message.tempo
             if message.type == "note_on" and message.velocity != 0:
                 if not message.note in self.t_on:
                     self.t_on[message.note] = []
-                self.t_on[message.note].append(messageInfo(message.velocity,message.note,self.time_counter))
+                self.t_on[message.note].append(messageInfo(message.velocity, message.note,self.time_counter))
             if(message.type == "note_on" and message.velocity == 0) or (message.type == "note_off"):
                 if not message.note in self.t_off:
                     self.t_off[message.note] = []
                 self.t_off[message.note].append(messageInfo(message.velocity,message.note,self.time_counter))
 
+
+    def groupNotes(self):
         for note, messageInfo_arr in self.t_on.items():
-            for i,message in enumerate(messageInfo_arr):
-                time_on = self.tick2sec(self.t_on[note][i].time)
-                time_off = self.tick2sec(self.t_off[note][i].time)
-                delta_t= abs(time_on-time_off)
+            for i, message in enumerate(messageInfo_arr):
+                tick_on = self.t_on[note][i].time
+                tick_off = self.t_off[note][i].time
+
+                #aca falla porque hay veces que el track setea el tempo general
+                # y no lo hace por cada track
+                tempo_on = self.getTempo(tick_on) # por ahora solo tengo tempo_on
+
+                time_on = self.tick2sec(tick_on, tempo_on)
+                time_off = self.tick2sec(tick_off,tempo_on)
+
+                delta_t = abs(time_on-time_off)
                 note = self.t_on[note][i].note
                 v_on = self.t_on[note][i].vel
                 v_off = self.t_off[note][i].vel
+
+                tick_on_in_fs = self.tickintempo2tickinfs(tick_on,tempo_on)
+
                 if not note in self.note_info:
                     self.note_info[note]=[]
-                self.note_info[note].append(noteParams(note,v_on,v_off,self.t_on[note][i].time,delta_t))
+                self.note_info[note].append(noteParams(note, v_on, v_off, tick_on, delta_t,tick_on_in_fs))
+
 
     def getAmpArr(self):
         self.time_arr = arange(0, self.total_time, 1 / self.fs)
@@ -115,10 +149,10 @@ class individual_track:
                     self.memory[(v,f,dt)]=y.copy()
                 else:
                     y = self.memory[(v,f,dt)]
-                dx = int(floor(mido.tick2second(note_param.time,self.ticks_per_beat,self.tempo)*(self.fs)))
+
+                dx = note_param.tick_in_fs
+
                 for j in range(len(y)):
-                    if(j+dx == 7243426):
-                        print("asd")
                     self.amp_arr[j+dx]+=y[j]
 
         self.amp_arr = normalize(self.amp_arr)

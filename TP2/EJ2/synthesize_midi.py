@@ -15,14 +15,12 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     tempo = 0
     config_tracks=[]
     note_tracks=[]
-    for index,track in enumerate(midi_file.tracks):
-        for MetaMessage in track:
-            if (MetaMessage.type == "set_tempo"):
-                bpm = mido.tempo2bpm(MetaMessage.tempo)
-                tempo = MetaMessage.tempo
-                #print("tempo:",tempo)
-
-        aux_track=individual_track(ticks_per_beat,bpm,tempo,total_time,fs)
+    tempo_list=[]
+    for index, track in enumerate(midi_file.tracks):
+        for message in track:
+            if message.type == "set_tempo":
+                tempo_list.append(message.tempo)
+        aux_track = individual_track(ticks_per_beat,total_time,fs)
         aux_track.getNotes(track) # no hace nada si no hay note ons y off
         if aux_track.isNoteTrack():
             note_tracks.append(aux_track)
@@ -32,7 +30,10 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     for i,nt_track in enumerate(note_tracks):
         channel = "channel" + str(1 + i)
         nt_track.function = tracks_synthesis[channel]
+        nt_track.tempo_list = tempo_list
+        nt_track.groupNotes()
         nt_track.getAmpArr()
+        nt_track.name = "note_track"+str(i)
         print("track "+str(i)+"no problem")
 
     #     threads_arr.append(threading.Thread(name='thread_track'+str(1+i),target=nt_track.getAmpArr,
@@ -51,7 +52,7 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
 
     total_amp_arr = normalize(total_amp_arr)
 
-    total_t_arr = (0,len(total_amp_arr),fs)
+    #total_t_arr = (0,len(total_amp_arr),fs)
 
-    return total_t_arr,total_amp_arr
+    return total_amp_arr
 
