@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ1/fftFinal/main.cpp
+bits/stdc++.h
+-
+
