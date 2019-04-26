@@ -5,30 +5,43 @@ from synth_utils import *
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
 
+import threading
+
 def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     midi_file = MidiFile(midiFilename)
     ticks_per_beat = midi_file.ticks_per_beat
+    total_time = midi_file.length
     bpm = 0
     tempo = 0
     config_tracks=[]
     note_tracks=[]
-    for index,track in enumerate(midi_file.tracks):
-        for MetaMessage in track:
-            if (MetaMessage.type == "set_tempo"):
-                bpm = mido.tempo2bpm(MetaMessage.tempo)
-                tempo = MetaMessage.tempo
-
-        aux_track=individual_track(ticks_per_beat,fs)
+    tempo_list=[]
+    for index, track in enumerate(midi_file.tracks):
+        for message in track:
+            if message.type == "set_tempo":
+                tempo_list.append(message.tempo)
+        aux_track = individual_track(ticks_per_beat,total_time,fs)
         aux_track.getNotes(track) # no hace nada si no hay note ons y off
         if aux_track.isNoteTrack():
             note_tracks.append(aux_track)
         else:
             config_tracks.append(aux_track)
-
+    #threads_arr=[]
     for i,nt_track in enumerate(note_tracks):
         channel = "channel" + str(1 + i)
         nt_track.function = tracks_synthesis[channel]
-        nt_track.getAmpArr(bpm, tempo)
+        nt_track.tempo_list = tempo_list
+        nt_track.groupNotes()
+        nt_track.getAmpArr()
+        nt_track.name = "note_track"+str(i)
+        print("track "+str(i)+"no problem")
+
+    #     threads_arr.append(threading.Thread(name='thread_track'+str(1+i),target=nt_track.getAmpArr,
+    #                                         args=(bpm,tempo)))
+    #     threads_arr[i].start()
+    #
+    # for thread in threads_arr:
+    #     thread.join()
 
     list_of_amp_arr = []
 
@@ -39,7 +52,7 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
 
     total_amp_arr = normalize(total_amp_arr)
 
-    total_t_arr = (0,len(total_amp_arr),fs)
+    #total_t_arr = (0,len(total_amp_arr),fs)
 
-    return total_t_arr,total_amp_arr
+    return total_amp_arr
 

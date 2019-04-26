@@ -3,9 +3,9 @@ import simpleaudio as sa
 from pydub import AudioSegment
 
 #IMPORTANTE!
-#Hay que agregar C:\FFMPEG\bin  al path de variables de entornos
-#https://www.youtube.com/watch?v=pHR3ttH5t-w
-#Aca ponemos el path de donde este la carpeta FFMPEG
+#Primero bajar FMMPEG desde https://ffmpeg.org/download.html
+#Hay que agregar C:\FFMPEG\bin  al path de variables de entorno
+#link de como hacerlo: https://www.youtube.com/watch?v=pHR3ttH5t-w
 
 #Link que hizo todo andar
 # https://stackoverflow.com/questions/51219531/pydub-unable-to-locte-ffprobe
