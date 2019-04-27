@@ -15,8 +15,8 @@ for i in range(number_of_tracks):
 #name = "Pink_Panther"
        #<--- pesadilla
 #name = "RodrigoAdagio_2" <- el que funciona
-#name = "RodrigoAdagio"
-name = "greenhill"
+name = "Pink_Panther"
+#name = "greenhill"
 
 ytot = synthesize_midi('midi-samples/'+name+'.mid',track_synthesis,fs)
 
