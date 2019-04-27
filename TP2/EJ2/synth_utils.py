@@ -32,36 +32,28 @@ def sumAllTracks(note_tracks):
 
 class individual_track:
     name = None
-    noteParams = None
     ticks_per_beat = None
     time_counter = None
     t_on = None
     t_off = None
-    note_info = None
     fs = None
     function = None
-    time_arr = None
     total_time = None
     amp_arr = None
     memory = None
-    track = None
     tempo_list = None
     this_track_tempo_list = None
     t_on_in_secs = None
 
-    def __init__(self,ticks_per_beat_,total_time_, fs):
+    def __init__(self,ticks_per_beat_,total_time_, fs, t_on, t_off):
         self.ticks_per_beat = ticks_per_beat_
         self.time_counter = 0
-        self.t_on = []
-        self.t_off = []
-        self.noteParams = None
+        self.t_on = t_on
+        self.t_off = t_off
         self.fs = fs
         self.function = None
-        self.total_time = None
         self.amp_arr = None
-        self.time_arr=None
         self.memory = {}
-        self.note_info = {}
         self.total_time = total_time_
         self.tempo_list = []
         self.this_track_tempo_list = []
@@ -70,26 +62,11 @@ class individual_track:
     def tick2sec(self,tick,tempo):
         return mido.tick2second(tick, self.ticks_per_beat,tempo)
 
-    def tick2tickinfs(self,time_tick,tempo):
-        delta_t = mido.tick2second(time_tick,self.ticks_per_beat,tempo)
-        return self.time2tickinfs(delta_t)
-
     def time2tickinfs(self,delta_t):
-        T = 1/self.fs
-        return int(delta_t/T)
+        return int(floor(delta_t*self.fs))
 
     def isNoteTrack(self):
         return len(self.t_on) > 0
-
-    def getNotes(self,track):
-        self.time_counter = 0
-        self.track = track
-        for message in self.track:
-            self.time_counter += message.time
-            if message.type == "note_on" and message.velocity != 0:
-                self.t_on.append([self.time_counter, message.velocity, message.note])
-            if(message.type == "note_on" and message.velocity == 0) or (message.type == "note_off"):
-                self.t_off.append([self.time_counter, message.velocity, message.note])
 
     def checkIfInMemory(self,v,f,dt):
         y = []
@@ -127,14 +104,12 @@ class individual_track:
 
     def getAmpArr(self):
         self.getDeltaTHastaTick()
-
-        self.time_arr = arange(0, self.total_time, 1 / self.fs)
-        self.amp_arr = zeros(len(self.time_arr))
+        self.amp_arr = zeros(self.time2tickinfs(self.total_time))
 
         for i in range(len(self.t_on)):
             tick_on = self.t_on[i][0]
             vel_on = self.t_on[i][1]
-            vel_off = self.t_off[i][1]
+            #vel_off = self.t_off[i][1]
             note = self.t_on[i][2]
 
             freq = noteToFreq(note)
@@ -146,6 +121,7 @@ class individual_track:
 
             v, f, dt = vel_on, freq, delta_t
             y = self.checkIfInMemory(v, f, dt)
+
             for j in range(len(y)):
                 self.amp_arr[j + tick_on_in_fs] += y[j]
 

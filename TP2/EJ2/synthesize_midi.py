@@ -13,17 +13,30 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     total_time = midi_file.length
     note_tracks = []
     tempo_list = []
-    time_counter = 0
-    for track in midi_file.tracks:
+    first_tempo_list = []
+    for j,track in enumerate(midi_file.tracks):
+        t_on = []
+        t_off = []
+        time_counter=0
         for index, message in enumerate(track):
             time_counter += message.time
             if message.type == "set_tempo":
                 tempo_list.append([time_counter,message.tempo])
-        aux_track = individual_track(ticks_per_beat,total_time,fs)
-        aux_track.getNotes(track)
+            if message.type == "note_on" and message.velocity != 0:
+                t_on.append([time_counter, message.velocity, message.note])
+            if (message.type == "note_on" and message.velocity == 0) or (message.type == "note_off"):
+                t_off.append([time_counter, message.velocity, message.note])
+
+        aux_track = individual_track(ticks_per_beat, total_time, fs, t_on, t_off)
         if aux_track.isNoteTrack():
             note_tracks.append(aux_track)
-        time_counter=0
+        if j==0:
+            first_tempo_list=tempo_list #con esto seteo la lista del primer track
+
+    if first_tempo_list==tempo_list:
+        print("estoy en el formato 1, viene todo en el primero")
+    else:
+        print("estoy en el formato 2, viene todo segun cada track")
 
     tempo_list = getUniqAndSortedTempoList(tempo_list)
 
