@@ -30,6 +30,13 @@ def sumAllTracks(note_tracks):
     return total_amp_arr
 
 
+class ticks:
+    fs_tick = None
+    y = None
+    def __init__(self,fs_tick,y):
+        self.fs_tick = fs_tick
+        self.y = y
+
 class individual_track:
     name = None
     ticks_per_beat = None
@@ -106,6 +113,7 @@ class individual_track:
         self.getDeltaTHastaTick()
         self.amp_arr = zeros(self.time2tickinfs(self.total_time))
 
+        ans = []
         for i in range(len(self.t_on)):
             tick_on = self.t_on[i][0]
             vel_on = self.t_on[i][1]
@@ -122,8 +130,5 @@ class individual_track:
             v, f, dt = vel_on, freq, delta_t
             y = self.checkIfInMemory(v, f, dt)
 
-            for j in range(len(y)):
-                self.amp_arr[j + tick_on_in_fs] += y[j]
-
-        self.amp_arr = normalize(self.amp_arr)
-
+            ans.append(ticks(tick_on_in_fs,y))
+        return ans
