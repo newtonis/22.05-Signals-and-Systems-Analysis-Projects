@@ -24,7 +24,7 @@ ytot = synthesize_midi('midi-samples/'+name+'.mid',track_synthesis,fs)
 #plt.show()
 #sr,x = read('megalovania.mp3',normalized = False)
 
-write(name+'.mp3',fs,ytot,normalized = True)
+write(name+'.mp3', fs, ytot, normalized = True)
 
 end = time.time()
 print("se sintetizo en ",int(abs(end-start))/60," minutos")

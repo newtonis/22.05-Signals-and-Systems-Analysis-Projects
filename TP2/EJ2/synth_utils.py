@@ -84,29 +84,54 @@ class individual_track:
             y = self.memory[(v, f, dt)]
         return y
 
+    def getDelta(self, tick_on, j, t_inicio):
+        last_delta_t = 0
+        last_tempo = self.tempo_list[j][1]
+        last_tick_change = self.tempo_list[j][0]
+        delta_t = t_inicio
+        found_tempo = False
+        while not found_tempo and j < len(self.tempo_list):
+            tick_change_tempo = self.tempo_list[j][0]
+            if tick_change_tempo <= tick_on:  # esto es el tick en on
+                # aca deberia calcular todo lo que traje de antes
+                delta_t += self.tick2sec(last_tick_change - tick_change_tempo, last_tempo)
+                last_tempo = self.tempo_list[j][1]  # este es el tempo
+                last_tick_change = self.tempo_list[j][0]
+            else:
+                found_tempo = True
+            j += 1
+
+        last_delta_t = self.tick2sec(tick_on - last_tick_change, last_tempo)
+        delta_t += last_delta_t
+
+        return delta_t,last_delta_t, j
+
+
+
     def getDeltaTHastaTick(self):
         t_on_in_secs = {}
         for i in range(len(self.t_on)):  # t_on = [tick_on, vel,note]
-            delta_t = 0
-            delta_t_off = 0
-            tick_on_actual = self.t_on[i][0]
-            tick_off_actual = self.t_off[i][0]
-            tempo_actual = self.tempo_list[0][1]
-            tempo_actual_off = self.tempo_list[0][1]
-            # aca abajo calculo el tiempo acumulado hasta tick_on
-            for j in range(len(self.tempo_list)):
-                tick_tempo = self.tempo_list[j][0]
-                if tick_tempo <= tick_on_actual:  # esto es el tick en on
-                    # con cada j estoy saltando de tempo
-                    delta_t += mido.tick2second(tick_on_actual - tick_tempo, self.ticks_per_beat, tempo_actual)
-                    tempo_actual = self.tempo_list[j][1]  # este es el tempo
-                if tick_tempo <= tick_off_actual:  # esto es el tick en on
-                    # con cada j estoy saltando de tempo
-                    delta_t_off += mido.tick2second(tick_off_actual - tick_tempo, self.ticks_per_beat, tempo_actual_off)
-                    tempo_actual_off = self.tempo_list[j][1]  # este es el tempo
+            tick_on, tick_off = self.t_on[i][0],self.t_off[i][0]
+            # i es el numero de tick que itero en t_on
 
-            duration = delta_t_off-delta_t
-            t_on_in_secs[tick_on_actual] = [delta_t,duration]
+            delta_t_on, last_delta_t_on, j = self.getDelta(tick_on, 0, 0)
+
+            #delta_t_on es el tiempo acumulado desde 0_inicio hasta tick_on
+
+            k = j-1 # j es siempre >1 a menos que sea del otro formato
+
+            t_inicio = delta_t_on-last_delta_t_on
+            delta_t_off,last_delta_t_off, j = self.getDelta(tick_off,k,t_inicio)
+
+            # delta_t_off es el tiempo acumulado desde t_inicio hasta tick_off
+
+            tiempo_acumulado_tick_on = delta_t_on
+            tiempo_acumulado_tick_off = delta_t_off + t_inicio
+
+            duration = abs(tiempo_acumulado_tick_on - tiempo_acumulado_tick_off)
+
+            t_on_in_secs[tick_on] = [delta_t_on,duration]
+
         self.t_on_in_secs = t_on_in_secs
 
     def getAmpArr(self):
