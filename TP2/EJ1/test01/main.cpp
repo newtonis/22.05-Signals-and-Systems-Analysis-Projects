@@ -276,10 +276,7 @@ int main() {
     }
     for (int i = 0;i < 256;i++){
         arr2.emplace_back(i*454%(i+1)+1j);
-=======
-    for (int i = 0;i < 256;i++){
-        arr.emplace_back(i);
->>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
+
     }
 //
 //    clock_t begin = clock();
