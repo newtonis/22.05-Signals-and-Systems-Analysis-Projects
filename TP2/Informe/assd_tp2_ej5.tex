@@ -163,5 +163,18 @@ Con la nueva modificación la frecuencia de resonancia paso a estar dada por
 
 Eligiendo $L$ adecuadamente se puede garantizar que existan $a$ y $b$ entre 0 y 1 que verifiquen la ecuación anterior
 
+
+\subsection{Sintetización de guitarra}
+Se implemento el sonido de una guitarra utilizando el modelo Karplus Strong utilizando la modificación que permitió una elección continua de frecuencias. Los resultados fueron satisfactorios
+
+
+\subsection{Distorsión del sonido de guitarra}
+Se distorsionó el sonido de una guitarra utilizando una modificación al modelo. Se colocó un valor de $R_L>1$ pero, utilizando una funcion normalizadora (entre -1 y 1) se conformó un control automatico de ganancia que evitó la inestabilidad del sistema. Colocando diversos valores de $R_L$ se armó distorsión de distintos tipos. 
  
+ 
+\subsection{Sintetización de instrmento de percusión}
+
+Utilizando la modificación del modelo de Karplus Strong la cuál establecia una variable aleatoria se Sintetizó sonido de instrumentos de percusión. Los resultados fueron satisfactorios
+
+
 \end{document}
