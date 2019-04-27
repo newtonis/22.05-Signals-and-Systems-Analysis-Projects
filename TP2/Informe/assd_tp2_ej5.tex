@@ -163,18 +163,75 @@ Con la nueva modificación la frecuencia de resonancia paso a estar dada por
 
 Eligiendo $L$ adecuadamente se puede garantizar que existan $a$ y $b$ entre 0 y 1 que verifiquen la ecuación anterior
 
+\subsection{¿Comó filtrar la componente continua?}
+Se colocó un filtro pasabajo al final del filtro para elimiar la "molesta" componente continua que el sistema poseeía. Dicha característica de la señal era aleatoria e impredecible por lo tanto fue muy importante colocar dicho filtro.
 
-\subsection{Sintetización de guitarra}
-Se implemento el sonido de una guitarra utilizando el modelo Karplus Strong utilizando la modificación que permitió una elección continua de frecuencias. Los resultados fueron satisfactorios
+\subsection{¿Como atenuar el sonido de manera suave?}
+Cuando termina el sonido la amplitud no puede ser disminuida de manera inmediata. Se necesito entonces multiplicar la señal por una ventana para regular la duración y provocar una disminución gradual de la intensidad del sonido
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[scale=0.5]{graficos/ejemplo_uso_ventana.png}
+	\caption{Ejemplo uso de ventana}
+
+	\end{center}
+\end{figure}
+Los resultados del uso de ventanas fueron satisfactorios, la atenuación del sonido se observó de forma gradual
+
+\subsection{Sintetización de sonido de guitarra}
+Se implemento el sonido de una guitarra utilizando el modelo Karplus Strong utilizando la modificación que permitió una elección continua de frecuencias. A continuación se mostrará el espectograma del sonido de la guitarra producido
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[scale=0.5]{graficos/espectograma_guitarra.png}
+	\caption{Espectograma sonido de guitarra generado, nota: $A_0=440 Hz$}
+
+	\end{center}
+\end{figure}
+El sonido escuchado fue como el de una guitarra, por lo tanto se considerá que los resultados fueron satisfactorios; los armónicos se aproximaron a los de una guitarra acústica
 
 
 \subsection{Distorsión del sonido de guitarra}
 Se distorsionó el sonido de una guitarra utilizando una modificación al modelo. Se colocó un valor de $R_L>1$ pero, utilizando una funcion normalizadora (entre -1 y 1) se conformó un control automatico de ganancia que evitó la inestabilidad del sistema. Colocando diversos valores de $R_L$ se armó distorsión de distintos tipos. 
- 
+Se mostrará un espectograma de uno de los sonidos generados
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[scale=0.5]{graficos/espectograma_guitarra_distorsion.png}
+	\caption{Espectograma sonido de guitarra con distorsión, $R_L=2$, nota: $A_0=440 Hz$}
+
+	\end{center}
+\end{figure}
+Se observa que en general los armónicos generados producto de la distorsión son muchos más numerosos y además tienden a tener una frecuencia mayor que los de la guitarra acústica. 
+El sonido generado fue percibido como el de un sonido eléctrico, que sonaba bien pero que no se asocia a ningún instrumento acústico.
  
 \subsection{Sintetización de instrmento de percusión}
 
-Utilizando la modificación del modelo de Karplus Strong la cuál establecia una variable aleatoria se Sintetizó sonido de instrumentos de percusión. Los resultados fueron satisfactorios
+Utilizando la modificación del modelo de Karplus Strong la cuál establecia una variable aleatoria se Sintetizó sonido de instrumentos de percusión. Se necesito aplicar algunas modificaciones, en primer lugar se decidió colocar un valor de $L$ elevado para elevar el tiempo de decaimiento. Por otro lado, se provocó que el estimulo al sistema cayera de manera abrupta, de otra manera no se podía observar el sonido percutido, sino simplemente ruido. A continuación se mostrará la salida en el tiempo y en frecuencia.
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[scale=0.5]{graficos/ejemplo_percusion_tiempo.png}
+	\includegraphics[scale=0.5]{graficos/espectograma_percusion.png}
+	\caption{Respuesta en tiempo y en frecuencia de sonido percutido}
+
+	\end{center}
+\end{figure}
+
+\subsection{Explicación caja de resonancia}
+Se explicará el funcionamiento de la caja de resonancia de una guitarra. No se implementará ya que la necesidad que existe de utilizar dicho elemento en una guitarra es física, en realidad, desde la perspectiva de señales, es posible sintetizar el sonido de una guitarra sin necesidad de simular la caja.
+Lo que se busca cuando se fabrica una guitarra es que el sonido generado por el estimo de las cuerdas se propage en una dirección con una intensidad tal, que permita una transmisión efectiva por el aire.
+Sin embargo, el aire es un medio de impedancia baja mientras que las cuerdas son una fuente de impedancia alta. Por lo tanto de solo existir las cuerdas el sonido si bien en el sentido más estricto sería producido, no lograría propagarse con intensidad suficiente. 
+Por lo tanto surge la necesidad de agregar un elemento físico adicional, la caja de resonancia, que toma el sonido propagado por las cuerdas hacia "adentro" y lo repropaga hacia "afuera" con una intensidad mayor, amplificando todas las frecuencias por igual (de lo contrario ocurriría distorisión). 
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[scale=1.2]{graficos/caja_resonancia.png}
+	\caption{Caja de resonancia}
+
+	\end{center}
+\end{figure}
+Además impone una inversión de fase, idealmente en todas las frecuencias, ya que el sonido propagado por las cuerdas hacia "adentro" esta invertido en fase comparando con el emitido por las cuerdas hacia "afuera".
+Los diseños modernos de cajas de resonancia intentan maximizar tanto la inversión de fase como la amplificación de la mayor cantidad de frecuencia, en particular las más bajas que tienen más relevancia en el sonido.
 
 
 \end{document}

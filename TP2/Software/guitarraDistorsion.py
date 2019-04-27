@@ -143,22 +143,10 @@ duration = 1
 
 
 nota = [
-    "A",
-    "A",
-    "A",
-    "A",
-    "A",
-    "A",
     "A"
 ]
 dist = [
-    1.00,
-    1.05,
-    1.1,
-    1.2,
-    1.5,
-    2,
-    2.5
+    2
 ]
 for i in range(len(nota)):
     freq = notas[nota[i]][0]
@@ -170,6 +158,13 @@ for i in range(len(nota)):
 
 total_sound = np.array(total_sound)
 
+f, t, Sxx = signal.spectrogram(total_sound, fs, window=signal.gaussian(1024, int(1024/ 6)))
+
+# plt.title("Espectograma guitarra con distorisión")
+# plt.pcolormesh(t, f, Sxx)
+# plt.ylabel('Frequency [Hz]')
+# plt.xlabel('Time [sec]')
+#
+# plt.show()
+
 PlaySound.playSound(total_sound, 44100)
-
-
