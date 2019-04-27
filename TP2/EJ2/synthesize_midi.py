@@ -1,58 +1,41 @@
 from mido import MidiFile
 from synth_utils import *
-#
+
 # #importo las funciones de los intrumentos
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
-
+from instruments_synth.guitarra import SitetizarGuitarraDistorsion
 import threading
 
 def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     midi_file = MidiFile(midiFilename)
     ticks_per_beat = midi_file.ticks_per_beat
     total_time = midi_file.length
-    bpm = 0
-    tempo = 0
-    config_tracks=[]
-    note_tracks=[]
-    tempo_list=[]
-    for index, track in enumerate(midi_file.tracks):
-        for message in track:
+    note_tracks = []
+    tempo_list = []
+    time_counter = 0
+    for track in midi_file.tracks:
+        for index, message in enumerate(track):
+            time_counter += message.time
             if message.type == "set_tempo":
-                tempo_list.append(message.tempo)
+                tempo_list.append([time_counter,message.tempo])
         aux_track = individual_track(ticks_per_beat,total_time,fs)
-        aux_track.getNotes(track) # no hace nada si no hay note ons y off
+        aux_track.getNotes(track)
         if aux_track.isNoteTrack():
             note_tracks.append(aux_track)
-        else:
-            config_tracks.append(aux_track)
-    #threads_arr=[]
+        time_counter=0
+
+    tempo_list = getUniqAndSortedTempoList(tempo_list)
+
     for i,nt_track in enumerate(note_tracks):
-        channel = "channel" + str(1 + i)
-        nt_track.function = tracks_synthesis[channel]
-        nt_track.tempo_list = tempo_list
-        nt_track.groupNotes()
-        nt_track.getAmpArr()
-        nt_track.name = "note_track"+str(i)
-        print("track "+str(i)+"no problem")
+            track_name = "track" + str(i)
+            nt_track.name = track_name
+            nt_track.function = tracks_synthesis[track_name]
+            nt_track.tempo_list = tempo_list
+            nt_track.getAmpArr()
+            print(track_name+" no problem")
 
-    #     threads_arr.append(threading.Thread(name='thread_track'+str(1+i),target=nt_track.getAmpArr,
-    #                                         args=(bpm,tempo)))
-    #     threads_arr[i].start()
-    #
-    # for thread in threads_arr:
-    #     thread.join()
-
-    list_of_amp_arr = []
-
-    for index,track in enumerate(note_tracks):
-        list_of_amp_arr.append(track.amp_arr)
-
-    total_amp_arr=[sum(x) for x in zip(*list_of_amp_arr)]
-
+    total_amp_arr = sumAllTracks(note_tracks)
     total_amp_arr = normalize(total_amp_arr)
-
-    #total_t_arr = (0,len(total_amp_arr),fs)
-
     return total_amp_arr
 
