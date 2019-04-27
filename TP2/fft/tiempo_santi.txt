@@ -1,0 +1,2 @@
+para 1000 tests, de longitud 4096 tardo 0.114 milisegundos cada fft
+0.114 segundos todas

@@ -48,7 +48,7 @@ def normalize(input):
     return input
 
 
-def SitetizarGuitarraDistorsion(vel, fc, duration, fs):
+def SitetizarGuitarraDistorsion(vel, fc, duration, fs, distorsion=1.05):
     noise_duration = noise_duration_factor * (1 / fc)
 
     input_time = arange(0, duration + 0.5, 1/fs)
@@ -71,7 +71,7 @@ def SitetizarGuitarraDistorsion(vel, fc, duration, fs):
         x=input,
         fs=fs,
         fc=fc,
-        rl=1.1
+        rl=distorsion
     )
 
     y = Ej5SystemC.lowPass(
@@ -90,33 +90,33 @@ def SitetizarGuitarraDistorsion(vel, fc, duration, fs):
 
     y = y_simple * window
 
-    ExpressPlot.CombinedPlot() \
-            .addSignalPlot(
-                signal=Senial.Senial(
-                    input_time,
-                    input
-                ),
-                color="blue",
-                name="Entrada"
-        ) \
-        .addSignalPlot(
-            signal=Senial.Senial(
-                input_time,
-                y
-            ),
-            color="red",
-            name="Salida"
-        ) \
-        .addSignalPlot(
-        signal=Senial.Senial(
-            input_time,
-            window
-        ),
-        color="green",
-        name="Ventana"
-        ) \
-        .plot() \
-        .show()
+    # ExpressPlot.CombinedPlot() \
+    #         .addSignalPlot(
+    #             signal=Senial.Senial(
+    #                 input_time,
+    #                 input
+    #             ),
+    #             color="blue",
+    #             name="Entrada"
+    #     ) \
+    #     .addSignalPlot(
+    #         signal=Senial.Senial(
+    #             input_time,
+    #             y
+    #         ),
+    #         color="red",
+    #         name="Salida"
+    #     ) \
+    #     .addSignalPlot(
+    #     signal=Senial.Senial(
+    #         input_time,
+    #         window
+    #     ),
+    #     color="green",
+    #     name="Ventana"
+    #     ) \
+    #     .plot() \
+    #     .show()
 
     #print(len(y))
     #print(y[0])
@@ -144,17 +144,26 @@ duration = 1
 
 nota = [
     "A",
-    # "A#",
-    # "B",
-    # "A#",
-    # "B",
-    # "A#",
-    # "C"
+    "A",
+    "A",
+    "A",
+    "A",
+    "A",
+    "A"
+]
+dist = [
+    1.00,
+    1.05,
+    1.1,
+    1.2,
+    1.5,
+    2,
+    2.5
 ]
 for i in range(len(nota)):
     freq = notas[nota[i]][0]
 
-    y = SitetizarGuitarraDistorsion(vel= 127, fc=freq, fs= fs, duration=duration)
+    y = SitetizarGuitarraDistorsion(vel= 127, fc=freq, fs= fs, duration=duration, distorsion=dist[i])
 
     for j in range(len(y)):
         total_sound[int(j+duration*fs*i)] += y[j]

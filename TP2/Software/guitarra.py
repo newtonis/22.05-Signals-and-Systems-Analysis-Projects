@@ -44,7 +44,6 @@ def normalize(input):
     for i in range(len(input)):
         input[i] -= suma
 
-
     return input
 
 
@@ -53,7 +52,7 @@ def SintetizarGuitarra(vel, fc, duration, fs):
 
     input_time = arange(0, duration + 0.5, 1/fs)
 
-    input = np.random.normal(0, 1, len(input_time)) * windsigmoid(input_time/noise_duration) # *  #sin(2*pi*fc*input_time) * windsigmoid(input_time/noise_duration)
+    input = np.random.normal(0, 0.1, len(input_time)) * windsigmoid(input_time/noise_duration) # *  #sin(2*pi*fc*input_time) * windsigmoid(input_time/noise_duration)
 
     input = normalize(input)
 
@@ -127,7 +126,7 @@ fs = 44100
 y = [0] * 12
 
 total_sound = [0] * 44100 * 13
-duration = 0.1
+duration = 0.5
 
 
 nota = [
