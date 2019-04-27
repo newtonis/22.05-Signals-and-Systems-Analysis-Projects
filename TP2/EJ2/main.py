@@ -12,7 +12,10 @@ for i in range(number_of_tracks):
     #track_synthesis[canal]=SitetizarGuitarraDistorsion
     track_synthesis[track]=getClarinet
 
-#name = "Pink_Panther" <--- pesadilla
+#name = "Pink_Panther"
+       #<--- pesadilla
+#name = "RodrigoAdagio_2" <- el que funciona
+#name = "RodrigoAdagio"
 name = "greenhill"
 
 ytot = synthesize_midi('midi-samples/'+name+'.mid',track_synthesis,fs)
@@ -21,7 +24,7 @@ ytot = synthesize_midi('midi-samples/'+name+'.mid',track_synthesis,fs)
 #plt.show()
 #sr,x = read('megalovania.mp3',normalized = False)
 
-write(name+'.mp3',fs,ytot,normalized = True)
+write(name+'.mp3', fs, ytot, normalized = True)
 
 end = time.time()
-print(int(abs(end-start))/60)
+print("se sintetizo en ",int(abs(end-start))/60," minutos")
