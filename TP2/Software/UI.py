@@ -1,20 +1,25 @@
 import tkinter as tk
 from tkinter import *
 from Menus.ConfigureMenu import ConfigureMenu
-from Menus.PlotMenu import PlotMenu
+from Menus.SelectMidiMenu import SelectMidiMenu
+from Menus.SelectInstrumentoMenu import SelectInstrumentMenu
+
 from Globals import styles, config
 
 frames = [
-    ConfigureMenu,
-    PlotMenu
+    SelectMidiMenu,
+    SelectInstrumentMenu
 ]
-
+startFrame = 1
 
 class UI(tk.Tk):
     def __init__(self, **kwargs):
         super(UI, self).__init__(**kwargs)
+
+        #self.maxsize(width=666, height=666)
+
         self.protocol('WM_DELETE_WINDOW', self.exitFunction)
-        self.title("Simulador")
+        self.title("Song synthetizer")
 
         self.resizable(width=False, height=False)
 
@@ -28,9 +33,10 @@ class UI(tk.Tk):
 
         for frame in frames:
             self.frames[frame] = frame(container, self)
+            self.frames[frame].grid_propagate(True)
             self.frames[frame].grid(row=0, column=0, sticky=E+W+N+S)
 
-        self.showFrame(ConfigureMenu)
+        self.showFrame(frames[startFrame])
 
         styles.getData().load()
 

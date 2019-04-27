@@ -7,7 +7,6 @@ from GuiUtils.LoadingContainer import LoadingContainer
 from GuiUtils.LoadingModel import LoadingModel
 from Globals import Modes
 import ntpath
-from Etapas import ProcessSignals
 from Globals import config
 from threading import Thread
 
