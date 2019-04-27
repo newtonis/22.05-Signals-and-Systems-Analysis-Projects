@@ -36,6 +36,8 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
             t_apagar = t_v0
         elif len(t_on) == len(t_off):
             t_apagar = t_off
+        else:
+            print("Se ingreso un midi extraño, el resultado puede ser extraño")
 
         aux_track = individual_track(ticks_per_beat, total_time, fs, t_on, t_apagar)
         if aux_track.isNoteTrack():
