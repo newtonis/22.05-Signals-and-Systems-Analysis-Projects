@@ -71,3 +71,4 @@ def getProcessMidiInterface():
         processMidiInterface = ProcessMidiInterface()
 
     return processMidiInterface
+
