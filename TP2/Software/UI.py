@@ -1,15 +1,15 @@
 import tkinter as tk
 from tkinter import *
-from Menus.ConfigureMenu import ConfigureMenu
-from Menus.SelectInstrumentoMenu import SelectInstrumentMenu
+from Menus.MidiConfigMenu import MidiConfigMenu
 from Menus.ConfigureChannelMenu import ConfigureChannelMenu
-from InstrumentsSynth import getInstruments
+from Menus.ProcessingMidiMenu import ProcessMidiMenu
 
 from Globals import styles, config
 
 frames = [
-    SelectInstrumentMenu,
-    ConfigureChannelMenu
+    MidiConfigMenu,
+    ConfigureChannelMenu,
+    ProcessMidiMenu
 ]
 startFrame = 0
 

@@ -4,7 +4,7 @@ from ProcessMidi.synth_utils import *
 # #importo las funciones de los intrumentos
 
 
-def synthesize_midi(midiFilename ,tracks_synthesis ,fs):
+def synthesize_midi(midiFilename, tracks_synthesis, fs):
     midi_file = MidiFile(midiFilename)
     ticks_per_beat = midi_file.ticks_per_beat
     total_time = midi_file.length

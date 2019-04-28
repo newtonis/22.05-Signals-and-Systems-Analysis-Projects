@@ -4,6 +4,7 @@ LARGE_FONT = ("Bahnschrift", 20)
 SMALL_FONT = ("Bahnschrift", 16)
 SMALLEST_FONT = ("Bahnschrift", 10)
 debug = True
+fs = 44100
 
 # los valores no son los reales
 

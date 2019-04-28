@@ -7,18 +7,21 @@ class SliderModel:
         self.end = end
         self.step = step
         self.title = title
-        self.container = None
+        self.view = None
 
-    def setContainer(self, container):
-        self.container = container
+    def setView(self, view):
+        self.view = view
+
+    def getView(self):
+        return self.view
 
     def getValue(self):
         return self.value
 
     def setValue(self, value):
-        if self.container:
-            self.container.refresh()
         self.value = value
+        if self.view:
+            self.view.refresh()
 
     def getTitle(self):
         return self.title

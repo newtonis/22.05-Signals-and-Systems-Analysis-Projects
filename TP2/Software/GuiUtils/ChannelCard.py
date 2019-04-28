@@ -6,6 +6,7 @@ class ChannelCard(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        self.controller.setView(self)
 
         self.upFrame = UpFrame(self, controller)
         self.upFrame.pack(side=tk.TOP, fill=tk.BOTH)
@@ -22,6 +23,13 @@ class ChannelCard(tk.Frame):
             self.upFrame.disable()
             self.content.disable()
 
+    def refresh(self):
+        self.content.title.configure(
+            text=self.controller.getInstrumentoName()
+        )
+        self.upFrame.textVol.configure(
+            text="VOL: "+str(self.controller.getVolume())
+        )
 
 class UpFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -42,7 +50,7 @@ class UpFrame(tk.Frame):
         self.textVol = tk.Label(
             self,
             height=1,
-            text="VOL: 50",
+            text="VOL: "+str(self.controller.getVolume()),
             font=config.LARGE_FONT,
             background="sandy brown"
         )
@@ -87,7 +95,7 @@ class ContentFrame(tk.Frame):
             self,
             height=2,
             width=30,
-            text=self.controller.getInstrumento(),
+            text=self.controller.getInstrumentoName(),
             font=config.SMALL_FONT,
             background="#c9a3ff"
         )

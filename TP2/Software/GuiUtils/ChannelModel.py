@@ -1,19 +1,18 @@
 from GuiUtils.ChannelCard import ChannelCard
 
 
-
-
 class ChannelModel:
     def __init__(self, id, name):
         self.viewClass = ChannelCard
         self.id = id
         self.name = name
-        self.instrumento = "Sin elegir instrumento"
+        self.instrumento = None
         self.volume = 100
         self.enabled = True
         self.channelBackground = "blue"
         self.instrumentBackground = "pink"
         self.onConfigure = None
+        self.view = None
 
     def getViewClass(self):
         return self.viewClass
@@ -26,12 +25,21 @@ class ChannelModel:
 
     def setName(self, name):
         self.name = name
+        return self
+
+    def setView(self, view):
+        self.view = view
+        return self
 
     def setInstrumento(self, instrumento):
         self.instrumento = instrumento
+        if self.view:
+            self.view.refresh()
         return self
 
     def setVolume(self, volume):
+        if self.view:
+            self.view.refresh()
         self.volume = volume
         return self
 
@@ -73,3 +81,9 @@ class ChannelModel:
 
     def getOnConfigureListener(self):
         return self.onConfigure
+
+    def getInstrumentoName(self):
+        if self.instrumento:
+            return self.instrumento.getInstrumentData().getName()
+        else:
+            return "No hay instrumento seleccionado"

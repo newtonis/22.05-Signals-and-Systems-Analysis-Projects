@@ -4,6 +4,7 @@ from GuiUtils.InstrumentCard import InstrumentCard
 class InstrumentModel:
     def __init__(self, name):
         self.viewClass = InstrumentCard
+        self.instumentData = None
         self.name = name
         self.enabled = False
         self.onSelectedListener = None
@@ -36,3 +37,9 @@ class InstrumentModel:
 
     def setOnSelectedListener(self, listener):
         self.onSelectedListener = listener
+
+    def getInstrumentData(self):
+        return self.instrumentData
+
+    def setInstrumentData(self, data):
+        self.instrumentData = data

@@ -1,12 +1,13 @@
 import tkinter as tk
 from Globals import config
+
 from GuiUtils.RecyclerView import RecyclerView
 from GuiUtils.InstrumentModel import InstrumentModel
 from GuiUtils.Listener import Listener
 from GuiUtils.SliderContainer import SliderContainer
 from GuiUtils.SliderModel import SliderModel
 
-from InstrumentsSynth import getInstruments
+from ProcessMidi.InstrumentsSynth import getInstruments
 
 
 class ConfigureChannelMenu(tk.Frame):
@@ -14,6 +15,7 @@ class ConfigureChannelMenu(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         self.parent = parent
+        self.channel = None
 
         self.title = tk.Label(
             self,
@@ -70,17 +72,26 @@ class ConfigureChannelMenu(tk.Frame):
             width=50,
             text="Aceptar",
             font=config.LARGE_FONT,
-            background="#ccffd5"
+            background="#ccffd5",
+            command=self.aceptar
         )
 
         self.buttonAceptar.pack(side=tk.TOP, fill=tk.BOTH)
 
         self.updateInstruments()
+        self.selectedInstrument = None
 
     def configureChannel(self, channel):
         self.title.configure(
             text="Configuración del canal "+channel.getName()
         )
+        self.sliderModel.setValue(
+            channel.getVolume()
+        )
+        self.instrumentSelected(
+            channel.getInstrumento()
+        )
+        self.channel = channel
 
     def updateInstruments(self):
         self.recyclerView.clear()
@@ -88,6 +99,9 @@ class ConfigureChannelMenu(tk.Frame):
         for instrument in getInstruments().instrumentos:
             instrumentModel = InstrumentModel(
                 instrument.getName()
+            )
+            instrumentModel.setInstrumentData(
+                instrument
             )
             instrumentModel.setOnSelectedListener(
                 Listener(
@@ -102,11 +116,29 @@ class ConfigureChannelMenu(tk.Frame):
 
     def instrumentSelected(self, instrumentModel):
         #print("Instrumento seleccionado ", instrumentModel)
-        self.selectedText.configure(
-            text="El instrumento " + instrumentModel.getInstrumentName() + " ha sido seleccionado"
-        )
+        if instrumentModel:
+            self.selectedText.configure(
+                text="El instrumento " + instrumentModel.getInstrumentName() + " ha sido seleccionado"
+            )
+        else:
+            self.selectedText.configure(
+                text="Ningún instrumento seleccionado"
+            )
+
         for instrument in self.recyclerView.getElements():
             if instrument == instrumentModel:
                 instrument.enable()
+                self.selectedInstrument = instrument
             else:
                 instrument.disable()
+
+    def aceptar(self):
+        self.channel.setVolume(self.sliderModel.getValue())
+        if self.selectedInstrument:
+            self.channel.setInstrumento(
+                self.selectedInstrument
+            )
+
+        from Menus.MidiConfigMenu import MidiConfigMenu
+
+        self.controller.showFrame(MidiConfigMenu)
