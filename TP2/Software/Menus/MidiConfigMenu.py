@@ -87,7 +87,6 @@ class MidiConfigMenu(tk.Frame):
             channelModel.setOnConfigureListener(
                 Listener(self.configureChannel, channelModel)
             )
-
             self.recyclerView.addElement(
                 channelModel
             )

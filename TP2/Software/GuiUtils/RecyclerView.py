@@ -68,3 +68,4 @@ class RecyclerView(tk.Frame):
 
     def getElements(self):
         return self.elements
+

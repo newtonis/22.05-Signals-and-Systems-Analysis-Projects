@@ -7,6 +7,7 @@ class InfoCard(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.parent = parent
         self.controller = controller
+        self.controller.setView(self)
 
         self.contentText = tk.Label(
             self,

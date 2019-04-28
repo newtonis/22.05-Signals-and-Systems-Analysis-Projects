@@ -27,7 +27,7 @@ class ProcessMidiMenu(tk.Frame):
 
         self.halfContainer = tk.Frame(self)
 
-        self.recyclerView = RecyclerView(self.halfContainer, self.controller)
+        self.recyclerView = RecyclerView(self.halfContainer, self.controller, 390)
         self.recyclerView.setStart(50)
         self.recyclerView.configureSeparation(50)
 
@@ -70,9 +70,8 @@ class ProcessMidiMenu(tk.Frame):
         self.loaded = False
 
         self.title.configure(
-            text="Generando canción - "+os.path.basename(configuration.getMidiFilename())
+            text="Generando canción - " + os.path.basename(configuration.getMidiFilename())
         )
-
         getProcessMidiInterface().setOnMsgArrived(
             self.onMsg
         )
@@ -82,11 +81,9 @@ class ProcessMidiMenu(tk.Frame):
         getProcessMidiInterface().setOnComplete(
             self.onComplete
         )
-
         getProcessMidiInterface().start(configuration)
 
     def onMsg(self, message):
-
         self.recyclerView.addElement(
             InfoModel(message)
         )

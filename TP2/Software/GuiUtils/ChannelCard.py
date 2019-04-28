@@ -31,6 +31,7 @@ class ChannelCard(tk.Frame):
             text="VOL: "+str(self.controller.getVolume())
         )
 
+
 class UpFrame(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent, bg="sandy brown")
