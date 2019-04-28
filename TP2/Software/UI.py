@@ -1,16 +1,18 @@
 import tkinter as tk
 from tkinter import *
 from Menus.ConfigureMenu import ConfigureMenu
-from Menus.SelectMidiMenu import SelectMidiMenu
 from Menus.SelectInstrumentoMenu import SelectInstrumentMenu
+from Menus.ConfigureChannelMenu import ConfigureChannelMenu
+from InstrumentsSynth import getInstruments
 
 from Globals import styles, config
 
 frames = [
-    SelectMidiMenu,
-    SelectInstrumentMenu
+    SelectInstrumentMenu,
+    ConfigureChannelMenu
 ]
-startFrame = 1
+startFrame = 0
+
 
 class UI(tk.Tk):
     def __init__(self, **kwargs):
@@ -37,6 +39,7 @@ class UI(tk.Tk):
             self.frames[frame].grid(row=0, column=0, sticky=E+W+N+S)
 
         self.showFrame(frames[startFrame])
+        self.frame = frames[startFrame]
 
         styles.getData().load()
 
@@ -44,6 +47,10 @@ class UI(tk.Tk):
         self.frames[frame].focus()
         frame = self.frames[frame]
         frame.tkraise()
+        self.frame = frame
+
+    def getCurrentFrame(self):
+        return self.frame
 
     def run(self):
         self.mainloop()

@@ -1,6 +1,6 @@
 import Globals.RWconfig as RWconfig
 
-LARGE_FONT = ("Bahnschrift", 24)
+LARGE_FONT = ("Bahnschrift", 20)
 SMALL_FONT = ("Bahnschrift", 16)
 SMALLEST_FONT = ("Bahnschrift", 10)
 debug = True
