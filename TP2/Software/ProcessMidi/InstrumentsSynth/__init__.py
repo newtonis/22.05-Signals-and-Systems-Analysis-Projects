@@ -8,7 +8,7 @@ class Instrumento:
         self.demoSound = data["demoSound"]
         self.name = data["nombre"]
 
-        moduleName = "InstrumentsSynth.Instruments."+os.path.splitext(data["code"])[0]
+        moduleName = "ProcessMidi.InstrumentsSynth.Instruments."+os.path.splitext(data["code"])[0]
 
         self.function = getattr(
             importlib.import_module(moduleName),
@@ -24,7 +24,7 @@ class Instrumento:
 class Instruments:
     def __init__(self):
         self.instrumentos = []
-        root = ET.parse('InstrumentsSynth/instrumentos.xml').getroot()
+        root = ET.parse('ProcessMidi/InstrumentsSynth/instrumentos.xml').getroot()
 
         for instrumento in root:
             self.instrumentos.append(
