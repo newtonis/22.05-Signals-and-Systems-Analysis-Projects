@@ -1,6 +1,6 @@
 from math import *
 from envelopes.DecayExp import *
-
+from ProcessMidi.InstrumentsSynth.Instruments.fmModulation import fmModulation
 
 def getBell(vel, fm, duration, fs):
 

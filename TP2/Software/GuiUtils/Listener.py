@@ -7,3 +7,6 @@ class Listener:
 
     def onAction(self):
         self.action(*self.args)
+
+    def onActionWithCustomArgs(self, *args):
+        self.action(*args)

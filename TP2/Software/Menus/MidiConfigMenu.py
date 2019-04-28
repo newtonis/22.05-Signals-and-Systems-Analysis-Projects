@@ -3,6 +3,7 @@ from GuiUtils.ChannelCard import ChannelCard
 from GuiUtils.ChannelModel import ChannelModel
 from GuiUtils.RecyclerView import RecyclerView
 from GuiUtils.Listener import Listener
+from GuiUtils.SynthetizeConfig import SyntetizeConfig
 from Menus.ConfigureChannelMenu import ConfigureChannelMenu
 from Menus.ProcessingMidiMenu import ProcessMidiMenu
 
@@ -64,6 +65,7 @@ class MidiConfigMenu(tk.Frame):
             command=self.generateMusic
         )
         self.buttonProcess.pack(side=tk.TOP, fill=BOTH)
+        self.filename = None
 
     def AddChannel(self):
         pass
@@ -99,8 +101,14 @@ class MidiConfigMenu(tk.Frame):
         self.controller.getCurrentFrame().configureChannel(channel)
 
     def generateMusic(self):
-        self.controller.showFrame(ProcessMidiMenu)
-        self.controller.getCurrentFrame().setChannelConfiguration(self.recyclerView.getElements())
+        if self.filename:
+            self.controller.showFrame(ProcessMidiMenu)
+            self.controller.getCurrentFrame().startLoading(
+                SyntetizeConfig(
+                    channels=self.recyclerView.getElements(),
+                    midiFilename=self.filename
+                )
+            )
 
 
 class MidiFileSelector(tk.Frame):

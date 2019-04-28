@@ -1,5 +1,6 @@
 from GuiUtils.InfoCard import InfoCard
 
+
 class InfoModel:
     def __init__(self, text):
         self.text = text

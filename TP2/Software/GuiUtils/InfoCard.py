@@ -22,7 +22,7 @@ class InfoCard(tk.Frame):
             height=1,
             text="...",
             font=config.SMALL_FONT,
-            backgroud="#fffa95"
+            background="#fffa95"
         )
 
         self.infoText.grid(column=1, row=0)

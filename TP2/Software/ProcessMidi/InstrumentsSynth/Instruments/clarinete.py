@@ -1,5 +1,6 @@
 from math import *
 from envelopes.woodEnv import *
+from ProcessMidi.InstrumentsSynth.Instruments.fmModulation import fmModulation
 
 
 def getClarinet(vel,f0,duration,fs):

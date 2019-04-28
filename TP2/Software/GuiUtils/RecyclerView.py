@@ -36,15 +36,19 @@ class RecyclerView(tk.Frame):
         self.container.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         self.separation = 110
+        self.start = 20
 
     def configureSeparation(self, separation):
         self.separation = separation
+
+    def setStart(self, start):
+        self.start = start
 
     def addElement(self, element):
         viewType = element.getViewClass()
         view = viewType(self.container, element)
         window = self.container.create_window(
-            (300, self.separation * len(self.elements)),
+            (300, self.start + self.separation * len(self.elements)),
             window=view
         )
         view.bind(
