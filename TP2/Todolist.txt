@@ -1,0 +1,10 @@
+-Corregir la palabra "canales" en el software
+para midi canales es otra cosa
+-Agregar el nombre del track, que puede ser un 
+instrumento sugerido
+-Agregar el formato 2 de midis
+-Agregar opción de poder escuchar una nota en particular 
+a la hora de escuchar el instrumento
+-Si es que hay tiempo ver de adaptar con otra libreria
+los midis que no puede leer mido (Ej: Circle_of_Life.mid)
+

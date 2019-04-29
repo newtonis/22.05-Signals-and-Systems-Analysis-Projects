@@ -15,7 +15,7 @@ for i in range(number_of_tracks):
     track_synthesis[track]=getBrassTone
 
 
-name = "1note1sec"
+name = "midnight"
 
 ytot = synthesize_midi('midi-samples/'+name+'.mid', track_synthesis, fs)
 

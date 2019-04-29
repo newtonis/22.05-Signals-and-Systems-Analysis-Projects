@@ -111,7 +111,6 @@ class individual_track:
         note = self.t_on[i][2]
 
         freq = noteToFreq(note)
-        freq = 440
         time_on = self.t_on_in_secs[tick_on][0]
         delta_t = self.t_on_in_secs[tick_on][1]
 
