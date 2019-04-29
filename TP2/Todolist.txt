@@ -11,3 +11,6 @@ los midis que no puede leer mido (Ej: Circle_of_Life.mid)
 # -CHUNK DE MEMORIA (de hecho va a explotar con canciones muy largas)
 # -THREADS
 -Ver si normalize esta bien hecha
+-Revisar que todas las sintesis usen un arange con duration porque
+si usan arange con por ejemplo attack+decay+sustain+release 
+puede que sume menos y hay errores con el arreglo del estilo +-1
