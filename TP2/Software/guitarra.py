@@ -8,6 +8,7 @@ import numpy as np
 from util_python import PlaySound
 from numpy import sqrt
 from Utils.notas import notas
+from Utils.func_utils import *
 
 noise_duration_factor = 0.5
 
@@ -16,36 +17,6 @@ def processInput(input):
     pass
 
 
-def sigmoid(x):
-    return 1 / (1 + exp(-x))
-
-
-def windsigmoid(x):
-    return 1 - sigmoid((x-5)*10)
-
-
-def sigmoidToEnd(x, end):
-    return 1 - sigmoid( (x-end)*50 )
-
-
-def normalize(input):
-    maxval = 0
-
-    for vi in input:
-        maxval = max(maxval , abs(vi))
-
-    for i in range(len(input)):
-        input[i] /= maxval
-
-    suma = 0
-    for vi in input:
-        suma += vi
-    suma /= len(input)
-    for i in range(len(input)):
-        input[i] -= suma
-
-
-    return input
 
 
 def SintetizarGuitarra(vel, fc, duration, fs):
@@ -53,7 +24,7 @@ def SintetizarGuitarra(vel, fc, duration, fs):
 
     input_time = arange(0, duration + 0.5, 1/fs)
 
-    input = np.random.normal(0, 1, len(input_time)) * windsigmoid(input_time/noise_duration) # *  #sin(2*pi*fc*input_time) * windsigmoid(input_time/noise_duration)
+    input = np.random.normal(0, 0.1, len(input_time)) * windsigmoid(input_time/noise_duration) # *  #sin(2*pi*fc*input_time) * windsigmoid(input_time/noise_duration)
 
     input = normalize(input)
 
@@ -126,18 +97,12 @@ fs = 44100
 
 y = [0] * 12
 
-total_sound = [0] * 44100 * 13
-duration = 0.1
+total_sound = [0] * 44100 * 1
+duration = 0.5
 
 
 nota = [
     "A",
-    "A#",
-    "B",
-    "A#",
-    "B",
-    "A#",
-    "C"
 ]
 for i in range(len(nota)):
     print(notas[nota[i]])
@@ -149,7 +114,15 @@ for i in range(len(nota)):
         total_sound[int(j+duration*fs*i)] += y[j]
 
 total_sound = np.array(total_sound)
+f, t, Sxx = signal.spectrogram(total_sound, fs, window=signal.gaussian(1024, int(1024/ 6)))
 
-PlaySound.playSound(total_sound, 44100)
+plt.title("Espectograma guitarra")
+plt.pcolormesh(t, f, Sxx)
+plt.ylabel('Frequency [Hz]')
+plt.xlabel('Time [sec]')
+
+plt.show()
+
+#PlaySound.playSound(total_sound, 44100)
 
 

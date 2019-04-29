@@ -259,88 +259,19 @@ int main() {
     vector <complex<float>> out4(4096);
     vector <complex<float>> out5(2048);
 
-//    arr.emplace_back(1);
-//    arr.emplace_back(2);
-//    arr.emplace_back(3);
-//    arr.emplace_back(4);
-//    arr.emplace_back(5);
-//    arr.emplace_back(6);
-//    arr.emplace_back(7);
-//    arr.emplace_back(8);
-
-    // medir tiempo
-<<<<<<< HEAD
-//    generateWn(wReal, wIm, 4096);
-//
     for (int i = 0;i < 4096;i++){
         arr.emplace_back(i);//i*454%(i+1)+1j);
     }
-    for (int i = 0;i < 256;i++){
-        arr2.emplace_back(i*454%(i+1)+1j);
-
-    }
-//
-//    clock_t begin = clock();
-//
-//    for (int i = 0;i < 1000;i++) {
-//        fft(arr, out1);
-//    }
-//
-//    clock_t end = clock();
-//    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-//
-//
-//    cout << "time fft 1 (stack) = " << elapsed_secs << '\n';
-//
-//    begin = clock();
-//
-    for (int i = 0;i < 1000;i++) {
-        fftGlobal(arr, out2);
-        fftGlobal(arr2, out1);
-    }
-    /*for (int i = 0;i < 1000;i++){
-        fftGlobal(arr2, out3);
-    }*/
-//
-//    end = clock();
-//    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-//
-//    cout << "time fft 2 (precálculos) = " << elapsed_secs << '\n';
-//
 
     clock_t begin = clock();
 
-<<<<<<< HEAD
     for (int i = 0;i < 1000;i++){
         fftCormen(arr, out4);
-        fftCormen(arr2, out3);
-=======
-    for (int i = 0;i < 10000;i++) {
-        fft(arr, arr);
->>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
     }
-    /*for (int i = 0;i < 1000;i++){
-        fftCormen(arr2, out5);
-    }*/
-
     clock_t end = clock();
-
-<<<<<<< HEAD
     double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-=======
-    cout << "time global = " << elapsed_secs << '\n';
-
-    begin = clock();
-
-    for (int i = 0;i < 10000;i++) {
-        fftLenta(arr, arr);
-    }
-
-    end = clock();
-    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
     cout << "time stack = " << elapsed_secs << '\n';
->>>>>>> de3a750c4a435e36ffce5a905e64b97a6fae6068
 
     cout << "time fft 3 (cormen)= " << elapsed_secs << '\n';
     //fftOld(arrReal, arrIm, n, log2n, ansReal, ansIm);

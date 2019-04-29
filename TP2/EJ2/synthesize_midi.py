@@ -1,58 +1,87 @@
 from mido import MidiFile
 from synth_utils import *
-#
+import midi
 # #importo las funciones de los intrumentos
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
-
+from instruments_synth.guitarra import SitetizarGuitarraDistorsion
 import threading
 
-def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
+
+def synthesize_midi(midiFilename ,tracks_synthesis ,fs):
     midi_file = MidiFile(midiFilename)
+    #midi_file = midi.read_midifile(midiFilename)
     ticks_per_beat = midi_file.ticks_per_beat
     total_time = midi_file.length
-    bpm = 0
-    tempo = 0
-    config_tracks=[]
-    note_tracks=[]
-    tempo_list=[]
-    for index, track in enumerate(midi_file.tracks):
-        for message in track:
+    note_tracks = []
+    tempo_list = []
+    first_tempo_list = []
+
+    for j, track in enumerate(midi_file.tracks):
+        t_on = []
+        t_off = []
+        t_v0 = []
+        time_counter=0
+        for index, message in enumerate(track):
+            time_counter += message.time
             if message.type == "set_tempo":
-                tempo_list.append(message.tempo)
-        aux_track = individual_track(ticks_per_beat,total_time,fs)
-        aux_track.getNotes(track) # no hace nada si no hay note ons y off
+                tempo_list.append([time_counter, message.tempo])
+            if message.type == "note_on" and message.velocity != 0:
+                t_on.append([time_counter, message.velocity, message.note])
+            if message.type == "note_off":
+                t_off.append([time_counter, message.velocity, message.note])
+            if message.type == "note_on" and message.velocity == 0:
+                t_v0.append([time_counter, message.velocity, message.note])
+
+        t_apagar = []
+
+        if len(t_on) == len(t_v0):
+            t_apagar = t_v0
+        elif len(t_on) == len(t_off):
+            t_apagar = t_off
+        else:
+            print("Se ingreso un midi extraño, el resultado puede ser extraño")
+
+        aux_track = individual_track(ticks_per_beat, total_time, fs, t_on, t_apagar)
         if aux_track.isNoteTrack():
             note_tracks.append(aux_track)
-        else:
-            config_tracks.append(aux_track)
-    #threads_arr=[]
+        if j == 0:
+            first_tempo_list = tempo_list #con esto seteo la lista del primer track
+
+    if first_tempo_list==tempo_list:
+        print("estoy en el formato 1, viene todo en el primero")
+    else:
+        print("estoy en el formato 2, viene todo segun cada track")
+
+    tempo_list = getUniqAndSortedTempoList(tempo_list)
+
+    total_amp_arr = zeros(int(ceil(total_time*fs)))
+
     for i,nt_track in enumerate(note_tracks):
-        channel = "channel" + str(1 + i)
-        nt_track.function = tracks_synthesis[channel]
+        track_name = "track" + str(i)
+        nt_track.name = track_name
+        nt_track.function = tracks_synthesis[track_name]
         nt_track.tempo_list = tempo_list
-        nt_track.groupNotes()
-        nt_track.getAmpArr()
-        nt_track.name = "note_track"+str(i)
-        print("track "+str(i)+"no problem")
+        for j in range(len(nt_track.t_on)):
+            dx,y = nt_track.getAmpArr(j)
+            for k in range(len(y)):
+                if k+dx >= len(total_amp_arr):
+                    pass
+                else:
+                    total_amp_arr[k + dx] += y[k]
 
-    #     threads_arr.append(threading.Thread(name='thread_track'+str(1+i),target=nt_track.getAmpArr,
-    #                                         args=(bpm,tempo)))
-    #     threads_arr[i].start()
-    #
-    # for thread in threads_arr:
-    #     thread.join()
+        print(track_name+" no problem")
 
-    list_of_amp_arr = []
-
-    for index,track in enumerate(note_tracks):
-        list_of_amp_arr.append(track.amp_arr)
-
-    total_amp_arr=[sum(x) for x in zip(*list_of_amp_arr)]
+    #total_amp_arr /= len(all_ticks_and_responses)
+    #estaria bueno que las funciones devuelvan el arreglo normalizado directamente
+    #quiza este normalize no sea lo mejor del mundo
+    #Todo list de mañana:
+    # -CHUNK DE MEMORIA
+    # -FORMATO TIPO 2
+    # -THREADS
+    # -VER LO DE NORMALIZE
 
     total_amp_arr = normalize(total_amp_arr)
-
-    #total_t_arr = (0,len(total_amp_arr),fs)
 
     return total_amp_arr
 

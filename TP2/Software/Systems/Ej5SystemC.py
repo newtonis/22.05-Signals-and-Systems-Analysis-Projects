@@ -44,13 +44,13 @@ def systemC(x, fs, fc, rl=1):
     for n in range(len(x)):
 
         if n >= l+1:
-            y[n] = x[n] + x[n-1] + y[n-l]*a*rl + y[n-l-1]*b*rl
+            y[n] = (x[n] + x[n-1] + y[n-l]*a*rl + y[n-l-1]*b*rl)
         else:
             x_last = x[n-1] if n >= 1 else 0
             y_last_l = y[n-l] if n >= l else 0
             y_last_l_1 = y[n-l-1] if n >= l+1 else 0
 
-            y[n] = x[n] + x_last + y_last_l*a*rl + y_last_l_1*b*rl
+            y[n] = (x[n] + x_last + y_last_l*a*rl + y_last_l_1*b*rl)
 
     z = [0] * len(y)
 
