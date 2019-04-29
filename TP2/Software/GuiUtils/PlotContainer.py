@@ -8,8 +8,6 @@ from tkinter import *
 class PlotContainer(tk.Frame):
     def __init__(self, tabControl, xAxis, yAxis):
         super(PlotContainer, self).__init__(tabControl)
-
-
         self.graph = Canvas(self)
 
         self.fig, self.axis = plt.subplots()
@@ -42,7 +40,6 @@ class PlotContainer(tk.Frame):
 
         self.axis.set_xlabel(self.xAxis)
         self.axis.set_ylabel(self.yAxis)
-
 
         self.axis.plot(signal.xvar, signal.values)
         self.axis.minorticks_on()

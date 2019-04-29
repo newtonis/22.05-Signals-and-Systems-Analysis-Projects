@@ -119,7 +119,7 @@ class MidiFileSelector(tk.Frame):
         self.buttonSelectFile = tk.Button(
             self,
             height=1,
-            width=60,
+            width=64,
             text="Seleccionar midi",
             font=config.SMALL_FONT,
             background="#80aaff",

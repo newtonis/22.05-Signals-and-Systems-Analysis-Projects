@@ -3,13 +3,15 @@ from tkinter import *
 from Menus.MidiConfigMenu import MidiConfigMenu
 from Menus.ConfigureChannelMenu import ConfigureChannelMenu
 from Menus.ProcessingMidiMenu import ProcessMidiMenu
+from Menus.SpectogramMenu import SpectogramMenu
 
 from Globals import styles, config
 
 frames = [
     MidiConfigMenu,
     ConfigureChannelMenu,
-    ProcessMidiMenu
+    ProcessMidiMenu,
+    SpectogramMenu
 ]
 startFrame = 0
 

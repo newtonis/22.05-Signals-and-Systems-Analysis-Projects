@@ -51,6 +51,8 @@ class RecyclerView(tk.Frame):
             (300, self.start + self.separation * len(self.elements)),
             window=view
         )
+        self.container.addtag_all("all")
+
         view.bind(
             "<Configure>",
             lambda event,

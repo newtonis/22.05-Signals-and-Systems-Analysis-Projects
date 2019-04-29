@@ -57,7 +57,8 @@ class ConfigureChannelMenu(tk.Frame):
             end=100,
             step=1,
             startValue=0,
-            title="Volumen"
+            title="Volumen",
+            callOnChange=self.callOnChanged
         )
 
         self.volumeBar = SliderContainer(
@@ -80,6 +81,10 @@ class ConfigureChannelMenu(tk.Frame):
 
         self.updateInstruments()
         self.selectedInstrument = None
+
+    def callOnChanged(self, value):
+        for element in self.recyclerView.getElements():
+            element.setVolume(value)
 
     def configureChannel(self, channel):
         self.title.configure(
@@ -137,6 +142,9 @@ class ConfigureChannelMenu(tk.Frame):
         if self.selectedInstrument:
             self.channel.setInstrumento(
                 self.selectedInstrument
+            )
+            self.channel.setVolume(
+                self.sliderModel.getValue()
             )
 
         from Menus.MidiConfigMenu import MidiConfigMenu

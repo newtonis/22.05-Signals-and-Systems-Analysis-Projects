@@ -1,5 +1,8 @@
 import tkinter as tk
 from Globals import config
+from threading import Thread
+from util_python.soundUtils import playSound, reescale
+import numpy as np
 
 
 class InstrumentCard(tk.Frame):
@@ -35,7 +38,7 @@ class InstrumentCard(tk.Frame):
             text="Escuchar",
             background="light goldenrod",
             font=config.SMALLEST_FONT,
-            command=self.configure
+            command=self.play
         )
 
         self.buttonSelect = tk.Button(
@@ -64,6 +67,8 @@ class InstrumentCard(tk.Frame):
         self.grid_columnconfigure(0, weight=10)
         self.grid_columnconfigure(1, weight=1)
 
+        self.playing = False
+
     def enable(self):
         self.configure(
             background="#519457"
@@ -79,3 +84,20 @@ class InstrumentCard(tk.Frame):
         self.textTitle.configure(
             background="#bfbdb9"
         )
+
+    def play(self):
+        if not self.playing:
+            self.playing = True
+
+            if len(self.controller.getInstrumentData().getSound()) > 0:
+                sound = self.controller.getInstrumentData().getSound()
+
+                self.thread = Thread(
+                    target=playSound,
+                    args=(sound, config.fs, self.controller.getVolume(), lambda: self.callWhenEnd() )
+                )
+                self.thread.start()
+
+    def callWhenEnd(self):
+        print("end")
+        self.playing = False

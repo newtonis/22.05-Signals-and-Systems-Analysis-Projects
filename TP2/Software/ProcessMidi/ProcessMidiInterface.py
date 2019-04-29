@@ -17,6 +17,8 @@ class ProcessMidiInterface:
     def start(self, configuration, statusInterface = None):
         #print("Loading channel configuration")
         self.channelConfig = configuration.getChannels()
+
+
         self.midiFilename = configuration.getMidiFilename()
 
         self.statusInterface = StatusInterface()\
@@ -31,14 +33,17 @@ class ProcessMidiInterface:
             )
 
         track_syntesis = dict()
+        track_volumes = dict()
 
         for track in self.channelConfig:
             if track.getInstrumento():
                 track_syntesis[track.name] = track.getInstrumento().getInstrumentData().getFunction()
+                track_volumes[track.name] = track.getVolume()
+
 
         self.thread = Thread(
             target=synthesize_midi,
-            args=(self.midiFilename, track_syntesis, config.fs, self.statusInterface)
+            args=(self.midiFilename, track_syntesis, config.fs, self.statusInterface, track_volumes)
         )
 
         self.thread.start()

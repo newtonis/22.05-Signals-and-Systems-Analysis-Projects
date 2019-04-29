@@ -1,9 +1,13 @@
 import tkinter as tk
+from tkinter import filedialog
+
 from Globals import config
 from GuiUtils.RecyclerView import RecyclerView
 from GuiUtils.LoadingModel import LoadingModel
 from GuiUtils.LoadingContainer import LoadingContainer
 from GuiUtils.InfoModel import InfoModel
+
+from util_python import soundUtils
 
 from ProcessMidi.ProcessMidiInterface import getProcessMidiInterface
 import os
@@ -22,6 +26,7 @@ class ProcessMidiMenu(tk.Frame):
             font=config.LARGE_FONT,
             background="#ccffd5"
         )
+
 
         self.title.pack(side=tk.TOP, fill=tk.BOTH)
 
@@ -94,17 +99,40 @@ class ProcessMidiMenu(tk.Frame):
         self.loadingModel.setValue(percentaje)
 
     def onComplete(self, result):
-        #print("Loading completed ")
-        self.onMsg("Loading completed")
 
         self.buttonProcess.configure(
             text="Guardar",
             height=1,
             width=50,
             font=config.SMALL_FONT,
-            background="#91ff7e"
+            background="#91ff7e",
+            command=lambda: self.save(result)
         )
 
         self.loaded = True
+
+    def save(self, result):
+        filename = filedialog.asksaveasfile(mode='w', defaultextension=".mp3").name
+        if filename:
+            self.onMsg("Escribiendo " + os.path.basename(filename))
+            soundUtils.write(
+                filename,
+                config.fs,
+                result,
+                normalized=True
+            )
+            self.goToSpectogramMenu(filename, result)
+        else:
+            self.onMsg("Nompre de archivo invalido")
+
+    def goToSpectogramMenu(self, filename, data):
+        from Menus.SpectogramMenu import SpectogramMenu
+        self.controller.showFrame(SpectogramMenu)
+
+        self.controller.getCurrentFrame().setFilename(os.path.basename(filename))
+        self.controller.getCurrentFrame().setMusicData(data)
+
+
+
 
 

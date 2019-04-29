@@ -1,6 +1,7 @@
 import tkinter as tk
 from Globals import config
-
+from threading import Thread
+from util_python.soundUtils import playSound, reescale
 
 class ChannelCard(tk.Frame):
     def __init__(self, parent, controller):
@@ -114,7 +115,7 @@ class ContentFrame(tk.Frame):
             text="Escuchar",
             background="light goldenrod",
             font=config.SMALLEST_FONT,
-            command=self.configure
+            command=self.play
         )
 
         self.buttonConfig = tk.Button(
@@ -131,6 +132,7 @@ class ContentFrame(tk.Frame):
         self.buttonConfig.grid(column=0, row=1)
 
         self.frameButtons.grid(column=1, row=0)
+        self.playing = False
 
     def enable(self):
         self.configure(bg="sandy brown")
@@ -145,9 +147,19 @@ class ContentFrame(tk.Frame):
         self.buttonPlay.configure(state=tk.DISABLED, bg="snow4")
         self.buttonConfig.configure(state=tk.DISABLED, bg="snow4")
 
+    def play(self):
+        if not self.playing:
+            if self.controller.getInstrumento():
+                if len(self.controller.getInstrumento().getInstrumentData().getSound()) > 0:
+                    self.playing = True
+                    sound = self.controller.getInstrumento().getInstrumentData().getSound().copy()
+                    reescale(sound, self.controller.getVolume())
+                    self.thread = Thread(
+                        target=playSound,
+                        args=(sound, config.fs, self.controller.getVolume(), lambda: self.callWhenEnd() )
+                    )
 
+                    self.thread.start()
 
-
-
-
-
+    def callWhenEnd(self):
+        self.playing = False

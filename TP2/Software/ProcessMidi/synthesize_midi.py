@@ -5,9 +5,11 @@ from ProcessMidi import StatusInterface
 # #importo las funciones de los intrumentos
 
 
-def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None):
+def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, trackVolumes = None):
     if not statusInterface:
         statusInterface = StatusInterface.StatusInterface()
+
+    print(trackVolumes)
 
     midi_file = MidiFile(midiFilename)
     ticks_per_beat = midi_file.ticks_per_beat
@@ -16,6 +18,12 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None):
     names = []
     tempo_list = []
     first_tempo_list = []
+
+    if not trackVolumes:
+        trackVolumes = dict()
+        for track in tracks_synthesis:
+            trackVolumes[track] = 100
+
 
     for j, track in enumerate(midi_file.tracks):
         t_on = []
