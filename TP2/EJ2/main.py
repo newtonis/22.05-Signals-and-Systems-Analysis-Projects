@@ -20,13 +20,12 @@ name = "1note1sec"
 ytot = synthesize_midi('midi-samples/'+name+'.mid', track_synthesis, fs)
 
 
-t = arange(0,len(ytot)*(1/fs),1/fs)
-
-f, t, Sxx = signal.spectrogram(ytot, fs)
-plt.pcolormesh(t, f, Sxx)
-plt.ylabel('Frequency [Hz]')
-plt.xlabel('Time [sec]')
-plt.show()
+# t = arange(0,len(ytot)*(1/fs),1/fs)s
+# f, t, Sxx = signal.spectrogram(ytot, fs)
+# plt.pcolormesh(t, f, Sxx)
+# plt.ylabel('Frequency [Hz]')
+# plt.xlabel('Time [sec]')
+# plt.show()
 
 #plt.plot(x,ytot)
 #plt.show()

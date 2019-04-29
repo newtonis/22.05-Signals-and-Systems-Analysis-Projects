@@ -2,8 +2,12 @@ from numpy import *
 import matplotlib.pyplot as plt
 
 
-def brassToneEnv(att, decay, sus, rel, fs):
-    duration = att + decay + sus + rel
+def brassToneEnv(duration, fs):
+    att = (1 / 6) * duration
+    decay = (1 / 3 - 1 / 6) * duration
+    sus = (1 - (1 / 6 + 1 / 3)) * duration
+    rel = (1 / 6) * duration
+
     t = arange(0, duration, 1 / fs)
     y = zeros(len(t))
     for i, ti in enumerate(t):

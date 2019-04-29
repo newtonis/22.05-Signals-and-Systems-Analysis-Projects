@@ -6,14 +6,18 @@ def linScale(ynorm,alpha,beta):
     return y
 
 
-def woodEnv(att,sus,rel,fs):
+def woodEnv(duration,fs):
+
+    att = (1/9)*duration
+    sus = (7/9)*duration
+    rel = (2/9)*duration
+
     #att = attack time es como 5tau
     tau_att = att/5
     tau_rel = rel/5
     # = > t_att = 1-exp(-t/tau)
 
-    total_t = att+sus+rel
-    t = arange(0, total_t, 1/fs)
+    t = arange(0, duration, 1/fs)
     y1 = zeros(len(t))
     y2 = zeros(len(t))
 

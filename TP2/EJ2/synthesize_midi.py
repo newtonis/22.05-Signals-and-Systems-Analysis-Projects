@@ -70,7 +70,7 @@ def synthesize_midi(midiFilename ,tracks_synthesis ,fs):
                     pass
                 else:
                     total_amp_arr[k + dx] += y[k]
-
+        total_amp_arr = normalize(total_amp_arr)
         print(track_name+" no problem")
 
     #total_amp_arr /= len(all_ticks_and_responses)
