@@ -37,6 +37,7 @@ class individual_track:
     tempo_list = None
     this_track_tempo_list = None
     t_on_in_secs = None
+    track_volumes = None
 
     def __init__(self,ticks_per_beat_,total_time_, fs, t_on, t_off):
         self.ticks_per_beat = ticks_per_beat_
@@ -119,5 +120,11 @@ class individual_track:
 
         v, f, dt = vel_on, freq, delta_t
         y = self.checkIfInMemory(v, f, dt)
+
+        track_vol = None
+        if self.name in self.track_volumes:
+            track_vol = self.track_volumes[self.name]
+
+        y *= track_vol/100
 
         return tick_on_in_fs, y

@@ -85,6 +85,7 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
         if track_name in tracks_synthesis:
             nt_track.function = tracks_synthesis[track_name]
             nt_track.tempo_list = tempo_list
+            nt_track.track_volumes = trackVolumes
             for j in range(len(nt_track.t_on)):
                 dx,y = nt_track.getAmpArr(j)
                 for k in range(len(y)):
