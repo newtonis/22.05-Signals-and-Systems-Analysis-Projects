@@ -8,6 +8,6 @@ a la hora de escuchar el instrumento
 -Si es que hay tiempo ver de adaptar con otra libreria
 los midis que no puede leer mido (Ej: Circle_of_Life.mid)
 -Hacer eficiente la parte de síntesis con 
-# -CHUNK DE MEMORIA
+# -CHUNK DE MEMORIA (de hecho va a explotar con canciones muy largas)
 # -THREADS
 -Ver si normalize esta bien hecha
