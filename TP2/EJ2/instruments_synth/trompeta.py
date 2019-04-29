@@ -18,8 +18,6 @@ def getBrassTone(vel,f0,duration,fs):
 
     I = y2 * 3
 
-
-
     phi_m = -pi/2
     phi_c = -pi/2
 
