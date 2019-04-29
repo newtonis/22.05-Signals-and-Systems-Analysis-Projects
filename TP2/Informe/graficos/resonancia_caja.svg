@@ -132,18 +132,24 @@
        height="16.135443"
        x="53.519146"
        y="21.740789"
-       style="fill:none;stroke:#000000;stroke-width:0.77841967;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:none;stroke:#000000;stroke-width:0.77841967;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.66312695;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
        d="m 44.063055,14.435252 h 54.54995"
        id="path908"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000" />
     <circle
        style="fill:none;stroke:#000000;stroke-width:0.4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path1604"
        cx="103.4528"
        cy="14.539103"
-       r="3.3072915" />
+       r="3.3072915"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000" />
     <g
        id="g1642"
        ns1:jacobian_sqrt="0.352778"
@@ -154,7 +160,9 @@
        ns1:pdfconverter="pdf2svg"
        ns1:texconverter="pdflatex"
        ns1:version="0.10.1"
-       transform="matrix(0.66469726,0,0,0.66469726,2.0938932,-73.557682)">
+       transform="matrix(0.66469726,0,0,0.66469726,2.0938932,-73.557682)"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000">
       <g
          id="g1640">
         <g
@@ -179,7 +187,9 @@
        ns1:pdfconverter="pdf2svg"
        ns1:texconverter="pdflatex"
        ns1:version="0.10.1"
-       transform="matrix(0.352778,0,0,0.352778,-48.302173,-32.120986)">
+       transform="matrix(0.352778,0,0,0.352778,-48.302173,-32.120986)"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000">
       <g
          id="surface1">
         <g
@@ -356,7 +366,9 @@
        ns1:pdfconverter="pdf2svg"
        ns1:texconverter="pdflatex"
        ns1:version="0.10.1"
-       transform="matrix(0.352778,0,0,0.352778,-48.439622,-20.792591)">
+       transform="matrix(0.352778,0,0,0.352778,-48.439622,-20.792591)"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000">
       <g
          id="g1971">
         <g
@@ -525,7 +537,9 @@
        ns1:pdfconverter="pdf2svg"
        ns1:texconverter="pdflatex"
        ns1:version="0.10.1"
-       transform="matrix(0.352778,0,0,0.352778,6.6753852,-19.850923)">
+       transform="matrix(0.352778,0,0,0.352778,6.6753852,-19.850923)"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000">
       <g
          id="g2125">
         <g
@@ -656,7 +670,9 @@
        ns1:pdfconverter="pdf2svg"
        ns1:texconverter="pdflatex"
        ns1:version="0.10.1"
-       transform="matrix(0.352778,0.000000,0.000000,0.352778,-40.320860,-15.761530)">
+       transform="matrix(0.352778,0.000000,0.000000,0.352778,-40.320860,-15.761530)"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000">
       <g
          id="g2597">
         <g
@@ -752,7 +768,9 @@
        ns1:pdfconverter="pdf2svg"
        ns1:texconverter="pdflatex"
        ns1:version="0.10.1"
-       transform="matrix(0.352778,0,0,0.352778,5.420265,-14.136668)">
+       transform="matrix(0.352778,0,0,0.352778,5.420265,-14.136668)"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000">
       <g
          id="g2790">
         <g
@@ -897,18 +915,24 @@
        style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2863)"
        d="m 43.750743,29.581837 h 8.693454"
        id="path2823"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.60000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker3091)"
        d="m 93.832589,29.487341 h 9.827381 l 0,-10.29985"
        id="path3081"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccc" />
+       sodipodi:nodetypes="ccc"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.66299999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker3193)"
        d="M 106.93073,14.567666 H 121.9227"
        id="path3183"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000" />
     <g
        id="g3431"
        ns1:jacobian_sqrt="0.352778"
@@ -919,7 +943,9 @@
        ns1:pdfconverter="pdf2svg"
        ns1:texconverter="pdflatex"
        ns1:version="0.10.1"
-       transform="matrix(0.352778,0,0,0.352778,72.273032,-32.217899)">
+       transform="matrix(0.352778,0,0,0.352778,72.273032,-32.217899)"
+       inkscape:export-xdpi="1000"
+       inkscape:export-ydpi="1000">
       <g
          id="g3429">
         <g

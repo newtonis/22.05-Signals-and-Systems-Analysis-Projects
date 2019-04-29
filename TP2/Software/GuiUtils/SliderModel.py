@@ -1,24 +1,30 @@
 
 
 class SliderModel:
-    def __init__(self, start, end, step, startValue, title):
+    def __init__(self, start, end, step, startValue, title, callOnChange = None):
         self.value = startValue
         self.start = start
         self.end = end
         self.step = step
         self.title = title
-        self.container = None
+        self.view = None
+        self.callOnChange = callOnChange
 
-    def setContainer(self, container):
-        self.container = container
+    def setView(self, view):
+        self.view = view
+
+    def getView(self):
+        return self.view
 
     def getValue(self):
         return self.value
 
     def setValue(self, value):
-        if self.container:
-            self.container.refresh()
         self.value = value
+        if self.view:
+            self.view.refresh()
+        if self.callOnChange:
+            self.callOnChange(self.value)
 
     def getTitle(self):
         return self.title

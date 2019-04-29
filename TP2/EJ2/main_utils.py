@@ -12,9 +12,9 @@ from pydub import AudioSegment
 
 FFMPEGLoc = "C:\\FFMPEG\\bin\\"
 
-AudioSegment.converter = FFMPEGLoc+"ffmpeg.exe"
-AudioSegment.ffmpeg = FFMPEGLoc+"ffmpeg.exe"
-AudioSegment.ffprobe = FFMPEGLoc+"ffprobe.exe"
+AudioSegment.converter = "ffmpeg.exe"
+AudioSegment.ffmpeg = "ffmpeg.exe"
+AudioSegment.ffprobe = "ffprobe.exe"
 
 
 def playSound(arr, fs=44100):
@@ -22,6 +22,7 @@ def playSound(arr, fs=44100):
     arr = arr.astype(np.int16)
     play_obj = sa.play_buffer(arr, 1, 2, fs)
     play_obj.wait_done()
+
 
 def read(f, normalized=False):
     """MP3 to numpy array"""
@@ -33,6 +34,7 @@ def read(f, normalized=False):
         return a.frame_rate, np.float32(y) / 2**15
     else:
         return a.frame_rate, y
+
 
 def write(f, sr, x, normalized=False):
     """numpy array to MP3"""

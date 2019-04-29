@@ -16,6 +16,12 @@ class LoadingModel:
         self.value += value
         if self.container:
             self.container.refresh()
+
+    def setValue(self, value):
+        self.value = value
+        if self.container:
+            self.container.refresh()
+
     def reset(self):
         self.value = 0
         if self.container:

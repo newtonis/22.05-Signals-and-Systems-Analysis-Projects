@@ -1,0 +1,17 @@
+<sonidos>
+    <instrumento
+            nombre="Campana"
+            code="campana.py"
+            function="getBell"
+    />
+    <instrumento
+            nombre="Clarinete"
+            code="clarinete.py"
+            function="getClarinet"
+    />
+    <instrumento
+            nombre="Guitarra"
+            code="guitarra.py"
+            function="SitetizarGuitarraDistorsion"
+    />
+</sonidos>

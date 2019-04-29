@@ -7,6 +7,8 @@ class SliderContainer(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         self.model = model
+        self.model.setView(self)
+
         self.slider = tk.Scale(
             self,
             from_=model.start,

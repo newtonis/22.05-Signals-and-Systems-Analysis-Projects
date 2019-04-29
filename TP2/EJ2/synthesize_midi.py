@@ -7,7 +7,8 @@ from instruments_synth.clarinete import getClarinet
 from instruments_synth.guitarra import SitetizarGuitarraDistorsion
 import threading
 
-def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
+
+def synthesize_midi(midiFilename ,tracks_synthesis ,fs):
     midi_file = MidiFile(midiFilename)
     #midi_file = midi.read_midifile(midiFilename)
     ticks_per_beat = midi_file.ticks_per_beat
@@ -15,7 +16,8 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     note_tracks = []
     tempo_list = []
     first_tempo_list = []
-    for j,track in enumerate(midi_file.tracks):
+
+    for j, track in enumerate(midi_file.tracks):
         t_on = []
         t_off = []
         t_v0 = []
@@ -54,7 +56,6 @@ def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     tempo_list = getUniqAndSortedTempoList(tempo_list)
 
     total_amp_arr = zeros(int(ceil(total_time*fs)))
-
 
     for i,nt_track in enumerate(note_tracks):
         track_name = "track" + str(i)

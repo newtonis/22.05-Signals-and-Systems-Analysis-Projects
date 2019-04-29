@@ -7,7 +7,6 @@ from GuiUtils.ButtonSelectorModel import ButtonSelectorModel
 from GuiUtils.ButtonModel import ButtonModel
 from GuiUtils.PlotContainerTabs import PlotContainerTabs
 from Utils import FourierTransform
-from Etapas import SignalsReadWrite
 from Menus import ConfigureMenu
 
 
@@ -60,8 +59,8 @@ class PlotMenu(tk.Frame):
     def saveFile(self):
         if self.currentSignal:
             filename = filedialog.asksaveasfile(mode='w', defaultextension=".xls")
-            if filename:
-                SignalsReadWrite.writeSignal(self.currentSignal, filename.name)
+            #if filename:
+            #    #SignalsReadWrite.writeSignal(self.currentSignal, filename.name)
 
     def focus(self):
         self.updateButtons()

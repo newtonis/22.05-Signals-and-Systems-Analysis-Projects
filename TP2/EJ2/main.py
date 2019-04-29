@@ -2,6 +2,7 @@ from synthesize_midi import *
 from main_utils import *
 import matplotlib.pyplot as plt
 import time
+
 fs = 44100
 start = time.time()
 
@@ -12,9 +13,10 @@ for i in range(number_of_tracks):
     #track_synthesis[canal]=SitetizarGuitarraDistorsion
     track_synthesis[track]=getClarinet
 
+
 name = "greenhill"
 
-ytot = synthesize_midi('midi-samples/'+name+'.mid',track_synthesis,fs)
+ytot = synthesize_midi('midi-samples/'+name+'.mid', track_synthesis, fs)
 
 #plt.plot(x,ytot)
 #plt.show()
