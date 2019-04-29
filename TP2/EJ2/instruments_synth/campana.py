@@ -2,6 +2,7 @@ from math import *
 from envelopes.DecayExp import *
 from instruments_synth.fmModulation import *
 
+import matplotlib.pyplot as plt
 
 def getBell(vel, fm, duration, fs):
 

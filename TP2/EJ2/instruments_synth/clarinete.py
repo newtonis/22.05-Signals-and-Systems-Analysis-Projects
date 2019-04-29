@@ -2,6 +2,7 @@ from math import *
 from envelopes.woodEnv import *
 from instruments_synth.fmModulation import *
 from audiolazy.lazy_midi import *
+import matplotlib.pyplot as plt
 
 def getClarinet(vel,f0,duration,fs):
     #parámetros configurables para clarinete:
@@ -19,9 +20,12 @@ def getClarinet(vel,f0,duration,fs):
     alpha = -2
     beta = 4
     y1, y2 = woodEnv(t_attack, t_sust, t_rel, fs)
+
+
     A = y1
     I = linScale(y2, alpha, beta)
     phi_m = -pi/2
     phi_c = -pi/2
+
     x = fmModulation(A,I,fc,fm,phi_m,phi_c,duration,fs)
     return x

@@ -125,6 +125,7 @@ class individual_track:
         if self.name in self.track_volumes:
             track_vol = self.track_volumes[self.name]
 
+
         y *= track_vol/100
 
         return tick_on_in_fs, y

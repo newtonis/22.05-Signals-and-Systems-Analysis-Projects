@@ -2,6 +2,7 @@ from synthesize_midi import *
 from main_utils import *
 import matplotlib.pyplot as plt
 import time
+from scipy import signal
 
 fs = 44100
 start = time.time()
@@ -14,9 +15,18 @@ for i in range(number_of_tracks):
     track_synthesis[track]=getClarinet
 
 
-name = "greenhill"
+name = "1note1sec"
 
 ytot = synthesize_midi('midi-samples/'+name+'.mid', track_synthesis, fs)
+
+
+t = arange(0,len(ytot)*(1/fs),1/fs)
+
+f, t, Sxx = signal.spectrogram(ytot, fs)
+plt.pcolormesh(t, f, Sxx)
+plt.ylabel('Frequency [Hz]')
+plt.xlabel('Time [sec]')
+plt.show()
 
 #plt.plot(x,ytot)
 #plt.show()
