@@ -15,7 +15,7 @@ for i in range(number_of_tracks):
     track_synthesis[track]=getBrassTone
 
 
-name = "midnight"
+name = "1note1sec"
 
 ytot = synthesize_midi('midi-samples/'+name+'.mid', track_synthesis, fs)
 
@@ -31,7 +31,7 @@ ytot = synthesize_midi('midi-samples/'+name+'.mid', track_synthesis, fs)
 #plt.show()
 #sr,x = read('megalovania.mp3',normalized = False)
 
-write(name+'.mp3', fs, ytot, normalized = True)
+write('output/'+name+'.mp3', fs, ytot, normalized = True)
 
 end = time.time()
 print("se sintetizo en ",int(abs(end-start))/60," minutos")
