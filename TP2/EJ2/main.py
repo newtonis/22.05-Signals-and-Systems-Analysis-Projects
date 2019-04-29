@@ -12,7 +12,7 @@ track_synthesis = {}
 for i in range(number_of_tracks):
     track = "track"+str(i)
     #track_synthesis[canal]=SitetizarGuitarraDistorsion
-    track_synthesis[track]=getClarinet
+    track_synthesis[track]=getBrassTone
 
 
 name = "1note1sec"
