@@ -1,6 +1,6 @@
 from mido import MidiFile
 from synth_utils import *
-
+import midi
 # #importo las funciones de los intrumentos
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
@@ -9,6 +9,7 @@ import threading
 
 def synthesize_midi( midiFilename ,tracks_synthesis ,fs):
     midi_file = MidiFile(midiFilename)
+    #midi_file = midi.read_midifile(midiFilename)
     ticks_per_beat = midi_file.ticks_per_beat
     total_time = midi_file.length
     note_tracks = []

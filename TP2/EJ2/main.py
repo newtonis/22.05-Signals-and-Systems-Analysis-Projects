@@ -12,7 +12,7 @@ for i in range(number_of_tracks):
     #track_synthesis[canal]=SitetizarGuitarraDistorsion
     track_synthesis[track]=getClarinet
 
-name = "toystory"
+name = "greenhill"
 
 ytot = synthesize_midi('midi-samples/'+name+'.mid',track_synthesis,fs)
 
