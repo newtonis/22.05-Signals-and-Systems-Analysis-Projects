@@ -69,20 +69,125 @@ CMakeFiles/EJ8.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/main.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\main.cpp -o CMakeFiles\EJ8.dir\main.cpp.s
 
+CMakeFiles/EJ8.dir/Robotization.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/Robotization.cpp.obj: ../Robotization.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/EJ8.dir/Robotization.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\Robotization.cpp.obj -c C:\informes_assd\TP2\EJ8\Robotization.cpp
+
+CMakeFiles/EJ8.dir/Robotization.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/Robotization.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\Robotization.cpp > CMakeFiles\EJ8.dir\Robotization.cpp.i
+
+CMakeFiles/EJ8.dir/Robotization.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/Robotization.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\Robotization.cpp -o CMakeFiles\EJ8.dir\Robotization.cpp.s
+
+CMakeFiles/EJ8.dir/AudioEffect.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/AudioEffect.cpp.obj: ../AudioEffect.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/EJ8.dir/AudioEffect.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\AudioEffect.cpp.obj -c C:\informes_assd\TP2\EJ8\AudioEffect.cpp
+
+CMakeFiles/EJ8.dir/AudioEffect.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/AudioEffect.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\AudioEffect.cpp > CMakeFiles\EJ8.dir\AudioEffect.cpp.i
+
+CMakeFiles/EJ8.dir/AudioEffect.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/AudioEffect.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\AudioEffect.cpp -o CMakeFiles\EJ8.dir\AudioEffect.cpp.s
+
+CMakeFiles/EJ8.dir/my_fft.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/my_fft.cpp.obj: ../my_fft.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/EJ8.dir/my_fft.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\my_fft.cpp.obj -c C:\informes_assd\TP2\EJ8\my_fft.cpp
+
+CMakeFiles/EJ8.dir/my_fft.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/my_fft.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\my_fft.cpp > CMakeFiles\EJ8.dir\my_fft.cpp.i
+
+CMakeFiles/EJ8.dir/my_fft.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/my_fft.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\my_fft.cpp -o CMakeFiles\EJ8.dir\my_fft.cpp.s
+
+CMakeFiles/EJ8.dir/windows.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/windows.cpp.obj: ../windows.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/EJ8.dir/windows.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\windows.cpp.obj -c C:\informes_assd\TP2\EJ8\windows.cpp
+
+CMakeFiles/EJ8.dir/windows.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/windows.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\windows.cpp > CMakeFiles\EJ8.dir\windows.cpp.i
+
+CMakeFiles/EJ8.dir/windows.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/windows.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\windows.cpp -o CMakeFiles\EJ8.dir\windows.cpp.s
+
+CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj: ../CircularBuffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\CircularBuffer.cpp.obj -c C:\informes_assd\TP2\EJ8\CircularBuffer.cpp
+
+CMakeFiles/EJ8.dir/CircularBuffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/CircularBuffer.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\CircularBuffer.cpp > CMakeFiles\EJ8.dir\CircularBuffer.cpp.i
+
+CMakeFiles/EJ8.dir/CircularBuffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/CircularBuffer.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\CircularBuffer.cpp -o CMakeFiles\EJ8.dir\CircularBuffer.cpp.s
+
+CMakeFiles/EJ8.dir/Nada.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/Nada.cpp.obj: ../Nada.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/EJ8.dir/Nada.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\Nada.cpp.obj -c C:\informes_assd\TP2\EJ8\Nada.cpp
+
+CMakeFiles/EJ8.dir/Nada.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/Nada.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\Nada.cpp > CMakeFiles\EJ8.dir\Nada.cpp.i
+
+CMakeFiles/EJ8.dir/Nada.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/Nada.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\Nada.cpp -o CMakeFiles\EJ8.dir\Nada.cpp.s
+
+CMakeFiles/EJ8.dir/AudioFile.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/AudioFile.cpp.obj: ../AudioFile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/EJ8.dir/AudioFile.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\AudioFile.cpp.obj -c C:\informes_assd\TP2\EJ8\AudioFile.cpp
+
+CMakeFiles/EJ8.dir/AudioFile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/AudioFile.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\AudioFile.cpp > CMakeFiles\EJ8.dir\AudioFile.cpp.i
+
+CMakeFiles/EJ8.dir/AudioFile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/AudioFile.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\AudioFile.cpp -o CMakeFiles\EJ8.dir\AudioFile.cpp.s
+
 # Object files for target EJ8
 EJ8_OBJECTS = \
-"CMakeFiles/EJ8.dir/main.cpp.obj"
+"CMakeFiles/EJ8.dir/main.cpp.obj" \
+"CMakeFiles/EJ8.dir/Robotization.cpp.obj" \
+"CMakeFiles/EJ8.dir/AudioEffect.cpp.obj" \
+"CMakeFiles/EJ8.dir/my_fft.cpp.obj" \
+"CMakeFiles/EJ8.dir/windows.cpp.obj" \
+"CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj" \
+"CMakeFiles/EJ8.dir/Nada.cpp.obj" \
+"CMakeFiles/EJ8.dir/AudioFile.cpp.obj"
 
 # External object files for target EJ8
 EJ8_EXTERNAL_OBJECTS =
 
 EJ8.exe: CMakeFiles/EJ8.dir/main.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/Robotization.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/AudioEffect.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/my_fft.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/windows.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/Nada.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/AudioFile.cpp.obj
 EJ8.exe: CMakeFiles/EJ8.dir/build.make
 EJ8.exe: C:/MinGW/lib/libportaudio.dll.a
 EJ8.exe: CMakeFiles/EJ8.dir/linklibs.rsp
 EJ8.exe: CMakeFiles/EJ8.dir/objects1.rsp
 EJ8.exe: CMakeFiles/EJ8.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable EJ8.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable EJ8.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\EJ8.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

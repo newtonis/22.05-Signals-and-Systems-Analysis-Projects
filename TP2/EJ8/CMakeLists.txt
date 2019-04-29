@@ -2,8 +2,11 @@ cmake_minimum_required(VERSION 3.14)
 project(EJ8)
 
 set(CMAKE_CXX_STANDARD 14)
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 
-add_executable(EJ8 main.cpp)
+
+add_executable(EJ8 main.cpp Robotization.cpp AudioEffect.cpp my_fft.cpp windows.cpp CircularBuffer.cpp Nada.cpp Nada.h AudioFile.cpp AudioFile.h)
+
 
 # - Try to find Portaudio
 # Once done this will define

@@ -24,6 +24,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-D_GLIBCXX_USE_CXX11_ABI=0"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
@@ -45,6 +46,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-D_GLIBCXX_USE_CXX11_ABI=0"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
 					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
@@ -80,7 +82,49 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/informes_assd/TP2/EJ8/AudioEffect.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/AudioEffect.h">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/AudioFile.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/AudioFile.h">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/CircularBuffer.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/CircularBuffer.h">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/Nada.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/Nada.h">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/Robotization.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/Robotization.h">
+			<Option target="EJ8"/>
+		</Unit>
 		<Unit filename="C:/informes_assd/TP2/EJ8/main.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/my_fft.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/my_fft.h">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/windows.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/informes_assd/TP2/EJ8/windows.h">
 			<Option target="EJ8"/>
 		</Unit>
 		<Unit filename="C:/informes_assd/TP2/EJ8/CMakeLists.txt">
