@@ -21,3 +21,4 @@ duration es la duracion en segundos del sonido
 fs es la frecuencia de muestreo, que en este software siempre será 44.1 kHz
 
 
+El programa principal es UI.py
