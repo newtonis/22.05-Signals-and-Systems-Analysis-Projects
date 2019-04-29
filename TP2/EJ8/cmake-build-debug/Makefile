@@ -122,6 +122,141 @@ EJ8/fast:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/build
 .PHONY : EJ8/fast
 
+AudioEffect.obj: AudioEffect.cpp.obj
+
+.PHONY : AudioEffect.obj
+
+# target to build an object file
+AudioEffect.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/AudioEffect.cpp.obj
+.PHONY : AudioEffect.cpp.obj
+
+AudioEffect.i: AudioEffect.cpp.i
+
+.PHONY : AudioEffect.i
+
+# target to preprocess a source file
+AudioEffect.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/AudioEffect.cpp.i
+.PHONY : AudioEffect.cpp.i
+
+AudioEffect.s: AudioEffect.cpp.s
+
+.PHONY : AudioEffect.s
+
+# target to generate assembly for a file
+AudioEffect.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/AudioEffect.cpp.s
+.PHONY : AudioEffect.cpp.s
+
+AudioFile.obj: AudioFile.cpp.obj
+
+.PHONY : AudioFile.obj
+
+# target to build an object file
+AudioFile.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/AudioFile.cpp.obj
+.PHONY : AudioFile.cpp.obj
+
+AudioFile.i: AudioFile.cpp.i
+
+.PHONY : AudioFile.i
+
+# target to preprocess a source file
+AudioFile.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/AudioFile.cpp.i
+.PHONY : AudioFile.cpp.i
+
+AudioFile.s: AudioFile.cpp.s
+
+.PHONY : AudioFile.s
+
+# target to generate assembly for a file
+AudioFile.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/AudioFile.cpp.s
+.PHONY : AudioFile.cpp.s
+
+CircularBuffer.obj: CircularBuffer.cpp.obj
+
+.PHONY : CircularBuffer.obj
+
+# target to build an object file
+CircularBuffer.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj
+.PHONY : CircularBuffer.cpp.obj
+
+CircularBuffer.i: CircularBuffer.cpp.i
+
+.PHONY : CircularBuffer.i
+
+# target to preprocess a source file
+CircularBuffer.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/CircularBuffer.cpp.i
+.PHONY : CircularBuffer.cpp.i
+
+CircularBuffer.s: CircularBuffer.cpp.s
+
+.PHONY : CircularBuffer.s
+
+# target to generate assembly for a file
+CircularBuffer.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/CircularBuffer.cpp.s
+.PHONY : CircularBuffer.cpp.s
+
+Nada.obj: Nada.cpp.obj
+
+.PHONY : Nada.obj
+
+# target to build an object file
+Nada.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Nada.cpp.obj
+.PHONY : Nada.cpp.obj
+
+Nada.i: Nada.cpp.i
+
+.PHONY : Nada.i
+
+# target to preprocess a source file
+Nada.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Nada.cpp.i
+.PHONY : Nada.cpp.i
+
+Nada.s: Nada.cpp.s
+
+.PHONY : Nada.s
+
+# target to generate assembly for a file
+Nada.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Nada.cpp.s
+.PHONY : Nada.cpp.s
+
+Robotization.obj: Robotization.cpp.obj
+
+.PHONY : Robotization.obj
+
+# target to build an object file
+Robotization.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Robotization.cpp.obj
+.PHONY : Robotization.cpp.obj
+
+Robotization.i: Robotization.cpp.i
+
+.PHONY : Robotization.i
+
+# target to preprocess a source file
+Robotization.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Robotization.cpp.i
+.PHONY : Robotization.cpp.i
+
+Robotization.s: Robotization.cpp.s
+
+.PHONY : Robotization.s
+
+# target to generate assembly for a file
+Robotization.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Robotization.cpp.s
+.PHONY : Robotization.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -149,6 +284,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+my_fft.obj: my_fft.cpp.obj
+
+.PHONY : my_fft.obj
+
+# target to build an object file
+my_fft.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/my_fft.cpp.obj
+.PHONY : my_fft.cpp.obj
+
+my_fft.i: my_fft.cpp.i
+
+.PHONY : my_fft.i
+
+# target to preprocess a source file
+my_fft.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/my_fft.cpp.i
+.PHONY : my_fft.cpp.i
+
+my_fft.s: my_fft.cpp.s
+
+.PHONY : my_fft.s
+
+# target to generate assembly for a file
+my_fft.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/my_fft.cpp.s
+.PHONY : my_fft.cpp.s
+
+windows.obj: windows.cpp.obj
+
+.PHONY : windows.obj
+
+# target to build an object file
+windows.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/windows.cpp.obj
+.PHONY : windows.cpp.obj
+
+windows.i: windows.cpp.i
+
+.PHONY : windows.i
+
+# target to preprocess a source file
+windows.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/windows.cpp.i
+.PHONY : windows.cpp.i
+
+windows.s: windows.cpp.s
+
+.PHONY : windows.s
+
+# target to generate assembly for a file
+windows.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/windows.cpp.s
+.PHONY : windows.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -158,9 +347,30 @@ help:
 	@echo ... EJ8
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... AudioEffect.obj
+	@echo ... AudioEffect.i
+	@echo ... AudioEffect.s
+	@echo ... AudioFile.obj
+	@echo ... AudioFile.i
+	@echo ... AudioFile.s
+	@echo ... CircularBuffer.obj
+	@echo ... CircularBuffer.i
+	@echo ... CircularBuffer.s
+	@echo ... Nada.obj
+	@echo ... Nada.i
+	@echo ... Nada.s
+	@echo ... Robotization.obj
+	@echo ... Robotization.i
+	@echo ... Robotization.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... my_fft.obj
+	@echo ... my_fft.i
+	@echo ... my_fft.s
+	@echo ... windows.obj
+	@echo ... windows.i
+	@echo ... windows.s
 .PHONY : help
 
 

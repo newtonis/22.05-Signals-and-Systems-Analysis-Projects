@@ -1,0 +1,49 @@
+//
+// Created by Rocío Parra on 27-Apr-19.
+//
+
+#ifndef EJ8_CIRCULARBUFFER_H
+#define EJ8_CIRCULARBUFFER_H
+#include <vector>
+
+class CircularBuffer {
+public:
+    CircularBuffer(unsigned int initMaxSize, unsigned int stepMaxSize = 0);
+    //si no le paso step lo hace igual a initMaxSize
+    ~CircularBuffer();
+
+    float read(unsigned int n);
+    bool write(unsigned int n, float data);
+    // posiciones que ya existen: sobre escribe
+    // una posicion mas que la maxima: igual a emplace(data)
+    // si no: error
+
+    void emplace(float data);
+    bool pop(unsigned int n); // saca los primeros n datos
+    void clear();
+    float next(); // pop(1) y devuelve el dato que se saco
+
+    void rearrange(); // pone los datos a partir de la posicion 0
+    void resize(unsigned int n, float fill = 0);
+    // si lo hago mas chico saco los ultimos
+    // si lo hago mas grande lleno con fill
+
+    unsigned int currSize();
+    bool isFull();
+    void getCopy(std::vector<float>& copy);
+
+
+private:
+    std::vector<float> buffer;
+    unsigned int currFullSize;    //tamanio total del vector
+    unsigned int stepMaxSize;
+
+    unsigned int first;         // donde esta el primer elemento
+    unsigned int last;          // donde va a estar el proximo
+    bool full;
+
+    std::vector<float> backup;
+};
+
+
+#endif //EJ8_CIRCULARBUFFER_H
