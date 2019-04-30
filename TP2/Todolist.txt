@@ -1,0 +1,15 @@
+-Corregir la palabra "canales" en el software
+para midi canales es otra cosa
+-Agregar el nombre del track, que puede ser un 
+instrumento sugerido
+-Agregar opción de poder escuchar una nota en particular 
+a la hora de escuchar el instrumento
+-Si es que hay tiempo ver de adaptar con otra libreria
+los midis que no puede leer mido (Ej: Circle_of_Life.mid)
+-Hacer eficiente la parte de síntesis con 
+# -CHUNK DE MEMORIA (de hecho va a explotar con canciones muy largas)
+# -THREADS
+-Ver si normalize esta bien hecha
+-Revisar que todas las sintesis usen un arange con duration porque
+si usan arange con por ejemplo attack+decay+sustain+release 
+puede que sume menos y hay errores con el arreglo del estilo +-1

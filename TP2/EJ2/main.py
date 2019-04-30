@@ -1,7 +1,10 @@
 from synthesize_midi import *
 from main_utils import *
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import time
+from scipy import signal
+from matplotlib import *
+from matplotlib.pyplot import *
 
 fs = 44100
 start = time.time()
@@ -13,16 +16,10 @@ for i in range(number_of_tracks):
     #track_synthesis[canal]=SitetizarGuitarraDistorsion
     track_synthesis[track]=getClarinet
 
-
-name = "greenhill"
-
+name = "Pink_Panther"
 ytot = synthesize_midi('midi-samples/'+name+'.mid', track_synthesis, fs)
 
-#plt.plot(x,ytot)
-#plt.show()
-#sr,x = read('megalovania.mp3',normalized = False)
-
-write(name+'.mp3', fs, ytot, normalized = True)
+write('output/'+name+'.mp3', fs, ytot, normalized = True)
 
 end = time.time()
 print("se sintetizo en ",int(abs(end-start))/60," minutos")
