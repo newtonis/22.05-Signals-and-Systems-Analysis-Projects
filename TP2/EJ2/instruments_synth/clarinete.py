@@ -20,19 +20,12 @@ def getClarinet(vel,f0,duration,fs):
     #------------------------------------
     fm = 3 * f0
     fc = 2 * f0
-
-    t_attack = (1/9)*duration
-    t_sust = (7/9)*duration
-    t_rel = (2/9)*duration
-
     #-------------------------------------
 
 
     alpha = -2
     beta = 4
-
     y1, y2 = woodEnv(duration, fs)
-
 
     A = y1
 
