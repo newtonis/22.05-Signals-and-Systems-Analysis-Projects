@@ -46,10 +46,16 @@ def synthesize_midi(midiFilename ,tracks_synthesis ,fs):
                 tempo_track.append([time_counter, message.tempo])
             if message.type == "note_on" and message.velocity != 0:
                 t_on.append([time_counter, message.velocity, message.note])
+            # solo si ya hay un note_on agrego note_off o note_on con v=0
+            #if (len(t_on)-1) == len(t_off):
             if message.type == "note_off":
-                t_off.append([time_counter, message.velocity, message.note])
+                if len(t_off) < len(t_on):
+                    t_off.append([time_counter, message.velocity, message.note])
             if message.type == "note_on" and message.velocity == 0:
-                t_v0.append([time_counter, message.velocity, message.note])
+                if len(t_v0) < len(t_on):
+                    t_v0.append([time_counter, message.velocity, message.note])
+
+        print("track",j)
 
         t_apagar = get_toff(t_on, t_v0, t_off)
 
