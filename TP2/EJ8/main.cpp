@@ -216,23 +216,36 @@ int main()
 //    std::vector<float> holis;
 //    hanning(8, holis);
 //    hanning(512, holis);
+
     std::string name = "president-is-moron";
     AudioFile<float> audioFile;
     AudioFile<float> out;
     AudioFile<float>::AudioBuffer newBuffer;
-    unsigned int windowWidth = 256;
+    unsigned int windowWidth = 4096;
 
-    audioFile.load (name + ".wav");
-    int numSamples = audioFile.getNumSamplesPerChannel();
+    audioFile.load ("input/" + name + ".wav");
     int sampleRate = audioFile.getSampleRate();
+    int numSamples = audioFile.getNumSamplesPerChannel();
+    int realSamples = audioFile.getNumSamplesPerChannel();
 
     Reverb bot(sampleRate, numSamples, windowWidth, PLANO);
 
     auto * buffer = new float [numSamples*2];
     for (int i = 0; i < numSamples; i++) {
-        buffer[2*i] = audioFile.samples[0][i];
-        buffer[2*i + 1] = audioFile.samples[1][i];
+        if (i < realSamples){
+            buffer[2 * i] = audioFile.samples[0][i];
+            buffer[2 * i + 1] = audioFile.samples[1][i];
+        }else{
+            buffer[2 * i] = 0;
+            buffer[2 * i + 1] = 0;
+        }
     }
+
+    freopen("output/x.txt", "w+",stdout);
+    for (int i = 0;i < numSamples;i++){
+        cout << buffer[2*i] << '\n';
+    }
+
 
     bot.processStereoInput(buffer);
     bot.setNextOutput(buffer);
@@ -245,7 +258,13 @@ int main()
         newBuffer[1][i] = buffer[2*i+1];
     }
 
+
+    freopen("output/y.txt","w+",stdout);
+    for (int i = 0;i < numSamples;i++){
+        cout << buffer[2*i] << '\n';
+    }
+
     out.setAudioBuffer(newBuffer);
-    out.save (name + "_" + std::to_string(windowWidth) +"_out.wav");
+    out.save ("output/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
     delete [] buffer;
 }
