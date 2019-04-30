@@ -1,5 +1,5 @@
 from numpy import *
-
+import matplotlib.pyplot as plt
 
 def linScale(ynorm,alpha,beta):
     y = alpha*ynorm + beta
@@ -8,9 +8,9 @@ def linScale(ynorm,alpha,beta):
 
 def woodEnv(duration,fs):
 
-    att = (1/9)*duration
-    sus = (7/9)*duration
-    rel = (2/9)*duration
+    att = (1/10)*duration
+    sus = (7/10)*duration
+    rel = (2/10)*duration
 
     #att = attack time es como 5tau
     tau_att = att/5
@@ -21,11 +21,9 @@ def woodEnv(duration,fs):
     y1 = zeros(len(t))
     y2 = zeros(len(t))
 
-    tau = (rel / 2) * (1 / (5 - math.log(2)))
-    taux = 0
-    taux2 = rel / 2 - taux  # taux2 hace que el tiempo vaya de rel/2 a 0
-    taux2 += (5 * tau - rel / 2)  # y ahora hacemos que vaya de 5tau a t2=ln(2)tau
-    const_val = 1 - exp(-(taux2) / tau)
+    tau_ = (rel / 2) * (1 / (5 - math.log(2)))
+    z_ = (rel / 2) + (5 * tau_ - rel / 2)  #
+    const_val = 1 - exp(- z_/ tau_)
 
     for index,ti in enumerate(t):
         if(ti<=att):

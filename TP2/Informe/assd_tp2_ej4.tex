@@ -49,8 +49,16 @@ Expresamos a x(t) con funciones de Bessel
 				... \\*
 				+J_n(I)[sen(2\pi(f_c+n f_m)t) \pm sin(2\pi(f_c-n f_m)t)] \; \}
 \end{eqnarray*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/Bessel.png}
+\caption{Funciones de Bessel de primer especie desde $J_0$ hasta $J_5$ }
+\label{fig:Bessel}
+\end{figure}
+
 Se puede ver que las bandas laterales bajas de orden impar poseen un signo negativo. Además se sabe que para para un I$>$2.5
-las funciones de Bessel produzcan coeficientes de escalamiento negativos para algunos componentes.
+las funciones de Bessel producen coeficientes de escalamiento negativos para algunos componentes.
 En general se suelen ignorar los signos negativos en el espectro ya que solo indican una inversión de la fase de la frecuencia correspondiente. En la proxima sección se verá por qué en realidad sí son importantes esas inversiones de fase.
 \begin{figure}[H]
 \centering
@@ -107,7 +115,13 @@ Para relaciones entre frecuencias bajas e indices chicos donde $N_1\neq1$ la fun
 \label{fig:inharmonico}
 \end{figure}
 
-\todo{creo que deberian haber mas imagenes con distintos I ya que se viene hablando de I chicos y sarasa}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{graficos/EJ4/chowning.png}
+\caption{Espectros con distintos índices de modulación (cociente racional)}
+\label{fig:chowning}
+\end{figure}
+
 
 %La fundamental solo se vuelve significante cuando I$>$2.\\*
 Resumen:\\*
@@ -129,7 +143,7 @@ Para los intrumentos de viento:
 \end{eqnarray*}
 Resultando
 \begin{eqnarray*}
-\textstyle x(t)=\textcolor{blue}{A(t)}\cdot sen(2\pi f_c t+\textcolor{magenta}{I(t)}\cdot sen(2\pi f_mt))
+\textstyle x(t)=\textcolor{red}{A(t)}\cdot sen(2\pi f_c t+\textcolor{orange}{I(t)}\cdot sen(2\pi f_mt))
 \end{eqnarray*}
 
 \subsubsection{Síntesis de clarinete}
@@ -143,8 +157,8 @@ Para poder sintetizar un clarinete se establecieron los parámetros recomendados
 Las envolventes sugeridas por la bibliografía poseen la siguiente forma
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\linewidth]{graficos/EJ4/clar_at.png}
-\includegraphics[width=0.4\linewidth]{graficos/EJ4/clar_it.png}
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/at_clarinet.png}
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/it_clarinet.png}
 \caption{A(t) e I(t) respectivamente}
 \label{fig:clarinet_envelopes}
 \end{figure}
@@ -165,8 +179,8 @@ Parámetros recomendados por la literatura para la síntesis:
 Envolventes sugeridos:
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\linewidth]{graficos/EJ4/bell_at.png}
-\includegraphics[width=0.4\linewidth]{graficos/EJ4/bell_it.png}
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/at_bell.png}
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/it_bell.png}
 \caption{A(t) e I(t) respectivamente}
 \label{fig:bell_envelopes}
 \end{figure}
@@ -175,8 +189,29 @@ Envolventes sugeridos:
 \centering
 \includegraphics[width=0.4\linewidth]{graficos/EJ4/BellEspectogram440Hz.png}
 \caption{Espectrograma de la síntesis de la campana a 440Hz (nota LA)}
-\label{fig:clarinet_440}
+\label{fig:bell_440}
 \end{figure}
+\subsubsection{Síntesis de trombón}
+Para los Brass Instruments se recomienda utilizar una relación de:
+\begin{eqnarray*}
+\displaystyle \frac{f_c}{f_m}=\frac{1}{1}
+\end{eqnarray*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/at_trombon.png}
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/it_trombon.png}
+\caption{A(t) e I(t) respectivamente}
+\label{fig:trombone_envelopes}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/espectrograma_trombon.png}
+\caption{Espectrograma de la síntesis del trombón a 440Hz (nota LA)}
+\label{fig:trombone_440}
+\end{figure}
+
 
 
 
