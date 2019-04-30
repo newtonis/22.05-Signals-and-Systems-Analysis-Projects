@@ -50,18 +50,20 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
     tempo_list = []
     first_tempo_list = []
     # obtengo toda la info de los midis y los guardo en note_tracks
+    tempoIsAlreadySet = False
     for j, track in enumerate(midi_file.tracks):
         t_on = []
         t_off = []
         t_v0 = []
         time_counter = 0
         tempo_track = []
-
         for index, message in enumerate(track):
             time_counter += message.time
             if message.type == "set_tempo":
                 tempo_list.append([time_counter, message.tempo])
                 tempo_track.append([time_counter, message.tempo])
+                if tempoIsAlreadySet == False:
+                    first_tempo_list.append([time_counter, message.tempo])
             if message.type == "note_on" and message.velocity != 0:
                 t_on.append([time_counter, message.velocity, message.note])
             # solo si ya hay un note_on agrego note_off o note_on con v=0
@@ -73,8 +75,9 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
                 if len(t_v0) < len(t_on):
                     t_v0.append([time_counter, message.velocity, message.note])
 
+        if len(first_tempo_list) > 0:
+            tempoIsAlreadySet = True
         t_apagar,strange = get_toff(t_on, t_v0, t_off)
-
         if strange == True :
             statusInterface.addMessage("Se ingreso un midi extraño, el resultado puede ser extraño")
 
@@ -82,8 +85,6 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
 
         if aux_track.isNoteTrack():
             note_tracks.append(aux_track)
-        if j == 0:
-            first_tempo_list = tempo_list.copy()
 
     format = None
     # me fijo que formato es
