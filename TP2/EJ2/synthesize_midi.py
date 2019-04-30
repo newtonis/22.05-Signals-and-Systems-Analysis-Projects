@@ -5,7 +5,7 @@ import midi
 from instruments_synth.campana import getBell
 from instruments_synth.clarinete import getClarinet
 from instruments_synth.guitarra import SitetizarGuitarraDistorsion
-from instruments_synth.trompeta import getBrassTone
+from instruments_synth.trombon import getBrassTone
 import threading
 
 
