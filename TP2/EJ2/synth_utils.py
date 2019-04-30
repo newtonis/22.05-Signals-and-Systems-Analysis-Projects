@@ -107,13 +107,13 @@ class individual_track:
         self.getDeltaTHastaTick()
         tick_on = self.t_on[i][0]
         vel_on = self.t_on[i][1]
-        #vel_off = self.t_off[i][1]
         note = self.t_on[i][2]
 
         freq = noteToFreq(note)
         time_on = self.t_on_in_secs[tick_on][0]
         delta_t = self.t_on_in_secs[tick_on][1]
-
+        if delta_t == 0:
+            return 0, []
         tick_on_in_fs = self.time2tickinfs(time_on)
 
         v, f, dt = vel_on, freq, delta_t
