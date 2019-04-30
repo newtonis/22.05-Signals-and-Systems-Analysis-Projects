@@ -30,6 +30,7 @@ public:
 
     unsigned int currSize();
     bool isFull();
+    bool empty();
     void getCopy(std::vector<float>& copy);
 
 

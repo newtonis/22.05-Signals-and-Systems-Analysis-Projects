@@ -42,9 +42,12 @@
 // * license above.
 // */
 //
-//#include <stdio.h>
-//#include <math.h>
-//#include "portaudio.h"
+#include <stdio.h>
+#include <math.h>
+#include "portaudio.h"
+#include "Robotization.h"
+#include "Reverb.h"
+//
 ///*
 //** Note that many of the older ISA sound cards on PCs do NOT support
 //** full duplex audio (simultaneous record and playback).
@@ -52,7 +55,8 @@
 //*/
 //#define SAMPLE_RATE         (44100)
 //#define PA_SAMPLE_TYPE      paFloat32
-//#define FRAMES_PER_BUFFER   (128)
+//#define FRAMES_PER_BUFFER   (4096)
+//
 //
 //float CubicAmplifier( float input );
 //static int fuzzCallback( const void *inputBuffer, void *outputBuffer,
@@ -119,7 +123,7 @@
 ///*******************************************************************/
 //PaError setupPortaudio(PaStream * &stream);
 //PaError terminatePortaudio(PaStream * &stream);
-//
+////
 //int main() {
 //    PaStream * stream = nullptr;
 //    PaError err = setupPortaudio(stream);
@@ -165,7 +169,7 @@
 //                err = paNoDevice;
 //            }
 //            else {
-//                auto * bot = new Robotization(SAMPLE_RATE, FRAMES_PER_BUFFER, 4096);
+//                auto * bot = new Reverb(SAMPLE_RATE, FRAMES_PER_BUFFER, 4096);
 //                //auto * bot = new Nada(SAMPLE_RATE, FRAMES_PER_BUFFER);
 //
 //                outputParameters.channelCount = 2;       /* stereo output */
@@ -204,6 +208,7 @@
 #include "AudioFile.h"
 #include "Robotization.h"
 #include "windows.h"
+#include "Reverb.h"
 
 
 int main()
@@ -211,7 +216,7 @@ int main()
 //    std::vector<float> holis;
 //    hanning(8, holis);
 //    hanning(512, holis);
-    std::string name = "quando";
+    std::string name = "president-is-moron";
     AudioFile<float> audioFile;
     AudioFile<float> out;
     AudioFile<float>::AudioBuffer newBuffer;
@@ -221,7 +226,7 @@ int main()
     int numSamples = audioFile.getNumSamplesPerChannel();
     int sampleRate = audioFile.getSampleRate();
 
-    Robotization bot(sampleRate, numSamples, windowWidth);
+    Reverb bot(sampleRate, numSamples, windowWidth, PLANO);
 
     auto * buffer = new float [numSamples*2];
     for (int i = 0; i < numSamples; i++) {

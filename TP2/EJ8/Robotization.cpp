@@ -10,8 +10,16 @@
 
 using namespace std;
 
-Robotization::Robotization(unsigned int sampleRate, unsigned int framesPerBuffer, unsigned int windowWidth) :
-AudioEffect(sampleRate, framesPerBuffer, windowWidth/2), windowedData(windowWidth), transform(windowWidth) {
+Robotization::Robotization(
+        unsigned int sampleRate,
+        unsigned int framesPerBuffer,
+        unsigned int windowWidth) :
+        AudioEffect(
+                sampleRate,
+                framesPerBuffer,
+                windowWidth/2),
+                windowedData(windowWidth), transform(windowWidth) {
+
     this->windowWidth = windowWidth;
     hanning(windowWidth, window);
 //    for (auto it = window.begin(); it != window.end(); it++) {
