@@ -28,10 +28,10 @@ class Reverb : public AudioEffect {
         void processWindow(CircularBuffer& in, CircularBuffer& out);
 
     protected:
-        float x[MAX_BUFFER_SIZE];
-        float y[MAX_BUFFER_SIZE];
+        float x[MAX_BUFFER_SIZE], last_x[MAX_BUFFER_SIZE];
+        float y[MAX_BUFFER_SIZE], last_y[MAX_BUFFER_SIZE];
         int mode;
-
+        bool start;
         unsigned int windowWidth;
 
         std::vector<float> window;
