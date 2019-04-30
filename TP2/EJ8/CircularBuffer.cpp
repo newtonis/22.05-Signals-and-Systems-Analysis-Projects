@@ -172,5 +172,9 @@ bool CircularBuffer::isFull() {
     return full;
 }
 
+bool CircularBuffer::empty() {
+    return currSize() == 0;
+}
+
 
 
