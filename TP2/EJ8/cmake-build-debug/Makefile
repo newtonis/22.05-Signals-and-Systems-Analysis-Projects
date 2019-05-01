@@ -38,27 +38,46 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
+<<<<<<< HEAD
 CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
 
 # The command to remove a file.
 RM = "C:\Program Files\CMake\bin\cmake.exe" -E remove -f
+=======
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe"
+
+# The command to remove a file.
+RM = "C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe" -E remove -f
+>>>>>>> 1359904fbff57cd3607898ee7a3c701bf2e121e1
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = C:\Users\newto\INFORMES_ASSD\TP2\EJ8
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = C:\Users\newto\INFORMES_ASSD\TP2\EJ8\cmake-build-debug
+=======
+CMAKE_SOURCE_DIR = C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8\cmake-build-debug
+>>>>>>> 1359904fbff57cd3607898ee7a3c701bf2e121e1
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
+<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
 	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	"C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+>>>>>>> 1359904fbff57cd3607898ee7a3c701bf2e121e1
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -69,7 +88,11 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+<<<<<<< HEAD
 	"C:\Program Files\CMake\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+=======
+	"C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+>>>>>>> 1359904fbff57cd3607898ee7a3c701bf2e121e1
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -79,9 +102,15 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\newto\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles C:\Users\newto\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\newto\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles\progress.marks
+	$(MAKE) -f CMakeFiles\Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles 0
+>>>>>>> 1359904fbff57cd3607898ee7a3c701bf2e121e1
 .PHONY : all
 
 # The main clean target
@@ -202,6 +231,33 @@ CircularBuffer.s: CircularBuffer.cpp.s
 CircularBuffer.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/CircularBuffer.cpp.s
 .PHONY : CircularBuffer.cpp.s
+
+DelayBasedEffect.obj: DelayBasedEffect.cpp.obj
+
+.PHONY : DelayBasedEffect.obj
+
+# target to build an object file
+DelayBasedEffect.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj
+.PHONY : DelayBasedEffect.cpp.obj
+
+DelayBasedEffect.i: DelayBasedEffect.cpp.i
+
+.PHONY : DelayBasedEffect.i
+
+# target to preprocess a source file
+DelayBasedEffect.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.i
+.PHONY : DelayBasedEffect.cpp.i
+
+DelayBasedEffect.s: DelayBasedEffect.cpp.s
+
+.PHONY : DelayBasedEffect.s
+
+# target to generate assembly for a file
+DelayBasedEffect.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.s
+.PHONY : DelayBasedEffect.cpp.s
 
 Flanger.obj: Flanger.cpp.obj
 
@@ -338,6 +394,36 @@ Robotization.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Robotization.cpp.s
 .PHONY : Robotization.cpp.s
 
+<<<<<<< HEAD
+=======
+Vibrato.obj: Vibrato.cpp.obj
+
+.PHONY : Vibrato.obj
+
+# target to build an object file
+Vibrato.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.obj
+.PHONY : Vibrato.cpp.obj
+
+Vibrato.i: Vibrato.cpp.i
+
+.PHONY : Vibrato.i
+
+# target to preprocess a source file
+Vibrato.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.i
+.PHONY : Vibrato.cpp.i
+
+Vibrato.s: Vibrato.cpp.s
+
+.PHONY : Vibrato.s
+
+# target to generate assembly for a file
+Vibrato.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.s
+.PHONY : Vibrato.cpp.s
+
+>>>>>>> 1359904fbff57cd3607898ee7a3c701bf2e121e1
 WavFile.obj: WavFile.cpp.obj
 
 .PHONY : WavFile.obj
@@ -464,6 +550,9 @@ help:
 	@echo ... CircularBuffer.obj
 	@echo ... CircularBuffer.i
 	@echo ... CircularBuffer.s
+	@echo ... DelayBasedEffect.obj
+	@echo ... DelayBasedEffect.i
+	@echo ... DelayBasedEffect.s
 	@echo ... Flanger.obj
 	@echo ... Flanger.i
 	@echo ... Flanger.s
@@ -479,6 +568,12 @@ help:
 	@echo ... Robotization.obj
 	@echo ... Robotization.i
 	@echo ... Robotization.s
+<<<<<<< HEAD
+=======
+	@echo ... Vibrato.obj
+	@echo ... Vibrato.i
+	@echo ... Vibrato.s
+>>>>>>> 1359904fbff57cd3607898ee7a3c701bf2e121e1
 	@echo ... WavFile.obj
 	@echo ... WavFile.i
 	@echo ... WavFile.s
