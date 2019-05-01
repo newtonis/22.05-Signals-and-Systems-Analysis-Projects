@@ -284,6 +284,33 @@ Robotization.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Robotization.cpp.s
 .PHONY : Robotization.cpp.s
 
+WavFile.obj: WavFile.cpp.obj
+
+.PHONY : WavFile.obj
+
+# target to build an object file
+WavFile.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.obj
+.PHONY : WavFile.cpp.obj
+
+WavFile.i: WavFile.cpp.i
+
+.PHONY : WavFile.i
+
+# target to preprocess a source file
+WavFile.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.i
+.PHONY : WavFile.cpp.i
+
+WavFile.s: WavFile.cpp.s
+
+.PHONY : WavFile.s
+
+# target to generate assembly for a file
+WavFile.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.s
+.PHONY : WavFile.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -392,6 +419,9 @@ help:
 	@echo ... Robotization.obj
 	@echo ... Robotization.i
 	@echo ... Robotization.s
+	@echo ... WavFile.obj
+	@echo ... WavFile.i
+	@echo ... WavFile.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

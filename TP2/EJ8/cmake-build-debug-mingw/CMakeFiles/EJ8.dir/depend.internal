@@ -22,6 +22,7 @@ CMakeFiles/EJ8.dir/Reverb.cpp.obj
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.cpp
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.h
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavFile.h
 CMakeFiles/EJ8.dir/Robotization.cpp.obj
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioEffect.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h
@@ -29,6 +30,10 @@ CMakeFiles/EJ8.dir/Robotization.cpp.obj
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Robotization.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/my_fft.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/windows.h
+CMakeFiles/EJ8.dir/WavFile.cpp.obj
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioFile.h
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavFile.cpp
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavFile.h
 CMakeFiles/EJ8.dir/main.cpp.obj
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioEffect.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioFile.h

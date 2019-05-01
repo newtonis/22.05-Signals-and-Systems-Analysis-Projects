@@ -21,6 +21,7 @@ CMakeFiles/EJ8.dir/Reverb.cpp.obj: ../AudioEffect.h
 CMakeFiles/EJ8.dir/Reverb.cpp.obj: ../CircularBuffer.h
 CMakeFiles/EJ8.dir/Reverb.cpp.obj: ../Reverb.cpp
 CMakeFiles/EJ8.dir/Reverb.cpp.obj: ../Reverb.h
+CMakeFiles/EJ8.dir/Reverb.cpp.obj: ../WavFile.h
 
 CMakeFiles/EJ8.dir/Robotization.cpp.obj: ../AudioEffect.h
 CMakeFiles/EJ8.dir/Robotization.cpp.obj: ../CircularBuffer.h
@@ -28,6 +29,10 @@ CMakeFiles/EJ8.dir/Robotization.cpp.obj: ../Robotization.cpp
 CMakeFiles/EJ8.dir/Robotization.cpp.obj: ../Robotization.h
 CMakeFiles/EJ8.dir/Robotization.cpp.obj: ../my_fft.h
 CMakeFiles/EJ8.dir/Robotization.cpp.obj: ../windows.h
+
+CMakeFiles/EJ8.dir/WavFile.cpp.obj: ../AudioFile.h
+CMakeFiles/EJ8.dir/WavFile.cpp.obj: ../WavFile.cpp
+CMakeFiles/EJ8.dir/WavFile.cpp.obj: ../WavFile.h
 
 CMakeFiles/EJ8.dir/main.cpp.obj: ../AudioEffect.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../AudioFile.h

@@ -204,11 +204,13 @@
 //    return err;
 //}
 
-
+#include <map>
 #include "AudioFile.h"
 #include "Robotization.h"
 #include "windows.h"
 #include "Reverb.h"
+
+using namespace std;
 
 
 int main()
@@ -228,7 +230,9 @@ int main()
     int numSamples = audioFile.getNumSamplesPerChannel();
     int realSamples = audioFile.getNumSamplesPerChannel();
 
-    Reverb bot(sampleRate, numSamples, windowWidth, PLANO);
+    map<string,int> config;
+
+    Reverb bot(sampleRate, numSamples, windowWidth, PLANO, config);
 
     auto * buffer = new float [numSamples*2];
     for (int i = 0; i < numSamples; i++) {

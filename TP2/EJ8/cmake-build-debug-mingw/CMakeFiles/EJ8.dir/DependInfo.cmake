@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Nada.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/Nada.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/Reverb.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Robotization.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/Robotization.cpp.obj"
+  "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavFile.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/WavFile.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/main.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/main.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/my_fft.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/my_fft.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/windows.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/windows.cpp.obj"

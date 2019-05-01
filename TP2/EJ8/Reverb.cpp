@@ -3,14 +3,16 @@
 //
 
 #include "Reverb.h"
-
+#include "WavFile.h"
 
 
 Reverb::Reverb(
         unsigned int sampleRate,
         unsigned int framesPerBuffer,
         unsigned int windowWidth,
-        int mode): AudioEffect(
+        int mode,
+        map<string,int> &config
+        ): AudioEffect(
             sampleRate,
             framesPerBuffer,
             windowWidth/2),
@@ -19,6 +21,11 @@ Reverb::Reverb(
     this->mode = mode;
     this->windowWidth = windowWidth;
     this->start = true;
+    this->config = config;
+    this->impulseLength = 500;
+
+    loadWavFile("impulse/Factory Hall.wav", outputA, outputB, impulseLength);
+
 }
 
 void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
@@ -26,51 +33,9 @@ void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
         eco(in, out);
     }else if(mode == PLANO){
         reverbPlano(in, out);
+    }else if(mode == PASABAJO){
+        reverbPlanoPB(in, out);
     }
-
-
-
-
-    /*while (in.currSize() >= windowWidth) { // agarro las ventanas que pueda
-        windowedData.clear();
-        for (unsigned int i = 0; i < windowWidth; i++) {
-            windowedData.emplace(in.read(i)); // agarro una ventana
-        }
-        //in.pop(windowWidth/2); // overlap de 50%
-        in.pop(windowWidth); // no overlap
-        processWindow(windowedData, out);
-    }*/
-
-    /*int index = 0;
-    int size = in.currSize();
-    while (in.currSize() > 0){
-        last_x[index] = x[index];
-        x[index] = in.next();
-        index ++;
-    }
-
-
-
-    for (int n = 0;n < size;n++) {
-        if (n < m) {
-            if (start) {
-                y[n] = last_x[n - m + size] - g * x[n] + g * y[n - m + size];
-            } else {
-                y[n] = g * x[n];
-            }
-            continue;
-        }
-        y[n] = x[n - m] - g * x[n] + g * y[n - m];
-        if (n > 0) {
-            out.emplace((y[n] + y[n - 1]) / 2);
-        }else{
-            out.emplace(y[n]);
-        }
-    }
-    if (this->start){
-        this->start = false;
-    }*/
-
 }
 
 void Reverb::eco(CircularBuffer& in, CircularBuffer& out){
@@ -115,8 +80,42 @@ void Reverb::reverbPlano(CircularBuffer& in, CircularBuffer& out){
     }
 }
 
+void Reverb::reverbPlanoPB(CircularBuffer& in, CircularBuffer& out){
+    float g = 0.5;
+    int m = 5000;
 
-void Reverb::processWindow(CircularBuffer& in, CircularBuffer& out){
+    for (int i = 0;i < m;i++){
+        last_x[i] = 0; // z[0] el anterior, z[1] el ante-anterior etc
+        last_y[i] = 0;
+        last_z[i] = 0;
+    }
+    int i = 100;
+    while (in.currSize() > 0){
+        float x = in.next();
+        float z = g * last_y[(i-m)%m];
+        float y = x + (last_z[i%m] + last_z[(i-1)%m])/2; // filtro pb
+
+        out.emplace(y);
+
+        i ++;
+
+        last_x[(i-1)%m] = x;
+        last_y[(i-1)%m] = y;
+        last_z[(i-1)%m] = z;
+    }
+
+
+}
+
+void Reverb::reverbConvolution(CircularBuffer &in, CircularBuffer &out) {
+    float g = 0.5;
+
+    while (in.currSize() > 0){
+        float ans = 0;
+        float act = in.next();
+        for (int index = )
+    }
+
 
 
 }

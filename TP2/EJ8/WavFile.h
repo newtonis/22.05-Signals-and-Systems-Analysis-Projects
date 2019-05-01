@@ -11,15 +11,9 @@
 using namespace std;
 
 
-class WavReader {
-    public:
-        WavReader(string filename);
-        void getContent();
-    private:
-        bool loaded;
-        vector <float> content;
+void loadWavFile(string filename, vector <float> &outputA, vector <float> &outputB,int maxLength);
 
-};
+
 
 
 #endif //EJ8_WAVREADER_H
