@@ -1,5 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\newtonis\Documents\GitHub\INFORMES_ASSD\TP2\EJ8
--- Found Portaudio: C:/MinGW/lib/libportaudio.dll.a
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw

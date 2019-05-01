@@ -1,5 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\informes_assd\TP2\EJ8
--- Found Portaudio: C:/MinGW/lib/libportaudio.dll.a
--- Configuring done
--- Generating done
--- Build files have been written to: C:/informes_assd/TP2/EJ8/cmake-build-debug
