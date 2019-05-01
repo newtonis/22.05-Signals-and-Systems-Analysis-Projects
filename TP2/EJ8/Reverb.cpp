@@ -24,10 +24,10 @@ void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
     while (in.currSize() >= windowWidth) { // agarro las ventanas que pueda
         windowedData.clear();
         for (unsigned int i = 0; i < windowWidth; i++) {
-            windowedData.emplace(in.read(i)); // agarro una ventana
+            windowedData.push_back(in.read(i)); // agarro una ventana
         }
-        in.pop(windowWidth/2); // overlap de 50%
-        //in.pop(windowWidth); // no overlap
+        in.pop_front(windowWidth / 2); // overlap de 50%
+        //in.pop_front(windowWidth); // no overlap
         processWindow(windowedData, out);
     }
 }
@@ -50,6 +50,6 @@ void Reverb::processWindow(CircularBuffer& in, CircularBuffer& out){
 
         y[n] = x[n] -g * x[n] + x[n - m] + g * y[n - m];
 
-        out.emplace(y[n]);
+        out.push_back(y[n]);
     }
 }

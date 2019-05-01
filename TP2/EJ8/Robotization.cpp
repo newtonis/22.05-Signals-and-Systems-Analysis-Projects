@@ -34,10 +34,10 @@ void Robotization::processInput(CircularBuffer& in, CircularBuffer& out)
     while (in.currSize() >= windowWidth) { // agarro las ventanas que pueda
         windowedData.clear();
         for (unsigned int i = 0; i < windowWidth; i++) {
-            windowedData.emplace(in.read(i)); // agarro una ventana
+            windowedData.push_back(in.read(i)); // agarro una ventana
         }
-        in.pop(windowWidth/2); // overlap de 50%
-        //in.pop(windowWidth); // no overlap
+        in.pop_front(windowWidth / 2); // overlap de 50%
+        //in.pop_front(windowWidth); // no overlap
         processWindow(windowedData, out);
     }
 }
@@ -63,7 +63,7 @@ void Robotization::processWindow(CircularBuffer& in, CircularBuffer& out) {
         //si no tengo suficientes muestras todavia no puedo superponerlas!
         //esto deberia pasar solo la primera vez
         for (unsigned int i = 0; i < windowWidth/2; i++) {
-            out.emplace(transform[i].real());
+            out.push_back(transform[i].real());
         }
     }
     else {
@@ -75,7 +75,7 @@ void Robotization::processWindow(CircularBuffer& in, CircularBuffer& out) {
 
     for (unsigned int i = windowWidth/2; i < windowWidth; i++) {
         //estos datos se tienen que sumar con la primera mitad de la proxima ventana
-        out.emplace(transform[i].real());
+        out.push_back(transform[i].real());
     }
 }
 

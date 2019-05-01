@@ -15,13 +15,15 @@ public:
     float read(unsigned int n);
     bool write(unsigned int n, float data);
     // posiciones que ya existen: sobre escribe
-    // una posicion mas que la maxima: igual a emplace(data)
+    // una posicion mas que la maxima: igual a push_back(data)
     // si no: error
 
-    void emplace(float data);
-    bool pop(unsigned int n); // saca los primeros n datos
+    void push_back(float data);
+    void push_front(float data);
+    bool pop_front(unsigned int n); // saca los primeros n datos
+    bool pop_back(unsigned int n);
     void clear();
-    float next(); // pop(1) y devuelve el dato que se saco
+    float next(); // pop_front(1) y devuelve el dato que se saco
 
     void rearrange(); // pone los datos a partir de la posicion 0
     void resize(unsigned int n, float fill = 0);

@@ -44,7 +44,7 @@ unsigned int CircularBuffer::currSize() {
     }
 }
 
-void CircularBuffer::emplace(float data) {
+void CircularBuffer::push_back(float data) {
     if (full) {
         rearrange();
         if (currSize() == currFullSize) {
@@ -67,7 +67,7 @@ void CircularBuffer::emplace(float data) {
     }
 }
 
-bool CircularBuffer::pop(unsigned int n) {
+bool CircularBuffer::pop_front(unsigned int n) {
     if (currSize() >= n) {
         first = (first + n) % currFullSize;
         if (n) {
@@ -84,7 +84,7 @@ float CircularBuffer::next() {
     float data = 0;
     if (currSize()) {
         data = buffer[first];
-        pop(1);
+        pop_front(1);
     }
     return data;
 }
@@ -114,7 +114,7 @@ float CircularBuffer::read(unsigned int n) {
 bool CircularBuffer::write(unsigned int n, float data) {
     unsigned int curr = currSize();
     if (n == curr) {
-        emplace(data);
+        push_back(data);
     }
     else if (n < curr) {
         buffer[(first + n) % currFullSize] = data;
@@ -174,6 +174,47 @@ bool CircularBuffer::isFull() {
 
 bool CircularBuffer::empty() {
     return currSize() == 0;
+}
+
+void CircularBuffer::push_front(float data) {
+    if (full) {
+        rearrange();
+        if (currSize() == currFullSize) {
+            last = currFullSize;
+            currFullSize += stepMaxSize;
+            buffer.resize(currFullSize);
+            backup.resize(currFullSize);
+            full = false;
+        }
+    }
+
+    if (first == 0) {
+        first = currFullSize-1;
+    }
+    else {
+        first--;
+    }
+
+    buffer[first] = data;
+
+    if (first == last) {
+        full = true;
+    }
+}
+
+bool CircularBuffer::pop_back(unsigned int n) {
+    if (n <= currFullSize) {
+        if (last >= n) {
+            last -= n;
+        }
+        else {
+            last += currFullSize - n;
+        }
+
+        if (n) {
+            full = false;
+        }
+    }
 }
 
 
