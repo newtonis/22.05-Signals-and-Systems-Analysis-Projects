@@ -40,7 +40,7 @@ Reverb::Reverb(
 
     for (int i = 0;i < 12;i++) {
         D.push_back(53); //0.0012f*44100
-        A.push_back(0.9f);
+//         A.push_back(0.9f);
     }
 
 

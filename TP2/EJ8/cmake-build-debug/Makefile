@@ -203,6 +203,33 @@ CircularBuffer.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/CircularBuffer.cpp.s
 .PHONY : CircularBuffer.cpp.s
 
+DelayBasedEffect.obj: DelayBasedEffect.cpp.obj
+
+.PHONY : DelayBasedEffect.obj
+
+# target to build an object file
+DelayBasedEffect.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj
+.PHONY : DelayBasedEffect.cpp.obj
+
+DelayBasedEffect.i: DelayBasedEffect.cpp.i
+
+.PHONY : DelayBasedEffect.i
+
+# target to preprocess a source file
+DelayBasedEffect.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.i
+.PHONY : DelayBasedEffect.cpp.i
+
+DelayBasedEffect.s: DelayBasedEffect.cpp.s
+
+.PHONY : DelayBasedEffect.s
+
+# target to generate assembly for a file
+DelayBasedEffect.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.s
+.PHONY : DelayBasedEffect.cpp.s
+
 Flanger.obj: Flanger.cpp.obj
 
 .PHONY : Flanger.obj
@@ -311,6 +338,60 @@ Robotization.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Robotization.cpp.s
 .PHONY : Robotization.cpp.s
 
+Vibrato.obj: Vibrato.cpp.obj
+
+.PHONY : Vibrato.obj
+
+# target to build an object file
+Vibrato.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.obj
+.PHONY : Vibrato.cpp.obj
+
+Vibrato.i: Vibrato.cpp.i
+
+.PHONY : Vibrato.i
+
+# target to preprocess a source file
+Vibrato.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.i
+.PHONY : Vibrato.cpp.i
+
+Vibrato.s: Vibrato.cpp.s
+
+.PHONY : Vibrato.s
+
+# target to generate assembly for a file
+Vibrato.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.s
+.PHONY : Vibrato.cpp.s
+
+WavFile.obj: WavFile.cpp.obj
+
+.PHONY : WavFile.obj
+
+# target to build an object file
+WavFile.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.obj
+.PHONY : WavFile.cpp.obj
+
+WavFile.i: WavFile.cpp.i
+
+.PHONY : WavFile.i
+
+# target to preprocess a source file
+WavFile.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.i
+.PHONY : WavFile.cpp.i
+
+WavFile.s: WavFile.cpp.s
+
+.PHONY : WavFile.s
+
+# target to generate assembly for a file
+WavFile.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.s
+.PHONY : WavFile.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -410,6 +491,9 @@ help:
 	@echo ... CircularBuffer.obj
 	@echo ... CircularBuffer.i
 	@echo ... CircularBuffer.s
+	@echo ... DelayBasedEffect.obj
+	@echo ... DelayBasedEffect.i
+	@echo ... DelayBasedEffect.s
 	@echo ... Flanger.obj
 	@echo ... Flanger.i
 	@echo ... Flanger.s
@@ -422,6 +506,12 @@ help:
 	@echo ... Robotization.obj
 	@echo ... Robotization.i
 	@echo ... Robotization.s
+	@echo ... Vibrato.obj
+	@echo ... Vibrato.i
+	@echo ... Vibrato.s
+	@echo ... WavFile.obj
+	@echo ... WavFile.i
+	@echo ... WavFile.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

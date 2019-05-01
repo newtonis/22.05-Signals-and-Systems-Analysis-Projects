@@ -25,10 +25,7 @@ public:
     void clear();
     float next(); // pop_front(1) y devuelve el dato que se saco
 
-    void rearrange(); // pone los datos a partir de la posicion 0
-    void resize(unsigned int n, float fill = 0);
-    // si lo hago mas chico saco los ultimos
-    // si lo hago mas grande lleno con fill
+    
 
     unsigned int currSize();
     bool isFull();
@@ -46,6 +43,12 @@ private:
     bool full;
 
     std::vector<float> backup;
+
+    void rearrange(); // pone los datos a partir de la posicion 0
+    void resize(unsigned int n, float fill = 0);
+    // si lo hago mas chico saco los ultimos
+    // si lo hago mas grande lleno con fill
+
 };
 
 

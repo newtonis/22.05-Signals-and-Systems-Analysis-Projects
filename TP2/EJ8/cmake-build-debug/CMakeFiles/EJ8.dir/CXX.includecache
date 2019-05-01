@@ -16,6 +16,16 @@ vector
 CircularBuffer.h
 C:/informes_assd/TP2/EJ8/CircularBuffer.h
 
+C:/informes_assd/TP2/EJ8/AudioFile.h
+iostream
+-
+vector
+-
+assert.h
+-
+string
+-
+
 C:/informes_assd/TP2/EJ8/CircularBuffer.h
 vector
 -
@@ -31,12 +41,18 @@ AudioEffect.h
 C:/informes_assd/TP2/EJ8/AudioEffect.h
 complex
 -
+map
+-
 
 C:/informes_assd/TP2/EJ8/Robotization.h
 AudioEffect.h
 C:/informes_assd/TP2/EJ8/AudioEffect.h
 complex
 -
+
+C:/informes_assd/TP2/EJ8/Vibrato.h
+AudioEffect.h
+C:/informes_assd/TP2/EJ8/AudioEffect.h
 
 C:/informes_assd/TP2/EJ8/main.cpp
 stdio.h
@@ -49,6 +65,22 @@ Robotization.h
 C:/informes_assd/TP2/EJ8/Robotization.h
 Reverb.h
 C:/informes_assd/TP2/EJ8/Reverb.h
+map
+-
+AudioFile.h
+C:/informes_assd/TP2/EJ8/AudioFile.h
+Robotization.h
+C:/informes_assd/TP2/EJ8/Robotization.h
+windows.h
+C:/informes_assd/TP2/EJ8/windows.h
+Reverb.h
+C:/informes_assd/TP2/EJ8/Reverb.h
 Flanger.h
 C:/informes_assd/TP2/EJ8/Flanger.h
+Vibrato.h
+C:/informes_assd/TP2/EJ8/Vibrato.h
+
+C:/informes_assd/TP2/EJ8/windows.h
+vector
+-
 

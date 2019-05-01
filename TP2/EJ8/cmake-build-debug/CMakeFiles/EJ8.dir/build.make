@@ -173,9 +173,22 @@ CMakeFiles/EJ8.dir/Reverb.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/Reverb.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\Reverb.cpp -o CMakeFiles\EJ8.dir\Reverb.cpp.s
 
+CMakeFiles/EJ8.dir/WavFile.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/WavFile.cpp.obj: ../WavFile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/EJ8.dir/WavFile.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\WavFile.cpp.obj -c C:\informes_assd\TP2\EJ8\WavFile.cpp
+
+CMakeFiles/EJ8.dir/WavFile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/WavFile.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\WavFile.cpp > CMakeFiles\EJ8.dir\WavFile.cpp.i
+
+CMakeFiles/EJ8.dir/WavFile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/WavFile.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\WavFile.cpp -o CMakeFiles\EJ8.dir\WavFile.cpp.s
+
 CMakeFiles/EJ8.dir/Flanger.cpp.obj: CMakeFiles/EJ8.dir/flags.make
 CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../Flanger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/EJ8.dir/Flanger.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/EJ8.dir/Flanger.cpp.obj"
 	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\Flanger.cpp.obj -c C:\informes_assd\TP2\EJ8\Flanger.cpp
 
 CMakeFiles/EJ8.dir/Flanger.cpp.i: cmake_force
@@ -185,6 +198,32 @@ CMakeFiles/EJ8.dir/Flanger.cpp.i: cmake_force
 CMakeFiles/EJ8.dir/Flanger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/Flanger.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\Flanger.cpp -o CMakeFiles\EJ8.dir\Flanger.cpp.s
+
+CMakeFiles/EJ8.dir/Vibrato.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/Vibrato.cpp.obj: ../Vibrato.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/EJ8.dir/Vibrato.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\Vibrato.cpp.obj -c C:\informes_assd\TP2\EJ8\Vibrato.cpp
+
+CMakeFiles/EJ8.dir/Vibrato.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/Vibrato.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\Vibrato.cpp > CMakeFiles\EJ8.dir\Vibrato.cpp.i
+
+CMakeFiles/EJ8.dir/Vibrato.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/Vibrato.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\Vibrato.cpp -o CMakeFiles\EJ8.dir\Vibrato.cpp.s
+
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj: CMakeFiles/EJ8.dir/flags.make
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj: ../DelayBasedEffect.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\EJ8.dir\DelayBasedEffect.cpp.obj -c C:\informes_assd\TP2\EJ8\DelayBasedEffect.cpp
+
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\informes_assd\TP2\EJ8\DelayBasedEffect.cpp > CMakeFiles\EJ8.dir\DelayBasedEffect.cpp.i
+
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\informes_assd\TP2\EJ8\DelayBasedEffect.cpp -o CMakeFiles\EJ8.dir\DelayBasedEffect.cpp.s
 
 # Object files for target EJ8
 EJ8_OBJECTS = \
@@ -197,7 +236,10 @@ EJ8_OBJECTS = \
 "CMakeFiles/EJ8.dir/Nada.cpp.obj" \
 "CMakeFiles/EJ8.dir/AudioFile.cpp.obj" \
 "CMakeFiles/EJ8.dir/Reverb.cpp.obj" \
-"CMakeFiles/EJ8.dir/Flanger.cpp.obj"
+"CMakeFiles/EJ8.dir/WavFile.cpp.obj" \
+"CMakeFiles/EJ8.dir/Flanger.cpp.obj" \
+"CMakeFiles/EJ8.dir/Vibrato.cpp.obj" \
+"CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj"
 
 # External object files for target EJ8
 EJ8_EXTERNAL_OBJECTS =
@@ -211,13 +253,16 @@ EJ8.exe: CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj
 EJ8.exe: CMakeFiles/EJ8.dir/Nada.cpp.obj
 EJ8.exe: CMakeFiles/EJ8.dir/AudioFile.cpp.obj
 EJ8.exe: CMakeFiles/EJ8.dir/Reverb.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/WavFile.cpp.obj
 EJ8.exe: CMakeFiles/EJ8.dir/Flanger.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/Vibrato.cpp.obj
+EJ8.exe: CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj
 EJ8.exe: CMakeFiles/EJ8.dir/build.make
 EJ8.exe: C:/MinGW/lib/libportaudio.dll.a
 EJ8.exe: CMakeFiles/EJ8.dir/linklibs.rsp
 EJ8.exe: CMakeFiles/EJ8.dir/objects1.rsp
 EJ8.exe: CMakeFiles/EJ8.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable EJ8.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable EJ8.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\EJ8.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

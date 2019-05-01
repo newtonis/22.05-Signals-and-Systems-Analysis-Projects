@@ -6,25 +6,18 @@
 #define EJ8_FLANGER_H
 
 
-#include "AudioEffect.h"
+#include "DelayBasedEffect.h"
 #include "CircularBuffer.h"
 
-class Flanger : public AudioEffect{
+class Flanger : public DelayBasedEffect{
 public:
-    Flanger(unsigned int sampleRate, unsigned int framesPerBuffer, float f_mod, float mod_depth);
+    Flanger(unsigned int sampleRate, unsigned int framesPerBuffer, float f_mod, float mod_depth, float g);
 
     void processInput(CircularBuffer& in, CircularBuffer& out) override;
     void processStereoInput(const float * stereoInput) override;
 
 
 private:
-    unsigned int delayLine();
-
-    const float f_mod;
-    const float mod_depth;
-    CircularBuffer last_samples;
-
-    float t;
 };
 
 
