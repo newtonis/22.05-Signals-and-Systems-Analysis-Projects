@@ -20,5 +20,5 @@ TP2\EJ8\main.cpp
 *.out
 *.xml
 TP2/EJ8/main.cpp
-TP2\EJ8\cmake-build-debug/
-TP2\EJ8\.idea/
+TP2\EJ8\cmake-build-debug\*
+TP2\EJ8\.idea\*
