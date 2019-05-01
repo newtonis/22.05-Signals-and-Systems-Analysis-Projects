@@ -38,27 +38,27 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\CMake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -E remove -f
+RM = "C:\Program Files\CMake\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\informes_assd\TP2\EJ8
+CMAKE_SOURCE_DIR = C:\Users\newto\INFORMES_ASSD\TP2\EJ8
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\informes_assd\TP2\EJ8\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\newto\INFORMES_ASSD\TP2\EJ8\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	"C:\Program Files\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -69,7 +69,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\CMake\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\newto\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles C:\Users\newto\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\newto\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -230,6 +230,33 @@ Flanger.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.s
 .PHONY : Flanger.cpp.s
 
+InputParser.obj: InputParser.cpp.obj
+
+.PHONY : InputParser.obj
+
+# target to build an object file
+InputParser.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/InputParser.cpp.obj
+.PHONY : InputParser.cpp.obj
+
+InputParser.i: InputParser.cpp.i
+
+.PHONY : InputParser.i
+
+# target to preprocess a source file
+InputParser.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/InputParser.cpp.i
+.PHONY : InputParser.cpp.i
+
+InputParser.s: InputParser.cpp.s
+
+.PHONY : InputParser.s
+
+# target to generate assembly for a file
+InputParser.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/InputParser.cpp.s
+.PHONY : InputParser.cpp.s
+
 Nada.obj: Nada.cpp.obj
 
 .PHONY : Nada.obj
@@ -310,6 +337,33 @@ Robotization.s: Robotization.cpp.s
 Robotization.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Robotization.cpp.s
 .PHONY : Robotization.cpp.s
+
+WavFile.obj: WavFile.cpp.obj
+
+.PHONY : WavFile.obj
+
+# target to build an object file
+WavFile.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.obj
+.PHONY : WavFile.cpp.obj
+
+WavFile.i: WavFile.cpp.i
+
+.PHONY : WavFile.i
+
+# target to preprocess a source file
+WavFile.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.i
+.PHONY : WavFile.cpp.i
+
+WavFile.s: WavFile.cpp.s
+
+.PHONY : WavFile.s
+
+# target to generate assembly for a file
+WavFile.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.s
+.PHONY : WavFile.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -413,6 +467,9 @@ help:
 	@echo ... Flanger.obj
 	@echo ... Flanger.i
 	@echo ... Flanger.s
+	@echo ... InputParser.obj
+	@echo ... InputParser.i
+	@echo ... InputParser.s
 	@echo ... Nada.obj
 	@echo ... Nada.i
 	@echo ... Nada.s
@@ -422,6 +479,9 @@ help:
 	@echo ... Robotization.obj
 	@echo ... Robotization.i
 	@echo ... Robotization.s
+	@echo ... WavFile.obj
+	@echo ... WavFile.i
+	@echo ... WavFile.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

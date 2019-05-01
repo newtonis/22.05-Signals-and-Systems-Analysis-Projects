@@ -4,16 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/informes_assd/TP2/EJ8/AudioEffect.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/AudioEffect.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/AudioFile.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/AudioFile.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/CircularBuffer.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/Flanger.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/Flanger.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/Nada.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/Nada.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/Reverb.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/Reverb.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/Robotization.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/Robotization.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/main.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/main.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/my_fft.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/my_fft.cpp.obj"
-  "C:/informes_assd/TP2/EJ8/windows.cpp" "C:/informes_assd/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/windows.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/AudioEffect.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/AudioEffect.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/AudioFile.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/AudioFile.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/CircularBuffer.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/Flanger.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/Flanger.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/InputParser.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/InputParser.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/Nada.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/Nada.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/Reverb.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/Reverb.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/Robotization.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/Robotization.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/WavFile.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/WavFile.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/main.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/main.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/my_fft.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/my_fft.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/windows.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir/windows.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
