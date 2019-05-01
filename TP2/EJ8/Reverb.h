@@ -50,14 +50,22 @@ class Reverb : public AudioEffect {
         float y[MAX_BUFFER_SIZE], last_y[MAX_BUFFER_SIZE];
         float z[MAX_BUFFER_SIZE], last_z[MAX_BUFFER_SIZE];
 
-        int aux[DP_MAX][MAX_REB];
+        float aux[DP_MAX][MAX_REB];
+        float comb_aux[DP_MAX][MAX_REB];
+        float comb_a[DP_MAX];
 
         int mode;
         map<string,int> config;
+
         vector <int> D;
+        vector <int> combD;
+        vector <float> combA;
+
+        int comb_count;
+
         float a;
 
-        vector <float> outputA, outputB;
+        vector <float> outputA, outputB; // para la respuesta al impulso
         bool start;
 
         unsigned int windowWidth;

@@ -16,16 +16,6 @@ vector
 CircularBuffer.h
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h
 
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioFile.h
-iostream
--
-vector
--
-assert.h
--
-string
--
-
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h
 vector
 -
@@ -35,6 +25,8 @@ Reverb.h
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.h
 WavFile.h
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavFile.h
+iostream
+-
 
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.h
 AudioEffect.h
@@ -42,43 +34,11 @@ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioEffect.h
 complex
 -
 map
--
-
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Robotization.h
-AudioEffect.h
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioEffect.h
-complex
 -
 
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavFile.h
 string
 -
-vector
--
-
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/main.cpp
-stdio.h
--
-math.h
--
-portaudio.h
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/portaudio.h
-Robotization.h
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Robotization.h
-Reverb.h
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.h
-map
--
-AudioFile.h
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioFile.h
-Robotization.h
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Robotization.h
-windows.h
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/windows.h
-Reverb.h
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.h
-
-C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/windows.h
 vector
 -
 
