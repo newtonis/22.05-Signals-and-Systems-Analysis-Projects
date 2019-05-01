@@ -13,8 +13,6 @@ class Flanger : public DelayBasedEffect{
 public:
     Flanger(unsigned int sampleRate, unsigned int framesPerBuffer, float f_mod, float mod_depth, float g);
 
-    void processInput(CircularBuffer& in, CircularBuffer& out) override;
-    void processStereoInput(const float * stereoInput) override;
 
 
 private:

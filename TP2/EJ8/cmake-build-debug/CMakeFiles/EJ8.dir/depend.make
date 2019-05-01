@@ -11,8 +11,14 @@ CMakeFiles/EJ8.dir/AudioFile.cpp.obj: ../AudioFile.h
 CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj: ../CircularBuffer.cpp
 CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj: ../CircularBuffer.h
 
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj: ../AudioEffect.h
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj: ../CircularBuffer.h
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj: ../DelayBasedEffect.cpp
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj: ../DelayBasedEffect.h
+
 CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../AudioEffect.h
 CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../CircularBuffer.h
+CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../DelayBasedEffect.h
 CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../Flanger.cpp
 CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../Flanger.h
 
@@ -37,6 +43,7 @@ CMakeFiles/EJ8.dir/Robotization.cpp.obj: ../windows.h
 
 CMakeFiles/EJ8.dir/Vibrato.cpp.obj: ../AudioEffect.h
 CMakeFiles/EJ8.dir/Vibrato.cpp.obj: ../CircularBuffer.h
+CMakeFiles/EJ8.dir/Vibrato.cpp.obj: ../DelayBasedEffect.h
 CMakeFiles/EJ8.dir/Vibrato.cpp.obj: ../Vibrato.cpp
 CMakeFiles/EJ8.dir/Vibrato.cpp.obj: ../Vibrato.h
 
@@ -47,6 +54,7 @@ CMakeFiles/EJ8.dir/WavFile.cpp.obj: ../WavFile.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../AudioEffect.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../AudioFile.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../CircularBuffer.h
+CMakeFiles/EJ8.dir/main.cpp.obj: ../DelayBasedEffect.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../Flanger.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../Reverb.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../Robotization.h

@@ -11,9 +11,15 @@ CMakeFiles/EJ8.dir/AudioFile.cpp.obj
 CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj
  C:/informes_assd/TP2/EJ8/CircularBuffer.cpp
  C:/informes_assd/TP2/EJ8/CircularBuffer.h
+CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj
+ C:/informes_assd/TP2/EJ8/AudioEffect.h
+ C:/informes_assd/TP2/EJ8/CircularBuffer.h
+ C:/informes_assd/TP2/EJ8/DelayBasedEffect.cpp
+ C:/informes_assd/TP2/EJ8/DelayBasedEffect.h
 CMakeFiles/EJ8.dir/Flanger.cpp.obj
  C:/informes_assd/TP2/EJ8/AudioEffect.h
  C:/informes_assd/TP2/EJ8/CircularBuffer.h
+ C:/informes_assd/TP2/EJ8/DelayBasedEffect.h
  C:/informes_assd/TP2/EJ8/Flanger.cpp
  C:/informes_assd/TP2/EJ8/Flanger.h
 CMakeFiles/EJ8.dir/Nada.cpp.obj
@@ -38,6 +44,7 @@ CMakeFiles/EJ8.dir/Robotization.cpp.obj
 CMakeFiles/EJ8.dir/Vibrato.cpp.obj
  C:/informes_assd/TP2/EJ8/AudioEffect.h
  C:/informes_assd/TP2/EJ8/CircularBuffer.h
+ C:/informes_assd/TP2/EJ8/DelayBasedEffect.h
  C:/informes_assd/TP2/EJ8/Vibrato.cpp
  C:/informes_assd/TP2/EJ8/Vibrato.h
 CMakeFiles/EJ8.dir/WavFile.cpp.obj
@@ -48,6 +55,7 @@ CMakeFiles/EJ8.dir/main.cpp.obj
  C:/informes_assd/TP2/EJ8/AudioEffect.h
  C:/informes_assd/TP2/EJ8/AudioFile.h
  C:/informes_assd/TP2/EJ8/CircularBuffer.h
+ C:/informes_assd/TP2/EJ8/DelayBasedEffect.h
  C:/informes_assd/TP2/EJ8/Flanger.h
  C:/informes_assd/TP2/EJ8/Reverb.h
  C:/informes_assd/TP2/EJ8/Robotization.h

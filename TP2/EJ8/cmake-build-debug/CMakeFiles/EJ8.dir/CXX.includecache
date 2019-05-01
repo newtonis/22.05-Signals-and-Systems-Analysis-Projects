@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+C:/informes_assd/TP2/EJ8/AudioEffect.cpp
+AudioEffect.h
+C:/informes_assd/TP2/EJ8/AudioEffect.h
+iostream
+-
+
 C:/informes_assd/TP2/EJ8/AudioEffect.h
 string
 -
@@ -26,15 +32,55 @@ assert.h
 string
 -
 
+C:/informes_assd/TP2/EJ8/CircularBuffer.cpp
+CircularBuffer.h
+C:/informes_assd/TP2/EJ8/CircularBuffer.h
+algorithm
+-
+
 C:/informes_assd/TP2/EJ8/CircularBuffer.h
 vector
 -
 
-C:/informes_assd/TP2/EJ8/Flanger.h
+C:/informes_assd/TP2/EJ8/DelayBasedEffect.cpp
+DelayBasedEffect.h
+C:/informes_assd/TP2/EJ8/DelayBasedEffect.h
+cmath
+-
+
+C:/informes_assd/TP2/EJ8/DelayBasedEffect.h
 AudioEffect.h
 C:/informes_assd/TP2/EJ8/AudioEffect.h
+
+C:/informes_assd/TP2/EJ8/Flanger.cpp
+Flanger.h
+C:/informes_assd/TP2/EJ8/Flanger.h
+cmath
+-
+
+C:/informes_assd/TP2/EJ8/Flanger.h
+DelayBasedEffect.h
+C:/informes_assd/TP2/EJ8/DelayBasedEffect.h
 CircularBuffer.h
 C:/informes_assd/TP2/EJ8/CircularBuffer.h
+
+C:/informes_assd/TP2/EJ8/Nada.cpp
+Nada.h
+C:/informes_assd/TP2/EJ8/Nada.h
+
+C:/informes_assd/TP2/EJ8/Nada.h
+AudioEffect.h
+C:/informes_assd/TP2/EJ8/AudioEffect.h
+my_fft.h
+C:/informes_assd/TP2/EJ8/my_fft.h
+
+C:/informes_assd/TP2/EJ8/Reverb.cpp
+Reverb.h
+C:/informes_assd/TP2/EJ8/Reverb.h
+WavFile.h
+C:/informes_assd/TP2/EJ8/WavFile.h
+iostream
+-
 
 C:/informes_assd/TP2/EJ8/Reverb.h
 AudioEffect.h
@@ -44,15 +90,39 @@ complex
 map
 -
 
+C:/informes_assd/TP2/EJ8/Robotization.cpp
+Robotization.h
+C:/informes_assd/TP2/EJ8/Robotization.h
+my_fft.h
+C:/informes_assd/TP2/EJ8/my_fft.h
+windows.h
+C:/informes_assd/TP2/EJ8/windows.h
+iterator
+-
+iostream
+-
+
 C:/informes_assd/TP2/EJ8/Robotization.h
 AudioEffect.h
 C:/informes_assd/TP2/EJ8/AudioEffect.h
 complex
 -
 
+C:/informes_assd/TP2/EJ8/Vibrato.cpp
+Vibrato.h
 C:/informes_assd/TP2/EJ8/Vibrato.h
-AudioEffect.h
-C:/informes_assd/TP2/EJ8/AudioEffect.h
+cmath
+-
+
+C:/informes_assd/TP2/EJ8/Vibrato.h
+DelayBasedEffect.h
+C:/informes_assd/TP2/EJ8/DelayBasedEffect.h
+
+C:/informes_assd/TP2/EJ8/WavFile.h
+string
+-
+vector
+-
 
 C:/informes_assd/TP2/EJ8/main.cpp
 stdio.h
@@ -79,6 +149,12 @@ Flanger.h
 C:/informes_assd/TP2/EJ8/Flanger.h
 Vibrato.h
 C:/informes_assd/TP2/EJ8/Vibrato.h
+
+C:/informes_assd/TP2/EJ8/my_fft.h
+complex
+-
+vector
+-
 
 C:/informes_assd/TP2/EJ8/windows.h
 vector
