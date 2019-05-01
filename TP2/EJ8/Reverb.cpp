@@ -4,6 +4,8 @@
 
 #include "Reverb.h"
 #include "WavFile.h"
+#include <iostream>
+using namespace std;
 
 
 Reverb::Reverb(
@@ -29,6 +31,7 @@ Reverb::Reverb(
     for (int i = 0;i < DP_MAX;i++){
         for (int j = 0;j < MAX_REB;j++){
             aux[i][j] = 0;
+            comb_aux[i][j] = 0;
         }
     }
 
@@ -36,14 +39,18 @@ Reverb::Reverb(
         last_x[i] = 0; // z[0] el anterior, z[1] el ante-anterior etc
         last_y[i] = 0;
         last_z[i] = 0;
-    }
 
+    }
     for (int i = 0;i < 12;i++) {
         D.push_back(53); //0.0012f*44100
-//         A.push_back(0.9f);
     }
 
-
+    comb_count = 4;
+    for (int i = 0;i < comb_count;i++){
+        combD.push_back(500);
+        combA.push_back(0.5);
+    }
+    a = 0.99;
 }
 
 void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
@@ -55,6 +62,8 @@ void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
         reverbPlanoPB(in, out);
     }else if(mode == CONVOLUCION){
         reverbConvolution(in, out);
+    }else if(mode == COMPLETO){
+        reverbSchroeder(in, out);
     }
 }
 
@@ -136,14 +145,35 @@ void Reverb::reverbConvolution(CircularBuffer &in, CircularBuffer &out) {
 }
 void Reverb::reverbSchroeder(CircularBuffer& in, CircularBuffer& out){
     int i = DP_MAX * 20;
-    int ds = D.size();
+    int d = DP_MAX;
 
     while (in.currSize() > 0){
-        int x = in.next();
+        float x = in.next();
+        float y = 0;
 
         for (int j = 0;j < D.size();j++){
-            //aux[i%ds][j] =
+            y += last_x[(i-D[j])%d] + aux[(i-D[j])%d][j] * this->a;
         }
+        last_x[i%d] = x;
+        last_y[i%d] = y;
+
+
+        for (int j = 0;j <= comb_count;j++){
+            if (j != 0) {
+                int cur_d = combD[j-1];
+                float cur_a = combA[j-1];
+
+                comb_aux[i % d][j] = \
+                    -cur_a * comb_aux[i % d][j - 1] + \
+                    comb_aux[(i - cur_d) % d][j - 1] + \
+                    cur_a * comb_aux[(i - cur_d) % d][j];
+
+            }else{
+                comb_aux[i % d][j] = last_y[i % d];
+            }
+
+        }
+        out.push_back(comb_aux[i % d][comb_count]);
 
         i++;
     }

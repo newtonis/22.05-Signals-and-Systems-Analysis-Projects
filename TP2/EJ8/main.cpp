@@ -237,9 +237,11 @@ int main()
     map<string,int> config;
 
 
+
     float f_mod = 5, mod_depth = 0.001;
     //Reverb bot(sampleRate, numSamples, windowWidth, CONVOLUCION, config);
     Vibrato bot (sampleRate, numSamples, f_mod, mod_depth);
+    //Reverb bot(sampleRate, numSamples, windowWidth, COMPLETO, config);
 
     auto * buffer = new float [numSamples*2];
     for (int i = 0; i < numSamples; i++) {
