@@ -38,10 +38,10 @@ void AudioEffect::splitInput(const float * stereoInput)
 {
     if (stereoInput) {
         for (unsigned int i = 0; i < framesPerBuffer; i++) {
-            //inLeft.emplace(0);
-            inLeft.emplace(stereoInput[2*i]);
-            inRight.emplace(stereoInput[2*i+1]);
-            //inRight.emplace(0);
+            //inLeft.push_back(0);
+            inLeft.push_back(stereoInput[2 * i]);
+            inRight.push_back(stereoInput[2 * i + 1]);
+            //inRight.push_back(0);
         }
     }
 }

@@ -23,10 +23,22 @@ vector
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.cpp
 Reverb.h
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.h
+WavFile.h
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavFile.h
+iostream
+-
 
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.h
 AudioEffect.h
 C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioEffect.h
 complex
+-
+map
+-
+
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavFile.h
+string
+-
+vector
 -
 

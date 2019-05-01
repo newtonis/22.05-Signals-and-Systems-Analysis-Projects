@@ -204,11 +204,17 @@
 //    return err;
 //}
 
-
+#include <map>
 #include "AudioFile.h"
 #include "Robotization.h"
 #include "windows.h"
 #include "Reverb.h"
+#include "Flanger.h"
+#include "Vibrato.h"
+
+
+
+using namespace std;
 
 
 int main()
@@ -217,7 +223,7 @@ int main()
 //    hanning(8, holis);
 //    hanning(512, holis);
 
-    std::string name = "president-is-moron";
+    std::string name = "organ";
     AudioFile<float> audioFile;
     AudioFile<float> out;
     AudioFile<float>::AudioBuffer newBuffer;
@@ -228,7 +234,14 @@ int main()
     int numSamples = audioFile.getNumSamplesPerChannel();
     int realSamples = audioFile.getNumSamplesPerChannel();
 
-    Reverb bot(sampleRate, numSamples, windowWidth, PLANO);
+    map<string,int> config;
+
+
+
+    float f_mod = 5, mod_depth = 0.001;
+    //Reverb bot(sampleRate, numSamples, windowWidth, CONVOLUCION, config);
+    Vibrato bot (sampleRate, numSamples, f_mod, mod_depth);
+    //Reverb bot(sampleRate, numSamples, windowWidth, COMPLETO, config);
 
     auto * buffer = new float [numSamples*2];
     for (int i = 0; i < numSamples; i++) {
@@ -259,12 +272,16 @@ int main()
     }
 
 
-    freopen("output/y.txt","w+",stdout);
-    for (int i = 0;i < numSamples;i++){
-        cout << buffer[2*i] << '\n';
-    }
+//    freopen("output/y.txt","w+",stdout);
+//    for (int i = 0;i < numSamples;i++){
+//        cout << buffer[2*i] << '\n';
+//    }
 
     out.setAudioBuffer(newBuffer);
-    out.save ("output/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
+    //out.save ("output/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
+    //out.save ("output/"+name + "_" + "flang_" + std::to_string(int(f_mod*1000)) + "mHz_"
+    //+ std::to_string(int(mod_depth*1000)) + "ms.wav");
+    out.save ("output/"+name + "_" + "vibrato_" + std::to_string(int(f_mod*1000)) + "mHz_"
+              + std::to_string(int(mod_depth*1000)) + "ms.wav");
     delete [] buffer;
 }

@@ -38,19 +38,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -E remove -f
+RM = "C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\informes_assd\TP2\EJ8
+CMAKE_SOURCE_DIR = C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\informes_assd\TP2\EJ8\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = C:\informes_assd\TP2\EJ8\cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -69,7 +69,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2019.1\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\informes_assd\TP2\EJ8\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\joa-m\INFORMES_ASSD\TP2\EJ8\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -203,6 +203,60 @@ CircularBuffer.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/CircularBuffer.cpp.s
 .PHONY : CircularBuffer.cpp.s
 
+DelayBasedEffect.obj: DelayBasedEffect.cpp.obj
+
+.PHONY : DelayBasedEffect.obj
+
+# target to build an object file
+DelayBasedEffect.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.obj
+.PHONY : DelayBasedEffect.cpp.obj
+
+DelayBasedEffect.i: DelayBasedEffect.cpp.i
+
+.PHONY : DelayBasedEffect.i
+
+# target to preprocess a source file
+DelayBasedEffect.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.i
+.PHONY : DelayBasedEffect.cpp.i
+
+DelayBasedEffect.s: DelayBasedEffect.cpp.s
+
+.PHONY : DelayBasedEffect.s
+
+# target to generate assembly for a file
+DelayBasedEffect.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/DelayBasedEffect.cpp.s
+.PHONY : DelayBasedEffect.cpp.s
+
+Flanger.obj: Flanger.cpp.obj
+
+.PHONY : Flanger.obj
+
+# target to build an object file
+Flanger.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.obj
+.PHONY : Flanger.cpp.obj
+
+Flanger.i: Flanger.cpp.i
+
+.PHONY : Flanger.i
+
+# target to preprocess a source file
+Flanger.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.i
+.PHONY : Flanger.cpp.i
+
+Flanger.s: Flanger.cpp.s
+
+.PHONY : Flanger.s
+
+# target to generate assembly for a file
+Flanger.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.s
+.PHONY : Flanger.cpp.s
+
 Nada.obj: Nada.cpp.obj
 
 .PHONY : Nada.obj
@@ -230,6 +284,33 @@ Nada.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Nada.cpp.s
 .PHONY : Nada.cpp.s
 
+Reverb.obj: Reverb.cpp.obj
+
+.PHONY : Reverb.obj
+
+# target to build an object file
+Reverb.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Reverb.cpp.obj
+.PHONY : Reverb.cpp.obj
+
+Reverb.i: Reverb.cpp.i
+
+.PHONY : Reverb.i
+
+# target to preprocess a source file
+Reverb.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Reverb.cpp.i
+.PHONY : Reverb.cpp.i
+
+Reverb.s: Reverb.cpp.s
+
+.PHONY : Reverb.s
+
+# target to generate assembly for a file
+Reverb.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Reverb.cpp.s
+.PHONY : Reverb.cpp.s
+
 Robotization.obj: Robotization.cpp.obj
 
 .PHONY : Robotization.obj
@@ -256,6 +337,60 @@ Robotization.s: Robotization.cpp.s
 Robotization.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Robotization.cpp.s
 .PHONY : Robotization.cpp.s
+
+Vibrato.obj: Vibrato.cpp.obj
+
+.PHONY : Vibrato.obj
+
+# target to build an object file
+Vibrato.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.obj
+.PHONY : Vibrato.cpp.obj
+
+Vibrato.i: Vibrato.cpp.i
+
+.PHONY : Vibrato.i
+
+# target to preprocess a source file
+Vibrato.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.i
+.PHONY : Vibrato.cpp.i
+
+Vibrato.s: Vibrato.cpp.s
+
+.PHONY : Vibrato.s
+
+# target to generate assembly for a file
+Vibrato.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.s
+.PHONY : Vibrato.cpp.s
+
+WavFile.obj: WavFile.cpp.obj
+
+.PHONY : WavFile.obj
+
+# target to build an object file
+WavFile.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.obj
+.PHONY : WavFile.cpp.obj
+
+WavFile.i: WavFile.cpp.i
+
+.PHONY : WavFile.i
+
+# target to preprocess a source file
+WavFile.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.i
+.PHONY : WavFile.cpp.i
+
+WavFile.s: WavFile.cpp.s
+
+.PHONY : WavFile.s
+
+# target to generate assembly for a file
+WavFile.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.s
+.PHONY : WavFile.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -356,12 +491,27 @@ help:
 	@echo ... CircularBuffer.obj
 	@echo ... CircularBuffer.i
 	@echo ... CircularBuffer.s
+	@echo ... DelayBasedEffect.obj
+	@echo ... DelayBasedEffect.i
+	@echo ... DelayBasedEffect.s
+	@echo ... Flanger.obj
+	@echo ... Flanger.i
+	@echo ... Flanger.s
 	@echo ... Nada.obj
 	@echo ... Nada.i
 	@echo ... Nada.s
+	@echo ... Reverb.obj
+	@echo ... Reverb.i
+	@echo ... Reverb.s
 	@echo ... Robotization.obj
 	@echo ... Robotization.i
 	@echo ... Robotization.s
+	@echo ... Vibrato.obj
+	@echo ... Vibrato.i
+	@echo ... Vibrato.s
+	@echo ... WavFile.obj
+	@echo ... WavFile.i
+	@echo ... WavFile.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
