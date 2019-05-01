@@ -25,7 +25,7 @@ public:
     void clear();
     float next(); // pop_front(1) y devuelve el dato que se saco
 
-    
+
 
     unsigned int currSize();
     bool isFull();
