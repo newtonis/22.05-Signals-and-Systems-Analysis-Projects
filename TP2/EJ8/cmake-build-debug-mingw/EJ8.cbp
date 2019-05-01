@@ -100,6 +100,12 @@
 		<Unit filename="C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h">
 			<Option target="EJ8"/>
 		</Unit>
+		<Unit filename="C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Flanger.cpp">
+			<Option target="EJ8"/>
+		</Unit>
+		<Unit filename="C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Flanger.h">
+			<Option target="EJ8"/>
+		</Unit>
 		<Unit filename="C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Nada.cpp">
 			<Option target="EJ8"/>
 		</Unit>

@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/EJ8.dir/AudioFile.cpp.obj"
   "CMakeFiles/EJ8.dir/Reverb.cpp.obj"
   "CMakeFiles/EJ8.dir/WavFile.cpp.obj"
+  "CMakeFiles/EJ8.dir/Flanger.cpp.obj"
   "EJ8.pdb"
   "EJ8.exe"
   "EJ8.exe.manifest"

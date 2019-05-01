@@ -203,6 +203,33 @@ CircularBuffer.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/CircularBuffer.cpp.s
 .PHONY : CircularBuffer.cpp.s
 
+Flanger.obj: Flanger.cpp.obj
+
+.PHONY : Flanger.obj
+
+# target to build an object file
+Flanger.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.obj
+.PHONY : Flanger.cpp.obj
+
+Flanger.i: Flanger.cpp.i
+
+.PHONY : Flanger.i
+
+# target to preprocess a source file
+Flanger.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.i
+.PHONY : Flanger.cpp.i
+
+Flanger.s: Flanger.cpp.s
+
+.PHONY : Flanger.s
+
+# target to generate assembly for a file
+Flanger.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.s
+.PHONY : Flanger.cpp.s
+
 Nada.obj: Nada.cpp.obj
 
 .PHONY : Nada.obj
@@ -229,6 +256,33 @@ Nada.s: Nada.cpp.s
 Nada.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Nada.cpp.s
 .PHONY : Nada.cpp.s
+
+Reverb.obj: Reverb.cpp.obj
+
+.PHONY : Reverb.obj
+
+# target to build an object file
+Reverb.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Reverb.cpp.obj
+.PHONY : Reverb.cpp.obj
+
+Reverb.i: Reverb.cpp.i
+
+.PHONY : Reverb.i
+
+# target to preprocess a source file
+Reverb.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Reverb.cpp.i
+.PHONY : Reverb.cpp.i
+
+Reverb.s: Reverb.cpp.s
+
+.PHONY : Reverb.s
+
+# target to generate assembly for a file
+Reverb.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Reverb.cpp.s
+.PHONY : Reverb.cpp.s
 
 Robotization.obj: Robotization.cpp.obj
 
@@ -356,9 +410,15 @@ help:
 	@echo ... CircularBuffer.obj
 	@echo ... CircularBuffer.i
 	@echo ... CircularBuffer.s
+	@echo ... Flanger.obj
+	@echo ... Flanger.i
+	@echo ... Flanger.s
 	@echo ... Nada.obj
 	@echo ... Nada.i
 	@echo ... Nada.s
+	@echo ... Reverb.obj
+	@echo ... Reverb.i
+	@echo ... Reverb.s
 	@echo ... Robotization.obj
 	@echo ... Robotization.i
 	@echo ... Robotization.s

@@ -15,7 +15,7 @@ public:
     //static factory(std::string name, void * params, unsigned int const sampleRate, unsigned int const framesPerBuffer);
     AudioEffect(unsigned int sampleRate, unsigned int framesPerBuffer, unsigned int minOutSize = 0);
 
-    void processStereoInput(const float * stereoInput);
+    virtual void processStereoInput(const float * stereoInput);
     virtual void processInput(CircularBuffer& in, CircularBuffer& out) = 0;
     void setNextOutput(float * stereoOutput);
 

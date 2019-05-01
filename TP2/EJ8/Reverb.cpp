@@ -55,7 +55,7 @@ void Reverb::eco(CircularBuffer& in, CircularBuffer& out){
         last_x[i%m] = actual;
         last_y[i%m] = salida;
         i ++;
-        out.emplace(salida);
+        out.push_back(salida);
     }
 }
 
@@ -76,7 +76,7 @@ void Reverb::reverbPlano(CircularBuffer& in, CircularBuffer& out){
         last_x[i%m] = actual;
         last_y[i%m] = salida;
         i ++;
-        out.emplace(salida);
+        out.push_back(salida);
     }
 }
 

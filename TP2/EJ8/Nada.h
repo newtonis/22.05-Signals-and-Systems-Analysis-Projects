@@ -27,12 +27,12 @@ public:
             ifft(transform, transform);
 
             for (i = 0; i < framesPerBuffer; i++) {
-                out.emplace(transform[i].real());
+                out.push_back(transform[i].real());
             }
         }
         else {
             while (in.currSize()) {
-                out.emplace(in.next());
+                out.push_back(in.next());
             }
         }
     }

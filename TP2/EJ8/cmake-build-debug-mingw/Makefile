@@ -203,6 +203,33 @@ CircularBuffer.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/CircularBuffer.cpp.s
 .PHONY : CircularBuffer.cpp.s
 
+Flanger.obj: Flanger.cpp.obj
+
+.PHONY : Flanger.obj
+
+# target to build an object file
+Flanger.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.obj
+.PHONY : Flanger.cpp.obj
+
+Flanger.i: Flanger.cpp.i
+
+.PHONY : Flanger.i
+
+# target to preprocess a source file
+Flanger.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.i
+.PHONY : Flanger.cpp.i
+
+Flanger.s: Flanger.cpp.s
+
+.PHONY : Flanger.s
+
+# target to generate assembly for a file
+Flanger.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.s
+.PHONY : Flanger.cpp.s
+
 Nada.obj: Nada.cpp.obj
 
 .PHONY : Nada.obj
@@ -410,6 +437,9 @@ help:
 	@echo ... CircularBuffer.obj
 	@echo ... CircularBuffer.i
 	@echo ... CircularBuffer.s
+	@echo ... Flanger.obj
+	@echo ... Flanger.i
+	@echo ... Flanger.s
 	@echo ... Nada.obj
 	@echo ... Nada.i
 	@echo ... Nada.s

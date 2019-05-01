@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioEffect.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/AudioEffect.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioFile.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/AudioFile.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj"
+  "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Flanger.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/Flanger.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Nada.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/Nada.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/Reverb.cpp.obj"
   "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Robotization.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/cmake-build-debug-mingw/CMakeFiles/EJ8.dir/Robotization.cpp.obj"
