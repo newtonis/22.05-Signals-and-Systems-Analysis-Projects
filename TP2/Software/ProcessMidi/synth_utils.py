@@ -97,8 +97,6 @@ class individual_track:
             if tc <= tick_on:
                 tempos_recorridos.append([tc, tempo_tc])
 
-        if len(tempos_recorridos)==0:
-            print("sarasa")
         last_tc = tempos_recorridos[0][0]
         last_tempo = tempos_recorridos[0][1]
         for tc, tempo_tc in tempos_recorridos:
