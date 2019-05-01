@@ -14,4 +14,9 @@
             code="guitarra.py"
             function="SitetizarGuitarraDistorsion"
     />
+    <instrumento
+            nombre="Trombón"
+            code="trombon.py"
+            function="getBrassTone"
+    />
 </sonidos>

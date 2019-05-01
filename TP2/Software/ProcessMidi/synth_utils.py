@@ -1,6 +1,24 @@
 import mido
 from numpy import *
 
+def get_toff(t_on,t_v0,t_off):
+    t_apagar=[]
+    strange = False
+    if len(t_on) == len(t_v0):
+        t_apagar = t_v0
+    elif len(t_on) == len(t_off):
+        t_apagar = t_off
+    else:
+        if len(t_on) < len(t_v0):
+            t_apagar = t_v0[0:len(t_on)]
+            print("se recorto t_v0 por tener mas tamaño que t_on")
+        elif len(t_on) < len(t_off):
+            t_apagar = t_v0[0:len(t_on)]
+            print("se recorto t_off por tener mas tamaño que t_on")
+        print("Se ingreso un midi extraño, el resultado puede ser extraño")
+        strange = True
+    return t_apagar,strange
+
 def getUniqAndSortedTempoList(tempo_list):
     tempo_list.sort(key=lambda x: x[0])
     final_list = []
@@ -35,11 +53,11 @@ class individual_track:
     amp_arr = None
     memory = None
     tempo_list = None
-    this_track_tempo_list = None
     t_on_in_secs = None
+    this_track_tempo = None
     track_volumes = None
 
-    def __init__(self,ticks_per_beat_,total_time_, fs, t_on, t_off):
+    def __init__(self,ticks_per_beat_,total_time_, fs, t_on, t_off,tempo_track):
         self.ticks_per_beat = ticks_per_beat_
         self.time_counter = 0
         self.t_on = t_on
@@ -50,7 +68,7 @@ class individual_track:
         self.memory = {}
         self.total_time = total_time_
         self.tempo_list = []
-        self.this_track_tempo_list = []
+        self.this_track_tempo = tempo_track
         self.t_on_in_secs = None
 
     def tick2sec(self,tick,tempo):
@@ -93,9 +111,9 @@ class individual_track:
 
     def getDeltaTHastaTick(self):
         t_on_in_secs = {}
+
         for i in range(len(self.t_on)):  # t_on[i]->[tick_on, vel,note]
             tick_on, tick_off = self.t_on[i][0], self.t_off[i][0]
-
             delta_t_on = self.getDelta(tick_on)
             delta_t_off = self.getDelta(tick_off)
 
@@ -108,24 +126,23 @@ class individual_track:
         self.getDeltaTHastaTick()
         tick_on = self.t_on[i][0]
         vel_on = self.t_on[i][1]
-        #vel_off = self.t_off[i][1]
         note = self.t_on[i][2]
 
         freq = noteToFreq(note)
-
         time_on = self.t_on_in_secs[tick_on][0]
         delta_t = self.t_on_in_secs[tick_on][1]
+
+        if delta_t < (1/self.fs):
+            return None, []
 
         tick_on_in_fs = self.time2tickinfs(time_on)
 
         v, f, dt = vel_on, freq, delta_t
         y = self.checkIfInMemory(v, f, dt)
 
-        track_vol = None
         if self.name in self.track_volumes:
             track_vol = self.track_volumes[self.name]
 
-
-        y *= track_vol/100
+        y *= track_vol / 100
 
         return tick_on_in_fs, y
