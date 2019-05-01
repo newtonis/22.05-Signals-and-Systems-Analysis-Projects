@@ -202,7 +202,7 @@ void CircularBuffer::push_front(float data) {
     }
 }
 
-bool CircularBuffer::pop_back(unsigned int n) {
+void CircularBuffer::pop_back(unsigned int n) {
     if (n <= currFullSize) {
         if (last >= n) {
             last -= n;

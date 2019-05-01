@@ -11,6 +11,11 @@ CMakeFiles/EJ8.dir/AudioFile.cpp.obj: ../AudioFile.h
 CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj: ../CircularBuffer.cpp
 CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj: ../CircularBuffer.h
 
+CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../AudioEffect.h
+CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../CircularBuffer.h
+CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../Flanger.cpp
+CMakeFiles/EJ8.dir/Flanger.cpp.obj: ../Flanger.h
+
 CMakeFiles/EJ8.dir/Nada.cpp.obj: ../AudioEffect.h
 CMakeFiles/EJ8.dir/Nada.cpp.obj: ../CircularBuffer.h
 CMakeFiles/EJ8.dir/Nada.cpp.obj: ../Nada.cpp

@@ -21,7 +21,7 @@ public:
     void push_back(float data);
     void push_front(float data);
     bool pop_front(unsigned int n); // saca los primeros n datos
-    bool pop_back(unsigned int n);
+    void pop_back(unsigned int n);
     void clear();
     float next(); // pop_front(1) y devuelve el dato que se saco
 

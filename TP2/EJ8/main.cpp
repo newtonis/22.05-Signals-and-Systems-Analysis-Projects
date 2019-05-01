@@ -232,7 +232,7 @@ int main()
 
     map<string,int> config;
 
-    Reverb bot(sampleRate, numSamples, windowWidth, PLANO, config);
+    Reverb bot(sampleRate, numSamples, windowWidth, CONVOLUCION, config);
 
     auto * buffer = new float [numSamples*2];
     for (int i = 0; i < numSamples; i++) {

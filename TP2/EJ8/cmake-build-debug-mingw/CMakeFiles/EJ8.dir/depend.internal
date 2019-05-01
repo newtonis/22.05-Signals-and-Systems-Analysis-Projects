@@ -11,6 +11,11 @@ CMakeFiles/EJ8.dir/AudioFile.cpp.obj
 CMakeFiles/EJ8.dir/CircularBuffer.cpp.obj
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.cpp
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h
+CMakeFiles/EJ8.dir/Flanger.cpp.obj
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioEffect.h
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Flanger.cpp
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Flanger.h
 CMakeFiles/EJ8.dir/Nada.cpp.obj
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioEffect.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h

@@ -13,14 +13,16 @@
 using namespace std;
 
 
-#define MAX_BUFFER_SIZE     (10000)
+#define MAX_BUFFER_SIZE     (21000)
+#define DP_MAX (3000)
+#define MAX_REB 20
 
 enum{
     ECO,
     PLANO,
     PASABAJO,
     COMPLETO,
-    COVOLUCION
+    CONVOLUCION
 };
 
 
@@ -40,14 +42,20 @@ class Reverb : public AudioEffect {
         void reverbPlano(CircularBuffer& in, CircularBuffer& out);
         void reverbPlanoPB(CircularBuffer& in, CircularBuffer& out);
         void reverbConvolution(CircularBuffer& in, CircularBuffer& out);
+        void reverbSchroeder(CircularBuffer& in, CircularBuffer& out);
         int impulseLength;
 
     protected:
         float x[MAX_BUFFER_SIZE], last_x[MAX_BUFFER_SIZE];
         float y[MAX_BUFFER_SIZE], last_y[MAX_BUFFER_SIZE];
         float z[MAX_BUFFER_SIZE], last_z[MAX_BUFFER_SIZE];
+
+        int aux[DP_MAX][MAX_REB];
+
         int mode;
         map<string,int> config;
+        vector <int> D;
+        float a;
 
         vector <float> outputA, outputB;
         bool start;
