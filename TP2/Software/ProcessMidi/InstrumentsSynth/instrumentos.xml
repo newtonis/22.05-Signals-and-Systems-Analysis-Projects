@@ -10,6 +10,11 @@
             function="getClarinet"
     />
     <instrumento
+            nombre="Trompeta"
+            code="trompeta.py"
+            function="getTrumpet"
+    />
+    <instrumento
             nombre="Guitarra Distorsionada"
             code="guitarraDistorsion.py"
             function="SitetizarGuitarraDistorsion"
