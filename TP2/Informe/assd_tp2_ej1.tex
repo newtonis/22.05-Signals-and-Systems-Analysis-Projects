@@ -5,20 +5,20 @@
 \section{FFT}
 
 \subsection{Enfoque}
-Se decidió desarrollar un algoritmo fft, ya que se contó con conocimiento del campo de ciencias de la computación para resolver problemas de programación dinámica. Se mostrará la derivación de un algoritmo menos eficiente pero más entendible, y luego se describirán sus posteriores optimizaciones.
+Se decidió desarrollar un algoritmo FFT, ya que se contó con conocimiento del campo de ciencias de la computación para resolver problemas de programación dinámica. Se mostrará la derivación de un algoritmo menos eficiente pero más entendible, y luego se describirán sus posteriores optimizaciones.
 En el resultado final se llegó a un algoritmo con $\frac{n}{2}log_2{n}$ multiplicaciones, $6n$ memoria, en otras palabras, 
 $\Theta(nlog(n))$ tiempo, $\Theta(n)$ memoria. 
 
 \subsection{El problema}
-El cálculo de la dft consiste en producir una la salida $X[k]$ de coeficientes mediante la entrada $x[n]$, ambos arreglos de igual longitud $N$. La fórmula que describe la dft que utilizamos fue
+El cálculo de la DFT consiste en producir una la salida $X[k]$ de coeficientes mediante la entrada $x[n]$, ambos arreglos de igual longitud $N$. La fórmula que describe la DFT que utilizamos es:
 \begin{equation}
 	DFT[X[n]] = X[k]=\sum_{n=0}^{N-1}x(n)e^{-i2\pi kn/N}
 \end{equation}
 
-Se necesita resolver la dft en tiempo subcuadrático, es decir en menos de $\Theta(n^2)$, que es la solución trivial.
+Se necesita resolver la DFT en tiempo subcuadrático, es decir en menos de $\Theta(n^2)$, que es la solución trivial.
 
 \subsection{Primera observación de interés}
-Si la longitud de la suceción, $N$ es par se puede escribir $X[k]$ como
+Si la longitud de la sucesión $N$ es par se puede escribir $X[k]$ como:
 
 \begin{equation}
 	DFT[X[n]] = X[k]=
@@ -34,13 +34,13 @@ Si la longitud de la suceción, $N$ es par se puede escribir $X[k]$ como
 \begin{equation}
 	DFT[\underbrace{X[n]}_{0\leq n< N}]=DFT[\underbrace{Y[n]}_{0\leq n<N/2}]+e^{i2\pi k /N}DFT[\overbrace{Z[n]}^{0\leq n<N/2}]
 \end{equation}
-Donde $X[2n]=Y[n]$, $X[2n+1], Y[2n+1]$ son sub-suceciones de $X[n]$ tomando los indices pares e impares respectivamente.
-Podemos decir que descompusimos el problema de la DFT como dos problemas de DFT con suceciones de la mitad de tamaño, es decir, conseguimos una solución recursiva. Es importante observar que la unica forma de que la solucion sea viable es que $N$ sea una potencia de dos, para poder garantizar que al dividir los subproblemas siempre $N_i$ sea par.
+Donde $X[2n]=Y[n]$, $X[2n+1], Y[2n+1]$ son sub-sucesiones de $X[n]$ tomando los \'indices pares e impares respectivamente.
+Podemos decir que descompusimos el problema de la DFT como dos problemas de DFT con sucesiones de la mitad de tamaño, es decir, conseguimos una solución recursiva. Es importante observar que la \'unica forma de que la soluci\'on sea viable es que $N$ sea una potencia de dos, para poder garantizar que al dividir los subproblemas siempre $N_i$ sea par.
 
 \subsection{Algoritmo conceptual}
-Si bien la formulación anterior da lugar a la implementación de un algoritmo recursivo "top-down" se procedió a desarrollar una fórmula "b ottom-up" para resolver el problema iterativamente, y por lo tanto provocar que la ejecución tenga una constante menor.
+Si bien la formulación anterior da lugar a la implementación de un algoritmo recursivo ``top-down'' se procedió a desarrollar una fórmula ``bottom-up'' para resolver el problema iterativamente, y por lo tanto provocar que la ejecución tenga una constante menor.
 
-Se definió el subproblema $DFT[i][j][k]$ como el $k$-ésimo coeficiente, de el subarreglo de longitud $2^i$ que comienza en el casillero $j$. Se puede mostrar mediante la ecuación 3 en esta formulación es equivalente a
+Se definió el subproblema $DFT[i][j][k]$ como el $k$-ésimo coeficiente, del subarreglo de longitud $2^i$ que comienza en el casillero $j$. Se puede mostrar mediante la ecuación 3 en esta formulación es equivalente a
 
 \begin{equation}
 	DFT[i][j][k] = \begin{cases}
@@ -49,7 +49,7 @@ Se definió el subproblema $DFT[i][j][k]$ como el $k$-ésimo coeficiente, de el 
 \end{cases}
 \end{equation}
 Donde $W[N][k]=e^{-i2\pi k / N}$.
-Con esta precisa formulación se puede implementar con 3 sentencias for un algoritmo de $O(nlog n)$ tiempo y $O(n^2log n)$ memoria.
+Con esta precisa formulación se puede implementar con 3 sentencias ``for'' un algoritmo de $O(nlog n)$ tiempo y $O(n^2log n)$ memoria.
 
 \subsection{Optimizaciones de memoria}
 Se presentan dos modificacines superficiales y técnicas, no conceptuales, que no alteran la lógica escencial del algoritmo, pero que lo vuelven práctico.
