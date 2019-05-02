@@ -8,7 +8,7 @@
 
 \subsubsection{Implementación de eco simple}
 
-Se implemento un eco simple utilizando el sistema
+Se implementó un eco simple utilizando el sistema
 
 \begin{equation}
 	y(n)=x(n)+gx(n-M)
@@ -75,6 +75,58 @@ Debido a la complejidad algoritmica de la aplicación de la fórmula se debió l
 
 Se observa como a diferencia de los casos anteriores la señal tiende mucho más a sostener sonido, esto se debe a que la respuesta al impulso es mucho más completa, y por lo tanto el sonido resultante persiste más tiempo.
 El sonido que se escuchó se correspondió con un eco muy realista, que podría ser el de una fábrica
+
+
+\subsection{Efectos basados en delays variables} 
+
+Para algunos efectos, es necesario que los delays presentes en la ecuaci\'on de diferencias que describe al sistema sean variables con el tiempo. Este es el caso tanto del flanger como del vibrato.
+
+
+\subsubsection{Vibrato}
+
+El efecto de vibrato consiste en introducir peque\~nas variaciones peri\'odicas en la frecuencia, resultando en una variaci\'on peri\'odica de los tonos que se escuchan. Tomando como principio el efecto Doppler, podemos aplicar estos cambios en la frecuencia como cambios en el delay: de la misma manera que a medida que una ambulancia se aleja, se escucha m\'as grave  la sirena, si simulamos que el delay sube y baja peri\'odicamente, la nota que se escucha subir\'a y bajar\'a de la misma manera.
+
+La ecuaci\'on que define este efecto es:
+\begin{equation}
+	y(n) = x\left(n - k(n) \right)
+	\label{eq:vibrato}
+\end{equation}
+
+En la ecuaci\'on \ref{eq:vibrato}, $k(n)$ representa el delay variable con el tiempo, y se implementa con una senoidal que toma valores naturales entre 0 y un m\'aximo K:
+
+\begin{equation}
+	k(n) = \left \lfloor \frac{K}{2} \cdot 
+		\left( 1 + \sin{\left(2\pi f_0 \cdot nT\right)} \right) \right \rfloor
+		\label{eq:k(n)}
+\end{equation}
+
+Los par\'ametros que caracterizan al vibrato son pues:
+
+\begin{equation}
+	\left\{
+	\begin{aligned}
+		f_0	&= \text{frecuencia de modulaci\'on} \\
+		K   	&= \text{profundidad de modulaci\'on}
+	\end{aligned}	
+	\right.
+\end{equation}
+
+
+
+
+
+\subsubsection{Flanger}
+
+El flanger es similar al vibrato, en cuanto a que tambi\'en estar\'a presente en la salida la entrada con un delay variable. Sin embargo, la misma es sumada (con un cierto factor de ponderaci\'on) a la entrada actual, obteni\'endose:
+
+\begin{equation}
+	y(n) = x(n) + g\cdot x(n-k(n))
+\end{equation}
+
+La definici\'on de $k(n)$ que usaremos es id\'entica a la del vibrato (ecuaci\'on \ref{eq:k(n)}), es decir, una senoidal que var\'ia entre 0 y un m\'aximo.
+
+
+\subsection{Robotizaci\'on}
 
 \end{document}
 
