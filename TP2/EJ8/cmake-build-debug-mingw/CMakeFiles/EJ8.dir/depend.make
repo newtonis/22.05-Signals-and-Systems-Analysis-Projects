@@ -84,11 +84,11 @@ CMakeFiles/EJ8.dir/main.cpp.obj: ../AudioEffect.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../AudioFile.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../CircularBuffer.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../DelayBasedEffect.h
-CMakeFiles/EJ8.dir/main.cpp.obj: ../Flanger.h
+CMakeFiles/EJ8.dir/main.cpp.obj: ../fFlanger.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../InputParser.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../Reverb.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../Robotization.h
-CMakeFiles/EJ8.dir/main.cpp.obj: ../Vibrato.h
+CMakeFiles/EJ8.dir/main.cpp.obj: ../fVibrato.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../WavProcess.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/EJ8.dir/main.cpp.obj: ../windows.h

@@ -15,5 +15,5 @@
 Flanger::Flanger(unsigned int sampleRate, unsigned int framesPerBuffer, float f_mod, float mod_depth, float g) :
  DelayBasedEffect(sampleRate, framesPerBuffer, g, 0, 1, f_mod, mod_depth)
  {
-    ;
+
 }

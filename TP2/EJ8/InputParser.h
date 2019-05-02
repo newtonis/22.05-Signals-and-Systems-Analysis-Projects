@@ -19,9 +19,9 @@ enum{
 
 void parseInput();
 void Robot();
-void Flanger();
+void fFlanger();
 int RunReverb();
-void Vibrato();
+void fVibrato();
 void Giro3d();
 
 int EcoSimple();

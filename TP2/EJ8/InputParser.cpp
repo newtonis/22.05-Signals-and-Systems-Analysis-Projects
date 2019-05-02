@@ -26,11 +26,11 @@ void parseInput(){
         if (comando == "Robot") {
             Robot();
         } else if (comando == "Flanger"){
-            Flanger();
+            fFlanger();
         } else if (comando == "Reverb"){
             ans = RunReverb();
         } else if (comando == "Vibrato"){
-            Vibrato();
+            fVibrato();
         } else if (comando == "Giro 3d") {
             Giro3d();
         } else if (comando == "Salir"){
@@ -68,7 +68,7 @@ int RealOrWav(){
 void Robot(){
     cout << "No ha sido implementado aún \n";
 }
-void Flanger(){
+void fFlanger(){
     cout << "No ha sido implementado aún \n";
 }
 int RunReverb(){
@@ -103,7 +103,7 @@ int RunReverb(){
 
     return 0;
 }
-void Vibrato(){
+void fVibrato(){
     cout << "No ha sido implementado aún\n";
 }
 void Giro3d(){

@@ -85,11 +85,11 @@ CMakeFiles/EJ8.dir/main.cpp.obj
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/AudioFile.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/CircularBuffer.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/DelayBasedEffect.h
- C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Flanger.h
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/fFlanger.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/InputParser.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Reverb.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Robotization.h
- C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/Vibrato.h
+ C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/fVibrato.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/WavProcess.h
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/main.cpp
  C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/windows.h
