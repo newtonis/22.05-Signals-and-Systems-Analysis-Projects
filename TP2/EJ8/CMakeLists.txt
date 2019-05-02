@@ -7,7 +7,7 @@ add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 
 add_executable(EJ8 main.cpp Robotization.cpp AudioEffect.cpp my_fft.cpp windows.cpp CircularBuffer.cpp Nada.cpp
         Nada.h AudioFile.cpp AudioFile.h Reverb.cpp Reverb.h WavFile.cpp WavFile.h Flanger.cpp Flanger.h
-        Vibrato.cpp Vibrato.h DelayBasedEffect.cpp DelayBasedEffect.h)
+        Vibrato.cpp Vibrato.h DelayBasedEffect.cpp DelayBasedEffect.h InputParser.cpp InputParser.h)
 
 
 

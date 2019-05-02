@@ -9,7 +9,7 @@
 \usepackage{fancyhdr}
 \usepackage{lscape}
 \pagestyle{fancy}
-\lhead{Análisis de Señales y Sistemas Digitales 22.05}
+\lhead{An\'alisis de Se\~nales y Sistemas Digitales 22.05}
 \chead{TPL1}
 \rhead{ITBA}
 \renewcommand{\headrulewidth}{1pt}
@@ -19,7 +19,7 @@
 \maintain_unincluded_children false
 \language spanish
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"

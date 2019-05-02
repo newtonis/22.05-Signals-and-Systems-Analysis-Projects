@@ -4520,8 +4520,7 @@ Llave analógica
 \end_layout
 
 \begin_layout Standard
-La llave analógica es la que realiza el muestreo y el reemuestreo de la
- señal.
+La llave analógica cumple la función de muestreo y reemuestreo de la señal.
  
 \end_layout
 
@@ -4531,7 +4530,7 @@ Elección del integrado
 
 \begin_layout Standard
 Los parámetros que se tuvieron en cuenta para la elección del integrado
- a utilizar afueron los siguientes:
+ a utilizar fueron los siguientes:
 \end_layout
 
 \begin_layout Enumerate
@@ -4559,7 +4558,7 @@ Resistencia de apagado (
  a través de la llave.
  Por lo ello buscamos que sea lo más alta posible, para poder aislar lo
  mejor posible la señal de entrada con la salida.
- Est;a relacionada con la corriente de fuga cuando la llave está en corte.
+ Está relacionada con la corriente de fuga cuando la llave está en corte.
 \end_layout
 
 \begin_layout Enumerate
@@ -4579,11 +4578,6 @@ Velocidad de conmutación: debe ser lo más rápida posible para poder muestrear
 Voltaje máximo de entrada: las máximas amplitudes de éstas tienen que ser
  compatibles con la llave analógica elegida, estas coinciden con la alimentación
  que se use para la misma.
-\end_layout
-
-\begin_layout Enumerate
-Señales de ruido: se encuentran el crosstalk y el feedthrough desde el control
- de entrada hacia la salida, idealmente se desea que no exista tal interferencia.
 \end_layout
 
 \begin_layout Standard
@@ -5133,18 +5127,17 @@ Comparación de las características de los integrados
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Entre todos los modelos disponibles se priorizó la llave con menor Ron y
- mayor velocidad de conmutación para tener menor distorsión armónica en
+Entre todos los modelos disponibles se priorizó la llave con menor 
+\begin_inset Formula $R_{on}$
+\end_inset
+
+ y mayor velocidad de conmutación para tener menor distorsión armónica en
  las señales de alta frecuencia, ya que, el ancho del pulso de la señal
  de control será: 
 \end_layout
@@ -5164,10 +5157,13 @@ donde el caso más crítico se obtiene con el menor Duty cicle a la mayor
 \end_layout
 
 \begin_layout Standard
-La llave MAX320 resulta una buena opción debido a la pequeña Ron que tiene
- en comparación con las otras dos, pero se optó por la CD4066, ya que también
- tiene buenas características y no es de montaje superficial como la anterior
- mencionada, lo que le da practicidad al armado de la placa.
+La llave MAX320 resulta una buena opción debido a la pequeña 
+\begin_inset Formula $R_{on}$
+\end_inset
+
+ que tiene en comparación con las otras dos, pero se optó por la CD4066,
+ ya que también tiene buenas características y no es de montaje superficial
+ como la anterior mencionada, lo que le da practicidad al armado de la placa.
  Otra característica a tener en cuenta es la corriente de fuga en corte,
  en este aspecto la del integrado CD4066 es menor que la del integrado CD4016.
  Otra ventaja del CD4066 son los tiempos de apertura y cierre de la llave,
@@ -5180,7 +5176,7 @@ La llave MAX320 resulta una buena opción debido a la pequeña Ron que tiene
  filtro recuperador pasa bajos, por lo que elimina el ruido de alta frecuencia
  característico del Crosstalk.
  Un punto a contemplar son los niveles de tensión a utilizar.
- Eligiendo alimentación con fuente partida de ±9v se garantiza que ésta
+ Eligiendo alimentación con fuente partida de ±9V se garantiza que ésta
  caiga dentro de los límites de la tensión de alimentación recomendada en
  la hoja de datos.
  Y como existe la restricción de que la llave no admite tensiones mayores
@@ -5719,10 +5715,6 @@ GUI - Ventanas de usuario
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
