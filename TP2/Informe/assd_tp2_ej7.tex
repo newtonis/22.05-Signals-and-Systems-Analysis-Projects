@@ -4,6 +4,8 @@
 
 \section{Espectrograma}
 
+\subsection{Funci\'on para realizaci\'on de espectrograma}
+
 Para la realizaci\'on de los espectrogramas, se utiliz\'o la funci\'on ``spectrogram'', de la librer\'ia <<scipy>> de Python. La misma se basa en la implementaci\'on de transformadas de Fourier consecutivas sobre la se\~nal a lo largo del tiempo. La sintaxis para su utilizaci\'on es la siguiente:
 
 \begin{center}
@@ -52,6 +54,21 @@ Los par\'ametros que devuelve son los siguientes:
 \item \textbf{$S_xx$ [ndarray]}: arreglo de dimensi\'on ``n'' con el espectrograma de $x(t)$.
 
 \end{itemize}
+
+En referencia a las diferentes ventanas utilizables, adem\'as del ancho se debe considerar realizar el an\'alisis con o sin overlap (solapamiento entre segmentos). En el caso m\'as sencillo, no utilizar overlap podr\'ia conllevar p\'erdidad de informaci\'on: si se tiene un cambio de frecuencia de corta duraci\'on en comparaci\'on a la duraci\'on total del segmento, y se encuentra cerca del final de \'este, al no utilizar segmentos solapados para la STFT podr\'ia perderse dicho evento. Para evitar dicha p\'erdida de informaci\'on, se aplica la STFT a segmentos con un cierto grado de solapamiento. Se gana en no perder informaci\'on, pero se requiere mayor tiempo de procesamiento, dado que al ser segmentos solapados, para cubrir la totalidad de la se\~nal se necesita realizar m\'as veces la transformaci\'on. El porcentaje de overlap se encuentra en general entre el 50\% y el 75\%, de acuerdo al paper <<\textit{On the Use of Windows for Harmonic Analysis with the Discrete Fourier Transform}>> (1978, Fredric J. Harris, member IEEE).
+
+\subsection{Aplicaci\'on a escala de Sol Mayor (G3)}
+
+La tonalidad de \textit{sol} mayor (en el sistema ingl\'es abreviada como \textbf{G}) consiste en la escala mayor del sol y contiene las notas \textit{sol, la, si, do, re, mi, fa} sostenido y \textit{sol}. La notaci\'on \textbf{G3} corresponde a la peque\~na octava, cuya frecuencia es aproximadamente 195.998Hz.\par
+El espetrograma realizado se muestra a continuaci\'on.
+
+\begin{figure}[ht]	
+\begin{centering}
+	\includegraphics[scale=0.7]{graficos/Espectrograma7.png}
+	\caption{Espectrograma de Sol mayor}
+	\end{centering}\par
+\end{figure}
+
 
 \end{document}
 
