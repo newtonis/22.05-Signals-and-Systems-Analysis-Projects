@@ -311,6 +311,33 @@ Nada.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Nada.cpp.s
 .PHONY : Nada.cpp.s
 
+Realtime.obj: Realtime.cpp.obj
+
+.PHONY : Realtime.obj
+
+# target to build an object file
+Realtime.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Realtime.cpp.obj
+.PHONY : Realtime.cpp.obj
+
+Realtime.i: Realtime.cpp.i
+
+.PHONY : Realtime.i
+
+# target to preprocess a source file
+Realtime.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Realtime.cpp.i
+.PHONY : Realtime.cpp.i
+
+Realtime.s: Realtime.cpp.s
+
+.PHONY : Realtime.s
+
+# target to generate assembly for a file
+Realtime.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Realtime.cpp.s
+.PHONY : Realtime.cpp.s
+
 Reverb.obj: Reverb.cpp.obj
 
 .PHONY : Reverb.obj
@@ -418,6 +445,33 @@ WavFile.s: WavFile.cpp.s
 WavFile.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavFile.cpp.s
 .PHONY : WavFile.cpp.s
+
+WavProcess.obj: WavProcess.cpp.obj
+
+.PHONY : WavProcess.obj
+
+# target to build an object file
+WavProcess.cpp.obj:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavProcess.cpp.obj
+.PHONY : WavProcess.cpp.obj
+
+WavProcess.i: WavProcess.cpp.i
+
+.PHONY : WavProcess.i
+
+# target to preprocess a source file
+WavProcess.cpp.i:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavProcess.cpp.i
+.PHONY : WavProcess.cpp.i
+
+WavProcess.s: WavProcess.cpp.s
+
+.PHONY : WavProcess.s
+
+# target to generate assembly for a file
+WavProcess.cpp.s:
+	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/WavProcess.cpp.s
+.PHONY : WavProcess.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -530,6 +584,9 @@ help:
 	@echo ... Nada.obj
 	@echo ... Nada.i
 	@echo ... Nada.s
+	@echo ... Realtime.obj
+	@echo ... Realtime.i
+	@echo ... Realtime.s
 	@echo ... Reverb.obj
 	@echo ... Reverb.i
 	@echo ... Reverb.s
@@ -542,6 +599,9 @@ help:
 	@echo ... WavFile.obj
 	@echo ... WavFile.i
 	@echo ... WavFile.s
+	@echo ... WavProcess.obj
+	@echo ... WavProcess.i
+	@echo ... WavProcess.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

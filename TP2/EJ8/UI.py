@@ -5,6 +5,7 @@ from Menus.PersonalizadoMenu import PersonalizadoMenu
 from Menus.ReverbMenu import ReverbMenu
 from Menus.ParametersConfigMenu import ParametersConfigMenu
 from Menus.RealtimeOrFilenameMenu import RealtimeOrFilenameMenu
+from Menus.RealtimeMenu import RealtimeMenu
 
 from EffectsInterface import getEffectsInterface
 from Globals import styles, config
@@ -14,7 +15,8 @@ frames = [
     PersonalizadoMenu,
     ReverbMenu,
     ParametersConfigMenu,
-    RealtimeOrFilenameMenu
+    RealtimeOrFilenameMenu,
+    RealtimeMenu
 ]
 
 startFrame = 0

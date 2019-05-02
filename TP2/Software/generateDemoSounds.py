@@ -12,6 +12,7 @@ def generateDemoSounds():
     instruments = getInstruments()
 
     for instrument in instruments.instrumentos:
+        print(127, nota, duration, config.fs)
         sound = instrument.getFunction()(
             127,
             nota,

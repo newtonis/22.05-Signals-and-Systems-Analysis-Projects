@@ -59,4 +59,5 @@ class RealtimeOrFilenameMenu(tk.Frame):
 
     def realtime(self):
         getEffectsInterface().sendParam("Funcionamiento", "Realtime")
-
+        from Menus.RealtimeMenu import RealtimeMenu
+        self.controller.showFrame(RealtimeMenu)
