@@ -16,18 +16,20 @@
 using namespace std;
 
 void wavProcess(AudioEffect *bot, string &input, string &output){
+    cout << "Procesando wav .. " << '\n';
+
     AudioFile<float> audioFile;
     AudioFile<float> out;
     AudioFile<float>::AudioBuffer newBuffer;
     unsigned int windowWidth = 4096;
+
 
     audioFile.load(input);
     int sampleRate = audioFile.getSampleRate();
     int numSamples = audioFile.getNumSamplesPerChannel();
     int realSamples = audioFile.getNumSamplesPerChannel();
 
-    map<string, int> config;
-
+    bot->setFPB(numSamples);
     //Reverb bot(sampleRate, numSamples, windowWidth, COMPLETO, config);
 
     auto *buffer = new float[numSamples * 2];
@@ -42,10 +44,10 @@ void wavProcess(AudioEffect *bot, string &input, string &output){
     }
 
 
-    //freopen("output/x.txt", "w+",stdout);
-    //for (int i = 0;i < numSamples;i++){
-    //    cout << buffer[2*i] << '\n';
-    //}
+    /*freopen("output/x.txt", "w+",stdout);
+    for (int i = 0;i < numSamples;i++){
+        cout << buffer[2*i] << '\n';
+    }*/
 
 
     bot->processStereoInput(buffer);
@@ -59,10 +61,10 @@ void wavProcess(AudioEffect *bot, string &input, string &output){
         newBuffer[1][i] = buffer[2*i+1];
     }
 
-    //freopen("output/y.txt","w+",stdout);
-    //for (int i = 0;i < numSamples;i++){
-    //    cout << buffer[2*i] << '\n';
-    //}
+    /*freopen("output/y.txt","w+",stdout);
+    for (int i = 0;i < numSamples;i++){
+        cout << buffer[2*i] << '\n';
+    }*/
 
     out.setAudioBuffer(newBuffer);
     out.save (output);

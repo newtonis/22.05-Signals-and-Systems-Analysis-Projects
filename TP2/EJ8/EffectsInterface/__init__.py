@@ -15,12 +15,15 @@ class EffectsInterface:
         self.mode = None
         self.reverbMode = None
         self.sentData = dict()
+        self.flag = False
+        self.action = False
+        self.restartAction = None
 
     def deamon(self):
         print("Corriendo EJ8.exe \n")
 
         self.p = subprocess.Popen(
-            "cmake-build-debug\EJ8.exe",
+            "cmake-build-debug-mingw\EJ8.exe",
             shell=False,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
@@ -28,6 +31,14 @@ class EffectsInterface:
         )
         while self.continuar:
             line = self.p.stdout.readline()
+            if line == b"Terminado\r\n" and self.flag:
+                if self.flag:
+                    self.action()
+                    self.flag = False
+            elif line == b"Restart\r\n":
+                if self.restartAction:
+                    self.restartAction()
+
             print(line)
 
     def end(self):
@@ -67,10 +78,20 @@ class EffectsInterface:
 
         self.p.stdin.write(bytes(foo, encoding='utf-8'))
         self.p.stdin.flush()
+        self.p.stdout.flush()
 
     def sendData(self, value):
+        print("called ... \n")
         foo = str(value) + "\n"
+        print("sending ", foo)
+
         self.p.stdin.write(bytes(foo, encoding='utf-8'))
+        self.p.stdin.flush()
+        self.p.stdout.flush()
+        print("sent")
+
+    def sendDataWithoutn(self, value):
+        self.p.stdin.write(bytes(str(value), encoding='utf-8'))
         self.p.stdin.flush()
 
     def restart(self):
@@ -79,8 +100,18 @@ class EffectsInterface:
         self.reverbMode = None
         self.mode = None
 
-        self.p.stdin.write(b'Restart\n')
-        self.p.stdin.flush()
+        #self.p.stdin.write(b'Restart\n')
+
+        #self.p.stdin.flush()
+
+    def setFlagAction(self, action):
+        self.flag = True
+        self.action = action
+
+    def setRestartAction(self, action):
+        self.restart()
+
+        self.restartAction = action
 
 
 effectsInferface = None

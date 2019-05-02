@@ -46,6 +46,8 @@ class Reverb : public AudioEffect {
         int impulseLength;
         int myM;
         float myG;
+        string wavFile;
+        void configureReverbCompleto(int pf, int cc, int dc, float gc);
 
     protected:
         float x[MAX_BUFFER_SIZE], last_x[MAX_BUFFER_SIZE];

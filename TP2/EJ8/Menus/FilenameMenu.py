@@ -2,6 +2,7 @@ import tkinter as tk
 from EffectsInterface import getEffectsInterface
 from Globals import config
 from tkinter import filedialog
+import os
 
 
 class FilenameMenu(tk.Frame):
@@ -56,23 +57,35 @@ class FilenameMenu(tk.Frame):
         self.buttonAceptar = tk.Button(
             self,
             height=1,
-            width=44,
+            width=34,
             text="Aceptar",
             font=config.LARGE_FONT,
             background="#aeffba",
             command=self.aceptar
         )
-        self.buttonAceptar.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
+        self.buttonAceptar.pack(side=tk.LEFT, expand=1, fill=tk.BOTH)
+        self.set = False
+
+        self.buttonSalir = tk.Button(
+            self,
+            height=1,
+            width=10,
+            text="Salir",
+            font=config.LARGE_FONT,
+            background="#ffbaae",
+            command=self.goBack
+        )
+        self.buttonSalir.pack(side=tk.LEFT, expand=1, fill= tk.BOTH)
 
     def focus(self):
-        self.title.configure(text = "Process file " + getEffectsInterface().getCompleteMode())
+        self.title.configure(text="Process file " + getEffectsInterface().getCompleteMode())
 
     def configureInput(self):
         filename = filedialog.askopenfilename()
         self.input = filename
 
         self.button1.configure(
-            text="entrada [" + filename + "]"
+            text="entrada [" + os.path.basename(filename) + "]"
         )
 
     def configureOutput(self):
@@ -80,13 +93,37 @@ class FilenameMenu(tk.Frame):
         self.output = filename
 
         self.button2.configure(
-            text="salida [" + filename + "]"
+            text="salida [" + os.path.basename(filename) + "]"
         )
 
     def goBack(self):
-        getEffectsInterface().restart()
+        getEffectsInterface().sendData("Salir\n")
+
         from Menus.StartMenu import StartMenu
         self.controller.showFrame(StartMenu)
 
     def aceptar(self):
-        pass
+
+        getEffectsInterface().sendData(self.input)
+        getEffectsInterface().sendData(self.output)
+
+
+        self.buttonAceptar.configure(
+            text="Cargando ...",
+            background="#ffe4a5"
+        )
+        self.title.configure(text="Cargando ...")
+        getEffectsInterface().setFlagAction(
+            self.finished
+        )
+
+    def finished(self):
+        self.title.configure(
+            text="Process file"
+        )
+        self.buttonAceptar.configure(
+            text="Aceptar",
+            background="#aeffba",
+            command=self.aceptar
+        )
+

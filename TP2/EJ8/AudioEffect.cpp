@@ -13,7 +13,9 @@ minOutSize(minOutSize)
     ;
 }
 
-
+void AudioEffect::setFPB(unsigned int framesPerBuffer){
+    this->framesPerBuffer = framesPerBuffer;
+}
 void AudioEffect::setNextOutput(float * stereoOutput)
 {
     if (stereoOutput) {
