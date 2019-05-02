@@ -8,6 +8,11 @@
 #include <iostream>
 using namespace std;
 
-void parseInput(int argc, char *argv[]);
+enum{
+    REALTIME,
+    FILENAME
+};
+
+void parseInput();
 
 #endif //EJ8_INPUTPARSER_H
