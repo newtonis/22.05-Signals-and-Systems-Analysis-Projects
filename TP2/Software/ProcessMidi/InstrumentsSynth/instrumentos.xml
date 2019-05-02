@@ -19,4 +19,24 @@
             code="trombon.py"
             function="getBrassTone"
     />
+    <instrumeto
+            nombre="Piano"
+            code="EJ3-martu.py"
+            function="getPiano"
+    />
+    <instrumento
+            nombre="Saxo"
+            code="EJ3-martu.py"
+            function="getSax"
+    />
+    <instrumento
+            nombre="Violin"
+            code="EJ3-martu.py"
+            function="getViolin"
+    />
+    <instrumento
+            nombre="Trombon 2"
+            code="EJ3-martu.py"
+            function="getTrombone"
+    />
 </sonidos>

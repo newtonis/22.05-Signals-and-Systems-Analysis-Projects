@@ -12,8 +12,7 @@ Reverb::Reverb(
         unsigned int sampleRate,
         unsigned int framesPerBuffer,
         unsigned int windowWidth,
-        int mode,
-        map<string,int> &config
+        int mode
         ): AudioEffect(
             sampleRate,
             framesPerBuffer,
@@ -23,7 +22,6 @@ Reverb::Reverb(
     this->mode = mode;
     this->windowWidth = windowWidth;
     this->start = true;
-    this->config = config;
     this->impulseLength = 20000;
 
     loadWavFile("impulse/Factory Hall.wav", outputA, outputB, impulseLength);
@@ -51,6 +49,7 @@ Reverb::Reverb(
         combA.push_back(0.5);
     }
     a = 0.99;
+    ind = 100000;
 }
 
 void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
@@ -68,18 +67,18 @@ void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
 }
 
 void Reverb::eco(CircularBuffer& in, CircularBuffer& out){
-    float g = 0.999;
-    int m = 5000;
+    float g = myG;
+    int m = myM;
 
-    int i = 0;
+
     while (in.currSize() > 0){
         float actual = in.next();
 
-        float salida = actual + g * last_x[i%m];
+        float salida = actual + g * last_x[ind%m];
 
-        last_x[i%m] = actual;
-        last_y[i%m] = salida;
-        i ++;
+        last_x[ind%m] = actual;
+        last_y[ind%m] = salida;
+        ind ++;
         out.push_back(salida);
     }
 }
@@ -88,15 +87,14 @@ void Reverb::reverbPlano(CircularBuffer& in, CircularBuffer& out){
     float g = 0.5;
     int m = 5000;
 
-    int i = 0;
     while (in.currSize() > 0){
         float actual = in.next();
 
-        float salida = actual + g * last_y[i%m];
+        float salida = actual + g * last_y[ind%m];
 
-        last_x[i%m] = actual;
-        last_y[i%m] = salida;
-        i ++;
+        last_x[ind%m] = actual;
+        last_y[ind%m] = salida;
+        ind ++;
         out.push_back(salida);
     }
 }
@@ -106,19 +104,18 @@ void Reverb::reverbPlanoPB(CircularBuffer& in, CircularBuffer& out){
     int m = 5000;
 
 
-    int i = 100;
     while (in.currSize() > 0){
         float x = in.next();
-        float z = g * last_y[(i-m)%m];
-        float y = x + (last_z[i%m] + last_z[(i-1)%m])/2; // filtro pb
+        float z = g * last_y[(ind-m)%m];
+        float y = x + (last_z[ind%m] + last_z[(ind-1)%m])/2; // filtro pb
 
         out.push_back(y);
 
-        i ++;
+        ind ++;
 
-        last_x[(i-1)%m] = x;
-        last_y[(i-1)%m] = y;
-        last_z[(i-1)%m] = z;
+        last_x[(ind-1)%m] = x;
+        last_y[(ind-1)%m] = y;
+        last_z[(ind-1)%m] = z;
     }
 
 
@@ -126,25 +123,24 @@ void Reverb::reverbPlanoPB(CircularBuffer& in, CircularBuffer& out){
 
 void Reverb::reverbConvolution(CircularBuffer &in, CircularBuffer &out) {
 
-    for (int i = 0;i < impulseLength;i++){
-        last_x[i] = 0;
-    }
-    int i = impulseLength;
+    //for (int i = 0;i < impulseLength;i++){
+     //   last_x[i] = 0;
+    //}
 
     while (in.currSize() > 0){
         float ans = 0;
         float x = in.next();
         for (int index = 0; index < impulseLength;index ++){
-            ans += outputA[index] * last_x[(i - index)%impulseLength];
+            ans += outputA[index] * last_x[(ind - index)%impulseLength];
         }
-        i ++;
-        last_x[(i - 1)%impulseLength] = x;
+        ind ++;
+        last_x[(ind - 1)%impulseLength] = x;
         out.push_back(ans);
     }
 
 }
 void Reverb::reverbSchroeder(CircularBuffer& in, CircularBuffer& out){
-    int i = DP_MAX * 20;
+    //int i = DP_MAX * 20;
     int d = DP_MAX;
 
     while (in.currSize() > 0){
@@ -152,10 +148,10 @@ void Reverb::reverbSchroeder(CircularBuffer& in, CircularBuffer& out){
         float y = 0;
 
         for (int j = 0;j < D.size();j++){
-            y += last_x[(i-D[j])%d] + aux[(i-D[j])%d][j] * this->a;
+            y += last_x[(ind-D[j])%d] + aux[(ind-D[j])%d][j] * this->a;
         }
-        last_x[i%d] = x;
-        last_y[i%d] = y;
+        last_x[ind%d] = x;
+        last_y[ind%d] = y;
 
 
         for (int j = 0;j <= comb_count;j++){
@@ -163,19 +159,19 @@ void Reverb::reverbSchroeder(CircularBuffer& in, CircularBuffer& out){
                 int cur_d = combD[j-1];
                 float cur_a = combA[j-1];
 
-                comb_aux[i % d][j] = \
-                    -cur_a * comb_aux[i % d][j - 1] + \
-                    comb_aux[(i - cur_d) % d][j - 1] + \
-                    cur_a * comb_aux[(i - cur_d) % d][j];
+                comb_aux[ind % d][j] = \
+                    -cur_a * comb_aux[ind % d][j - 1] + \
+                    comb_aux[(ind - cur_d) % d][j - 1] + \
+                    cur_a * comb_aux[(ind - cur_d) % d][j];
 
             }else{
-                comb_aux[i % d][j] = last_y[i % d];
+                comb_aux[ind % d][j] = last_y[ind % d];
             }
 
         }
-        out.push_back(comb_aux[i % d][comb_count]);
+        out.push_back(comb_aux[ind % d][comb_count]);
 
-        i++;
+        ind++;
     }
 
 }

@@ -56,6 +56,16 @@ y(n)=x(n)+\frac{1}{2}g(y(n-M)+y(n-M-1))
 La señal fue similar al resultado del caso anterior con una sutil diferencia, el sonido se escuchó un con poco menos ruido, esto se debe muy probablamente a que el filtro pasa bajos evito la propagación de una frecuencia no deseada la cual no estaba presente en la señal original.
 
 \subsubsection{Implementación de reverberación completa}
+Se buscó estudiar un caso de reverberación completa. Se eligió el sistema denominado Schroeder. El mismo consistió de la conexión en paralelo de $N$ reverberadores planos, continuados de $M$ filtros tipo comb. Se utilizó algunos criterios de los expresados en los apuntes de clase como también se jugó empiricamente para conseguir sonidos de reverberación interesantes.
+A continuación se muestran los resultados
+\begin{figure}[H]	
+	\centering
+	\includegraphics[scale=1]{graficos/EJ8/eco_completo.png}
+	\caption{Resultados de un caso de reverberación completa, $N=12$, $M=2$, $a_{etapa1}=0.999$ $a_{comb}=0.5$}
+	\label{fig:bloqueElemental}
+\end{figure}
+El sonido resultante fue muy interesante, fue algo robotizado y conseguidó tan solo ajustando parametros del filtro. Esto da la pauta de que con el reverberador completo se puede facilmente ajustando sus parametros conseguir tipos muy distintos de reverberación, sin necesidad de tener que convolucionar con una respuesta al impulso
+
 
 \subsubsection{Implementación de reverberación por convolución}
 Se implemento una reverberación utilizando convolución con la respuesta al impulso característica de una fabrica. Se utilizo la ecuación de diferencias génerica siguiente

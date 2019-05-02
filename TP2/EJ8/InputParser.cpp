@@ -4,18 +4,8 @@
 
 #include "InputParser.h"
 #include "Reverb.h"
-
-#include <string>
-using namespace std;
-
-
-
-void Robot();
-void Flanger();
-int Reverb();
-void Vibrato();
-void Giro3d();
-int EcoSimple();
+#include "Realtime.h"
+#include "WavProcess.h"
 
 void parseInput(){
     bool on = true;
@@ -38,7 +28,7 @@ void parseInput(){
         } else if (comando == "Flanger"){
             Flanger();
         } else if (comando == "Reverb"){
-            ans = Reverb();
+            ans = RunReverb();
         } else if (comando == "Vibrato"){
             Vibrato();
         } else if (comando == "Giro 3d") {
@@ -81,7 +71,7 @@ void Robot(){
 void Flanger(){
     cout << "No ha sido implementado aún \n";
 }
-int Reverb(){
+int RunReverb(){
     cout << "Seleccionado Reverb ... \n";
     cout << "Seleccionar tipo de Reverb \n";
     cout << " - Eco-simple \n";
@@ -130,8 +120,50 @@ int EcoSimple(){
     cout << "Fueron configurados los parametros del eco simple \n";
     int mode = RealOrWav();
 
+    auto *bot = new Reverb(44100, 4096, 4096, ECO);
+    bot->myG = g;
+    bot->myM = m;
 
+
+    if (mode == REALTIME){
+        realtimeProtocol((AudioEffect*)bot);
+    }else if(mode == FILENAME){
+        wavProtocol((AudioEffect*)bot);
+    }
 
 
     return 0;
+}
+void realtimeProtocol(AudioEffect *bot){
+    string msg;
+    cout << "Comandos de realtime \n";
+    cout << "- Exit \n";
+    cout << "- Wait \n";
+    bool on = true;
+
+    while (on) {
+        string cur_msg;
+        Realtime(bot, cur_msg);
+        if (cur_msg == "Exit"){
+            on = false;
+        }else if (cur_msg == "Wait") {
+            cout << "Escribir algo distinto de 'Exit' para volver a empezar\n";
+            string smt;
+            cin >> smt;
+            if (smt == "Exit"){
+                on = false;
+            }
+        }
+    }
+}
+
+void wavProtocol(AudioEffect *bot){
+    cout << "Se ha seleccionado la opcion para procesar wav \n";
+    cout << "Archivo de entrada : " << '\n';
+    string entrada; cin >> entrada;
+    cout << "Archivo de salida : " << '\n';
+    string salida; cin >> salida;
+
+    wavProcess(bot, entrada, salida);
+
 }

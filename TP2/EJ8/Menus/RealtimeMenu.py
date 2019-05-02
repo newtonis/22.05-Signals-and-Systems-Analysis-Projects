@@ -70,9 +70,22 @@ class RealtimeMenu(tk.Frame):
         self.title.configure(
             text="Realtime " + getEffectsInterface().getCompleteMode()
         )
+        getEffectsInterface().sendData("Wait")
 
     def play(self):
-        pass
+        if not self.playing:
+            self.playing = True
+            getEffectsInterface().sendData("Play")
 
     def stop(self):
-        pass
+        if self.playing:
+            self.playing = False
+            getEffectsInterface().sendData("Wait")
+
+    def goBack(self):
+        self.playing = False
+        getEffectsInterface().sendData("Exit")
+
+        getEffectsInterface().restart()
+        from Menus.StartMenu import StartMenu
+        self.controller.showFrame(StartMenu)

@@ -68,9 +68,15 @@ class EffectsInterface:
         self.p.stdin.write(bytes(foo, encoding='utf-8'))
         self.p.stdin.flush()
 
+    def sendData(self, value):
+        foo = str(value) + "\n"
+        self.p.stdin.write(bytes(foo, encoding='utf-8'))
+        self.p.stdin.flush()
+
     def restart(self):
-        self.sentData = None
-        self.reverbMode =None
+
+        self.sentData = dict()
+        self.reverbMode = None
         self.mode = None
 
         self.p.stdin.write(b'Restart\n')

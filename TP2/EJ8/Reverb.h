@@ -32,30 +32,33 @@ class Reverb : public AudioEffect {
                 unsigned int sampleRate,
                 unsigned int framesPerBuffer,
                 unsigned int windowWidth,
-                int mode,
-                map<string,int> &config
+                int mode
                 );
 
 
         void processInput(CircularBuffer& in, CircularBuffer& out);
+
         void eco(CircularBuffer& in, CircularBuffer& out);
         void reverbPlano(CircularBuffer& in, CircularBuffer& out);
         void reverbPlanoPB(CircularBuffer& in, CircularBuffer& out);
         void reverbConvolution(CircularBuffer& in, CircularBuffer& out);
         void reverbSchroeder(CircularBuffer& in, CircularBuffer& out);
         int impulseLength;
+        int myM;
+        float myG;
 
     protected:
         float x[MAX_BUFFER_SIZE], last_x[MAX_BUFFER_SIZE];
         float y[MAX_BUFFER_SIZE], last_y[MAX_BUFFER_SIZE];
         float z[MAX_BUFFER_SIZE], last_z[MAX_BUFFER_SIZE];
+        unsigned int ind;
 
         float aux[DP_MAX][MAX_REB];
         float comb_aux[DP_MAX][MAX_REB];
         float comb_a[DP_MAX];
 
         int mode;
-        map<string,int> config;
+
 
         vector <int> D;
         vector <int> combD;
