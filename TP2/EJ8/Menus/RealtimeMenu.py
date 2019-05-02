@@ -1,23 +1,25 @@
 import tkinter as tk
+from EffectsInterface import getEffectsInterface
 from Globals import config
 
 
-class StartMenu(tk.Frame):
+class RealtimeMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-
-        self.controller = controller
         self.parent = parent
+        self.controller = controller
+
+        self.playing = False
 
         self.title = tk.Label(
             self,
             height=1,
-            width=40,
-            text="Seleccionar modo",
+            width=44,
+            text="Realtime",
             font=config.LARGE_FONT,
             background="#ccffd5"
         )
-
+        self.title.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
 
         buttonFrame = tk.Frame(self)
 
@@ -25,20 +27,20 @@ class StartMenu(tk.Frame):
             buttonFrame,
             height=5,
             width=20,
-            text="EFECTO PREDEFINIDO",
+            text="PLAY",
             font=config.SMALL_FONT,
             background="#b8caff",
-            command=self.predefinido
+            command=self.play
         )
 
         self.button2 = tk.Button(
             buttonFrame,
             height=5,
             width=20,
-            text="EFECTO PERSONALIZADO",
+            text="STOP",
             font=config.SMALL_FONT,
             background="#fff49f",
-            command=self.goToPersonalizado
+            command=self.stop
         )
 
         self.title.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
@@ -50,16 +52,27 @@ class StartMenu(tk.Frame):
         self.button2.pack(side=tk.RIGHT, expand=1, fill=tk.X)
         buttonFrame.pack(side=tk.TOP, expand=1, fill=tk.X)
 
-        f = tk.Frame(self)
-        f.configure(height=100)
-        f.pack(side=tk.TOP, expand=1, fill = tk.X)
-
-    def predefinido(self):
-        pass
-
-    def goToPersonalizado(self):
-        from Menus.PersonalizadoMenu import PersonalizadoMenu
-        self.controller.showFrame(PersonalizadoMenu)
+        # f = tk.Frame(self)
+        # f.configure(height=100)
+        # f.pack(side=tk.TOP, expand=1, fill = tk.X)
+        self.buttonVolver = tk.Button(
+            self,
+            height=1,
+            width=44,
+            text="Volver",
+            font=config.LARGE_FONT,
+            background="#ffbaae",
+            command=self.goBack
+        )
+        self.buttonVolver.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
 
     def focus(self):
+        self.title.configure(
+            text="Realtime " + getEffectsInterface().getCompleteMode()
+        )
+
+    def play(self):
+        pass
+
+    def stop(self):
         pass

@@ -3,6 +3,8 @@
 //
 
 #include "InputParser.h"
+#include "Reverb.h"
+
 #include <string>
 using namespace std;
 
@@ -43,9 +45,12 @@ void parseInput(){
             Giro3d();
         } else if (comando == "Salir"){
             cout << "Saliendo ... \n"; on = false;
-        } else {
+        } else if (comando == "Restart") {
+            cout << "Restart ... \n";
+        }else{
             cout << "Comando incorrecto \n";
         }
+
         if (ans == -1){
             cout << "Saliendo ... \n"; on = false;
         }
@@ -77,7 +82,7 @@ void Flanger(){
     cout << "No ha sido implementado aún \n";
 }
 int Reverb(){
-    cout << "Seleccionado reverb ... \n";
+    cout << "Seleccionado Reverb ... \n";
     cout << "Seleccionar tipo de Reverb \n";
     cout << " - Eco-simple \n";
     cout << " - Reverberador-plano \n";
@@ -89,11 +94,13 @@ int Reverb(){
 
     string modo; cin >> modo;
     if (modo == "Eco-simple"){
-        EcoSimple()
+        EcoSimple();
     }else if(modo == "Reverberador-plano"){
         cout << "No ha sido implementado aún";
     }else if (modo == "Salir"){
         return -1;
+    }else if (modo == "Restart") {
+        return 0;
     }else{
         cout << "No ha sido implementado aún";
     }
@@ -108,4 +115,23 @@ void Giro3d(){
 }
 int EcoSimple(){
     cout << "Eco simple seleccionado \n";
+    cout << "Seleccionar g y m" << '\n';
+    cout << "g = \n";
+    float g; cin >> g;
+    cout << "m = \n";
+    int m; cin >> m;
+
+    if (m < 5 or m > 10000){
+        return -1; // parametros invalidos
+    }
+    if (g < 0 or g > 1){
+        return -1; // invalido
+    }
+    cout << "Fueron configurados los parametros del eco simple \n";
+    int mode = RealOrWav();
+
+
+
+
+    return 0;
 }

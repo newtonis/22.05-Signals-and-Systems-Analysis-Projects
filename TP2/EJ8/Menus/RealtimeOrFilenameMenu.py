@@ -1,19 +1,19 @@
 import tkinter as tk
 from Globals import config
+from EffectsInterface import getEffectsInterface
 
 
-class StartMenu(tk.Frame):
+class RealtimeOrFilenameMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-
-        self.controller = controller
         self.parent = parent
+        self.controller = controller
 
         self.title = tk.Label(
             self,
             height=1,
-            width=40,
-            text="Seleccionar modo",
+            width=44,
+            text="Modo de funcionamiento",
             font=config.LARGE_FONT,
             background="#ccffd5"
         )
@@ -25,20 +25,20 @@ class StartMenu(tk.Frame):
             buttonFrame,
             height=5,
             width=20,
-            text="EFECTO PREDEFINIDO",
+            text="REALTIME",
             font=config.SMALL_FONT,
             background="#b8caff",
-            command=self.predefinido
+            command=self.realtime
         )
 
         self.button2 = tk.Button(
             buttonFrame,
             height=5,
             width=20,
-            text="EFECTO PERSONALIZADO",
+            text="CON ARCHIVOS",
             font=config.SMALL_FONT,
             background="#fff49f",
-            command=self.goToPersonalizado
+            command=self.file
         )
 
         self.title.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
@@ -54,12 +54,9 @@ class StartMenu(tk.Frame):
         f.configure(height=100)
         f.pack(side=tk.TOP, expand=1, fill = tk.X)
 
-    def predefinido(self):
-        pass
+    def file(self):
+        getEffectsInterface().sendParam("Funcionamiento", "Filename")
 
-    def goToPersonalizado(self):
-        from Menus.PersonalizadoMenu import PersonalizadoMenu
-        self.controller.showFrame(PersonalizadoMenu)
+    def realtime(self):
+        getEffectsInterface().sendParam("Funcionamiento", "Realtime")
 
-    def focus(self):
-        pass

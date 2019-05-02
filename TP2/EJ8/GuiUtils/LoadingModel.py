@@ -6,6 +6,9 @@ class LoadingModel:
         self.container = None
         self.onLoaded = None
 
+    def getView(self):
+        pass
+
     def setOnLoadedListener(self, func):
         self.onLoaded = func
 

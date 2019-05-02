@@ -1,4 +1,4 @@
-
+from GuiUtils.SliderContainer import SliderContainer
 
 class SliderModel:
     def __init__(self, start, end, step, startValue, title, callOnChange = None):
@@ -9,9 +9,13 @@ class SliderModel:
         self.title = title
         self.view = None
         self.callOnChange = callOnChange
+        self.viewClass = SliderContainer
 
     def setView(self, view):
         self.view = view
+
+    def getViewClass(self):
+        return self.viewClass
 
     def getView(self):
         return self.view

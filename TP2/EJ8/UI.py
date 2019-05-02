@@ -1,13 +1,22 @@
 import tkinter as tk
 from tkinter import *
-from Menus.DefaultMenu import DefaultMenu
 from Menus.StartMenu import StartMenu
+from Menus.PersonalizadoMenu import PersonalizadoMenu
+from Menus.ReverbMenu import ReverbMenu
+from Menus.ParametersConfigMenu import ParametersConfigMenu
+from Menus.RealtimeOrFilenameMenu import RealtimeOrFilenameMenu
+
 from EffectsInterface import getEffectsInterface
 from Globals import styles, config
 
 frames = [
-    StartMenu
+    StartMenu,
+    PersonalizadoMenu,
+    ReverbMenu,
+    ParametersConfigMenu,
+    RealtimeOrFilenameMenu
 ]
+
 startFrame = 0
 
 
@@ -42,7 +51,7 @@ class UI(tk.Tk):
 
         getEffectsInterface()
 
-        print("hello")
+        #print("hello")
 
     def showFrame(self, frame):
         self.frames[frame].focus()

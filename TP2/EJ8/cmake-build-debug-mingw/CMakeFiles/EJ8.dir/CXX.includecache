@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/InputParser.cpp
+InputParser.h
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/InputParser.h
+string
+-
+
+C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ8/InputParser.h
+iostream
+-
+

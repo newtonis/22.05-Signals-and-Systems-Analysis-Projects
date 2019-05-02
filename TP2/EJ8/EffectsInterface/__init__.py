@@ -3,6 +3,7 @@ import subprocess
 from threading import Thread
 import sys
 import os
+from binascii import a2b_uu, crc32
 
 
 class EffectsInterface:
@@ -11,12 +12,15 @@ class EffectsInterface:
         self.thread.start()
 
         self.continuar = True
+        self.mode = None
+        self.reverbMode = None
+        self.sentData = dict()
 
     def deamon(self):
         print("Corriendo EJ8.exe \n")
 
         self.p = subprocess.Popen(
-            "cmake-build-debug\EJ8.exe",
+            "cmake-build-debug-mingw\EJ8.exe",
             shell=False,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
@@ -27,14 +31,51 @@ class EffectsInterface:
             print(line)
 
     def end(self):
-        print("Ending ...")
+        #print("Ending ...")
         self.continuar = False
         self.p.stdin.write(b'Salir\n')
         self.p.stdin.flush()
 
     def setMode(self, mode):
-        self.p.stdin.write(mode)
+        self.mode = mode
+        foo = mode + "\n"
+        self.p.stdin.write(bytes(foo, encoding='utf-8'))
         self.p.stdin.flush()
+
+    def setReverbMode(self, mode):
+        self.reverbMode = mode
+        foo = mode + "\n"
+        self.p.stdin.write(bytes(foo, encoding='utf-8'))
+        self.p.stdin.flush()
+
+    def getMode(self):
+        return self.mode
+
+    def getCompleteMode(self):
+        ans = ""
+        if self.mode:
+            ans += self.mode
+        if self.reverbMode:
+            ans += " " + self.reverbMode
+
+        return ans
+
+    def sendParam(self, name, value):
+        self.sentData[name] = value
+        print("Enviando parametro ", name, "con valor ", value)
+        foo = str(value) + "\n"
+
+        self.p.stdin.write(bytes(foo, encoding='utf-8'))
+        self.p.stdin.flush()
+
+    def restart(self):
+        self.sentData = None
+        self.reverbMode =None
+        self.mode = None
+
+        self.p.stdin.write(b'Restart\n')
+        self.p.stdin.flush()
+
 
 effectsInferface = None
 
