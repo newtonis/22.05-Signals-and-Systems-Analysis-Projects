@@ -89,6 +89,7 @@ CMakeFiles/EJ8.dir/main.cpp.obj: ../InputParser.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../Reverb.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../Robotization.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../Vibrato.h
+CMakeFiles/EJ8.dir/main.cpp.obj: ../WavProcess.h
 CMakeFiles/EJ8.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/EJ8.dir/main.cpp.obj: ../windows.h
 

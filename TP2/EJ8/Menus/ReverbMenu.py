@@ -75,7 +75,7 @@ class ReverbMenu(tk.Frame):
         self.goToConfigMenu()
 
     def goToPB(self):
-        getEffectsInterface().setReverbMode("Revervbrador-pasa-bajos")
+        getEffectsInterface().setReverbMode("Reverberador-pasa-bajos")
         self.goToConfigMenu()
 
     def goToCompleto(self):
@@ -83,7 +83,7 @@ class ReverbMenu(tk.Frame):
         self.goToConfigMenu()
 
     def goToConvolucion(self):
-        getEffectsInterface().setReverbMode("Reverberador-convolución")
+        getEffectsInterface().setReverbMode("Reverberador-convolucion")
         self.goToConfigMenu()
 
     def goBack(self):

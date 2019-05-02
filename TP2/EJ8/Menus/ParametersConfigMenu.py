@@ -4,6 +4,7 @@ from EffectsInterface import getEffectsInterface
 from GuiUtils.RecyclerView import RecyclerView
 from GuiUtils.SliderModel import SliderModel
 from GuiUtils.SimpleButtonModel import SimpleButtonModel
+from GuiUtils.AskFilenameModel import AskFilenameModel
 
 
 class ParametersConfigMenu(tk.Frame):
@@ -55,13 +56,69 @@ class ParametersConfigMenu(tk.Frame):
         self.buttonVolver.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
 
     def configReverbEcoSimple(self):
-        self.ganancia = SliderModel(0, 1, 0.01, 0.9, "Ganancia (g)")
+        self.ganancia = SliderModel(0, 1, 0.001, 0.999, "Ganancia (g)")
         self.recyclerView.addElement(
             self.ganancia
         )
-        self.delay = SliderModel(5, 8000, 1, 0.9, "Delay (m)")
+        self.delay = SliderModel(5, 8000, 1, 5000, "Delay (m)")
         self.recyclerView.addElement(
             self.delay
+        )
+        self.recyclerView.addElement(
+            SimpleButtonModel(self.sendParams, "Aceptar")
+        )
+
+    def configureReverbPlano(self):
+        self.ganancia = SliderModel(0, 1, 0.01, 0.5, "Ganancia (g)")
+        self.recyclerView.addElement(
+            self.ganancia
+        )
+        self.delay = SliderModel(5, 8000, 1, 500, "Delay (m)")
+        self.recyclerView.addElement(
+            self.delay
+        )
+        self.recyclerView.addElement(
+            SimpleButtonModel(self.sendParams, "Aceptar")
+        )
+
+    def configReverbPB(self):
+        self.ganancia = SliderModel(0, 1, 0.01, 0.5, "Ganancia (g)")
+        self.recyclerView.addElement(
+            self.ganancia
+        )
+        self.delay = SliderModel(5, 8000, 1, 500, "Delay (m)")
+        self.recyclerView.addElement(
+            self.delay
+        )
+        self.recyclerView.addElement(
+            SimpleButtonModel(self.sendParams, "Aceptar")
+        )
+
+    def configureReverbCompleto(self):
+        self.pFilter = SliderModel(1, 15, 1, 12, "Cantidad de Filtros en paralelo")
+        self.recyclerView.addElement(
+            self.pFilter
+        )
+        self.combCount = SliderModel(1, 4, 1, 2, "Cantidad de combs en serie")
+        self.recyclerView.addElement(
+            self.combCount
+        )
+        self.combDelay = SliderModel(100, 1000, 1, 500, "Delay combs")
+        self.recyclerView.addElement(
+            self.combDelay
+        )
+        self.combGain = SliderModel(0, 1, 0.01, 0.5, "Comb gain")
+        self.recyclerView.addElement(
+            self.combGain
+        )
+        self.recyclerView.addElement(
+            SimpleButtonModel(self.sendParams, "Aceptar")
+        )
+
+    def configureReverbConvolucion(self):
+        self.fileImpulse = AskFilenameModel()
+        self.recyclerView.addElement(
+            self.fileImpulse
         )
         self.recyclerView.addElement(
             SimpleButtonModel(self.sendParams, "Aceptar")
@@ -71,24 +128,46 @@ class ParametersConfigMenu(tk.Frame):
         self.recyclerView.clear()
 
         self.mode = getEffectsInterface().getCompleteMode()
+        print(self.mode)
         if self.mode == "Reverb Eco-simple":
             self.configReverbEcoSimple()
+        elif self.mode == "Reverb Reverberador-plano":
+            self.configureReverbPlano()
+        elif self.mode == "Reverb Reverberador-pasa-bajos":
+            self.configReverbPB()
+        elif self.mode == "Reverb Reverberador-completo":
+            self.configureReverbCompleto()
+        elif self.mode == "Reverb Reverberador-convolucion":
+            self.configureReverbConvolucion()
 
         self.label.configure(
-            text="Configuracion de parametros - " + self.mode
+            text=self.mode
         )
 
     def goBack(self):
+        getEffectsInterface().sendData("-1\n")
         getEffectsInterface().restart()
         from Menus.StartMenu import StartMenu
         self.controller.showFrame(StartMenu)
 
     def sendParams(self):
 
-        if self.mode == "Reverb Eco-simple":
-            print("sending ...")
+        if self.mode == "Reverb Eco-simple" or \
+                self.mode == "Reverb Reverberador-plano" or \
+                self.mode == "Reverb Reverberador-pasa-bajos":
+
+            #print("sending ...")
             getEffectsInterface().sendParam("g", self.ganancia.getValue())
             getEffectsInterface().sendParam("d", self.delay.getValue())
+
+        elif self.mode == "Reverb Reverberador-completo":
+            getEffectsInterface().sendParam("pf", self.pFilter.getValue())
+            getEffectsInterface().sendParam("cc", self.combCount.getValue())
+            getEffectsInterface().sendParam("dc", self.combDelay.getValue())
+            getEffectsInterface().sendParam("gc", self.combGain.getValue())
+
+        elif self.mode == "Reverb Reverberador-convolucion":
+            getEffectsInterface().sendData(self.fileImpulse.getFilename())
 
         from Menus.RealtimeOrFilenameMenu import RealtimeOrFilenameMenu
         self.controller.showFrame(RealtimeOrFilenameMenu)

@@ -203,28 +203,29 @@
 //    }
 //    return err;
 //}
-//
-//#include <map>
-//#include "AudioFile.h"
-//#include "Robotization.h"
-//#include "windows.h"
-//#include "Reverb.h"
-//#include "Flanger.h"
-//#include "Vibrato.h"
-//#include "InputParser.h"
-//
-//
-//using namespace std;
-//
-//
-//int main() {
-//    parseInput();
+
+#include <map>
+#include "AudioFile.h"
+#include "Robotization.h"
+#include "windows.h"
+#include "Reverb.h"
+#include "Flanger.h"
+#include "Vibrato.h"
+#include "InputParser.h"
+#include "WavProcess.h"
+
+
+using namespace std;
+
+
+int main() {
+    parseInput();
 
 //    std::vector<float> holis;
 //    hanning(8, holis);
 //    hanning(512, holis);
-
-
+//
+//
 //    std::string name = "president-is-moron";
 //    AudioFile<float> audioFile;
 //    AudioFile<float> out;
@@ -238,7 +239,9 @@
 //
 //    map<string, int> config;
 //
-//    Reverb bot(sampleRate, numSamples, windowWidth, COMPLETO, config);
+//    Reverb *bot = new Reverb(sampleRate, numSamples, windowWidth, ECO);
+//    bot->myG = 0.999;
+//    bot->myM = 5000;
 //
 //    auto *buffer = new float[numSamples * 2];
 //    for (int i = 0; i < numSamples; i++) {
@@ -252,14 +255,14 @@
 //    }
 //
 //
-//    freopen("output/x.txt", "w+",stdout);
-//    for (int i = 0;i < numSamples;i++){
-//        cout << buffer[2*i] << '\n';
-//    }
+////    freopen("output/x.txt", "w+",stdout);
+////    for (int i = 0;i < numSamples;i++){
+////        cout << buffer[2*i] << '\n';
+////    }
 //
 //
-//    bot.processStereoInput(buffer);
-//    bot.setNextOutput(buffer);
+//    bot->processStereoInput(buffer);
+//    bot->setNextOutput(buffer);
 //
 //    newBuffer.resize(2);
 //    newBuffer[0].resize(numSamples);
@@ -270,27 +273,24 @@
 //    }
 //
 //
-
-//    freopen("output/y.txt","w+",stdout);
-//    for (int i = 0;i < numSamples;i++){
-//        cout << buffer[2*i] << '\n';
-//    }
-
+//
+////    freopen("output/y.txt","w+",stdout);
+////    for (int i = 0;i < numSamples;i++){
+////        cout << buffer[2*i] << '\n';
+////    }
+//
 //
 //    out.setAudioBuffer(newBuffer);
-//    out.save ("output/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
+//    out.save ("output2/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
 //    delete [] buffer;
 
-//}
 
+    /*auto *bot = new Reverb(44100, 4096, 4096, ECO);
+    bot->myG = 0.993;
+    bot->myM = 5000;
 
-#include "windows.h"
-#include <iostream>
-int main(){
-    std::vector<float> h;
-    hanning(512, h);
+    string a = "input/president-is-moron.wav";
+    string b =   "output2/test.wav";
+    wavProcess(bot, a, b);*/
 
-    for (unsigned int i = 0; i < h.size()/2; i++) {
-        std::cout << h[i] + h[i+h.size()/2] << " - ";
-    }
 }

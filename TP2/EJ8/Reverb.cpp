@@ -23,8 +23,8 @@ Reverb::Reverb(
     this->windowWidth = windowWidth;
     this->start = true;
     this->impulseLength = 20000;
+    //"impulse/Factory Hall.wav"
 
-    loadWavFile("impulse/Factory Hall.wav", outputA, outputB, impulseLength);
 
     for (int i = 0;i < DP_MAX;i++){
         for (int j = 0;j < MAX_REB;j++){
@@ -39,17 +39,31 @@ Reverb::Reverb(
         last_z[i] = 0;
 
     }
-    for (int i = 0;i < 12;i++) {
-        D.push_back(53); //0.0012f*44100
-    }
+    //for (int i = 0;i < 12;i++) {
+    //    D.push_back(53); //0.0012f*44100
+    //}
 
-    comb_count = 4;
-    for (int i = 0;i < comb_count;i++){
-        combD.push_back(500);
-        combA.push_back(0.5);
-    }
+    //comb_count = 4;
+//    for (int i = 0;i < comb_count;i++){
+//        combD.push_back(500);
+//        combA.push_back(0.5);
+//    }
     a = 0.99;
     ind = 100000;
+}
+
+void Reverb::configureReverbCompleto(int pf, int cc, int dc, float gc){
+    D.clear();
+    combA.clear();
+    combD.clear();
+    for (int i = 0;i < pf;i++) {
+        D.push_back(53); //0.0012f*44100
+    }
+    comb_count = cc;
+    for (int i = 0;i < comb_count;i++){
+        combD.push_back(dc);
+        combA.push_back(gc);
+    }
 }
 
 void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
@@ -67,9 +81,10 @@ void Reverb::processInput(CircularBuffer& in, CircularBuffer& out){
 }
 
 void Reverb::eco(CircularBuffer& in, CircularBuffer& out){
-    float g = myG;
-    int m = myM;
+    float g = myG; // g = 0.9
+    int m = myM; // m = 5000
 
+    //cout << "fabricando eco " << "g = " << g << ' ' << "m = " << m << '\n';
 
     while (in.currSize() > 0){
         float actual = in.next();
@@ -84,8 +99,10 @@ void Reverb::eco(CircularBuffer& in, CircularBuffer& out){
 }
 
 void Reverb::reverbPlano(CircularBuffer& in, CircularBuffer& out){
-    float g = 0.5;
-    int m = 5000;
+    //float g = 0.5;
+    //int m = 500;
+    float g = myG;
+    int m = myM;
 
     while (in.currSize() > 0){
         float actual = in.next();
@@ -100,8 +117,8 @@ void Reverb::reverbPlano(CircularBuffer& in, CircularBuffer& out){
 }
 
 void Reverb::reverbPlanoPB(CircularBuffer& in, CircularBuffer& out){
-    float g = 0.5;
-    int m = 5000;
+    float g = myG;//0.5;
+    int m = myM; //5000;
 
 
     while (in.currSize() > 0){
@@ -122,7 +139,7 @@ void Reverb::reverbPlanoPB(CircularBuffer& in, CircularBuffer& out){
 }
 
 void Reverb::reverbConvolution(CircularBuffer &in, CircularBuffer &out) {
-
+    loadWavFile(wavFile, outputA, outputB, impulseLength);
     //for (int i = 0;i < impulseLength;i++){
      //   last_x[i] = 0;
     //}

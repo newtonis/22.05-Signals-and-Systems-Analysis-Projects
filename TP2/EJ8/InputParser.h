@@ -23,7 +23,13 @@ void Flanger();
 int RunReverb();
 void Vibrato();
 void Giro3d();
+
 int EcoSimple();
+int ReverbPlano();
+int ReverbPB();
+int ReverbCompleto();
+int reverbConvolucion();
+
 void realtimeProtocol(AudioEffect *bot);
 void wavProtocol(AudioEffect *bot);
 

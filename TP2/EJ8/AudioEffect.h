@@ -18,13 +18,13 @@ public:
     virtual void processStereoInput(const float * stereoInput);
     virtual void processInput(CircularBuffer& in, CircularBuffer& out) = 0;
     void setNextOutput(float * stereoOutput);
-
+    void setFPB(unsigned int framesPerBuffer);
 
 protected:
     void splitInput(const float * stereoInput);
 
     unsigned int const sampleRate;
-    unsigned int const framesPerBuffer;
+    unsigned int framesPerBuffer;
     unsigned int const minOutSize;
 
     CircularBuffer inLeft;
