@@ -2,8 +2,8 @@ from util_python import read_csv
 from util_python import Senial, read_spice
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from mpldatacursor import datacursor
-import pandas as pd
+# from mpldatacursor import datacursor
+# import pandas as pd
 
 MAG, \
 PHA, \

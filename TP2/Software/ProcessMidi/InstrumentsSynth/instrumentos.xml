@@ -10,9 +10,19 @@
             function="getClarinet"
     />
     <instrumento
+            nombre="Guitarra Distorsionada"
+            code="guitarraDistorsion.py"
+            function="SitetizarGuitarraDistorsion"
+    />
+    <instrumento
             nombre="Guitarra"
             code="guitarra.py"
-            function="SitetizarGuitarraDistorsion"
+            function="SintetizarGuitarra"
+    />
+    <instrumento
+            nombre="Percusion Master"
+            code="disco.py"
+            function="SitetizarTambor"
     />
     <instrumento
             nombre="Trombón"
