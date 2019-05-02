@@ -83,7 +83,7 @@ La relación entre frecuencias esta dada por \\*
 La posición de las frecuencias laterales en serie harmónica puede ser determinada por las siguientes relaciones
 
 \begin{eqnarray*}
-\displaystyle k = N_1 + nN_2 \: para\; n=0,1,2,3,4...
+\displaystyle k = N_1 \pm nN_2 \: para\; n=0,1,2,3,4...
 \end{eqnarray*}
 Donde k es el  número de harmónico y n es el orden de la frecuencia lateral.
 Excepto para n=0, k toma dos valores por cada orden.
@@ -97,7 +97,7 @@ A continuación dejamos unas generalizaciones útiles:
 \end{itemize}
  
 
-El número de harmónicos que tienen amplitud significante  dependen del índice de modulación.
+El número de harmónicos que tienen amplitud significativa  dependen del índice de modulación.
 
 Para relaciones entre frecuencias bajas e indices chicos donde $N_1\neq1$ la fundamental puede no estar presente en el espectro.
 
@@ -133,7 +133,13 @@ La complejidad del espectro esta relacionada con el índice de modulación de fo
 No obstante, la evolución de cada componente es determinado por la forma de la funcion de Bessel correspondiente.
 Entonces, si el indice de modulación aumenta con el tiempo el bandwidth también lo hace, pero un componente del espectro va a crecer o decrecer en amplitud dependiendo de la pendiente de la función de bessel en ese rango de indices.
 
-\todo{foto de modulacion en tiempo}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{graficos/EJ4/EspectroDinamico.png}
+\caption{Funciones de Bessel desde $J_0$ hasta $J_{15}$ e I desde 0 hasta 20. En este gráfico se puede ver rápidamente el bandwidth dado un índice I}
+\label{fig:DynamicSpectrum}
+\end{figure}
+
 
 
 \subsection{Síntesis para instrumentos de viento}
@@ -212,7 +218,21 @@ Para los Brass Instruments se recomienda utilizar una relación de:
 \label{fig:trombone_440}
 \end{figure}
 
+\subsection{Conclusiones}
+Para poder realizar una síntesis de un instrumento suele ser útil tener espectrogramas del mismo ya que nos dan información de cómo evoluciona el sonido con el tiempo y de esa forma se puede llegar a tener una idea de cómo puede llegar a ser A(t) e I(t). Si bien en la literatura hay envolventes sugeridas, las mismas son sólo un molde inicial por el cual uno debería empezar a probar la síntesis pero para poder ejecutar una síntesis apropiada se debe cambiar el molde. De la misma forma la relación entre fm y fc no siempre tiene que ser la sugerida. 
+\begin{thebibliography}{9}
+  
+\bibitem{knuthwebsite} 
+The Synthesis of Complex Audio Spectra by Means of Frequency Modulation,
+\\\texttt{\url{https://ccrma.stanford.edu/sites/default/files/user/jc/fm_synthesispaper-2.pdf}}
 
+\bibitem{knuthwebsite} 
+FM Synthesis for Musical Instruments: Bells and Clarinets,
+\\\texttt{\url{http://home.eng.iastate.edu/~julied/classes/ee224/Labs/FMSynthesis_lab.pdf}}
+%\url{http://home.eng.iastate.edu/~julied/classes/ee224/Labs/FMSynthesis_lab.pdf}
+%\~julied/classes/ee224/Labs/FMSynthesis_lab.pdf
+
+\end{thebibliography}
 
 
 \end{document}

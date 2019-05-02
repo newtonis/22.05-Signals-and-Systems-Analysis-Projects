@@ -1,9 +1,10 @@
 import tkinter as tk
-from Globals import config
 from EffectsInterface import getEffectsInterface
+from Globals import config
+from tkinter import filedialog
 
 
-class RealtimeOrFilenameMenu(tk.Frame):
+class FilenameMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.parent = parent
@@ -13,10 +14,12 @@ class RealtimeOrFilenameMenu(tk.Frame):
             self,
             height=1,
             width=44,
-            text="Modo de funcionamiento",
+            text="Process file",
             font=config.LARGE_FONT,
             background="#ccffd5"
         )
+
+        self.title.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
 
 
         buttonFrame = tk.Frame(self)
@@ -25,46 +28,65 @@ class RealtimeOrFilenameMenu(tk.Frame):
             buttonFrame,
             height=5,
             width=20,
-            text="REALTIME",
+            text="ENTRADA []",
             font=config.SMALL_FONT,
             background="#b8caff",
-            command=self.realtime
+            command=self.configureInput
         )
 
         self.button2 = tk.Button(
             buttonFrame,
             height=5,
             width=20,
-            text="CON ARCHIVOS",
+            text="SALIDA []",
             font=config.SMALL_FONT,
             background="#fff49f",
-            command=self.file
+            command=self.configureOutput
         )
 
         self.title.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
         f = tk.Frame(self)
-        f.configure(height=200)
+        f.configure(height=150)
         f.pack(side=tk.TOP, expand=1, fill = tk.X)
 
         self.button1.pack(side=tk.LEFT, expand=1, fill=tk.X)
         self.button2.pack(side=tk.RIGHT, expand=1, fill=tk.X)
         buttonFrame.pack(side=tk.TOP, expand=1, fill=tk.X)
 
-        f = tk.Frame(self)
-        f.configure(height=100)
-        f.pack(side=tk.TOP, expand=1, fill = tk.X)
+        self.buttonAceptar = tk.Button(
+            self,
+            height=1,
+            width=44,
+            text="Aceptar",
+            font=config.LARGE_FONT,
+            background="#aeffba",
+            command=self.aceptar
+        )
+        self.buttonAceptar.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
 
-    def file(self):
-        getEffectsInterface().sendParam("Funcionamiento", "Filename")
-        from Menus.FilenameMenu import FilenameMenu
-        self.controller.showFrame(FilenameMenu)
+    def focus(self):
+        self.title.configure(text = "Process file " + getEffectsInterface().getCompleteMode())
 
-    def realtime(self):
-        getEffectsInterface().sendParam("Funcionamiento", "Realtime")
-        from Menus.RealtimeMenu import RealtimeMenu
-        self.controller.showFrame(RealtimeMenu)
+    def configureInput(self):
+        filename = filedialog.askopenfilename()
+        self.input = filename
+
+        self.button1.configure(
+            text="entrada [" + filename + "]"
+        )
+
+    def configureOutput(self):
+        filename = filedialog.asksaveasfile(mode='w', defaultextension=".wav").name
+        self.output = filename
+
+        self.button2.configure(
+            text="salida [" + filename + "]"
+        )
 
     def goBack(self):
         getEffectsInterface().restart()
         from Menus.StartMenu import StartMenu
         self.controller.showFrame(StartMenu)
+
+    def aceptar(self):
+        pass

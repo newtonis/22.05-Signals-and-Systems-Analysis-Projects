@@ -6,6 +6,7 @@ from Menus.ReverbMenu import ReverbMenu
 from Menus.ParametersConfigMenu import ParametersConfigMenu
 from Menus.RealtimeOrFilenameMenu import RealtimeOrFilenameMenu
 from Menus.RealtimeMenu import RealtimeMenu
+from Menus.FilenameMenu import FilenameMenu
 
 from EffectsInterface import getEffectsInterface
 from Globals import styles, config
@@ -16,7 +17,8 @@ frames = [
     ReverbMenu,
     ParametersConfigMenu,
     RealtimeOrFilenameMenu,
-    RealtimeMenu
+    RealtimeMenu,
+    FilenameMenu
 ]
 
 startFrame = 0

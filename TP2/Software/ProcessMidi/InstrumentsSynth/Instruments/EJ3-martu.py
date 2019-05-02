@@ -10,6 +10,15 @@ from scipy.fftpack import fft, fftfreq
 import operator
 import numpy as np
 
+def normalize(arr):
+    auxarr = arr.copy()
+    auxarr = auxarr-mean(auxarr) #pongo valor medio 0
+    maxval = abs(amax(auxarr))
+    minval = abs(amin(auxarr))
+    tot_max = max(maxval, minval)
+    total_amp_arr = divide(auxarr, tot_max)
+    return total_amp_arr
+
 
 def env(dur, f, n, file, pd):
     sampFreq, sndd = wavfile.read(file, 'rb')
@@ -122,6 +131,7 @@ def getPiano(vel, frequency, duration, fs):
 
         x += amps[i] * np.cos(2 * pi * frequency * harmonics[i] * totaltime + phase[i]) * envelope
 
+    x = normalize(x)
     return x
 
 
@@ -163,6 +173,7 @@ def getSax(vel, frequency, duration, fs):
 
         x += amps[i] * np.cos(2 * pi * frequency * harmonics[i] * totaltime + phase[i]) * envelope
 
+    x = normalize(x)
     return x
 
 
@@ -180,6 +191,7 @@ def getViolin(vel, frequency, duration, fs):
         envelope = env(duration, frequency, harmonics[i], file, pd)
         x += amps[i] * np.cos(2 * pi * frequency * harmonics[i] * totaltime + phase[i]) * envelope
 
+    x = normalize(x)
     return x
 
 def getTrombone(vel, frequency, duration, fs):
@@ -194,5 +206,5 @@ def getTrombone(vel, frequency, duration, fs):
         envelope = env(duration, frequency, harmonics[i], file, pd)
 
         x += amps[i] * np.cos(2 * pi * frequency * harmonics[i] * totaltime + phase[i]) * envelope
-
+    x = normalize(x)
     return x

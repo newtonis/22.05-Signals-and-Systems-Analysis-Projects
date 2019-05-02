@@ -5,6 +5,7 @@ from ProcessMidi import StatusInterface
 # #importo las funciones de los intrumentos
 
 def sumTrack2TotalSinThreads(total_amp_arr,nt_track,suma,length,status):
+    exceso = False
     for j in range(len(nt_track.t_on)):
         dx, y = nt_track.getAmpArr(j)
         for k in range(len(y)):
