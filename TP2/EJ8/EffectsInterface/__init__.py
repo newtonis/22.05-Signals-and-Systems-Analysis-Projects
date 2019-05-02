@@ -20,7 +20,7 @@ class EffectsInterface:
         print("Corriendo EJ8.exe \n")
 
         self.p = subprocess.Popen(
-            "cmake-build-debug-mingw\EJ8.exe",
+            "cmake-build-debug\EJ8.exe",
             shell=False,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
