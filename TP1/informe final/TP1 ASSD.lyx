@@ -10581,5 +10581,264 @@ tau_g = 3
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Implementación en PCB - Consideraciones
+\end_layout
+
+\begin_layout Standard
+Dado que el sistema en su conjunto consiste de una parte analógica y otra
+ digital, es necesario tener en cuenta ciertas cuestiones al momento de
+ realizar la implementación en PCB.
+\end_layout
+
+\begin_layout Subsection
+Flancos digitales - Clocks
+\end_layout
+
+\begin_layout Standard
+Los osciladores que proveen las señales cuadradas de control para la llave
+ analógica y el sample & hold exigen corriente al circuito en los flancos,
+ lo cual provoca una disminución en la tensión de alimentación durante un
+ breve lapso de tiempo, resultando agresivo para el circuito analógico ya
+ que éste se encuentra conectado a la misma línea de alimentación.
+ Esto puede producir distorsiones en las señales analógicas resultantes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../PlacaTP1_ASSD/Dibujos/Alimentacion.png
+	display false
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Alimentación afectada por picos de corriente del circuito digital
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El fenómeno en cuestión no es posible de eliminar en su totalidad, pero
+ si disminuirlo.
+ Para ello se colocan capacitores de desacople lo más cerca posible de los
+ pines de alimentación de los circuitos integrados, de manera tal que puedan
+ proveer rápidamente una corriente alta durante lapsos de tiempo breves,
+ principalmente en los flancos de las señales cuadradas.
+ Se utilizaron capacitores multicapa dado que pueden responder rápidamente
+ frente a estas situaciones.
+\end_layout
+
+\begin_layout Standard
+Para proveer corrientes altas por períodos más largos, se colocaron capacitores
+ electrolíticos de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$330uF$
+\end_layout
+
+\end_inset
+
+ creca del conector de alimentación de la placa, tanto en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$+VCC$
+\end_layout
+
+\end_inset
+
+ como en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$-VCC$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+División de circuitos
+\end_layout
+
+\begin_layout Standard
+Dado que las señales de clock poseen componentes de alta frecuencia, si
+ pasan cerca junto con las pistas que llevan señales analógicas puede darse
+ inducción entre ambas pistas, produciendo distorsión sobre la señal analógica.
+ Para evitar esto, se separó por un lado a los circuitos osciladores en
+ la parte digital, y a los filtros e integrados de llave analógica y sample
+ and hold por otro, en zonas bien definidas como se muestra a continuación.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../PlacaTP1_ASSD/Dibujos/ZonasMarcadas.png
+	display false
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diseño del PCB - Zonas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para terminar de definir la división entre ambos circuitos, se debe tener
+ en cuenta que la corriente retorna por GND también.
+ Por lo tanto, se llevó una pista de GND por la circuitería analógica del
+ sistema, sin pasar por la digital, y viceversa, uniendo ambas en un solo
+ punto, siendo éste el pin de GND del conector de alimentación del PCB.
+ De esta forma, se logra separar ambas masas.
+\end_layout
+
+\begin_layout Subsection
+Otras consideraciones prácticas
+\end_layout
+
+\begin_layout Itemize
+Para el diseño de los filtros, sabiendo que se utilizan los mismo integrados,
+ se llevó la alimentación por debajo de los mismos en linea recta directamente
+ hacia el conector de alimentación, sin pasar por medio del circuito.
+ Esto resulta práctico dada la posición de los integrados.
+\end_layout
+
+\begin_layout Itemize
+Se añadieron pines de medición a la salida de las diferentes etapas (lo
+ más cerca posible de ellas), y jumpers para poder anular o utilizar cualquiera
+ de las etapas.
+\end_layout
+
+\begin_layout Itemize
+En las cuatro esquinas se colocaron tamecos para el soporte de la placa,
+ mas un tameco adicional en el centro, en una zona donde confluyen 4 presets.
+ Esto es una medida de seguridad, ya que para calibrar los presets se debe
+ ejercer una cierta presión.
+ Si no se tiene cuidado puede doblarse el PCB, donde en el peor caso si
+ se realiza reiteradas veces pueden cortarse algunas pistas, debido a que
+ la placa es de fabricación casera en pertinax, el cual es un material más
+ flexible que la fibra de vidrio.
+\end_layout
+
+\begin_layout Standard
+El tamaño final resultante del PCB es de aproximadamente 14cm x 18cm.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../PlacaTP1_ASSD/Dibujos/modelo3D.png
+	display false
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diseño de PCB - Modelo 3D
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
