@@ -4,6 +4,54 @@
 
 \section{Espectrograma}
 
+Para la realizaci\'on de los espectrogramas, se utiliz\'o la funci\'on ``spectrogram'', de la librer\'ia <<scipy>> de Python. La misma se basa en la implementaci\'on de transformadas de Fourier consecutivas sobre la se\~nal a lo largo del tiempo. La sintaxis para su utilizaci\'on es la siguiente:
+
+\begin{center}
+scipy.signal.spectrogram(x, fs=1.0, window=('tukey', 0.25), nperseg=None, noverlap=None, nfft=None, detrend='constant', return\_onesided=True, scaling='density', axis=-1, mode='psd')
+\end{center}
+
+Donde los par\'ametros y sus efectos en detalle se describen a continuaci\'on.
+
+\begin{itemize}
+
+\item \textbf{x [array]}: arreglo con los valores que toma la se\~nal en el tiempo (sobre los que se aplica la transformada de Fourier).
+
+\item \textbf{fs [float]}: frecuencia de sampleo de la se\~nal $x(t)$. Por defecto normalizada: 1.0.
+
+\item \textbf{window [string \'o tuple \'o array]}: ventana temporal a utilizar. Influye tanto el tipo de ventana como como el ancho de la misma.\par
+Respecto al tipo de ventana, si se utiliza por ejemplo una ventana cuadrada, esta posee un corte abrupto. Si en dicha ventana no entra un n\'umero entero de per\'iodos de la se\~nal, se produce un corte abrupto.\par
+Esto remite en la aparici\'on de otras componentes de alta frecuencia que antes no hab\'ia, lo que se conoce como <<fuga espectral>> (dado que la energ\'ia de los arm\'onicos principales se ``fuga'' a los otros arm\'onicos nuevos). Otras ventanas (como la Blackman-Harris) tienen un corte suave en los extremos (tienden a cero gradualmente), lo que minimiza la fuga espectral considerablemente.\par
+El ancho de la ventana interviene en la resoluci\'on en tiempo y en frecuencia. Si la ventana es m\'as ancha, se obtiene mayor resoluci\'on en frecuencia, dado que si la frecuencia de la se\~nal sufre alg\'un cambio en el tiempo (como en una se\~nal FM), es posible captarlo con la ventana con mayor definici\'on. Pero en el tiempo se pierde resoluci\'on dado que se sabe con menor precisi\'on d\'onde ocurre exactamente el cambio de frecuencia. Con una ventana angosta, se gana resoluci\'on en el tiempo, pero en frecuencia se podr\'ia perder el cambio que antes se lograba captar en el tiempo con una ventana ancha, por lo que se ver\'ia una sola frecuencia en lugar de dos.
+
+\item \textbf{npersec [int]}: es el largo de cada segmento. Por defecto es <<None>>, pero si la ventana se da en formato de <<string>> se considera 256, y si se da como <<array>> es el largo del mismo.
+
+\item \textbf{noverlap [int]}: es el n\'umero de puntos a solapar entre segmentos. Por defecto es <<None>>, que es npersec // 8. Es decir, define la separaci\'on resultante entre ventanas.
+
+\item \textbf{nfft [int]}: es el largo de la FFT utilizada. Por defecto es <<None>>, que determina el largo igual a ``npersec''.
+
+\item \textbf{detrend [str \'o function \'o False]}: NO SE BIEN QUE HACEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
+\item \textbf{return\_ onesided [bool]}: si se asigna <<True>>, se devuelve un espectro unilateral. Si es <<False>>, el espectro ser\'a bilateral.
+
+\item \textbf{scaling [‘density’, ‘spectrum’]}: considerando a $x(t)$ en volts [V], se elije si procesar la densidad espectral de potencia [$\textrm{V}^2/Hz$] \'o el espectro de potencia [$\textrm{V}^2$]. Por defecto se procesa la densidad espectral. Se simboliza como $S_{xx}$.
+
+\item \textbf{axes [int]}: VER BIEN QUE SERIA DICE QUE ES EL EJE SOBRE EL QUE HACE EL ESPECTRO O ALGO POR EL ESTILO
+
+\item \textbf{mode [str]}: define que es lo que se espera que devuelva la funci\'on, entre [``psd'', ``complex'', ``magnitude'', ``angle'', ``phase'']. ``psd'' es la densidad espectral de potencia; con ``complex'' devuelve la STFT (Short-Time Fourier Transform) compleja; ``magnitude'' devuelve el valor absoluto de la STFT, y ``angle'' y ``phase'' el \'angulo correspondiente complejo.
+
+\end{itemize}
+
+Los par\'ametros que devuelve son los siguientes:
+
+\begin{itemize}
+
+\item \textbf{f [ndarray]}: arreglo de dimensi\'on ``n'' con las frecuencias de sampleo.
+
+\item \textbf{t [ndaray]}: arreglo de dimensi\'on ``n'' con los segmentos de tiempo.
+
+\item \textbf{$S_xx$ [ndarray]}: arreglo de dimensi\'on ``n'' con el espectrograma de $x(t)$.
+
+\end{itemize}
 
 \end{document}
 
