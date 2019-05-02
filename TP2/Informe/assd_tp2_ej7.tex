@@ -29,13 +29,13 @@ El ancho de la ventana interviene en la resoluci\'on en tiempo y en frecuencia. 
 
 \item \textbf{nfft [int]}: es el largo de la FFT utilizada. Por defecto es <<None>>, que determina el largo igual a ``npersec''.
 
-\item \textbf{detrend [str \'o function \'o False]}: NO SE BIEN QUE HACEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+\item \textbf{detrend [string \'o function \'o False]}: elimina la tendencia lineal a lo largo del eje temporal. Por defecto es ``constant''. Si es de tipo string, se pasa directamente a la funci\'on <<detrend>> (tambi\'en de scipy), y si es una funci\'on, se le pasa un segmento y lo devuelve ya con el dsv\'io correspondiente. Si es <<False>>, no se aplica ning\'un desv\'io. Para el caso de audio, no nos es de inter\'es.
 
 \item \textbf{return\_ onesided [bool]}: si se asigna <<True>>, se devuelve un espectro unilateral. Si es <<False>>, el espectro ser\'a bilateral.
 
 \item \textbf{scaling [‘density’, ‘spectrum’]}: considerando a $x(t)$ en volts [V], se elije si procesar la densidad espectral de potencia [$\textrm{V}^2/Hz$] \'o el espectro de potencia [$\textrm{V}^2$]. Por defecto se procesa la densidad espectral. Se simboliza como $S_{xx}$.
 
-\item \textbf{axes [int]}: VER BIEN QUE SERIA DICE QUE ES EL EJE SOBRE EL QUE HACE EL ESPECTRO O ALGO POR EL ESTILO
+\item \textbf{axes [int]}: es el eje a lo largo del cual se procesa el espectrograma. Por defecto es <<-1>> (es decir, el \'ultimo utilizado).
 
 \item \textbf{mode [str]}: define que es lo que se espera que devuelva la funci\'on, entre [``psd'', ``complex'', ``magnitude'', ``angle'', ``phase'']. ``psd'' es la densidad espectral de potencia; con ``complex'' devuelve la STFT (Short-Time Fourier Transform) compleja; ``magnitude'' devuelve el valor absoluto de la STFT, y ``angle'' y ``phase'' el \'angulo correspondiente complejo.
 
