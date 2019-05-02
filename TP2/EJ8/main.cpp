@@ -225,7 +225,7 @@ int main() {
     AudioFile<float> out;
     AudioFile<float>::AudioBuffer newBuffer;
     unsigned int windowWidth = 1024;
-    float f_mod = 2, mod_depth = 0.002, g = 0.8;
+    float f_mod = 0.5, mod_depth = 0.003;
 
     audioFile.load("input/" + name + ".wav");
     int sampleRate = audioFile.getSampleRate();
@@ -237,7 +237,7 @@ int main() {
     //auto  *bot = new Robotization(sampleRate, numSamples, windowWidth);
     //auto * bot = new Robotization(sampleRate, numSamples, windowWidth);
     //auto * bot = new Vibrato(sampleRate, numSamples, f_mod, mod_depth);
-    auto * bot = new Flanger(sampleRate, numSamples, f_mod, mod_depth, g);
+    auto * bot = new Flanger(sampleRate, numSamples, f_mod, mod_depth);
 
     auto *buffer = new float[numSamples * 2];
     for (int i = 0; i < numSamples; i++) {
@@ -279,7 +279,7 @@ int main() {
     out.setAudioBuffer(newBuffer);
     //out.save ("output2/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
     out.save("output2/"+name + "_flang_" + std::to_string(int(f_mod*1000))+"mHz_" +
-    std::to_string(int(mod_depth*1000))+"ms_" + std::to_string(g) + "out.wav");
+    std::to_string(int(mod_depth*1000))+"ms_out.wav");
 
     /*auto *bot = new Reverb(44100, 4096, 4096, ECO);
     bot->myG = 0.993;

@@ -11,7 +11,7 @@
 
 class Flanger : public DelayBasedEffect{
 public:
-    Flanger(unsigned int sampleRate, unsigned int framesPerBuffer, float f_mod, float mod_depth, float g);
+    Flanger(unsigned int sampleRate, unsigned int framesPerBuffer, float f_mod, float mod_depth);
 
 
 

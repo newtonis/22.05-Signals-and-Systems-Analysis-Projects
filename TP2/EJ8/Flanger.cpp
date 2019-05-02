@@ -12,8 +12,8 @@
 //#define BL 1
 //
 
-Flanger::Flanger(unsigned int sampleRate, unsigned int framesPerBuffer, float f_mod, float mod_depth, float g) :
- DelayBasedEffect(sampleRate, framesPerBuffer, g, 0, 1, f_mod, mod_depth)
+Flanger::Flanger(unsigned int sampleRate, unsigned int framesPerBuffer, float f_mod, float mod_depth) :
+ DelayBasedEffect(sampleRate, framesPerBuffer, 0.7, 0.7, 0.7, f_mod, mod_depth)
  {
 
 }
