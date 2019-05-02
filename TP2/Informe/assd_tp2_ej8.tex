@@ -133,7 +133,22 @@ El flanger es similar al vibrato, en cuanto a que tambi\'en estar\'a presente en
 	y(n) = x(n) + g\cdot x(n-k(n))
 \end{equation}
 
-La definici\'on de $k(n)$ que usaremos es id\'entica a la del vibrato (ecuaci\'on \ref{eq:k(n)}), es decir, una senoidal que var\'ia entre 0 y un m\'aximo.
+La definici\'on de $k(n)$ que usaremos es id\'entica a la del vibrato (ecuaci\'on \ref{eq:k(n)}), es decir, una senoidal que var\'ia entre 0 y un m\'aximo. 
+
+Para obtener la respuesta en frecuencia de este filtro, se puede calcular la respuesta al impulso:
+
+\[
+	h(n) = \delta (n) + g \cdot \delta (n-k(n))
+\]
+
+Y por lo tanto se obtiene:
+
+\[
+	H(z, n) \sim = 1 + g\cdot z^{-k(n)} = \frac{z^{k(n)} + g}{z^{k(n)}}
+\]
+
+Por lo tanto, el flanger puede interpretarse como un filtro comb, con $k(n)$ polos en el origen, y $k(n)$ ceros con radio $g^{-k(n)}$, equidistantes entre s\'i. Esto quiere decir que tanto el orden como las frecuencias que pasan var\'ian con el tiempo.
+
 
 
 \subsection{Robotizaci\'on}

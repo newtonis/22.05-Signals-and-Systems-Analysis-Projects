@@ -203,22 +203,22 @@
 //    }
 //    return err;
 //}
-
-#include <map>
-#include "AudioFile.h"
-#include "Robotization.h"
-#include "windows.h"
-#include "Reverb.h"
-#include "Flanger.h"
-#include "Vibrato.h"
-#include "InputParser.h"
-
-
-using namespace std;
-
-
-int main() {
-    parseInput();
+//
+//#include <map>
+//#include "AudioFile.h"
+//#include "Robotization.h"
+//#include "windows.h"
+//#include "Reverb.h"
+//#include "Flanger.h"
+//#include "Vibrato.h"
+//#include "InputParser.h"
+//
+//
+//using namespace std;
+//
+//
+//int main() {
+//    parseInput();
 
 //    std::vector<float> holis;
 //    hanning(8, holis);
@@ -281,4 +281,16 @@ int main() {
 //    out.save ("output/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
 //    delete [] buffer;
 
+//}
+
+
+#include "windows.h"
+#include <iostream>
+int main(){
+    std::vector<float> h;
+    hanning(512, h);
+
+    for (unsigned int i = 0; i < h.size()/2; i++) {
+        std::cout << h[i] + h[i+h.size()/2] << " - ";
+    }
 }
