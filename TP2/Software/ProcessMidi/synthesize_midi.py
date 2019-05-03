@@ -123,7 +123,10 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
 
             sumTrack2TotalSinThreads(total_amp_arr, nt_track, suma, length, statusInterface)
 
-    total_amp_arr = normalize(total_amp_arr)
+    #total_amp_arr = normalize(total_amp_arr)
+    total_amp_arr -= np.mean(total_amp_arr)
+    max_y = max(abs(np.amax(total_amp_arr)), abs(np.amin(total_amp_arr)))
+    total_amp_arr /= max_y
 
     statusInterface.addMessage("Sintetización completada")
     statusInterface.callOnSynthComplete(total_amp_arr)
