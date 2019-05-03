@@ -143,6 +143,15 @@ Finalmente, reemplazando con esta expresi\'on de $x_h(n)$  en la segunda ecuaci\
 	\text{FF} \cdot x(n-M(n)) + \text{FB} \cdot y(n-M(n)) 
 \end{equation}
 
+La transferencia en funci\'on del tiempo resulta entonces:
+
+\begin{equation}
+	H(z, n) = \frac{\text{BL} \cdot z^{M(n)} +  \text{FF} }{z^{M(n)} - FB}
+	\label{eq:tz-combuniv}
+\end{equation}
+
+Se ve pues que el filtro instant\'aneamente se comporta como un comb, si bien la cantidad y posici\'on de los polos depender\'an de la modulaci\'on $M(n)$ para cada $n$.
+
 
 \subsubsection{Vibrato}
 
@@ -150,14 +159,22 @@ El efecto de vibrato consiste en introducir peque\~nas variaciones peri\'odicas 
 
 La ecuaci\'on que define este efecto es:
 \begin{equation}
-	y(n) = x\left(n - k(n) \right)
+	y(n) = x\left(n - M(n) \right)
 	\label{eq:vibrato}
 \end{equation}
 
-En la ecuaci\'on \ref{eq:vibrato}, $k(n)$ representa el delay variable con el tiempo, y se implementa con una senoidal que toma valores naturales entre 0 y un m\'aximo K:
+Se ve, pues, que es un caso particular del comb universal, tomando FF=1, FB=0 y BL=0. La transferencia es entonces:
 
 \begin{equation}
-	k(n) = \left \lfloor \frac{K}{2} \cdot 
+	H(z,n) = z^{-M(n)}
+\end{equation}
+
+Por lo tanto, el sistema tiene $M(n)$ polos en el origen y no tiene ceros de transmisi\'on.
+
+En la ecuaci\'on \ref{eq:vibrato}, $M(n)$ representa el delay variable con el tiempo, y se implementa con una senoidal que toma valores naturales entre 0 y un m\'aximo K:
+
+\begin{equation}
+	M(n) = \left \lfloor \frac{K}{2} \cdot 
 		\left( 1 + \sin{\left(2\pi f_0 \cdot nT\right)} \right) \right \rfloor
 		\label{eq:k(n)}
 \end{equation}
@@ -182,10 +199,10 @@ Los par\'ametros que caracterizan al vibrato son pues:
 El flanger es similar al vibrato, en cuanto a que tambi\'en estar\'a presente en la salida la entrada con un delay variable. Sin embargo, la misma es sumada (con un cierto factor de ponderaci\'on) a la entrada actual, obteni\'endose:
 
 \begin{equation}
-	y(n) = x(n) + g\cdot x(n-k(n))
+	y(n) = x(n) + g\cdot x(n-M(n))
 \end{equation}
 
-La definici\'on de $k(n)$ que usaremos es id\'entica a la del vibrato (ecuaci\'on \ref{eq:k(n)}), es decir, una senoidal que var\'ia entre 0 y un m\'aximo. 
+La definici\'on de $M(n)$ que usaremos es id\'entica a la del vibrato (ecuaci\'on \ref{eq:k(n)}), es decir, una senoidal que var\'ia entre 0 y un m\'aximo. 
 
 Para obtener la respuesta en frecuencia de este filtro, se puede calcular la respuesta al impulso:
 
@@ -205,6 +222,7 @@ Por lo tanto, el flanger puede interpretarse como un filtro FIR comb, con $k(n)$
 
 
 \subsection{Robotizaci\'on}
+
 
 \end{document}
 
