@@ -1,0 +1,47 @@
+<predefined>
+    <modo nombre="Reverberador de eco simple">
+        <input>Reverb</input>
+        <input>Eco-simple</input>
+        <input>0.999</input>
+        <input>500</input>
+    </modo>
+    <modo nombre="Reverberador plano">
+        <input>Reverb</input>
+        <input>Eco-simple</input>
+        <input>0.5</input>
+        <input>5000</input>
+    </modo>
+    <modo nombre="Reverberador con pasa bajos">
+        <input>Reverb</input>
+        <input>Eco-simple</input>
+        <input>0.5</input>
+        <input>5000</input>
+    </modo>
+    <modo nombre="Reverberador completo">
+        <input>Reverb</input>
+        <input>Reverberador-completo</input>
+        <input>12</input>
+        <input>2</input>
+        <input>500</input>
+        <input>0.5</input>
+    </modo>
+    <modo nombre="Flanger">
+        <input>Flanger</input>
+        <input>1</input>
+        <input>0.02</input>
+    </modo>
+    <modo nombre="Vibrato">
+        <input>Vibrato</input>
+        <input>5</input>
+        <input>0.01</input>
+    </modo>
+    <modo nombre="Robotizacion 1">
+        <input>Robot</input>
+        <input>9</input>
+    </modo>
+    <modo nombre="Robotizacion 2">
+        <input>Robot</input>
+        <input>10</input>
+    </modo>
+
+</predefined>
