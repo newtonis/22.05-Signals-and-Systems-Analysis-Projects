@@ -3,6 +3,7 @@ from ProcessMidi.synth_utils import *
 from ProcessMidi import StatusInterface
 import numpy as np
 # #importo las funciones de los intrumentos
+import threading
 
 def sumTrack2TotalSinThreads(total_amp_arr,nt_track,suma,length,status):
     exceso = False
@@ -134,6 +135,7 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
                 length += 1
 
     length = [length]
+    #threads_arr = []
 
     suma = [0]
     for i, nt_track in enumerate(note_tracks):
@@ -150,8 +152,14 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
             nt_track.track_volumes = trackVolumes
 
             sumTrack2TotalSinThreads(total_amp_arr, nt_track, suma, length, statusInterface)
+            # threads_arr.append(threading.Thread(target=sumTrack2TotalSinThreads,
+            #                                     args=(total_amp_arr, nt_track,suma,length,statusInterface),
+            #                                     kwargs={}))
+            # threads_arr[i].start()
 
-    #total_amp_arr = normalize(total_amp_arr)
+    # for thread in threads_arr:
+    #     thread.join()
+    # #total_amp_arr = normalize(total_amp_arr)
     total_amp_arr -= np.mean(total_amp_arr)
     max_y = max(abs(np.amax(total_amp_arr)), abs(np.amin(total_amp_arr)))
     total_amp_arr /= max_y
