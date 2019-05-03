@@ -1,7 +1,7 @@
 from mido import MidiFile
 from ProcessMidi.synth_utils import *
 from ProcessMidi import StatusInterface
-
+import numpy as np
 # #importo las funciones de los intrumentos
 
 def sumTrack2TotalSinThreads(total_amp_arr,nt_track,suma,length,status):
@@ -11,8 +11,10 @@ def sumTrack2TotalSinThreads(total_amp_arr,nt_track,suma,length,status):
         for k in range(len(y)):
             if k + dx >= len(total_amp_arr):
                 if exceso == False:
-                    #print("fuera de rango", nt_track.name, " iteracion: ", k)
+                    print("fuera de rango", nt_track.name, " iteracion: ", k)
+                    print("le pifia por",(len(y)+dx)-k)
                     exceso = True
+                    break
             else:
                 total_amp_arr[k + dx] += y[k]
         suma[0] += 1
@@ -22,22 +24,46 @@ def sumTrack2TotalSinThreads(total_amp_arr,nt_track,suma,length,status):
             percentaje = 100
         if j%10 == 0:
             status.callOnLoadUpdate(percentaje)
+        del y
     status.addMessage(nt_track.name + " ha sido procesado con exito")
 
+# def get_toff(t_on,t_v0,t_off):
+#     t_apagar=[]
+#     strange = False
+#     if len(t_on) == len(t_v0):
+#         t_apagar = t_v0
+#     elif len(t_on) == len(t_off):
+#         t_apagar = t_off
+#     else:
+#         if len(t_on) < len(t_v0):
+#             t_apagar = t_v0[0:len(t_on)]
+#             print("se recorto t_v0 por tener mas tamaño que t_on")
+#         elif len(t_on) < len(t_off):
+#             t_apagar = t_v0[0:len(t_on)]
+#             print("se recorto t_off por tener mas tamaño que t_on")
+#         print("Se ingreso un midi extraño, el resultado puede ser extraño")
+#         strange = True
+#     return t_apagar,strange
+
+def get_toff(t_on,t_v0,t_off):
+    t_apagar=[]
+    if len(t_on) == len(t_v0):
+        t_apagar = t_v0
+    elif len(t_on) == len(t_off):
+        t_apagar = t_off
+    else:
+        if len(t_on) < len(t_v0):
+            t_apagar = t_v0[0:len(t_on)]
+            print("se recorto t_v0 por tener mas tamaño que t_on")
+        elif len(t_on) < len(t_off):
+            t_apagar = t_v0[0:len(t_on)]
+            print("se recorto t_off por tener mas tamaño que t_on")
+        print("Se ingreso un midi extraño, el resultado puede ser extraño")
+    return t_apagar
 
 def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, trackVolumes = None):
     if not statusInterface:
         statusInterface = StatusInterface.StatusInterface()
-
-    #print(trackVolumes)
-
-    midi_file = MidiFile(midiFilename)
-    ticks_per_beat = midi_file.ticks_per_beat
-    total_time = midi_file.length
-    note_tracks = []
-    names = []
-    tempo_list = []
-    first_tempo_list = []
 
     if not trackVolumes:
         trackVolumes = dict()
@@ -45,13 +71,14 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
             trackVolumes[track] = 100
 
     # --------------------------------------------------------
+    midi_file = MidiFile(midiFilename)
     ticks_per_beat = midi_file.ticks_per_beat
     total_time = midi_file.length
     note_tracks = []
     tempo_list = []
     first_tempo_list = []
     # obtengo toda la info de los midis y los guardo en note_tracks
-    tempoIsAlreadySet = False
+    ft_set = False
     for j, track in enumerate(midi_file.tracks):
         t_on = []
         t_off = []
@@ -63,12 +90,10 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
             if message.type == "set_tempo":
                 tempo_list.append([time_counter, message.tempo])
                 tempo_track.append([time_counter, message.tempo])
-                if tempoIsAlreadySet == False:
+                if not ft_set:
                     first_tempo_list.append([time_counter, message.tempo])
             if message.type == "note_on" and message.velocity != 0:
                 t_on.append([time_counter, message.velocity, message.note])
-            # solo si ya hay un note_on agrego note_off o note_on con v=0
-            # if (len(t_on)-1) == len(t_off):
             if message.type == "note_off":
                 if len(t_off) < len(t_on):
                     t_off.append([time_counter, message.velocity, message.note])
@@ -77,10 +102,12 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
                     t_v0.append([time_counter, message.velocity, message.note])
 
         if len(first_tempo_list) > 0:
-            tempoIsAlreadySet = True
-        t_apagar,strange = get_toff(t_on, t_v0, t_off)
-        if strange == True :
-            statusInterface.addMessage("Se ingreso un midi extraño, el resultado puede ser extraño")
+            ft_set = True
+
+        t_apagar = get_toff(t_on, t_v0, t_off)
+        # t_apagar, strange = get_toff(t_on, t_v0, t_off)
+        # if strange:
+        #     statusInterface.addMessage("Se ingreso un midi extraño, el resultado puede ser extraño")
 
         aux_track = individual_track(ticks_per_beat, total_time, fs, t_on, t_apagar, tempo_track)
 
@@ -112,13 +139,14 @@ def synthesize_midi(midiFilename, tracks_synthesis, fs, statusInterface = None, 
     for i, nt_track in enumerate(note_tracks):
         track_name = "Canal " + str(i)
         nt_track.name = track_name
+
         if track_name in tracks_synthesis:
             nt_track.function = tracks_synthesis[track_name]
             if format == "first":
                 nt_track.tempo_list = first_tempo_list
             elif format == "second":
                 nt_track.tempo_list = nt_track.this_track_tempo
-
+            nt_track.getDeltaTHastaTick()
             nt_track.track_volumes = trackVolumes
 
             sumTrack2TotalSinThreads(total_amp_arr, nt_track, suma, length, statusInterface)

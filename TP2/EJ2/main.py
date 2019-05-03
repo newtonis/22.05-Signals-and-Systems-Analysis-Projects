@@ -16,6 +16,6 @@ for i in range(number_of_tracks):
     #track_synthesis[canal]=SitetizarGuitarraDistorsion
     track_synthesis[track]=getClarinet
 
-name = "greenhill"
+name = "RodrigoAdagio_2"
 ytot = synthesize_midi('midi-samples/'+name+'.mid', track_synthesis, fs)
 write('output/'+name+'.mp3', fs, ytot, normalized = True)

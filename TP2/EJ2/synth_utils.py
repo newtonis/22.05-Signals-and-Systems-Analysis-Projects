@@ -1,14 +1,6 @@
 import mido
 from numpy import *
 
-def getUniqAndSortedTempoList(tempo_list):
-    tempo_list.sort(key=lambda x: x[0])
-    final_list = []
-    for num in tempo_list:
-        if num not in final_list:
-            final_list.append(num)
-    return final_list
-
 def normalize(arr):
     auxarr = arr.copy()
     auxarr = auxarr-mean(auxarr) #pongo valor medio 0
@@ -98,6 +90,8 @@ class individual_track:
             delta_t_on = self.getDelta(tick_on)
             delta_t_off = self.getDelta(tick_off)
 
+            if (delta_t_off - delta_t_on) < 0:
+                print("habia un duration <0")
             duration = abs(delta_t_off - delta_t_on)
             t_on_in_secs[tick_on] = [delta_t_on, duration]
 

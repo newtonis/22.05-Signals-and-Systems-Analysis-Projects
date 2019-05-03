@@ -1,23 +1,7 @@
 import mido
 from numpy import *
 
-def get_toff(t_on,t_v0,t_off):
-    t_apagar=[]
-    strange = False
-    if len(t_on) == len(t_v0):
-        t_apagar = t_v0
-    elif len(t_on) == len(t_off):
-        t_apagar = t_off
-    else:
-        if len(t_on) < len(t_v0):
-            t_apagar = t_v0[0:len(t_on)]
-            print("se recorto t_v0 por tener mas tamaño que t_on")
-        elif len(t_on) < len(t_off):
-            t_apagar = t_v0[0:len(t_on)]
-            print("se recorto t_off por tener mas tamaño que t_on")
-        print("Se ingreso un midi extraño, el resultado puede ser extraño")
-        strange = True
-    return t_apagar,strange
+
 
 def getUniqAndSortedTempoList(tempo_list):
     tempo_list.sort(key=lambda x: x[0])
@@ -123,7 +107,6 @@ class individual_track:
         self.t_on_in_secs = t_on_in_secs
 
     def getAmpArr(self,i):
-        self.getDeltaTHastaTick()
         tick_on = self.t_on[i][0]
         vel_on = self.t_on[i][1]
         note = self.t_on[i][2]

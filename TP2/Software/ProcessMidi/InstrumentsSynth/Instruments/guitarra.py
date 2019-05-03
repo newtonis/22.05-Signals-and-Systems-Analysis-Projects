@@ -17,7 +17,7 @@ noise_duration_factor = 0.5
 def SintetizarGuitarra(vel, fc, duration, fs):
     noise_duration = noise_duration_factor * (1 / fc)
 
-    input_time = arange(0, duration + 0.5, 1/fs)
+    input_time = arange(0, duration, 1/fs)
 
     input = np.random.normal(0, 0.1, len(input_time)) * windsigmoid(input_time/noise_duration) # *  #sin(2*pi*fc*input_time) * windsigmoid(input_time/noise_duration)
 
