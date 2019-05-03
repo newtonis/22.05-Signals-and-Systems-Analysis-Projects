@@ -1,6 +1,5 @@
 from math import *
 from envelopes.DecayExp import *
-#from instruments_synth.fmModulation import *
 from ProcessMidi.InstrumentsSynth.Instruments.fmModulation import fmModulation
 
 import matplotlib.pyplot as plt

@@ -11,7 +11,7 @@ def sumTrack2TotalSinThreads(total_amp_arr,nt_track,suma,length,status):
         for k in range(len(y)):
             if k + dx >= len(total_amp_arr):
                 if exceso == False:
-                    print("fuera de rango", nt_track.name, " iteracion: ", k)
+                    #print("fuera de rango", nt_track.name, " iteracion: ", k)
                     exceso = True
             else:
                 total_amp_arr[k + dx] += y[k]
@@ -20,8 +20,8 @@ def sumTrack2TotalSinThreads(total_amp_arr,nt_track,suma,length,status):
             percentaje = 0 + suma[0] / length[0] * 100
         else:
             percentaje = 100
-
-        status.callOnLoadUpdate(percentaje)
+        if j%10 == 0:
+            status.callOnLoadUpdate(percentaje)
     status.addMessage(nt_track.name + " ha sido procesado con exito")
 
 
