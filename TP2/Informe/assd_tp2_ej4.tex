@@ -3,7 +3,7 @@
 \begin{document}
 
 \section{Síntesis mediante modulación en frecuencia}
-\subsection*{Introducción teórica}
+\subsection{Introducción teórica}
 La modulación en frecuencia esta dada por:
 \begin{eqnarray*}
 \textstyle x(t)=A(t)cos(2\pi f_c t+I(t)cos(2\pi f_mt+\phi_m)+\phi_c)
@@ -25,14 +25,14 @@ Por simple inspección se puede ver que si I = 0 la desviación de la frecuencia
 \label{fig:nuevasfreqs}
 \end{figure}
 Las amplitudes de la portadora y las componentes laterales están dadas por las funciones de Bessel de primera especie y orden n-ésimo,
-donde el argumento de la función es el índice de modulacion I ($J_{n}$(I)). \\*
-En general, $J_{n}(1)$ representa un coeficiente de escalamiento de amplitud: \\*
+donde el argumento de la función es el índice de modulacion I ($J_{n}(I)$). \\*
+En general, $J_{n}(I)$ representa un coeficiente de escalamiento de amplitud: \\*
 
-$J_{0}(1)\longleftarrow$  para la portadora \\*
+$J_{0}(I)\longleftarrow$  para la portadora \\*
 
-$J_{1}(1)\longleftarrow$  para las primeras bandas laterales \\*
+$J_{1}(I)\longleftarrow$  para las primeras bandas laterales \\*
 
-$J_{2}(1)\longleftarrow$  para las segundas bandas laterales \\*
+$J_{2}(I)\longleftarrow$  para las segundas bandas laterales \\*
 \\*
 Y así sucesivamente.
 Mientras más grande sea el orden de la banda lateral se necesita más índice de modulación para que la misma tenga una amplitud significativa.
@@ -67,9 +67,9 @@ En general se suelen ignorar los signos negativos en el espectro ya que solo ind
 \label{fig:signos}
 \end{figure}
 
-\subsection*{Frecuencias laterales reflejadas}
+\subsection{Frecuencias laterales reflejadas}
 La riqueza de la técnica de modulación en frecuencia yace en que el espectro ubicado en la parte negativa del dominio interfiere con la parte positiva dando lugar a una mezcla de componentes en ambas partes del espectro. La relación entre frecuencias $f_c$ y $f_m$ es la que da origen a un espectro armónico o uno inarmónico.
-\subsection*{Espectro armónico e inarmónico}
+\subsection{Espectro armónico e inarmónico}
 La relación entre frecuencias esta dada por \\*
 
 \begin{eqnarray*}
@@ -267,24 +267,7 @@ FM Synthesis for Musical Instruments: Bells and Clarinets,
 \\\texttt{\url{http://home.eng.iastate.edu/~julied/classes/ee224/Labs/FMSynthesis_lab.pdf}}
 %\url{http://home.eng.iastate.edu/~julied/classes/ee224/Labs/FMSynthesis_lab.pdf}
 %\~julied/classes/ee224/Labs/FMSynthesis_lab.pdf
-\section{Rotary Loudspeaker Effect}
-En este efecto de sonido lo que llega a las orejas del usuario es alterado por el efecto Doppler, la característica direccional de los speakers y  efectos de fase debido a turbulencia aérea. El efecto doppler eleva y desciende el tono dependiendo de la velocidad de rotación. La característica direccional de la bocina opuesta desenvuelve una variación de intensidad en los oídos del usuario. Tanto la variación del tono como la variación de intensidad son  ambas modificadas por un speaker A y en dirección opuesta por el speaker B.
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.4\linewidth]{graficos/EJ4/RotaryLoudspeaker.png}
-\caption{Esquema de Rotary Loudspeaker}
-\label{fig:RLesquema}
-\end{figure}
-\par
-La simulación del efecto doppler de dos bocinas opuestas es realizada mediante el uso de dos líneas de retardo moduladas con señales que estan desfasadas 180 grados en configuración vibrato. Un sonido dreccional característico similar al de speakers rotando puede ser logrado mediante modulación de amplitud de la señal de salida de las dos lineas de retardo.
-La modulación está sincronizada con el retardo de modulación de forma tal que la bocina trasera que se mueve tiene menor tono y amplitud decreciente. En el punto de retorno el tono es inalterado y la amplitud es mínima. 
-Intuitivamente, mientras la señal del canal izquierdo sube, la del derecho baja y en consecuencia el oyente percibe un movimiento giratorio.
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.4\linewidth]{graficos/EJ4/RLsimulacion.png}
-\caption{Simulación de Rotary Loudspeaker}
-\label{fig:RLsimulacion}
-\end{figure}
+
 
 \end{thebibliography}
 

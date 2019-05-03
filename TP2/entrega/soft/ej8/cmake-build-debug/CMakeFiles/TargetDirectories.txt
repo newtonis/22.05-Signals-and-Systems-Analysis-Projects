@@ -1,0 +1,3 @@
+C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/EJ8.dir
+C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/newto/INFORMES_ASSD/TP2/EJ8/cmake-build-debug/CMakeFiles/rebuild_cache.dir

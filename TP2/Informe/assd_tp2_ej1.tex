@@ -86,7 +86,7 @@ DFT[i][j][k+n/2] = DFT[i-1][j][k\%2^{i-1}] - W[2^i][k] DFT[i-1][j+N/2^{i}][k\%2^
 \end{equation}
 Realizando el producto $W[2^i][k] DFT[i-1][j+N/2^{i}][k\%2^{i-1}]$ una sola vez.
 
-\section{Conclusión}
+\subsection{Conclusión}
 Se llegó a un algoritmo muy optimizado ($6n$ memoria, $\frac{n}{2}log_2{n}$ tiempo) con una complejidad equivalente a las de los más utilizados.
 El c\'odigo combinado con todas las optimizaciones es d\'ificil de leer porque consiste en la combinación de todos los detalles técnicos descriptos juntos.
 Si bien es posible optimizar aun más la memoria utilizando un método in-place que no utilice arreglos adicionales para almacenar datos parciales, como de todos modos es necesario utilizar un arreglo de $N$ elementos para almacenar $W[k]$, dicha técnica no reduciría asintóticamente el uso de memoria adicional.
