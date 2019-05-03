@@ -8,13 +8,13 @@
 
 \subsubsection{Implementación de eco simple}
 
-Se implementó un eco simple utilizando el sistema
+Se implementó un eco simple utilizando el sistema:
 
 \begin{equation}
 	y(n)=x(n)+gx(n-M)
 \end{equation}
 
-Se muestran a continuación los resultados con una señal de prueba
+Se muestran a continuación los resultados con una señal de prueba.
 
 \begin{figure}[H]	
 	\centering
@@ -23,26 +23,28 @@ Se muestran a continuación los resultados con una señal de prueba
 	\label{fig:bloqueElemental}
 \end{figure}
 
-Se puede observar de los resultados intuitivamente como la señal de salida contiene repeticiones de la señal de entrada, y al escuchar el audio se pudo notar dicho efecto de eco. Fue necesario colocar un retraso muy grande ($M=5000$) y una ganancia muy alta ($g=0.999$) para que el efecto fuera notorio
+Se puede observar de los resultados intuitivamente como la señal de salida contiene repeticiones de la señal de entrada, y al escuchar el audio se pudo notar dicho efecto de eco. Fue necesario colocar un retraso muy grande ($M=5000$) y una ganancia muy alta ($g=0.999$) para que el efecto fuera notorio.
 
 \subsubsection{Implementación de reverberación plana}
 Se implementó una reverberación plana utilizando una ecuación de diferencias con feedback. 
 \begin{equation}
 	y(n)=x(n)+gy(n-M)
 \end{equation}
-Se muestran a continuación los resultados con una señal de prueba
+
+\newpage
+Se muestran a continuación los resultados con una señal de prueba.
 \begin{figure}[H]	
 	\centering
 	\includegraphics[scale=1]{graficos/EJ8/eco_plano.png}
 	\caption{Resultados reverberación plana con $M=500$, $g=0.5$ }
 	\label{fig:bloqueElemental}
 \end{figure}
-Se necesitó disminuir fuertemente el valor de $g$ para evitar que la salida saturara. Al tener realimentación (es decir, ser IIR) el sistema puede perder la estabilidad con facilidad
+Se necesitó disminuir fuertemente el valor de $g$ para evitar que la salida saturara. Al tener realimentación (es decir, ser IIR) el sistema puede perder la estabilidad con facilidad.
 
 \subsubsection{Implementación de reverberación pasa bajos}
 
-Se le agrego un filtro pasabajo a la realimentación del sistema anterior. Se optó por un sencillo pasabajos similar al utilizado en el modelo Karplus Strong, de la forma $y(n)=\frac{x(n)+x(n-1)}{2}$
-El sistema por lo tanto quedo descrito como
+Se le agrego un filtro pasabajo a la realimentación del sistema anterior. Se optó por un sencillo pasabajos similar al utilizado en el modelo Karplus Strong, de la forma $y(n)=\frac{x(n)+x(n-1)}{2}$.
+El sistema por lo tanto quedo descrito como:
 \begin{equation}
 y(n)=x(n)+\frac{1}{2}g(y(n-M)+y(n-M-1))
 \end{equation}
@@ -53,28 +55,31 @@ y(n)=x(n)+\frac{1}{2}g(y(n-M)+y(n-M-1))
 	\label{fig:bloqueElemental}
 \end{figure}
 
-La señal fue similar al resultado del caso anterior con una sutil diferencia, el sonido se escuchó un con poco menos ruido, esto se debe muy probablamente a que el filtro pasa bajos evito la propagación de una frecuencia no deseada la cual no estaba presente en la señal original.
+La señal fue similar al resultado del caso anterior con una sutil diferencia: el sonido se escuchó con un poco menos ruido. Esto se debe muy probablamente a que el filtro pasa bajos evitó la propagación de una frecuencia no deseada la cual no estaba presente en la señal original.
 
 \subsubsection{Implementación de reverberación completa}
-Se buscó estudiar un caso de reverberación completa. Se eligió el sistema denominado Schroeder. El mismo consistió de la conexión en paralelo de $N$ reverberadores planos, continuados de $M$ filtros tipo comb. Se utilizó algunos criterios de los expresados en los apuntes de clase como también se jugó empiricamente para conseguir sonidos de reverberación interesantes.
-A continuación se muestran los resultados
+Se buscó estudiar un caso de reverberación completa, eligiendo  el sistema denominado Schroeder. El mismo consiste de la conexión en paralelo de $N$ reverberadores planos, continuados de $M$ filtros tipo comb. Se utilizaron algunos criterios de los expresados en los apuntes de clase y también se ``jugó'' empiricamente para conseguir sonidos de reverberación interesantes.
+\newpage
+A continuación se muestran los resultados obtenidos.
 \begin{figure}[H]	
 	\centering
 	\includegraphics[scale=1]{graficos/EJ8/eco_completo.png}
 	\caption{Resultados de un caso de reverberación completa, $N=12$, $M=2$, $a_{etapa1}=0.999$ $a_{comb}=0.5$}
 	\label{fig:bloqueElemental}
 \end{figure}
-El sonido resultante fue muy interesante, fue algo robotizado y conseguidó tan solo ajustando parametros del filtro. Esto da la pauta de que con el reverberador completo se puede facilmente ajustando sus parametros conseguir tipos muy distintos de reverberación, sin necesidad de tener que convolucionar con una respuesta al impulso
+El sonido resultante fue muy interesante, siendo algo robotizado y obtenido tan solo ajustando parámetros del filtro. Esto da la pauta de que, con el reverberador completo se puede fácilmente ajustando sus parámetros conseguir tipos muy distintos de reverberación, sin necesidad de tener que convolucionar con una respuesta al impulso.
 
 
 \subsubsection{Implementación de reverberación por convolución}
-Se implemento una reverberación utilizando convolución con la respuesta al impulso característica de una fabrica. Se utilizo la ecuación de diferencias génerica siguiente
+Se implementó una reverberación utilizando convolución con la respuesta al impulso característica de una fábrica. Se utilizó la ecuación en diferencias génerica siguiente:
 
 \begin{equation}
 y(n)=\sum_{i=k}^{N}h(k)x(n-k)
 \end{equation}
 
-Debido a la complejidad algoritmica de la aplicación de la fórmula se debió limitar la longitud de la respuesta al impulso a solo 20000 muestras. Se muestran a continucación los resultados con una señal de prueba
+Debido a la complejidad algorítmica de la aplicación de la fórmula se debió limitar la longitud de la respuesta al impulso a solo 20000 muestras. 
+\newpage
+Se muestran a continuación los resultados con una señal de prueba.
 
 \begin{figure}[H]	
 	\centering
@@ -84,12 +89,12 @@ Debido a la complejidad algoritmica de la aplicación de la fórmula se debió l
 \end{figure}
 
 Se observa como a diferencia de los casos anteriores la señal tiende mucho más a sostener sonido, esto se debe a que la respuesta al impulso es mucho más completa, y por lo tanto el sonido resultante persiste más tiempo.
-El sonido que se escuchó se correspondió con un eco muy realista, que podría ser el de una fábrica
+El sonido que se escuchó se correspondió con un eco muy realista, que podría ser el de una fábrica.
 
 
 \subsection{Efectos basados en delays variables} 
 
-Para algunos efectos, es necesario que los delays presentes en la ecuaci\'on de diferencias que describe al sistema sean variables con el tiempo. Este es el caso tanto del flanger como del vibrato, entre otros.
+Para algunos efectos, es necesario que los delays presentes en la ecuaci\'on en diferencias que describe al sistema sean variables con el tiempo. Este es el caso tanto del flanger como del vibrato, entre otros.
 
 Los efectos basados en delays variables pueden analizarse de manera general a partir de un filtro comb universal, cuyo diagrama de bloques se observa en la figura \ref{fig:unicomb}.
 
@@ -101,7 +106,7 @@ Los efectos basados en delays variables pueden analizarse de manera general a pa
 \end{figure}
 
 
-La variaci\'on del delay est\'a dada por $M(n)$ (que debe ser $\geq 0 \forall n$ para que el sistema sea causal), mientras que los factores FF (feedforward), FB (feedback) y BL (blend) determinan qu\'e tipo de efecto se producir\'a.
+La variaci\'on del delay est\'a dada por $M(n)$ (que debe ser $\geq 0$ $\forall n$ para que el sistema sea causal), mientras que los factores FF (feedforward), FB (feedback) y BL (blend) determinan qu\'e tipo de efecto se producir\'a.
 
 Las ecuaciones de este sistema son:
 
@@ -220,7 +225,7 @@ Se observa en la figura \ref{fig:flanger} que la salida presenta picos a la mism
 
 Para este efecto, se siguieron los pasos pautados por la c\'atedra. Los anchos de ventana que produjeron resultados m\'as satisfactorios fueron $N=1024$ y $N=512$, con $f_s = 44.1$kHz.
 
-Se utiliz\'o la ventana de Hanning con 50\% overlap. Esta ventana utiliza como $w(n)$ la funci\'on de Hann, que para ancho de ventana $N\in \mathbb{N}$ se define como:
+Se utiliz\'o la ventana de Hanning con 50\% de overlap. Esta ventana utiliza como $w(n)$ la funci\'on de Hann, que para ancho de ventana $N\in \mathbb{N}$ se define como:
 
 \begin{equation}
 	w(n) = \frac{1}{2} \cdot 
@@ -230,17 +235,17 @@ Se utiliz\'o la ventana de Hanning con 50\% overlap. Esta ventana utiliza como $
 
 Con esta definici\'on, no es cierto que $w\left(n-\nicefrac{N}{2}\right) + w\left(n+\nicefrac{N}{2}\right) = 1, \forall n, \forall N$, o siquiera constante, como se propone en la consigna. Esto s\'i ocurrir\'ia si se tomase ancho de ventana $N-1$ manteniendo la misma definici\'on de $w(n)$, pero se pierde en este caso simetr\'ia, y la funci\'on no se anula en los bordes. Se obtuvieron resultados m\'as satisfactorios con la versi\'on no COLA (constant overlap-add), e incluso emp\'iricamente se verifica que para los anchos de ventana utilizados, si bien la suma no es 1 ni constante, es consistentemente mayor a 0.95 en todo tiempo.
 
-\begin{figure}[htb]	
+\begin{figure}[ht]	
 	\centering
-	\includegraphics[width=0.8\textwidth]
+	\includegraphics[width=0.6\textwidth]
 	{graficos/EJ8/rochi/robotizacion_512.png}
 	\caption{Salida obtenida con la robotizaci\'on, con ancho de ventana $N=512$ muestras}
 	\label{fig:robot512}
 \end{figure}
 
-\begin{figure}[htb]	
+\begin{figure}[ht]	
 	\centering
-	\includegraphics[width=0.8\textwidth]
+	\includegraphics[width=0.55\textwidth]
 	{graficos/EJ8/rochi/robotizacion_1024.png}
 	\caption{Salida obtenida con la robotizaci\'on, con ancho de ventana $N=1024$ muestras}
 	\label{fig:robot1024}
