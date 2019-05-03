@@ -1,0 +1,2 @@
+flanger piola 1Hz 2ms
+vibrato piola 5Hz 1ms
