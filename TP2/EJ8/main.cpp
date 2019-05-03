@@ -227,7 +227,7 @@ int main() {
     AudioFile<float> out;
     AudioFile<float>::AudioBuffer newBuffer;
     unsigned int windowWidth = 1024;
-    float f_mod = 0.5, mod_depth = 0.003;
+    float f_mod = 1, mod_depth = 0.002;
 
     audioFile.load("input/" + name + ".wav");
     int sampleRate = audioFile.getSampleRate();
