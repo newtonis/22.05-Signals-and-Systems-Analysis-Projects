@@ -18,7 +18,6 @@ class StartMenu(tk.Frame):
             background="#ccffd5"
         )
 
-
         buttonFrame = tk.Frame(self)
 
         self.button1 = tk.Button(

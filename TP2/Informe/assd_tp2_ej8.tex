@@ -89,7 +89,59 @@ El sonido que se escuchó se correspondió con un eco muy realista, que podría 
 
 \subsection{Efectos basados en delays variables} 
 
-Para algunos efectos, es necesario que los delays presentes en la ecuaci\'on de diferencias que describe al sistema sean variables con el tiempo. Este es el caso tanto del flanger como del vibrato.
+Para algunos efectos, es necesario que los delays presentes en la ecuaci\'on de diferencias que describe al sistema sean variables con el tiempo. Este es el caso tanto del flanger como del vibrato, entre otros.
+
+Los efectos basados en delays variables pueden analizarse de manera general a partir de un filtro comb universal, cuyo diagrama de bloques se observa en la figura \ref{fig:unicomb}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=1]{graficos/EJ8/rochi/unicomb.png}
+	\caption{Diagrama de bloques del filtro comb universal}
+	\label{fig:unicomb}
+\end{figure}
+
+
+La variaci\'on del delay est\'a dada por $M(n)$ (que debe ser $\geq 0 \forall n$ para que el sistema sea causal), mientras que los factores FF (feedforward), FB (feedback) y BL (blend) determinan qu\'e tipo de efecto se producir\'a.
+
+Las ecuaciones de este sistema son:
+
+\begin{equation}
+	\left\{
+	\begin{aligned}
+	x_h(n) 	&= x(n)& + \text{FB} \cdot x_h(n-M(n))	\\
+	y(n) 	&= \text{BL} \cdot x_h(n) &+ 
+				\text{FF} \cdot x_h(n-M(n))
+	\end{aligned}
+	\right.
+	\label{eq:sisunicomb}
+\end{equation}
+
+ Reemplazando la primera ecuaci\'on en la segunda, obtenemos que:
+ 
+ \begin{equation*}
+ 	x_h(n-M(n)) =  
+ 	\left( \frac{1}{\text{BL}\cdot \text{FB} + \text{FF}}\right) \cdot y(n) -
+ 	\left( \frac{\text{BL}}{\text{BL}\cdot \text{FB} + \text{FF}}\right) \cdot x(n) 
+	\label{eq:xhk} 
+ \end{equation*}
+ 
+ 
+ Aplicando este resultado en la primera ecuaci\'on de \ref{eq:sisunicomb}, se llega a:
+ 
+ \begin{equation}
+ 	x_h(n) = 
+ 	\left( \frac{\text{FF}}{\text{BL}\cdot \text{FB} + \text{FF}}\right) \cdot x(n) +
+ 	\left( \frac{\text{FB}}{\text{BL}\cdot \text{FB} + \text{FF}}\right) \cdot y(n) 
+ 	\label{eq:xh}
+ \end{equation}
+
+
+Finalmente, reemplazando con esta expresi\'on de $x_h(n)$  en la segunda ecuaci\'on del sistema \ref{eq:sisunicomb}, se obtiene que:
+
+\begin{equation}
+	y(n) = \text{BL} \cdot x(n) + 
+	\text{FF} \cdot x(n-M(n)) + \text{FB} \cdot y(n-M(n)) 
+\end{equation}
 
 
 \subsubsection{Vibrato}
@@ -144,10 +196,11 @@ Para obtener la respuesta en frecuencia de este filtro, se puede calcular la res
 Y por lo tanto se obtiene:
 
 \[
-	H(z, n) \sim = 1 + g\cdot z^{-k(n)} = \frac{z^{k(n)} + g}{z^{k(n)}}
+	H(z, n) = 1 + g\cdot z^{-k(n)} = \frac{z^{k(n)} + g}{z^{k(n)}}
 \]
 
-Por lo tanto, el flanger puede interpretarse como un filtro comb, con $k(n)$ polos en el origen, y $k(n)$ ceros con radio $g^{-k(n)}$, equidistantes entre s\'i. Esto quiere decir que tanto el orden como las frecuencias que pasan var\'ian con el tiempo.
+Por lo tanto, el flanger puede interpretarse como un filtro FIR comb, con $k(n)$ polos en el origen, y $k(n)$ ceros con radio $g^{-k(n)}$, equidistantes entre s\'i. Esto quiere decir que tanto el orden como las frecuencias que pasan var\'ian con el tiempo.
+
 
 
 

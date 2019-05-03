@@ -6,6 +6,13 @@
 #include "Reverb.h"
 #include "Realtime.h"
 #include "WavProcess.h"
+#include <cmath>
+#include "Robotization.h"
+#include "Flanger.h"
+#include "Vibrato.h"
+
+using namespace std;
+
 
 void parseInput(){
     bool on = true;
@@ -26,11 +33,11 @@ void parseInput(){
         if (comando == "Robot") {
             Robot();
         } else if (comando == "Flanger"){
-            Flanger();
+            fFlanger();
         } else if (comando == "Reverb"){
             ans = RunReverb();
         } else if (comando == "Vibrato"){
-            Vibrato();
+            fVibrato();
         } else if (comando == "Giro 3d") {
             Giro3d();
         } else if (comando == "Salir"){
@@ -65,11 +72,55 @@ int RealOrWav(){
     }
 
 }
-void Robot(){
-    cout << "No ha sido implementado aún \n";
+int Robot(){
+    cout << "Robotización seleccionada \n";
+    cout << "Seleccionar ancho de ventana (2-12)\n";
+
+    int ancho; cin >> ancho;
+    if (ancho == -1) {
+        return -1;
+    }
+    int windowWidth = (int)pow(2, ancho);
+
+    cout << "Ancho seleccionado = " << ancho << '\n';
+    int mode = RealOrWav();
+
+    auto *bot = new Robotization(44100, 4096, windowWidth);
+
+    if (mode == REALTIME){
+        realtimeProtocol((AudioEffect*)bot);
+    }else if(mode == FILENAME){
+        wavProtocol((AudioEffect*)bot);
+    }
+
+    return 0;
 }
-void Flanger(){
-    cout << "No ha sido implementado aún \n";
+int fFlanger(){
+    cout << "Flanger seleccionada \n";
+    cout << "Frecuencia de modulacion (0 - 5 hz) \n";
+
+    float fm; cin >> fm;
+    if (fm < 0){
+        return -1;
+    }
+
+    cout << "frecuencia de modulacion = " << fm << '\n';
+    cout << "Profundidad de modulacion (0 - 20 ms)" << '\n';
+    float pm; cin >> pm;
+    if (pm < 0){
+        return -1;
+    }
+
+    int mode = RealOrWav();
+
+    auto *bot = new Flanger(44100, 4096, fm, pm);
+
+    if (mode == REALTIME){
+        realtimeProtocol((AudioEffect*)bot);
+    }else if(mode == FILENAME){
+        wavProtocol((AudioEffect*)bot);
+    }
+    return 0;
 }
 int RunReverb(){
     cout << "Seleccionado Reverb ... \n";
@@ -103,11 +154,34 @@ int RunReverb(){
 
     return 0;
 }
-void Vibrato(){
-    cout << "No ha sido implementado aún\n";
+int fVibrato(){
+    cout << "Vibrato seleccionado \n";
+    cout << "Frecuencia de modulacion (0 - 5 hz) \n";
+
+    float fm; cin >> fm;
+    if (fm < 0) {
+        return -1;
+    }
+    cout << "frecuencia de modulacion = " << fm << '\n';
+    cout << "Profundidad de modulacion (0 - 20 ms)" << '\n';
+    float pm; cin >> pm;
+    if (pm < 0){
+        return -1;
+    }
+    int mode = RealOrWav();
+
+    auto *bot = new Vibrato(44100, 4096, fm, pm);
+
+    if (mode == REALTIME){
+        realtimeProtocol((AudioEffect*)bot);
+    }else if(mode == FILENAME){
+        wavProtocol((AudioEffect*)bot);
+    }
+    return 0;
 }
-void Giro3d(){
+int Giro3d(){
     cout << "No ha sido implementado aún\n";
+    return 0;
 }
 int EcoSimple(){
     cout << "Eco simple seleccionado \n";

@@ -124,11 +124,34 @@ class ParametersConfigMenu(tk.Frame):
             SimpleButtonModel(self.sendParams, "Aceptar")
         )
 
+    def configureRobotization(self):
+        self.windowWidth = SliderModel(2, 12, 1, 6, "Tamaño de la ventana")
+        self.recyclerView.addElement(
+            self.windowWidth
+        )
+        self.recyclerView.addElement(
+            SimpleButtonModel(self.sendParams, "Aceptar")
+        )
+
+    def configureFlangerOrVibrato(self):
+        self.fm = SliderModel(0, 5, 0.01, 2.5, "Frecuencia de modulación (hz)")
+        self.recyclerView.addElement(
+            self.fm
+        )
+
+        self.pm = SliderModel(0, 0.02, 0.001, 0.01, "Profundidad de modulación (s)")
+        self.recyclerView.addElement(
+            self.pm
+        )
+        self.recyclerView.addElement(
+            SimpleButtonModel(self.sendParams, "Aceptar")
+        )
+
     def focus(self):
         self.recyclerView.clear()
 
         self.mode = getEffectsInterface().getCompleteMode()
-        print(self.mode)
+        #print(self.mode)
         if self.mode == "Reverb Eco-simple":
             self.configReverbEcoSimple()
         elif self.mode == "Reverb Reverberador-plano":
@@ -139,6 +162,13 @@ class ParametersConfigMenu(tk.Frame):
             self.configureReverbCompleto()
         elif self.mode == "Reverb Reverberador-convolucion":
             self.configureReverbConvolucion()
+        elif self.mode == "Vibrato":
+            self.configureFlangerOrVibrato()
+        elif self.mode == "Flanger":
+            self.configureFlangerOrVibrato()
+        elif self.mode == "Robot":
+            self.configureRobotization()
+
 
         self.label.configure(
             text=self.mode
@@ -168,6 +198,12 @@ class ParametersConfigMenu(tk.Frame):
 
         elif self.mode == "Reverb Reverberador-convolucion":
             getEffectsInterface().sendData(self.fileImpulse.getFilename())
+        elif self.mode == "Robot":
+            getEffectsInterface().sendParam("Ventana",self.windowWidth.getValue())
+        elif self.mode == "Flanger" or self.mode == "Vibrato":
+            getEffectsInterface().sendParam("fm", self.fm.getValue())
+            getEffectsInterface().sendParam("pm", self.pm.getValue())
+
 
         from Menus.RealtimeOrFilenameMenu import RealtimeOrFilenameMenu
         self.controller.showFrame(RealtimeOrFilenameMenu)

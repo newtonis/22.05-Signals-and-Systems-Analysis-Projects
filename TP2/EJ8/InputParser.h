@@ -18,11 +18,11 @@ enum{
 };
 
 void parseInput();
-void Robot();
-void Flanger();
+int Robot();
+int fFlanger();
 int RunReverb();
-void Vibrato();
-void Giro3d();
+int fVibrato();
+int Giro3d();
 
 int EcoSimple();
 int ReverbPlano();

@@ -74,12 +74,18 @@ class PersonalizadoMenu(tk.Frame):
 
     def goToRobotizacion(self):
         getEffectsInterface().setMode("Robot")
+        from Menus.ParametersConfigMenu import ParametersConfigMenu
+        self.controller.showFrame(ParametersConfigMenu)
 
     def goToVibrato(self):
         getEffectsInterface().setMode("Vibrato")
+        from Menus.ParametersConfigMenu import ParametersConfigMenu
+        self.controller.showFrame(ParametersConfigMenu)
 
     def goToFlanger(self):
         getEffectsInterface().setMode("Flanger")
+        from Menus.ParametersConfigMenu import ParametersConfigMenu
+        self.controller.showFrame(ParametersConfigMenu)
 
     def goBack(self):
         getEffectsInterface().restart()

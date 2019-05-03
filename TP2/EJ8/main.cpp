@@ -42,11 +42,11 @@
 // * license above.
 // */
 //
-#include <stdio.h>
-#include <math.h>
-#include "portaudio.h"
-#include "Robotization.h"
-#include "Reverb.h"
+//#include <stdio.h>
+//#include <math.h>
+//#include "portaudio.h"
+//#include "Robotization.h"
+//#include "Reverb.h"
 //
 ///*
 //** Note that many of the older ISA sound cards on PCs do NOT support
@@ -206,9 +206,9 @@
 
 #include <map>
 #include "AudioFile.h"
-#include "Robotization.h"
-#include "windows.h"
-#include "Reverb.h"
+//#include "Robotization.h"
+//#include "windows.h"
+//#include "Reverb.h"
 #include "Flanger.h"
 #include "Vibrato.h"
 #include "InputParser.h"
@@ -217,73 +217,71 @@
 
 using namespace std;
 
-
 int main() {
     parseInput();
 
-//    std::vector<float> holis;
-//    hanning(8, holis);
-//    hanning(512, holis);
-//
-//
-//    std::string name = "president-is-moron";
-//    AudioFile<float> audioFile;
-//    AudioFile<float> out;
-//    AudioFile<float>::AudioBuffer newBuffer;
-//    unsigned int windowWidth = 4096;
-//
-//    audioFile.load("input/" + name + ".wav");
-//    int sampleRate = audioFile.getSampleRate();
-//    int numSamples = audioFile.getNumSamplesPerChannel();
-//    int realSamples = audioFile.getNumSamplesPerChannel();
-//
-//    map<string, int> config;
-//
-//    Reverb *bot = new Reverb(sampleRate, numSamples, windowWidth, ECO);
-//    bot->myG = 0.999;
-//    bot->myM = 5000;
-//
-//    auto *buffer = new float[numSamples * 2];
-//    for (int i = 0; i < numSamples; i++) {
-//        if (i < realSamples) {
-//            buffer[2 * i] = audioFile.samples[0][i];
-//            buffer[2 * i + 1] = audioFile.samples[1][i];
-//        } else {
-//            buffer[2 * i] = 0;
-//            buffer[2 * i + 1] = 0;
-//        }
-//    }
-//
-//
-////    freopen("output/x.txt", "w+",stdout);
-////    for (int i = 0;i < numSamples;i++){
-////        cout << buffer[2*i] << '\n';
-////    }
-//
-//
-//    bot->processStereoInput(buffer);
-//    bot->setNextOutput(buffer);
-//
-//    newBuffer.resize(2);
-//    newBuffer[0].resize(numSamples);
-//    newBuffer[1].resize(numSamples);
-//    for (int i = 0; i < numSamples; i++) {
-//        newBuffer[0][i] = buffer[2*i];
-//        newBuffer[1][i] = buffer[2*i+1];
-//    }
-//
-//
-//
-////    freopen("output/y.txt","w+",stdout);
-////    for (int i = 0;i < numSamples;i++){
-////        cout << buffer[2*i] << '\n';
-////    }
-//
-//
-//    out.setAudioBuffer(newBuffer);
-//    out.save ("output2/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
-//    delete [] buffer;
+    return 0;
 
+    std::string name = "organ";
+    AudioFile<float> audioFile;
+    AudioFile<float> out;
+    AudioFile<float>::AudioBuffer newBuffer;
+    unsigned int windowWidth = 1024;
+    float f_mod = 0.5, mod_depth = 0.003;
+
+    audioFile.load("input/" + name + ".wav");
+    int sampleRate = audioFile.getSampleRate();
+    int numSamples = audioFile.getNumSamplesPerChannel();
+    int realSamples = audioFile.getNumSamplesPerChannel();
+
+    map<string, int> config;
+
+    //auto  *bot = new Robotization(sampleRate, numSamples, windowWidth);
+    //auto * bot = new Robotization(sampleRate, numSamples, windowWidth);
+    //auto * bot = new Vibrato(sampleRate, numSamples, f_mod, mod_depth);
+    auto * bot = new Flanger(sampleRate, numSamples, f_mod, mod_depth);
+
+    auto *buffer = new float[numSamples * 2];
+    for (int i = 0; i < numSamples; i++) {
+        if (i < realSamples) {
+            buffer[2 * i] = audioFile.samples[0][i];
+            buffer[2 * i + 1] = audioFile.samples[1][i];
+        } else {
+            buffer[2 * i] = 0;
+            buffer[2 * i + 1] = 0;
+        }
+    }
+
+
+    freopen("output/x.txt", "w+",stdout);
+    for (int i = 0;i < numSamples;i++){
+        cout << buffer[2*i] << '\n';
+    }
+
+
+    bot->processStereoInput(buffer);
+    bot->setNextOutput(buffer);
+
+    newBuffer.resize(2);
+    newBuffer[0].resize(numSamples);
+    newBuffer[1].resize(numSamples);
+    for (int i = 0; i < numSamples; i++) {
+        newBuffer[0][i] = buffer[2*i];
+        newBuffer[1][i] = buffer[2*i+1];
+    }
+
+
+
+    freopen("output/y.txt","w+",stdout);
+    for (int i = 0;i < numSamples;i++){
+        cout << buffer[2*i] << '\n';
+    }
+
+
+    out.setAudioBuffer(newBuffer);
+    //out.save ("output2/"+name + "_" + std::to_string(windowWidth) +"_out.wav");
+    out.save("output2/"+name + "_flang_" + std::to_string(int(f_mod*1000))+"mHz_" +
+    std::to_string(int(mod_depth*1000))+"ms_out.wav");
 
     /*auto *bot = new Reverb(44100, 4096, 4096, ECO);
     bot->myG = 0.993;
@@ -292,5 +290,6 @@ int main() {
     string a = "input/president-is-moron.wav";
     string b =   "output2/test.wav";
     wavProcess(bot, a, b);*/
+    delete [] buffer;
 
 }

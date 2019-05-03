@@ -248,7 +248,7 @@ Flanger.cpp.i:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Flanger.cpp.i
 .PHONY : Flanger.cpp.i
 
-Flanger.s: Flanger.cpp.s
+fFlanger.s: Flanger.cpp.s
 
 .PHONY : Flanger.s
 
@@ -415,7 +415,7 @@ Vibrato.s: Vibrato.cpp.s
 .PHONY : Vibrato.s
 
 # target to generate assembly for a file
-Vibrato.cpp.s:
+fVibrato.cpp.s:
 	$(MAKE) -f CMakeFiles\EJ8.dir\build.make CMakeFiles/EJ8.dir/Vibrato.cpp.s
 .PHONY : Vibrato.cpp.s
 
