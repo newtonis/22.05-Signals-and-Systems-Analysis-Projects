@@ -20,10 +20,14 @@ def generateDemoSounds():
             config.fs
         )
         soundUtils.write(
-            "ProcessMidi/InstrumentsSynth/DemoSounds/"+instrument.getName()+".mp3",
+            #"ProcessMidi/InstrumentsSynth/DemoSounds/"+instrument.getName()+".mp3",
+            "ProcessMidi/InstrumentsSynth/DemoSounds/" + instrument.getName() + ".wav",
             config.fs,
-            sound,
-            True
+            sound
+            # ,
+            # True
+            # sound,
+            # True
         )
     print("Sounds written")
 

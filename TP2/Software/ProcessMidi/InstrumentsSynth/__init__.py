@@ -16,12 +16,13 @@ class Instrumento:
             data["function"]
         )
         self.sound = []
-
         try:
             fs, x = read(
-                "ProcessMidi/InstrumentsSynth/DemoSounds/"+self.name+".mp3",
+                #"ProcessMidi/InstrumentsSynth/DemoSounds/"+self.name+".mp3",
+                "ProcessMidi/InstrumentsSynth/DemoSounds/" + self.name + ".wav",
                 config.fs
             )
+
             if fs != config.fs:
                 print("Error invalid fs=", fs)
                 print("Only 44.1 kHz allowed")

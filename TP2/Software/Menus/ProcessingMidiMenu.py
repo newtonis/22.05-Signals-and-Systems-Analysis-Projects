@@ -118,8 +118,9 @@ class ProcessMidiMenu(tk.Frame):
             soundUtils.write(
                 filename,
                 config.fs,
-                result,
-                normalized=True
+                result
+                # result,
+                # normalized=True
             )
             self.goToSpectogramMenu(filename, result)
         else:
