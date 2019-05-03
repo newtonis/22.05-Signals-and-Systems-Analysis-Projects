@@ -129,6 +129,8 @@ En resumen:\\*
 El espectro inarmónico se origina cuando el cociente $\displaystyle \frac{f_c}{f_m}$ da como resultado un número irracional. \\*
 El índice de modulación $\displaystyle \frac{f_d}{f_m}$ determina el número de componentes que van a tener amplitud significativa.
 
+\newpage
+
 \subsection{Espectro dinámico}
 La complejidad del espectro esta relacionada con el índice de modulación de forma tal que si el índice crece el bandwidth también crece. Entonces si pensamos en un índice de modulación que varía con el tiempo la evolución del bandwidth del espectro puede estar generalmente descripta por la forma de la función.
 No obstante, la evolución de cada componente es determinado por la forma de la funcion de Bessel correspondiente.
@@ -154,6 +156,8 @@ Resultando
 \textstyle x(t)=\textcolor{red}{A(t)}\cdot sen(2\pi f_c t+\textcolor{orange}{I(t)}\cdot sen(2\pi f_mt))
 \end{eqnarray*}
 
+\newpage
+
 \subsubsection{Síntesis de clarinete}
 %Para un clarinete se utiliza un esquema similar al ADSR con %Attack Sustain y Release. En lugar de tratarse de una %interpolación lineal entre puntos, se trata de una %interpolación exponencial.
 Para poder sintetizar un clarinete se establecieron los parámetros recomendados por la literatura:
@@ -178,9 +182,10 @@ Las envolventes sugeridas por la bibliografía poseen la siguiente forma:
 \label{fig:clarinet_440}
 \end{figure}
 
+\newpage
 
 \subsubsection{Síntesis de campana}
-Parámetros recomendados por la literatura para la síntesis:
+Los parámetros recomendados por la literatura para la síntesis son:
 \begin{eqnarray*}
 \displaystyle \frac{f_c}{f_m}=\frac{2}{1}
 \end{eqnarray*}
@@ -200,8 +205,11 @@ Envolventes sugeridos:
 \caption{Espectrograma de la síntesis de la campana a 440Hz (nota LA)}
 \label{fig:bell_440}
 \end{figure}
+
+\newpage
+
 \subsubsection{Síntesis de trombón}
-Para los Brass Instruments se recomienda utilizar una relación de:
+Para los Brass Instruments se recomienda utilizar una relación:
 \begin{eqnarray*}
 \displaystyle \frac{f_c}{f_m}=\frac{1}{1}
 \end{eqnarray*}
@@ -218,6 +226,31 @@ Para los Brass Instruments se recomienda utilizar una relación de:
 \centering
 \includegraphics[width=0.4\linewidth]{graficos/EJ4/espectrograma_trombon.png}
 \caption{Espectrograma de la síntesis del trombón a 440Hz (nota LA)}
+\label{fig:trombone_440}
+\end{figure}
+
+\newpage
+
+\subsubsection{S\'intesis de la trompeta}
+
+En el caso de la trompeta se sugiere tambi\'en utilizar una relaci\'on:
+
+\[
+\frac{f_c}{f_m} = \frac{1}{1}
+\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/at_trompeta.png}
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/it_trompeta.png}
+\caption{A(t) e I(t) respectivamente}
+\label{fig:trombone_envelopes}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{graficos/EJ4/espectrograma_trompeta.png}
+\caption{Espectrograma de la síntesis de la trompeta a 440Hz (nota LA)}
 \label{fig:trombone_440}
 \end{figure}
 
@@ -242,7 +275,7 @@ En este efecto de sonido lo que llega a las orejas del usuario es alterado por e
 \caption{Esquema de Rotary Loudspeaker}
 \label{fig:RLesquema}
 \end{figure}
-
+\par
 La simulación del efecto doppler de dos bocinas opuestas es realizada mediante el uso de dos líneas de retardo moduladas con señales que estan desfasadas 180 grados en configuración vibrato. Un sonido dreccional característico similar al de speakers rotando puede ser logrado mediante modulación de amplitud de la señal de salida de las dos lineas de retardo.
 La modulación está sincronizada con el retardo de modulación de forma tal que la bocina trasera que se mueve tiene menor tono y amplitud decreciente. En el punto de retorno el tono es inalterado y la amplitud es mínima. 
 Intuitivamente, mientras la señal del canal izquierdo sube, la del derecho baja y en consecuencia el oyente percibe un movimiento giratorio.
