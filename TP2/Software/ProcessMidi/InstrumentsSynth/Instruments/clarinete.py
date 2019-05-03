@@ -1,8 +1,6 @@
 from math import *
 from envelopes.woodEnv import *
-#from instruments_synth.fmModulation import *
 from ProcessMidi.InstrumentsSynth.Instruments.fmModulation import fmModulation
-from audiolazy.lazy_midi import *
 import matplotlib.pyplot as plt
 
 def nicePlot(x,y,color,xlabel,ylabel, title):

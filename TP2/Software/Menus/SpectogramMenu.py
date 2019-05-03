@@ -61,17 +61,20 @@ class SpectogramMenu(tk.Frame):
 
     def setMusicData(self, content):
         print("setting music data")
+        try:
+            self.content = content
+            f, t, Sxx = signal.spectrogram(content, config.fs)
 
-        self.content = content
-        f, t, Sxx = signal.spectrogram(content, config.fs)
+            self.axis.clear()
 
-        self.axis.clear()
+            self.axis.pcolormesh(t, f, Sxx)
+            self.axis.set_xlabel('Frecuencia [Hz]')
+            self.axis.set_xlabel('Tiempo [sec]')
 
-        self.axis.pcolormesh(t, f, Sxx)
-        self.axis.set_xlabel('Frecuencia [Hz]')
-        self.axis.set_xlabel('Tiempo [sec]')
-
-        self.dataPlot.draw()
+            self.dataPlot.draw()
+        except:
+            print("problema con spectrograma")
+            pass
 
     def goBack(self):
         from Menus.MidiConfigMenu import MidiConfigMenu

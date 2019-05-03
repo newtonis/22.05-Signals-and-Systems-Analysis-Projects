@@ -131,7 +131,10 @@ def getPiano(vel, frequency, duration, fs):
 
         x += amps[i] * np.cos(2 * pi * frequency * harmonics[i] * totaltime + phase[i]) * envelope
 
-    x = normalize(x)
+    x -= np.mean(x)
+    max_y = max(abs(np.amax(x)), abs(np.amin(x)))
+    x /= max_y
+    #x = normalize(x)
     return x
 
 
@@ -173,7 +176,9 @@ def getSax(vel, frequency, duration, fs):
 
         x += amps[i] * np.cos(2 * pi * frequency * harmonics[i] * totaltime + phase[i]) * envelope
 
-    x = normalize(x)
+    x -= np.mean(x)
+    max_y = max(abs(np.amax(x)), abs(np.amin(x)))
+    x /= max_y
     return x
 
 
@@ -191,7 +196,9 @@ def getViolin(vel, frequency, duration, fs):
         envelope = env(duration, frequency, harmonics[i], file, pd)
         x += amps[i] * np.cos(2 * pi * frequency * harmonics[i] * totaltime + phase[i]) * envelope
 
-    x = normalize(x)
+    x -= np.mean(x)
+    max_y = max(abs(np.amax(x)), abs(np.amin(x)))
+    x /= max_y
     return x
 
 def getTrombone(vel, frequency, duration, fs):
@@ -206,5 +213,7 @@ def getTrombone(vel, frequency, duration, fs):
         envelope = env(duration, frequency, harmonics[i], file, pd)
 
         x += amps[i] * np.cos(2 * pi * frequency * harmonics[i] * totaltime + phase[i]) * envelope
-    x = normalize(x)
+    x -= np.mean(x)
+    max_y = max(abs(np.amax(x)), abs(np.amin(x)))
+    x /= max_y
     return x
