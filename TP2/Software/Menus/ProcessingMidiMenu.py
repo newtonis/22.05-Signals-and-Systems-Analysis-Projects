@@ -112,7 +112,8 @@ class ProcessMidiMenu(tk.Frame):
         self.loaded = True
 
     def save(self, result):
-        filename = filedialog.asksaveasfile(mode='w', defaultextension=".mp3").name
+        #filename = filedialog.asksaveasfile(mode='w', defaultextension=".mp3").name
+        filename = filedialog.asksaveasfile(mode='w', defaultextension=".wav").name
         if filename:
             self.onMsg("Escribiendo " + os.path.basename(filename))
             soundUtils.write(
