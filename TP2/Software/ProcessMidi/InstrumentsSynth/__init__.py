@@ -54,8 +54,8 @@ class Instruments:
             self.instrumentos.append(
                 Instrumento(
                     {
-                        "nombre" : instrumento.attrib["nombre"],
-                        "code" : instrumento.attrib["code"],
+                        "nombre": instrumento.attrib["nombre"],
+                        "code": instrumento.attrib["code"],
                         "function": instrumento.attrib["function"]
                     }
                 )
