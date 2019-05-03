@@ -1,2 +1,3 @@
 flanger piola 1Hz 2ms
 vibrato piola 5Hz 1ms
+robot piola 512 o 1024

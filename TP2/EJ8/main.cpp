@@ -218,16 +218,16 @@
 using namespace std;
 
 int main() {
-    parseInput();
+    //parseInput();
 
-    return 0;
+    //return 0;
 
     std::string name = "organ";
     AudioFile<float> audioFile;
     AudioFile<float> out;
     AudioFile<float>::AudioBuffer newBuffer;
     unsigned int windowWidth = 1024;
-    float f_mod = 1, mod_depth = 0.002;
+    float f_mod = 5, mod_depth = 0.002;
 
     audioFile.load("input/" + name + ".wav");
     int sampleRate = audioFile.getSampleRate();
