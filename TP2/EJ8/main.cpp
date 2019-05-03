@@ -218,7 +218,9 @@
 using namespace std;
 
 int main() {
-    //parseInput();
+    parseInput();
+
+    return 0;
 
     std::string name = "organ";
     AudioFile<float> audioFile;
