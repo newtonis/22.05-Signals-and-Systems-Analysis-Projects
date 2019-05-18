@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ1/fftFinal/main.cpp" "C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP2/EJ1/fftFinal/cmake-build-debug/CMakeFiles/fftFinal.dir/main.cpp.obj"
+  "C:/Users/newto/INFORMES_ASSD/TP2/EJ1/fftFinal/main.cpp" "C:/Users/newto/INFORMES_ASSD/TP2/EJ1/fftFinal/cmake-build-debug/CMakeFiles/fftFinal.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
