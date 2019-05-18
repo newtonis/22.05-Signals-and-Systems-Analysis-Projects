@@ -1,0 +1,32 @@
+\documentclass{article}
+
+% preambulo:
+\input{assd_tp3_preamble.tex}
+
+
+\begin{document}
+
+\newgeometry{} % margenes default para la caratula
+% caratula:
+\input{assd_tp3_caratula.tex}
+
+% indice:
+\tableofcontents
+\newpage
+
+
+% cambio los margenes para el resto del documento
+\newgeometry{total={6in, 8in}}
+
+\subfile{assd_tp3_ej1.tex}
+\newpage
+\subfile{assd_tp3_ej2.tex}
+\newpage
+\subfile{assd_tp3_ej3.tex}
+\newpage
+\subfile{assd_tp3_ej4.tex}
+\newpage
+\subfile{assd_tp3_ej5.tex}
+
+
+\end{document}
