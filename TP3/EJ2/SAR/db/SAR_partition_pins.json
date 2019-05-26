@@ -1,0 +1,117 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "eoc",
+					"strict" : false
+				},
+				{
+					"name" : "feedback_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "feedback_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "feedback_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "feedback_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "feedback_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "feedback_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "feedback_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "feedback_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "cmp",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "freq_selector[0]",
+					"strict" : false
+				},
+				{
+					"name" : "freq_selector[1]",
+					"strict" : false
+				},
+				{
+					"name" : "freq_selector[2]",
+					"strict" : false
+				},
+				{
+					"name" : "freq_selector[3]",
+					"strict" : false
+				},
+				{
+					"name" : "freq_selector[4]",
+					"strict" : false
+				},
+				{
+					"name" : "freq_selector[5]",
+					"strict" : false
+				},
+				{
+					"name" : "freq_selector[6]",
+					"strict" : false
+				},
+				{
+					"name" : "freq_selector[7]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,73 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/simulation/qsim
+vhard_block
+Z1 !s110 1558822972
+!i10b 1
+!s100 4LZi=V3U4`2UnV;JLda2J1
+IHn5WkmlQZ?>17YCg;5]cL2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1558822971
+Z4 8SAR.vo
+Z5 FSAR.vo
+L0 1735
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1558822972.000000
+Z8 !s107 SAR.vo|
+Z9 !s90 -work|work|SAR.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vmain
+R1
+!i10b 1
+!s100 no1G^gUhH[oE7KmL^1NKa3
+IM_NDB;hS]Wz:EU>HP:ebU1
+R2
+R0
+R3
+R4
+R5
+L0 31
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmain_vlg_vec_tst
+R1
+!i10b 1
+!s100 :271LBmbJ9?LDT2HokoO_2
+ISN7>Dn=6nBB8;eU>lkcH@1
+R2
+R0
+w1558822970
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11

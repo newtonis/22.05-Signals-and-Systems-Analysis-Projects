@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SAR
-Sat May 18 18:12:27 2019
+Sun May 26 16:45:20 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -10,7 +10,20 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Source assignments for rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated
+ 14. Parameter Settings for User Entity Instance: rom:inst3|altsyncram:altsyncram_component
+ 15. altsyncram Parameter Settings by Entity Instance
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -36,20 +49,20 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Sat May 18 18:12:27 2019           ;
+; Analysis & Synthesis Status        ; Successful - Sun May 26 16:45:20 2019       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; SAR                                         ;
-; Top-level Entity Name              ; SAR                                         ;
+; Top-level Entity Name              ; main                                        ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 106                                         ;
+;     Total combinational functions  ; 106                                         ;
+;     Dedicated logic registers      ; 52                                          ;
+; Total registers                    ; 52                                          ;
+; Total pins                         ; 27                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 6,144                                       ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -59,7 +72,7 @@ refer to the applicable agreement for further details.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; EP4CE6F17C6        ;                    ;
-; Top-level entity name                                            ; SAR                ; SAR                ;
+; Top-level entity name                                            ; main               ; SAR                ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -148,11 +161,271 @@ refer to the applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                        ; Library ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+; db/SAR.v                         ; yes             ; Auto-Generated Megafunction        ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/SAR.v               ;         ;
+; main.bdf                         ; yes             ; User Block Diagram/Schematic File  ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/main.bdf               ;         ;
+; clock_divider.v                  ; yes             ; User Verilog HDL File              ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/clock_divider.v        ;         ;
+; rom.v                            ; yes             ; User Wizard-Generated File         ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/rom.v                  ;         ;
+; SAR.mif                          ; yes             ; User Memory Initialization File    ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/SAR.mif                ;         ;
+; latch_x8.v                       ; yes             ; User Verilog HDL File              ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/latch_x8.v             ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf               ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc        ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc                  ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_decode.inc               ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc               ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_rdenreg.inc                ;         ;
+; altrom.inc                       ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altrom.inc                   ;         ;
+; altram.inc                       ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altram.inc                   ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altdpram.inc                 ;         ;
+; db/altsyncram_kv81.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/altsyncram_kv81.tdf ;         ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 106       ;
+;                                             ;           ;
+; Total combinational functions               ; 106       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 21        ;
+;     -- 3 input functions                    ; 40        ;
+;     -- <=2 input functions                  ; 45        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 46        ;
+;     -- arithmetic mode                      ; 60        ;
+;                                             ;           ;
+; Total registers                             ; 52        ;
+;     -- Dedicated logic registers            ; 52        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 27        ;
+; Total memory bits                           ; 6144      ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 48        ;
+; Total fan-out                               ; 695       ;
+; Average fan-out                             ; 2.94      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                    ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                            ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+-----------------+--------------+
+; |main                                     ; 106 (0)             ; 52 (0)                    ; 6144        ; 0            ; 0       ; 0         ; 27   ; 0            ; |main                                                                          ; main            ; work         ;
+;    |clock_divider:inst4|                  ; 64 (64)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|clock_divider:inst4                                                      ; clock_divider   ; work         ;
+;    |latch_x8:inst5|                       ; 0 (0)               ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|latch_x8:inst5                                                           ; latch_x8        ; work         ;
+;    |rom:inst3|                            ; 0 (0)               ; 0 (0)                     ; 6144        ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3                                                                ; rom             ; work         ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 6144        ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
+;          |altsyncram_kv81:auto_generated| ; 0 (0)               ; 0 (0)                     ; 6144        ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated ; altsyncram_kv81 ; work         ;
+;    |sar:inst|                             ; 42 (42)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|sar:inst                                                                 ; sar             ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                               ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+---------+
+; Name                                                                                ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF     ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+---------+
+; rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 256          ; 24           ; --           ; --           ; 6144 ; SAR.mif ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+---------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                             ;
++--------+--------------+---------+--------------+--------------+-----------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance ; IP Include File ;
++--------+--------------+---------+--------------+--------------+-----------------+-----------------+
+; Altera ; ROM: 1-PORT  ; 18.1    ; N/A          ; N/A          ; |main|rom:inst3 ; rom.v           ;
++--------+--------------+---------+--------------+--------------+-----------------+-----------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 52    ;
+; Number of registers using Synchronous Clear  ; 24    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 16    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; sar:inst|b[7]                          ; 1       ;
+; sar:inst|b[6]                          ; 1       ;
+; sar:inst|b[5]                          ; 1       ;
+; sar:inst|b[4]                          ; 1       ;
+; sar:inst|b[3]                          ; 1       ;
+; sar:inst|b[2]                          ; 1       ;
+; sar:inst|b[1]                          ; 1       ;
+; sar:inst|b[0]                          ; 1       ;
+; Total number of inverted registers = 8 ;         ;
++----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |main|sar:inst|a[0]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |main|sar:inst|b[7]        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: rom:inst3|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+----------------------------+
+; Parameter Name                     ; Value                ; Type                       ;
++------------------------------------+----------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                    ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                    ;
+; WIDTH_A                            ; 24                   ; Signed Integer             ;
+; WIDTHAD_A                          ; 8                    ; Signed Integer             ;
+; NUMWORDS_A                         ; 256                  ; Signed Integer             ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                    ;
+; WIDTH_B                            ; 1                    ; Untyped                    ;
+; WIDTHAD_B                          ; 1                    ; Untyped                    ;
+; NUMWORDS_B                         ; 1                    ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer             ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                    ;
+; BYTE_SIZE                          ; 8                    ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                    ;
+; INIT_FILE                          ; SAR.mif              ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_kv81      ; Untyped                    ;
++------------------------------------+----------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                      ;
++-------------------------------------------+-------------------------------------------+
+; Name                                      ; Value                                     ;
++-------------------------------------------+-------------------------------------------+
+; Number of entity instances                ; 1                                         ;
+; Entity Instance                           ; rom:inst3|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 24                                        ;
+;     -- NUMWORDS_A                         ; 256                                       ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                    ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
++-------------------------------------------+-------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 27                          ;
+; cycloneiii_ff         ; 52                          ;
+;     ENA               ; 16                          ;
+;     SCLR              ; 24                          ;
+;     plain             ; 12                          ;
+; cycloneiii_lcell_comb ; 106                         ;
+;     arith             ; 60                          ;
+;         2 data inputs ; 23                          ;
+;         3 data inputs ; 37                          ;
+;     normal            ; 46                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 20                          ;
+;         3 data inputs ; 3                           ;
+;         4 data inputs ; 21                          ;
+; cycloneiii_ram_block  ; 24                          ;
+;                       ;                             ;
+; Max LUT depth         ; 4.20                        ;
+; Average LUT depth     ; 2.99                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
 
 
 +-------------------------------+
@@ -161,15 +434,68 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat May 18 18:12:05 2019
+    Info: Processing started: Sun May 26 16:45:05 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SAR -c SAR
+Warning (125092): Tcl Script File PLL.qip not found
+    Info (125063): set_global_assignment -name QIP_FILE PLL.qip
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Error (12007): Top-level design entity "SAR" is undefined
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 4727 megabytes
-    Error: Processing ended: Sat May 18 18:12:27 2019
-    Error: Elapsed time: 00:00:22
-    Error: Total CPU time (on all processors): 00:00:52
+Info (12021): Found 1 design units, including 1 entities, in source file compare_number.v
+    Info (12023): Found entity 1: compare_number File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/compare_number.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file db/sar.v
+    Info (12023): Found entity 1: sar File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/SAR.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file main.bdf
+    Info (12023): Found entity 1: main
+Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.v
+    Info (12023): Found entity 1: clock_divider File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/clock_divider.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file modulador_delta.v
+    Info (12023): Found entity 1: modulador_delta File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/modulador_delta.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file rom.v
+    Info (12023): Found entity 1: rom File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/rom.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file latch_x8.v
+    Info (12023): Found entity 1: latch_x8 File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/latch_x8.v Line: 2
+Info (12127): Elaborating entity "main" for the top level hierarchy
+Info (12128): Elaborating entity "sar" for hierarchy "sar:inst"
+Warning (10230): Verilog HDL assignment warning at SAR.v(14): truncated value with size 32 to match size of target (8) File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/SAR.v Line: 14
+Warning (10230): Verilog HDL assignment warning at SAR.v(19): truncated value with size 32 to match size of target (8) File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/SAR.v Line: 19
+Warning (10230): Verilog HDL assignment warning at SAR.v(21): truncated value with size 32 to match size of target (8) File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/SAR.v Line: 21
+Warning (10230): Verilog HDL assignment warning at SAR.v(24): truncated value with size 32 to match size of target (4) File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/SAR.v Line: 24
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:inst4"
+Warning (10230): Verilog HDL assignment warning at clock_divider.v(13): truncated value with size 32 to match size of target (24) File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/clock_divider.v Line: 13
+Info (12128): Elaborating entity "rom" for hierarchy "rom:inst3"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "rom:inst3|altsyncram:altsyncram_component" File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/rom.v Line: 81
+Info (12130): Elaborated megafunction instantiation "rom:inst3|altsyncram:altsyncram_component" File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/rom.v Line: 81
+Info (12133): Instantiated megafunction "rom:inst3|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/rom.v Line: 81
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "SAR.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "256"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "width_a" = "24"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kv81.tdf
+    Info (12023): Found entity 1: altsyncram_kv81 File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/altsyncram_kv81.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_kv81" for hierarchy "rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "latch_x8" for hierarchy "latch_x8:inst5"
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 165 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
+    Info (21059): Implemented 17 output pins
+    Info (21061): Implemented 114 logic cells
+    Info (21064): Implemented 24 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4784 megabytes
+    Info: Processing ended: Sun May 26 16:45:20 2019
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:25
 
 
