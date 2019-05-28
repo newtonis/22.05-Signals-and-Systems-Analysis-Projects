@@ -148,42 +148,6 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 680 232 832 312)
-	(text "sar" (rect 5 0 20 12)(font "Arial" ))
-	(text "inst" (rect 8 64 25 76)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clk" (rect 0 0 14 12)(font "Arial" ))
-		(text "clk" (rect 21 27 35 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "cmp" (rect 0 0 21 12)(font "Arial" ))
-		(text "cmp" (rect 21 43 42 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 152 32)
-		(output)
-		(text "eoc" (rect 0 0 17 12)(font "Arial" ))
-		(text "eoc" (rect 117 27 131 39)(font "Arial" ))
-		(line (pt 152 32)(pt 136 32))
-	)
-	(port
-		(pt 152 48)
-		(output)
-		(text "out[7..0]" (rect 0 0 41 12)(font "Arial" ))
-		(text "out[7..0]" (rect 97 43 131 55)(font "Arial" ))
-		(line (pt 152 48)(pt 136 48)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 136 64))
-	)
-)
-(symbol
 	(rect 464 320 640 400)
 	(text "clock_divider" (rect 5 0 69 12)(font "Arial" ))
 	(text "inst4" (rect 8 64 31 76)(font "Arial" ))
@@ -205,7 +169,7 @@ refer to the applicable agreement for further details.
 		(pt 176 32)
 		(output)
 		(text "clk_out" (rect 0 0 35 12)(font "Arial" ))
-		(text "clk_out" (rect 126 27 155 39)(font "Arial" ))
+		(text "clk_out" (rect 126 27 161 39)(font "Arial" ))
 		(line (pt 176 32)(pt 160 32))
 	)
 	(drawing
@@ -234,7 +198,7 @@ refer to the applicable agreement for further details.
 		(pt 160 32)
 		(output)
 		(text "out[7..0]" (rect 0 0 41 12)(font "Arial" ))
-		(text "out[7..0]" (rect 105 27 139 39)(font "Arial" ))
+		(text "out[7..0]" (rect 105 27 146 39)(font "Arial" ))
 		(line (pt 160 32)(pt 144 32)(line_width 3))
 	)
 	(drawing
@@ -249,7 +213,7 @@ refer to the applicable agreement for further details.
 		(pt 136 32)
 		(output)
 		(text "out[7..0]" (rect 0 0 41 12)(font "Arial" ))
-		(text "out[7..0]" (rect 81 27 115 39)(font "Arial" ))
+		(text "out[7..0]" (rect 81 27 122 39)(font "Arial" ))
 		(line (pt 136 32)(pt 120 32)(line_width 3))
 	)
 	(drawing
@@ -319,13 +283,41 @@ refer to the applicable agreement for further details.
 		(line (pt 0 0)(pt 0 0))
 	)
 )
-(connector
-	(pt 664 264)
-	(pt 680 264)
-)
-(connector
-	(pt 648 280)
-	(pt 680 280)
+(symbol
+	(rect 680 232 832 312)
+	(text "sar" (rect 5 0 20 12)(font "Arial" ))
+	(text "inst" (rect 8 64 25 76)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "cmp" (rect 0 0 21 12)(font "Arial" ))
+		(text "cmp" (rect 21 43 42 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 152 32)
+		(output)
+		(text "eoc" (rect 0 0 17 12)(font "Arial" ))
+		(text "eoc" (rect 117 27 134 39)(font "Arial" ))
+		(line (pt 152 32)(pt 136 32))
+	)
+	(port
+		(pt 152 48)
+		(output)
+		(text "out[7..0]" (rect 0 0 41 12)(font "Arial" ))
+		(text "out[7..0]" (rect 97 43 138 55)(font "Arial" ))
+		(line (pt 152 48)(pt 136 48)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 136 64))
+	)
 )
 (connector
 	(pt 464 352)
@@ -432,6 +424,14 @@ refer to the applicable agreement for further details.
 	(pt 440 368)
 	(pt 464 368)
 	(bus)
+)
+(connector
+	(pt 664 264)
+	(pt 680 264)
+)
+(connector
+	(pt 648 280)
+	(pt 680 280)
 )
 (junction (pt 192 288))
 (junction (pt 864 280))

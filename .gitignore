@@ -87,3 +87,9 @@ TP2/EJ8/cmake-build-debug/CMakeFiles/Progress/5
 TP2/EJ8/cmake-build-debug/CMakeFiles/Progress/6
 TP2/EJ8/cmake-build-debug/CMakeFiles/Progress/7
 TP2/EJ8/cmake-build-debug/CMakeFiles/Progress/count.txt
+GuiaFiltrosRecursivos/.idea/*.*
+GuiaFiltrosRecursivos/.idea/librearies/*.*
+GuiaFiltrosRecursivos/Informe/*.aux
+GuiaFiltrosRecursivos/Informe/*.dvi
+GuiaFiltrosRecursivos/Informe/*.pdf
+GuiaFiltrosRecursivos/Informe/*.log
