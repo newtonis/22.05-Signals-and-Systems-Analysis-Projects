@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="769.11"
+   height="314.57"
+   id="svg3257">
+  <defs
+     id="defs3259" />
+  <g
+     transform="translate(-242.52,-451.73)"
+     id="layer1">
+    <path
+       d="M 625.57,604.24 L 625.57,710.18 L 375.54,710.18 L 375.54,623.86"
+       id="use3472"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.97313px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="M 800.38,604.25 L 1011.2,604.25"
+       id="use3474"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.81235px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="M 243.15,604.25 L 647.92,604.25"
+       id="use3476"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1.24383px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <rect
+       width="116"
+       height="56"
+       x="888.17"
+       y="576.84"
+       id="use3480"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.06299;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="311.69"
+       y="220.14999"
+       id="text4953"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="898.69196"
+         y="598.67004"
+         id="tspan4955">Low pass</tspan>
+    </text>
+    <text
+       x="311.69"
+       y="220.14999"
+       id="text4957"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="904.99884"
+         y="623.86218"
+         id="tspan4959">Filter</tspan>
+    </text>
+    <path
+       d="M 527.72,604.64 L 482.69,627.17 L 482.69,582.14 L 527.72,604.64 z"
+       id="path4975"
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible" />
+    <path
+       d="M 498.67,594.33 L 493.03,594.33 L 493.03,613.07 L 488.35,613.07"
+       id="path4989"
+       style="fill:none;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible" />
+    <text
+       x="37.27"
+       y="222.14999"
+       id="text4937"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="452.74564"
+         y="567.86005"
+         id="tspan4939">Quantizer</tspan>
+    </text>
+    <path
+       d="M 862.32,604.97 L 817.28,627.51 L 817.28,582.47 L 862.32,604.97 z"
+       id="path4885"
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible" />
+    <path
+       d="M 862.32,604.97 L 817.28,627.51 L 817.28,582.47 L 862.32,604.97"
+       id="path4889"
+       style="fill:none;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible" />
+    <text
+       x="668.08002"
+       y="223.44"
+       id="text4905"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:OpenSymbol embedded">
+      <tspan
+         x="823.87451"
+         y="611.49127"
+         id="tspan4907">∫</tspan>
+    </text>
+    <text
+       x="663.48999"
+       y="222.66"
+       id="text4921"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="789.30902"
+         y="567.41333"
+         id="tspan4923">Integrator</tspan>
+    </text>
+    <text
+       x="123.23"
+       y="222.16"
+       id="text4835"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="336.21176"
+         y="598.80219"
+         id="tspan4837"
+         style="stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">+</tspan>
+    </text>
+    <text
+       x="124.23"
+       y="215.16"
+       id="text4851"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="362.51019"
+         y="639.59991"
+         id="tspan4853"
+         style="stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">-</tspan>
+    </text>
+    <path
+       d="M 398.48,603.73 L 398.44,602.59 L 398.37,601.46 L 398.23,600.33 L 398.02,599.19 L 397.77,598.09 L 397.45,597 L 397.06,595.9 L 396.67,594.87 L 396.18,593.81 L 395.65,592.81 L 395.08,591.82 L 394.44,590.87 L 393.77,589.94 L 393.06,589.06 L 392.28,588.24 L 391.46,587.43 L 390.65,586.65 L 389.76,585.94 L 388.84,585.27 L 387.89,584.63 L 386.89,584.06 L 385.9,583.53 L 384.84,583.03 L 383.81,582.65 L 382.71,582.26 L 381.61,581.94 L 380.52,581.69 L 379.38,581.48 L 378.25,581.33 L 377.11,581.26 L 375.98,581.23 L 375.98,581.23 L 374.85,581.26 L 373.71,581.33 L 372.58,581.48 L 371.45,581.69 L 370.35,581.94 L 369.25,582.26 L 368.15,582.65 L 367.12,583.03 L 366.06,583.53 L 365.07,584.06 L 364.08,584.63 L 363.12,585.27 L 362.2,585.94 L 361.31,586.65 L 360.5,587.43 L 359.68,588.24 L 358.9,589.06 L 358.19,589.94 L 357.52,590.87 L 356.88,591.82 L 356.32,592.81 L 355.78,593.81 L 355.29,594.87 L 354.9,595.9 L 354.51,597 L 354.19,598.09 L 353.94,599.19 L 353.73,600.33 L 353.59,601.46 L 353.52,602.59 L 353.48,603.73 L 353.48,603.73 L 353.52,604.86 L 353.59,605.99 L 353.73,607.13 L 353.94,608.26 L 354.19,609.36 L 354.51,610.46 L 354.9,611.56 L 355.29,612.59 L 355.78,613.65 L 356.32,614.64 L 356.88,615.63 L 357.52,616.59 L 358.19,617.51 L 358.9,618.4 L 359.68,619.21 L 360.5,620.03 L 361.31,620.81 L 362.2,621.51 L 363.12,622.19 L 364.08,622.83 L 365.07,623.39 L 366.06,623.92 L 367.12,624.42 L 368.15,624.81 L 369.25,625.2 L 370.35,625.52 L 371.45,625.77 L 372.58,625.98 L 373.71,626.12 L 374.85,626.19 L 375.98,626.23 L 375.98,626.23 L 377.11,626.19 L 378.25,626.12 L 379.38,625.98 L 380.52,625.77 L 381.61,625.52 L 382.71,625.2 L 383.81,624.81 L 384.84,624.42 L 385.9,623.92 L 386.89,623.39 L 387.89,622.83 L 388.84,622.19 L 389.76,621.51 L 390.65,620.81 L 391.46,620.03 L 392.28,619.21 L 393.06,618.4 L 393.77,617.51 L 394.44,616.59 L 395.08,615.63 L 395.65,614.64 L 396.18,613.65 L 396.67,612.59 L 397.06,611.56 L 397.45,610.46 L 397.77,609.36 L 398.02,608.26 L 398.23,607.13 L 398.37,605.99 L 398.44,604.86 L 398.48,603.73 z"
+       id="path4863"
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible" />
+    <path
+       d="M 375.98,626.23 L 373.68,626.12 L 371.45,625.77 L 369.28,625.2 L 367.23,624.45 L 365.28,623.5 L 363.4,622.36 L 361.67,621.09 L 360.07,619.64 L 358.62,618.04 L 357.34,616.31 L 356.21,614.43 L 355.25,612.48 L 354.51,610.42 L 353.94,608.26 L 353.59,606.03 L 353.48,603.73 L 353.59,601.42 L 353.94,599.19 L 354.51,597.03 L 355.25,594.98 L 356.21,593.03 L 357.34,591.15 L 358.62,589.41 L 360.07,587.82 L 361.67,586.37 L 363.4,585.09 L 365.28,583.96 L 367.23,583 L 369.28,582.26 L 371.45,581.69 L 373.68,581.33 L 375.98,581.23 L 378.28,581.33 L 380.52,581.69 L 382.68,582.26 L 384.73,583 L 386.68,583.96 L 388.56,585.09 L 390.3,586.37 L 391.89,587.82 L 393.34,589.41 L 394.62,591.15 L 395.75,593.03 L 396.71,594.98 L 397.45,597.03 L 398.02,599.19 L 398.37,601.42 L 398.48,603.73 L 398.37,606.03 L 398.02,608.26 L 397.45,610.42 L 396.71,612.48 L 395.75,614.43 L 394.62,616.31 L 393.34,618.04 L 391.89,619.64 L 390.3,621.09 L 388.56,622.36 L 386.68,623.5 L 384.73,624.45 L 382.68,625.2 L 380.52,625.77 L 378.28,626.12 L 375.98,626.23"
+       id="path4867"
+       style="fill:none;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible" />
+    <path
+       d="M 368.11,593.77 L 382.53,593.77 L 382.91,598.61 L 382.37,598.61 C 382.3,597.65 382.14,596.92 381.89,596.42 C 381.63,595.92 381.28,595.56 380.84,595.32 C 380.4,595.08 379.69,594.97 378.73,594.98 L 372.17,594.98 L 378.02,602.49 L 371.36,610.35 L 378.66,610.35 C 379.98,610.35 380.99,610.14 381.69,609.72 C 382.39,609.29 382.91,608.4 383.26,607.05 L 383.8,607.18 L 382.98,612.99 L 368.11,612.99 L 368.11,612.48 L 375.51,603.75 L 368.11,594.28 L 368.11,593.77 z"
+       id="path4873"
+       style="stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <a
+       transform="translate(113.04,115.36)"
+       id="use3490">
+      <path
+         d="M 185.82,195.37 A 6.4074,6.4074 0 1 1 173,195.37 A 6.4074,6.4074 0 1 1 185.82,195.37 z"
+         transform="matrix(0.5777,0,0,0.5777,408.68,376.35)"
+         id="path4819"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </a>
+    <path
+       d="M 654.25,604.25 L 796.07,604.25"
+       id="use3494"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.6902;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.76081, 0.6902;stroke-dashoffset:0;stroke-opacity:1" />
+    <g
+       id="g3141">
+      <path
+         d="M 475.02,709.9 L 520.06,732.44 L 520.06,687.4 L 475.02,709.9 z"
+         id="path3584"
+         style="fill:#ffffff;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible" />
+      <path
+         d="M 475.02,709.9 L 520.06,732.44 L 520.06,687.4 L 475.02,709.9"
+         id="path3588"
+         style="fill:none;stroke:#000000;stroke-width:1.063;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible" />
+      <text
+         x="349.85999"
+         y="328.37"
+         id="text3604"
+         style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:OpenSymbol embedded">
+        <tspan
+           x="505.65451"
+           y="716.42126"
+           id="tspan3606">∫</tspan>
+      </text>
+    </g>
+    <text
+       x="326.88"
+       y="327.57999"
+       id="text3620"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="452.69904"
+         y="672.33337"
+         id="tspan3622">Integrator</tspan>
+    </text>
+    <path
+       d="M 644.31,453.49 C 644.31,765.93 644.31,765.93 644.31,765.93"
+       id="path3718"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.72861;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:17.48675, 0.72861;stroke-dashoffset:0;stroke-opacity:1" />
+    <use
+       transform="translate(134.62,-1.4011)"
+       id="use4689"
+       x="0"
+       y="0"
+       width="847.08"
+       height="713.85"
+       xlink:href="#path3718" />
+    <text
+       x="-56.518002"
+       y="163.2"
+       id="text4703"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="358.95764"
+         y="508.91003"
+         id="tspan4705">MODULATOR</tspan>
+      <tspan
+         x="358.95764"
+         y="508.91003"
+         id="tspan4709" />
+    </text>
+    <text
+       x="659.06"
+       y="508.89999"
+       id="text4719"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:Arial embedded">CHANNEL</text>
+    <text
+       x="395.23999"
+       y="163.2"
+       id="text4733"
+       style="font-size:22.49932px;font-weight:400;fill:#000000;visibility:visible;font-family:Arial embedded">
+      <tspan
+         x="810.71564"
+         y="508.91003"
+         id="tspan4735">DEMODULATOR</tspan>
+    </text>
+  </g>
+</svg>
