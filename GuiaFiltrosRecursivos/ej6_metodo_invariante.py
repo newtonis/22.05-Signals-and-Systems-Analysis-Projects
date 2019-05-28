@@ -6,7 +6,7 @@ from scipy.signal import butter, cheby1
 from scipy import signal
 import matplotlib.pyplot as plt
 import numpy as np
-from numpy import pi, log10, linspace
+from numpy import pi, log10, linspace, real, imag
 
 
 #### Codigo de https://github.com/eichstaedtPTB/PyDynamic/blob/master/PyDynamic/misc/impinvar.py #####
@@ -32,83 +32,100 @@ from numpy import pi, log10, linspace
 ## FIN LICENCIA ##
 
 def impinvar_causal(*args, **kwargs):
-	"""causal version of impinvar, h[0] == 0"""
+    """causal version of impinvar, h[0] == 0"""
 
-	# polynomial.polysub is ordered from lowest to highest
-	from numpy.polynomial.polynomial import polysub
+    # polynomial.polysub is ordered from lowest to highest
+    from numpy.polynomial.polynomial import polysub
 
-	bz, az = impinvar(*args, **kwargs)
+    bz, az = impinvar(*args, **kwargs)
 
-	h0 = bz[0] / az[0]
-	bz = polysub(bz, h0 * az)
-	return bz, az
+    h0 = bz[0] / az[0]
+    bz = polysub(bz, h0 * az)
+    return bz, az
+
+
 ### fin Código de https://github.com/eichstaedtPTB/PyDynamic/blob/master/PyDynamic/misc/impinvar.p ######
 
 
+def calcularPlotImpinvar(f0, fs, mode="butter", n=4, filename="out.png", title="noTitle"):
+    w0 = 2 * pi * f0
+    print("f0 = ", f0)
 
-def calcularPlotImpinvar(f0, fs, mode = "butter", n = 4, filename="out.png", title="noTitle"):
+    if mode == "butter":
+        b, a = signal.butter(n, w0, 'low', analog=True)
+    elif mode == "cheby":
+        b, a = signal.cheby1(n, 1, w0, 'low', analog=True)
 
-	f0 = 100
-	w0 = 2 * pi * f0
+    sys = signal.lti(b, a)
 
-	if mode == "butter":
-		b, a = signal.butter(n, w0, 'low', analog=True)
-	elif mode == "cheby":
-		b, a = signal.cheby1(n, 1, w0, 'low', analog=True)
+    w_range = linspace(0, fs, 100000) * 2 * pi
 
-	sys = signal.lti(b, a)
+    w, h = signal.freqresp(sys, w_range)  # signal.freqs(b, a, 100000)
 
-	w_range = linspace(0, fs, 100000)*2*pi
+    w_m2 = -1
 
-	w, h = signal.freqresp(sys, w_range)#signal.freqs(b, a, 100000)
+    for i in range(len(w)):
+        if 20 * log10(abs(h[i])) <= -2 and w_m2 == -1:
+            w_m2 = w[i]
 
-	w_m2 = -1
+    if mode == "butter":
+        b, a = signal.butter(n, w0 * (w0 / w_m2), 'low', analog=True)
+    elif mode == "cheby":
+        b, a = signal.cheby1(n, 1, w0 * (w0 / w_m2), 'low', analog=True)
 
-	for i in range(len(w)):
-		if 20*log10(abs(h[i])) <= -2 and w_m2 == -1:
-			w_m2 = w[i]
+    sys = signal.lti(b, a)
+    sys_original = sys
 
-	if mode == "butter":
-		b, a = signal.butter(n, w0 * (w0/w_m2), 'low', analog=True)
-	elif mode == "cheby":
-		b, a = signal.cheby1(n, 1, w0 * (w0 / w_m2), 'low', analog=True)
+    w, h = signal.freqresp(sys, w_range)
+    f = w / 2 / pi
 
+    b2, a2 = impinvar_causal(b, a, fs=fs, tol=0.0001)
 
-	sys = signal.lti(b, a)
+    sys = signal.dlti(b2, a2)
 
-	w, h = signal.freqresp(sys, w_range)
-	f = w / 2 / pi
+    w2, h2 = signal.dfreqresp(sys, w_range / fs)
 
-	b2, a2 = impinvar_causal(b, a, fs = fs, tol = 0.0001)
+    factor = h[0] / h2[0]
 
-	sys = signal.dlti(b2, a2)
+    sys = signal.dlti(b2 / factor, a2)
 
-	w2, h2 = signal.dfreqresp(sys, w_range/fs)
+    f2 = w2 / 2 / pi * fs
 
-	factor = h[0] / h2[0]
+    CombinedPlot() \
+        .setTitle(title) \
+        .setXTitle("Frecuencia (hz)") \
+        .setYTitle("Amplitud (Db)") \
+        .addSignalPlot(
+        signal=Senial.Senial(
+            f, 20 * log10(abs(h))
+        ),
+        color="red",
+        name="Analógica"
+    ).addSignalPlot(
+        signal=Senial.Senial(
+            f2, 20 * log10(abs(h2) * factor)
+        ),
+        color="blue",
+        name="Digital método invariante al impulso"
+    ).plot().save("output/" + filename)
 
-	f2 = w2 / 2 / pi * fs
+    # CombinedPlot()\
+    #     .setTitle("Polos y ceros "+filename)\
+    #     .setPolesAndZeros()\
+    #     .addMarkerPlot(
+    #         signal=Senial.Senial(
+    #             real(sys_original.poles),
+    #             imag(sys_original.poles)
+    #         ),
+    #         color="blue",
+    #         name="Polos",
+    #         marker="x"
+    #     )\
+    #     .setXTitle("Real")\
+    #     .setYTitle("Imaginario").plot().show()
 
-	CombinedPlot()\
-	.setTitle(title)\
-	.setXTitle("Frecuencia (hz)")\
-	.setYTitle("Amplitud (Db)")\
-	.addSignalPlot(
-		signal=Senial.Senial(
-			f, 20*log10(abs(h))
-		),
-		color="red",
-		name="Analógica"
-	).addSignalPlot(
-		signal=Senial.Senial(
-			f2, 20*log10(abs(h2) * factor)
-		),
-		color="blue",
-		name="Digital método invariante al impulso"
-	).plot().save("output/"+filename)
-
-	#plt.plot(f, 20 * np.log10(abs(h)), color="blue")
-	#plt.plot(f2, 20 * np.log10(abs(h2/h2[0])), color="red")
+# plt.plot(f, 20 * np.log10(abs(h)), color="blue")
+# plt.plot(f2, 20 * np.log10(abs(h2/h2[0])), color="red")
 
 k = 1e3
 
@@ -116,44 +133,43 @@ fs = 10 * k
 alpha = 5
 
 for n in [2, 3, 4, 5, 6, 7, 8]:
-	print("procesando n = ", n)
-	calcularPlotImpinvar(
-		f0=fs / alpha,
-		fs=fs,
-		mode="cheby",
-		n=n,
-		filename="cheby/alpha=5/cheby_n="+str(n)+".png",
-		title="cheby n="+str(n)+" alpha="+str(alpha)
-	)
-	calcularPlotImpinvar(
-		f0=fs / alpha,
-		fs=fs,
-		mode="butter",
-		n=n,
-		filename="butter/alpha=5/butter_n=" + str(n) + ".png",
-		title="butter n=" + str(n) + " alpha=" + str(alpha)
-	)
+    calcularPlotImpinvar(
+        f0=fs / alpha,
+        fs=fs,
+        mode="cheby",
+        n=n,
+        filename="cheby/alpha=5/cheby_n=" + str(n) + ".png",
+        title="cheby n=" + str(n) + " alpha=" + str(alpha)
+    )
+    calcularPlotImpinvar(
+        f0=fs / alpha,
+        fs=fs,
+        mode="butter",
+        n=n,
+        filename="butter/alpha=5/butter_n=" + str(n) + ".png",
+        title="butter n=" + str(n) + " alpha=" + str(alpha)
+    )
 
 alpha = 8
 
 for n in [2, 3, 4, 5, 6, 7, 8]:
-	print("procesando n = ", n)
-	calcularPlotImpinvar(
-		f0=fs / alpha,
-		fs=fs,
-		mode="cheby",
-		n=n,
-		filename="cheby/alpha=8/cheby_n="+str(n)+".png",
-		title="cheby n=" + str(n) + " alpha=" + str(alpha)
-	)
-	calcularPlotImpinvar(
-		f0=fs / alpha,
-		fs=fs,
-		mode="butter",
-		n=n,
-		filename="butter/alpha=8/butter_n=" + str(n) + "_alpha=8.png",
-		title="butter n=" + str(n) + " alpha=" + str(alpha)
-	)
+    print("procesando n = ", n)
+    calcularPlotImpinvar(
+        f0=fs / alpha,
+        fs=fs,
+        mode="cheby",
+        n=n,
+        filename="cheby/alpha=8/cheby_n=" + str(n) + ".png",
+        title="cheby n=" + str(n) + " alpha=" + str(alpha)
+    )
+    calcularPlotImpinvar(
+        f0=fs / alpha,
+        fs=fs,
+        mode="butter",
+        n=n,
+        filename="butter/alpha=8/butter_n=" + str(n) + "_alpha=8.png",
+        title="butter n=" + str(n) + " alpha=" + str(alpha)
+    )
 
 # plt.xscale('log')
 # # plt.title('Butterworth filter frequency response')

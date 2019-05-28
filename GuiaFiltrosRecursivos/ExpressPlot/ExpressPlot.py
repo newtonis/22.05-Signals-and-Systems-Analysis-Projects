@@ -2,8 +2,9 @@ from util_python import read_csv
 from util_python import Senial, read_spice
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-# from mpldatacursor import datacursor
-# import pandas as pd
+from mpldatacursor import datacursor
+import pandas as pd
+from numpy import cos, sin, linspace, pi
 
 MAG, \
 PHA, \
@@ -34,6 +35,11 @@ class CombinedPlot:
         self.logarithmic = False
         self.spiceData = dict()
         self.fig = None
+        self.polesAndZeros = False
+
+    def setPolesAndZeros(self):
+        self.polesAndZeros = True
+        return self
 
     def setTitle(self, title):
         self.title = title
@@ -55,7 +61,17 @@ class CombinedPlot:
         self.plotCount.append({
             "signal": signal,
             "color": color,
-            "name": name
+            "name": name,
+            "marker": None
+        })
+        return self
+
+    def addMarkerPlot(self, signal, color, name, marker):
+        self.plotCount.append({
+            "signal": signal,
+            "color": color,
+            "name": name,
+            "marker": marker
         })
         return self
 
@@ -233,7 +249,28 @@ class CombinedPlot:
 
     def plot(self):
         patches = []
-        fig, ax1 = plt.subplots()
+
+        if not self.polesAndZeros:
+            fig, ax1 = plt.subplots()
+
+        else:
+            fig, ax1 = plt.subplots()
+
+            angle = linspace(0, 2 * pi, 100000)
+
+            cx = 1 * cos(angle)
+            cy = 1 * sin(angle)
+            ax1.plot(cx, cy, color="black")
+
+            cx = linspace(-1.2, 1.2, 10000)
+            cy = [0] * 10000
+            ax1.plot(cx, cy, color="black")
+
+            cx = [0] * 10000 # linspace(-1, 1, 10000)
+            cy = linspace(-1.2, 1.2, 10000)
+            ax1.plot(cx, cy, color="black")
+
+            ax1.set_aspect('equal')
 
         if self.func:
             func, args = self.func
@@ -251,11 +288,20 @@ class CombinedPlot:
             else:
                 xvalues, yvalues = plot["signal"].xvar, plot["signal"].values
             if not self.logarithmic:
-                ax1.plot(
-                    xvalues,
-                    yvalues,
-                    plot["color"]
-                )
+                if plot["marker"]:
+                    ax1.plot(
+                        xvalues,
+                        yvalues,
+                        color=plot["color"],
+                        marker=plot["marker"],
+                        linestyle='None'
+                    )
+                else:
+                    ax1.plot(
+                        xvalues,
+                        yvalues,
+                        color=plot["color"]
+                    )
             else:
                 ax1.semilogx(
                     xvalues,
