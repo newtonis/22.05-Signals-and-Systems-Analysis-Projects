@@ -29,3 +29,5 @@ for f in frecuencies:
 print(lines)
 
 escalas.writelines(lines)
+
+

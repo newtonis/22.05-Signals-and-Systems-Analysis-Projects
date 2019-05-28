@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SAR
-Sun May 26 16:45:20 2019
+Tue May 28 14:31:13 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -49,7 +49,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun May 26 16:45:20 2019       ;
+; Analysis & Synthesis Status        ; Successful - Tue May 28 14:31:13 2019       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; SAR                                         ;
 ; Top-level Entity Name              ; main                                        ;
@@ -58,9 +58,9 @@ refer to the applicable agreement for further details.
 ;     Total combinational functions  ; 106                                         ;
 ;     Dedicated logic registers      ; 52                                          ;
 ; Total registers                    ; 52                                          ;
-; Total pins                         ; 27                                          ;
+; Total pins                         ; 52                                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 6,144                                       ;
+; Total memory bits                  ; 48                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
@@ -180,6 +180,7 @@ refer to the applicable agreement for further details.
 ; rom.v                            ; yes             ; User Wizard-Generated File         ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/rom.v                  ;         ;
 ; SAR.mif                          ; yes             ; User Memory Initialization File    ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/SAR.mif                ;         ;
 ; latch_x8.v                       ; yes             ; User Verilog HDL File              ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/latch_x8.v             ;         ;
+; bit8fixed.v                      ; yes             ; User Verilog HDL File              ; C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/bit8fixed.v            ;         ;
 ; altsyncram.tdf                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf               ;         ;
 ; stratix_ram_block.inc            ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc        ;         ;
 ; lpm_mux.inc                      ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc                  ;         ;
@@ -214,15 +215,15 @@ refer to the applicable agreement for further details.
 ;     -- Dedicated logic registers            ; 52        ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 27        ;
-; Total memory bits                           ; 6144      ;
+; I/O pins                                    ; 52        ;
+; Total memory bits                           ; 48        ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 48        ;
-; Total fan-out                               ; 695       ;
-; Average fan-out                             ; 2.94      ;
+; Total fan-out                               ; 553       ;
+; Average fan-out                             ; 1.93      ;
 +---------------------------------------------+-----------+
 
 
@@ -231,12 +232,12 @@ refer to the applicable agreement for further details.
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                            ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+-----------------+--------------+
-; |main                                     ; 106 (0)             ; 52 (0)                    ; 6144        ; 0            ; 0       ; 0         ; 27   ; 0            ; |main                                                                          ; main            ; work         ;
+; |main                                     ; 106 (0)             ; 52 (0)                    ; 48          ; 0            ; 0       ; 0         ; 52   ; 0            ; |main                                                                          ; main            ; work         ;
 ;    |clock_divider:inst4|                  ; 64 (64)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|clock_divider:inst4                                                      ; clock_divider   ; work         ;
 ;    |latch_x8:inst5|                       ; 0 (0)               ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|latch_x8:inst5                                                           ; latch_x8        ; work         ;
-;    |rom:inst3|                            ; 0 (0)               ; 0 (0)                     ; 6144        ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3                                                                ; rom             ; work         ;
-;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 6144        ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
-;          |altsyncram_kv81:auto_generated| ; 0 (0)               ; 0 (0)                     ; 6144        ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated ; altsyncram_kv81 ; work         ;
+;    |rom:inst3|                            ; 0 (0)               ; 0 (0)                     ; 48          ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3                                                                ; rom             ; work         ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 48          ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
+;          |altsyncram_kv81:auto_generated| ; 0 (0)               ; 0 (0)                     ; 48          ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated ; altsyncram_kv81 ; work         ;
 ;    |sar:inst|                             ; 42 (42)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|sar:inst                                                                 ; sar             ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -397,7 +398,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 27                          ;
+; boundary_port         ; 52                          ;
 ; cycloneiii_ff         ; 52                          ;
 ;     ENA               ; 16                          ;
 ;     SCLR              ; 24                          ;
@@ -415,7 +416,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; cycloneiii_ram_block  ; 24                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.20                        ;
-; Average LUT depth     ; 2.99                        ;
+; Average LUT depth     ; 3.10                        ;
 +-----------------------+-----------------------------+
 
 
@@ -424,7 +425,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -434,7 +435,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sun May 26 16:45:05 2019
+    Info: Processing started: Tue May 28 14:31:01 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SAR -c SAR
 Warning (125092): Tcl Script File PLL.qip not found
     Info (125063): set_global_assignment -name QIP_FILE PLL.qip
@@ -454,7 +455,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file rom.v
     Info (12023): Found entity 1: rom File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/rom.v Line: 39
 Info (12021): Found 1 design units, including 1 entities, in source file latch_x8.v
     Info (12023): Found entity 1: latch_x8 File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/latch_x8.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file bit8fixed.v
+    Info (12023): Found entity 1: bit8fixed File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/bit8fixed.v Line: 1
 Info (12127): Elaborating entity "main" for the top level hierarchy
+Warning (275009): Pin "freq_selector" not connected
 Info (12128): Elaborating entity "sar" for hierarchy "sar:inst"
 Warning (10230): Verilog HDL assignment warning at SAR.v(14): truncated value with size 32 to match size of target (8) File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/SAR.v Line: 14
 Warning (10230): Verilog HDL assignment warning at SAR.v(19): truncated value with size 32 to match size of target (8) File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/SAR.v Line: 19
@@ -483,19 +487,30 @@ Info (12133): Instantiated megafunction "rom:inst3|altsyncram:altsyncram_compone
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kv81.tdf
     Info (12023): Found entity 1: altsyncram_kv81 File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/altsyncram_kv81.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_kv81" for hierarchy "rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "bit8fixed" for hierarchy "bit8fixed:inst2"
 Info (12128): Elaborating entity "latch_x8" for hierarchy "latch_x8:inst5"
 Info (286030): Timing-Driven Synthesis is running
+Info (17036): Removed 7 MSB VCC or GND address nodes from RAM block "rom:inst3|altsyncram:altsyncram_component|altsyncram_kv81:auto_generated|ALTSYNCRAM" File: C:/Users/newtonis/Documents/GitHub/INFORMES_ASSD/TP3/EJ2/SAR/db/altsyncram_kv81.tdf Line: 31
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 165 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 8 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "freq_selector[7]"
+    Warning (15610): No output dependent on input pin "freq_selector[6]"
+    Warning (15610): No output dependent on input pin "freq_selector[5]"
+    Warning (15610): No output dependent on input pin "freq_selector[4]"
+    Warning (15610): No output dependent on input pin "freq_selector[3]"
+    Warning (15610): No output dependent on input pin "freq_selector[2]"
+    Warning (15610): No output dependent on input pin "freq_selector[1]"
+    Warning (15610): No output dependent on input pin "freq_selector[0]"
+Info (21057): Implemented 190 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
-    Info (21059): Implemented 17 output pins
+    Info (21059): Implemented 42 output pins
     Info (21061): Implemented 114 logic cells
     Info (21064): Implemented 24 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 4784 megabytes
-    Info: Processing ended: Sun May 26 16:45:20 2019
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:25
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 4786 megabytes
+    Info: Processing ended: Tue May 28 14:31:13 2019
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:23
 
 

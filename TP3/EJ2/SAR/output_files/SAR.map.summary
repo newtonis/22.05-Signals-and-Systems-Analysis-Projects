@@ -1,4 +1,4 @@
-Analysis & Synthesis Status : Successful - Sun May 26 16:45:20 2019
+Analysis & Synthesis Status : Successful - Tue May 28 14:31:13 2019
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : SAR
 Top-level Entity Name : main
@@ -7,8 +7,8 @@ Total logic elements : 106
     Total combinational functions : 106
     Dedicated logic registers : 52
 Total registers : 52
-Total pins : 27
+Total pins : 52
 Total virtual pins : 0
-Total memory bits : 6,144
+Total memory bits : 48
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0

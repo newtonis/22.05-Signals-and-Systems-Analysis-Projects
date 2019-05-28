@@ -1,5 +1,5 @@
 Assembler report for SAR
-Sun May 26 16:45:38 2019
+Tue May 28 14:31:22 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun May 26 16:45:38 2019 ;
+; Assembler Status      ; Successful - Tue May 28 14:31:22 2019 ;
 ; Revision Name         ; SAR                                   ;
 ; Top-level Entity Name ; main                                  ;
 ; Family                ; Cyclone IV E                          ;
@@ -66,8 +66,8 @@ refer to the applicable agreement for further details.
 +----------------+--------------------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                                    ;
 +----------------+--------------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x000AB13C                                                                                 ;
-; Checksum       ; 0x000AB13C                                                                                 ;
+; JTAG usercode  ; 0x0009AC93                                                                                 ;
+; Checksum       ; 0x0009AC93                                                                                 ;
 +----------------+--------------------------------------------------------------------------------------------+
 
 
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sun May 26 16:45:36 2019
+    Info: Processing started: Tue May 28 14:31:21 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off SAR -c SAR
 Warning (125092): Tcl Script File PLL.qip not found
     Info (125063): set_global_assignment -name QIP_FILE PLL.qip
@@ -85,9 +85,9 @@ Warning (18236): Number of processors has not been specified which may cause ove
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4688 megabytes
-    Info: Processing ended: Sun May 26 16:45:38 2019
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 4690 megabytes
+    Info: Processing ended: Tue May 28 14:31:22 2019
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 

@@ -2,15 +2,8 @@
 eoc <= sar:inst.eoc
 clk => clock_divider:inst4.clk_in
 clk => rom:inst3.clock
-freq_selector[0] => rom:inst3.address[0]
-freq_selector[1] => rom:inst3.address[1]
-freq_selector[2] => rom:inst3.address[2]
-freq_selector[3] => rom:inst3.address[3]
-freq_selector[4] => rom:inst3.address[4]
-freq_selector[5] => rom:inst3.address[5]
-freq_selector[6] => rom:inst3.address[6]
-freq_selector[7] => rom:inst3.address[7]
 cmp => sar:inst.cmp
+clk_out <= clock_divider:inst4.clk_out
 feedback_out[0] <= sar:inst.out[0]
 feedback_out[1] <= sar:inst.out[1]
 feedback_out[2] <= sar:inst.out[2]
@@ -27,6 +20,38 @@ out[4] <= latch_x8:inst5.out[4]
 out[5] <= latch_x8:inst5.out[5]
 out[6] <= latch_x8:inst5.out[6]
 out[7] <= latch_x8:inst5.out[7]
+period[0] <= rom:inst3.q[0]
+period[1] <= rom:inst3.q[1]
+period[2] <= rom:inst3.q[2]
+period[3] <= rom:inst3.q[3]
+period[4] <= rom:inst3.q[4]
+period[5] <= rom:inst3.q[5]
+period[6] <= rom:inst3.q[6]
+period[7] <= rom:inst3.q[7]
+period[8] <= rom:inst3.q[8]
+period[9] <= rom:inst3.q[9]
+period[10] <= rom:inst3.q[10]
+period[11] <= rom:inst3.q[11]
+period[12] <= rom:inst3.q[12]
+period[13] <= rom:inst3.q[13]
+period[14] <= rom:inst3.q[14]
+period[15] <= rom:inst3.q[15]
+period[16] <= rom:inst3.q[16]
+period[17] <= rom:inst3.q[17]
+period[18] <= rom:inst3.q[18]
+period[19] <= rom:inst3.q[19]
+period[20] <= rom:inst3.q[20]
+period[21] <= rom:inst3.q[21]
+period[22] <= rom:inst3.q[22]
+period[23] <= rom:inst3.q[23]
+freq_selector[0] => ~NO_FANOUT~
+freq_selector[1] => ~NO_FANOUT~
+freq_selector[2] => ~NO_FANOUT~
+freq_selector[3] => ~NO_FANOUT~
+freq_selector[4] => ~NO_FANOUT~
+freq_selector[5] => ~NO_FANOUT~
+freq_selector[6] => ~NO_FANOUT~
+freq_selector[7] => ~NO_FANOUT~
 
 
 |main|sar:inst
@@ -510,6 +535,17 @@ q_a[20] <= ram_block1a20.PORTADATAOUT
 q_a[21] <= ram_block1a21.PORTADATAOUT
 q_a[22] <= ram_block1a22.PORTADATAOUT
 q_a[23] <= ram_block1a23.PORTADATAOUT
+
+
+|main|bit8fixed:inst2
+out[0] <= <VCC>
+out[1] <= <VCC>
+out[2] <= <VCC>
+out[3] <= <VCC>
+out[4] <= <VCC>
+out[5] <= <VCC>
+out[6] <= <VCC>
+out[7] <= <VCC>
 
 
 |main|latch_x8:inst5
