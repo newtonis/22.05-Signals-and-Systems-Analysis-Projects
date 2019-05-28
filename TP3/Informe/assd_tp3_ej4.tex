@@ -67,6 +67,28 @@ Una medida del oversampling es la llamada Oversampling Ratio (OSR) deinida como 
 En general R es un número potencia de 2. Si el R está entre 2 y 16 hablamos de un grado leve de oversampling mientras que un fuerte oversampling ocurre cuando R está entre 16 y 256.
 
 
+En la figura de
+\todo[inline]{crossreference con la del sampleo}
+se puede ver que las bandas no están muy cercanas a otras, lo cual nos permite tener una frecuencia en el FAA mayor.
+Además cuando el oversampling es utilizado, la potencia del ruido de cuantización se distribuye en un rango más amplio de frecuencia lo que provoa que el mismo se reduzca.
+El ruido de cuantización que queda afuera de la banda de la señal puede ser eliminada con un filtro digital de alta precisión. 
+
+\[ SQNR_{Oversampling}=10log\frac{A^2/2}{(\Delta^2/12)/R}=SQNR_{Nyquist}10log(R) \]
+
+\todo[inline]{Aca se supone que va la foto del sampleo con nyquist.\newline Here's another line.}
+
+Entonces se conluye que frente a una igual cantidad de bits se tiene mejor precisión utilizado el concepto de oversampling.
+
+\todo[inline]{Aca viene la foto del espetro con Nyquist converters y Oversampling converters.\newline Here's another line.}
+
+\subsection{Modulador Delta}
+
+El concepto de oversampling conduce inevitablemente a la predicción. Específicamente la señal no cambia significativamente en el intervsalo entre muestras sucesivas cuando es oversampleada. Esto puede llevara una reducción en el número de niveles de cuantización si la diferencia entre dos muestras consecutivas es codificada (DPCM). Como los valores de las muestras son muy parecidos, están altamente correlacionados y por tanto, muestras futuras pueden ser predecidas por las anteriores.
+Un modulador el cual está basado en principios de predicción se llama modulador predictivo.  
+
+
+
+
 
 \subsection{Moduladores $\Sigma\Delta$ de primer orden }
 Recordamos dos características importantes del modulador:
