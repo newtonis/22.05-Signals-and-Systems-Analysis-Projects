@@ -1,0 +1,78 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-nodecimaldot]{babel}
+
+\usepackage[total={6in, 9in}]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+
+
+\date{}
+\author{}
+\title{ASSD TP3 Modulador Delta - todo list}
+
+\begin{document}
+\maketitle
+
+\begin{equation}
+	f_s \in [6\text{Hz}, 44.1\text{kHz}]
+\end{equation}
+
+
+
+\begin{itemize}
+
+	\item Verificaci\'on del funcionamiento - Parte A:
+	$f_{CLK} = 44.1$kHz, 
+	y entrada rampa de 400Hz con la m\'axima amplitud que admite el sistema.
+
+	\begin{itemize}
+		\item Ajuste de la continua de la entrada y la simetr\'ia de la salida
+		\item $f_s$ te\'orica y experimental
+		\item Medir el error de cuantizaci\'on, con la rampa u otra se\~nal
+		\item Determinar SNR m\'axima para se\~nales de AUDIO
+		\item ?`Cu\'al  es el ENOB (effective number of bits) del sistema? 
+				?`C\'omo se midi\'o? 
+		\item Medir con distintas cantidad de bits activos
+	\end{itemize}
+
+	
+	\item Verificaci\'on de funcionamiento - Parte B:
+	$f_{CLK} = 15$kHz, entrada sinusoidal de 400Hz entre 2V y 2.05V. 
+	Observar la salida, el espectro, la distribuci\'on de potencia del ruido de 
+	cuantizaci\'on.
+	
+	
+	\item Verificaci\'on de funcionamiento - Parte C:
+	Entrada continua, medir entrada, salida y ver qu\'e n\'umero marcan los LEDs.
+	\begin{itemize}
+		\item Graficar $V_O ( V_I )$. 
+		?`Qu\'e errores se pueden inferir de lo obtenido?
+		\item Forma de onda del error total de los conversores	
+		\item Comparar resultados con la hoja de datos del conversor
+	\end{itemize}		
+
+	
+	\item Verificaci\'on de funcionamiento - Parte D:
+	Con los filtros, tensi\'on de entrada m\'axima y frecuencia de entrada m\'axima, medir 	
+	con el analizador de espectros y simular: senoidal, rampa, sinc, m\'usica.  Con 
+	$f_s = 80$kHz y despu\'es con $f_s=44.1$kHz.
+	
+	
+	\item Modulador Delta
+	\begin{itemize}
+		\item ?`C\'omo se demodula?
+		\item ?`Por qu\'e hace falta o no usar un SH?
+		\item Ciclios de clock para una conversi\'on
+		\item ?`Cu\'al es el par\'ametro limitante? Medirlo
+	\end{itemize}
+\end{itemize}
+
+
+\end{document}
