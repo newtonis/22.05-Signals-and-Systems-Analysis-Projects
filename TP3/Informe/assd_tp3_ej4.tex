@@ -38,6 +38,7 @@ Se define el SQRN como la relación Señal-Ruido de cuantización:
 \label{fig:cuantmodel}
 \end{figure}
 
+
 Por ser uniforme en $[-\Delta/2,\Delta/2]$:\\
 \[ \mu_e = 0 \]
 \[ \sigma_e^2 = \frac{\Delta^2}{12} \]
@@ -51,8 +52,21 @@ De hecho, esto nos da pie a pensar el máximo número de bits que se necesita pa
 Una característica que se debe destacar de un cuantizador es su rango dinámico. 
 \[ rango\,dinamico=log_2\frac{x_{max}}{\Delta/2}\]
 
+\todo[inline]{Aca se supone que va la foto del ruido desplazado.\newline Here's another line.}
 
- 
+\subsection{Principios de Oversampling}
+Los requerimientos de alta resolución y rango dinámico en el procesamiento de señales no puede ser logrado con los ADCs convencionales, debido a las limitaciones de sus implementaciones.
+\begin{itemize}
+\item La implementación de cuantizadores uniformes con un gran número de niveles de cuantización. Para un succesive aproximation ADC con 16 bits de precisión, $2^16=65536$ niveles equidistantes deben ser determinados.
+\item La implementación del FAA con requerimientos estrictos tales como una banda angosta de transición, alta atenuación en la banda de rechazo, muy poco ripple en la banda pasante ,fase lineal, bajo ruido, etc. Tales especificaciones no se pueden lograr con circuitos integrados analógicos.
+\item La presencia del efecto Jitter, por ejemplo la incertidumble en el tiempo de flancos del pulso de clock usados en el muestreador. 
+\end{itemize}
+Una manera de mejorar esta situación es incrementar la tasa de muestreo mucho más que la de los ADCs convencionales, por ejemplo arriba de Nyquist $(f_{N}=2f_b)$. Desde luego que requiere que varios componentes del ADC operen a una frecuencia mucho más alta. Muestrear a una $f_s$ mas grande que la de Nyquist se la suele llamar $\bold{oversampling}$.
+Una medida del oversampling es la llamada Oversampling Ratio (OSR) deinida como R:
+\[ R=\frac{f_s}{f_N} \]
+En general R es un número potencia de 2. Si el R está entre 2 y 16 hablamos de un grado leve de oversampling mientras que un fuerte oversampling ocurre cuando R está entre 16 y 256.
+
+
 
 \subsection{Moduladores $\Sigma\Delta$ de primer orden }
 Recordamos dos características importantes del modulador:
