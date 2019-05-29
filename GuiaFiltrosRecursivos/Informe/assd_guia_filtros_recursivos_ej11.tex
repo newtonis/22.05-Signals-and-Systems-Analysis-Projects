@@ -1,0 +1,68 @@
+\documentclass[assd_guia_filtros_recursivos_main.tex]{subfiles}
+
+\begin{document}
+
+\section{Ejercicio 11}
+
+\subsection{Sistema 1}
+
+Se resolvió mediante transformada Z. Se obtuvó
+
+\begin{equation}
+G(z)=X(z)H(z)
+\end{equation}
+\begin{equation}
+R(z)=G(1/z)H(z)
+\end{equation}
+Por lo tanto
+\begin{equation}
+Y(z)=Y(1/z)=G(z)H(1/z)=X(z)H(z)H(1/z)
+\end{equation}
+Entonces
+\begin{equation}
+H_2(n)=H(n)*H(-n)
+H_2(z)=H(z)H(1/z)
+\end{equation}
+Calculando la amplitud de $H_2(f)=H_2(e^{j2\pi f})$
+\begin{equation}
+|H_2(f)|^2=H_2(z)H_2(1/z)=H(z)H(1/Z)H(z)H(1/z)=|H(z)|^4=|H(f)|^4
+\end{equation}
+Y la fase (asumiendo que $h(n)$ es real)
+\begin{equation}
+\angle H_2(f)= \angle H(e^{i2\pi f}) + \angle H(e^{-i2\pi f}) = 0
+\end{equation}
+Se puede observar que es un filtro pasa todo
+
+\subsection{Sistema 2}
+
+Se resolvió nuevamente mediante transformada Z. Se obtuvó
+\begin{equation}
+G(z)=X(z)H(z)
+\end{equation}
+\begin{equation}
+R(z)=X(1/z)H(z)
+\end{equation}
+\begin{equation}
+Y(z)=G(z)+R(1/z)=X(z)H(z)+X(z)H(1/z)=X(z)( H(z) + H(1/z)
+\end{equation}
+Por lo tanto
+\begin{equation}
+H_2(z)=H(z)+H(1/z)
+\end{equation}
+\begin{equation}
+H_2(n)=H(n)+H(-n)
+\end{equation}
+Calculando módulo y fase cuando $z=e^{jw}$ asumiendo $x(n)$ real
+
+\begin{equation}
+H_2(z)=H(z)+H(1/z)=H(f)+H(-f)=H(f)+H^{*}(f)=2Re(H(f))
+\end{equation}
+Por lo tanto
+\begin{equation}
+|H_2(f)|=2|Re(H(f))|
+\end{equation}
+\begin{equation}
+\angle H_2(f)=0
+\end{equation}
+
+\end{document}
