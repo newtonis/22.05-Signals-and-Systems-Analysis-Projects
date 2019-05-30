@@ -3,7 +3,7 @@ from scipy import signal
 from numpy import exp
 from ExpressPlot.ExpressPlot import CombinedPlot
 from util_python import Senial
-
+import numpy as np
 
 def calcularPlotMatchedZ(f0, fs, mode="butter", n=4, filename="out.png", title="noTitle"):
     w0 = 2 * pi * f0
@@ -39,6 +39,8 @@ def calcularPlotMatchedZ(f0, fs, mode="butter", n=4, filename="out.png", title="
 
     new_poles = exp(poles / fs)
     new_zeros = exp(zeros / fs)
+
+    new_zeros = np.hstack([new_zeros, [-1] * n])
 
     # print(new_poles, new_zeros)
 

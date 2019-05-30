@@ -2,11 +2,9 @@
 ### para obtener transferencias
 
 import sympy as sp
-import config
 from scipy import signal
 from decimal import *
 from numpy import roots, nditer, log10, floor, pi, sqrt
-from utils import compare
 
 
 def round_sig(x, sig=2):
