@@ -94,10 +94,21 @@ Una última mejora en el SQNR puede ser lograda mediante el desplazamiento del r
 Esta técnica se conoce como Noise Shaping y puede ser facil y eficientemente implementada por una modificación en el sistema DM. Si en el diagrama en bloques del modulador delta colocamos otro integrador después de la x(n), lo que se obtiene finalmente es STF(z) y NTF(z) de la forma que queríamos.
   
 \todo[inline]{Foto del noise shaping \newline Here's another line.}
-\subsection{Decimación}
+\subsection{Decimación: Introducción teórica}
 \todo[inline]{Hay que escribir sobre esto esta en el capitulo 8 del libro}
+El general se suele hacer un oversampling de una señal y luego reducir la frecuencia de muestreo hasta la de Nyquist en el caso de un ADC o incrementarlo en caso de un DAC se llama. La primera opción es llamada decimación mientras que a la otra se la llama interpolación.
+Esas tasas de muestreo pueden ser implementadas utilizado filtros FIR de alta precisión, usualmente en distintas etapas.
+Usualmente la decimación es aplicada en la salida del sigma delta para facilitar la conversión A/D y dar una señal multibit que se encuentra en la banda la frecuencia de muestreo de Nyquist.
+\subsection{Rate Conversion}
+Hay varios casos donde la tasa de muestreo ne la cual las señales digitales son procesadas necesitan ser cambiadas. Surgen esas necesidades cuando se interfacean dos sistemas con dos tasas de muestreo distintos. El proceso en el cual  la tasa de muestreo es reducido r veces se llama decimación, \textbf{debido a que se guarda solo una de cada r muestras}.
+El proceso inverso de aumentar la tasa de muestreo por r, se llama interpolación, debido a que se insertan r-1 muestras apropiadas entre dos muestras originales.
+\subsection{Decimación}
+Una de cada r muestras se guardan, el resto se descartan. 
+De esta forma, $f_s<=f_s/r$. Para evitar aliasing hay que colocar un filtro antialiasing en fs/2r.
+\todo[inline]{foto de antialiasing}
+\subsection{Interpolación, ni idea si va esto}
 
-
+\subsection{Filtros de decimación y de interpolación}
 
 
 
