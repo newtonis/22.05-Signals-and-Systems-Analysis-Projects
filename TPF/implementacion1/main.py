@@ -2,19 +2,230 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 import matplotlib.image as mpimg
+import imutils
+from numpy import random
+import scipy.misc
+from PIL import Image
 
 
-img = cv2.imread('imagen1.jpeg', 3)
+img = cv2.imread('imagen2.jpeg', 3)
+mask = cv2.imread("mask_test2.jpeg")
 
-img_intensity = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+grey_scale = np.zeros(img.shape, dtype=np.uint8) #uint8
+
+square_size = 5
+square = []
 
 
-print(img_intensity)
+for i in range(square_size):
+    for j in range(square_size):
+        square.append(
+            [
+                i - square_size//2,
+                j - square_size//2
+             ]
+        )
 
-plt.imshow(img_intensity, cmap="gray")
+search_square_size = 200
+search_times = 20
 
-sobelx = cv2.Sobel(img_intensity, cv2.CV_64F, 1, 0, ksize=9)
-sobely = cv2.Sobel(img_intensity, cv2.CV_64F, 0, 1, ksize=9)
+for i in range(len(img)):
+    for j in range(len(img[0])):
+        r = img[i][j][0]
+        g = img[i][j][1]
+        b = img[i][j][2]
+
+        grey_scale[i][j] = 0.299 * r + 0.587 * g + 0.114 * b
+
+
+def procesar(imagen, mask):
+    iteraciones = 10000
+
+    lower = np.array([0, 0, 0])
+    upper = np.array([15, 15, 15])
+    shapeMask = cv2.inRange(mask, lower, upper)
+
+    c = shapeMask[:, :] == 0 # maxima confianza en la zona que no se retoca
+
+    for iteracion in range(iteraciones):
+
+
+        # primero detectamos el borde de la máscara
+
+        lower = np.array([0, 0, 0])
+        upper = np.array([15, 15, 15])
+        shapeMask = cv2.inRange(mask, lower, upper)
+
+        cnts = cv2.findContours(shapeMask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        cnts = imutils.grab_contours(cnts)
+
+        # luego tenemos que calcular la funcion de costos
+        best_benefit = 0
+        best_benefit_point = None
+
+        grey_scale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+        sobel_x = cv2.Sobel(grey_scale, cv2.CV_64F, 1, 0, ksize=5)
+        sobel_y = cv2.Sobel(grey_scale, cv2.CV_64F, 0, 1, ksize=5)
+
+        #array_border = np.zeros(len(cnts), dtype=np.uint8)
+        for contorno in range(len(cnts)):
+            border_normal = []
+
+            n = len(cnts[contorno])
+
+            for i in range(n):
+                #print(cnts[0][i])
+
+                dx = cnts[contorno][i][0][0] - cnts[contorno][(i-1) % n][0][0]
+                dy = cnts[contorno][i][0][1] - cnts[contorno][(i-1) % n][0][1]
+
+                border_normal.append((dy, -dx))
+
+            index = 0
+
+            for border_point in cnts[contorno]:
+                x, y = border_point[0]
+
+                # busco c[i]
+                #print(border_point)
+                # consigo la confiaza
+
+                confidence = 0
+
+                for dx, dy in square:
+                    if shapeMask[y + dy, x + dx] == 0: # si fuera de la region a retocar
+                        confidence += c[y + dy, x + dx]
+
+                confidence /= len(square)
+
+                # consigo la componente normal del gradiente
+                nx, ny = border_normal[index]
+
+                # consigo el gradiente mas grande de la region
+
+                max_grad = 0
+                max_grad_value = 0, 0
+
+                for dx, dy in square:
+                    if shapeMask[y + dy, x + dx] == 255:
+                        dx = np.sum(sobel_x[y][x])/3
+                        dy = np.sum(sobel_y[y][x])/3
+
+                        p = dx ** 2 + dy ** 2
+                        if p > max_grad:
+                            max_grad = p
+                            max_grad_value = dx, dy
+
+                # producto escalar
+
+                d = max_grad_value[0] * nx + max_grad_value[1] * ny
+
+                benefit = abs(d * confidence)
+                #print("benefit = ", benefit)
+                if benefit > best_benefit:
+                    best_benefit = benefit
+                    best_benefit_point = x, y
+
+        if not best_benefit_point:
+            print("No hay mas borde. Fin")
+            break
+
+        # ahora vamos a calcular el parche que minimize la distancia
+
+        px, py = best_benefit_point
+
+        best_patch = px, py # default
+        patch_distance = np.Infinity
+
+        for i in range(search_times):
+            x = random.randint(px - search_square_size//2, px + search_square_size//2)
+            y = random.randint(py - search_square_size//2, py + search_square_size//2)
+
+            if shapeMask[y, x] == 255:
+                continue # no es de interés ya que esta en la region blanca
+
+            #patch = imagen[y - square_size//2:y + square_size//2, x - square_size//2:x + square_size//2]
+            #original = imagen[py - square_size//2:py + square_size//2, px - square_size//2:px + square_size//2]
+            sum = 0
+
+            for yi in range(-square_size//2, square_size//2):
+                for xi in range(-square_size//2, square_size//2):
+                    for cmp in range(3):
+                        patch = int(imagen[y + yi][x + xi][cmp])
+                        original = int(imagen[py + yi][px + xi][cmp])
+
+                        sum += (patch - original)**2
+
+            #print(np.square(patch-original))
+
+            if sum < patch_distance:
+                patch_distance = sum
+                best_patch = x, y
+
+        #print("Punto de borde elegido: ", best_benefit_point)
+
+        #print("Patch elegido: ", best_patch, patch_distance)
+
+        #print(shapeMask[best_patch[1]][best_patch[0]])
+        # print(shapeMask[best_patch[0]][best_patch[1]])
+        #
+        # plt.imshow(shapeMask, cmap="gray")
+        # plt.show()
+
+        ## copiamos el mejor parche a la posición que queremos reemplazar
+
+        bx, by = best_patch # best_patch_x, best_patch_y
+
+        imagen[py - square_size//2: py + square_size//2, px - square_size//2: px + square_size//2] = \
+            imagen[by - square_size//2: by + square_size//2, bx - square_size//2: bx + square_size//2]
+
+        ## copiamos la confianza del parche elegido a la la confianza del lugar donde copiamos el parche
+        c[py - square_size // 2: py + square_size // 2, px - square_size // 2: px + square_size // 2] = \
+            c[by - square_size // 2: by + square_size // 2, bx - square_size // 2: bx + square_size // 2]*0.99
+
+        ## marcamos la zona reemplazada como blanca
+        mask[py - square_size // 2: py + square_size // 2, px - square_size // 2: px + square_size // 2] = \
+            [255, 255, 255]
+
+        im2 = np.copy(imagen)
+
+        if iteracion % 20 == 0:
+            print("Iteración ", iteracion)
+            for cnt in cnts:
+                cv2.drawContours(im2, [np.array(cnt)], 0, (255, 255, 0), 1)
+
+            cv2.drawContours(im2, [np.array([best_benefit_point])], 0, (0, 0, 255), 5)
+            im = Image.fromarray(cv2.cvtColor(im2, cv2.COLOR_BGR2RGB))
+            im.save("output2/imagen" + str(iteracion) + ".jpeg")
+
+        #plt.imshow(cv2.cvtColor(im2, cv2.COLOR_BGR2RGB))
+        #plt.savefig("output/imagen" + str(iteracion) + ".jpeg", dpi=1000)
+        #scipy.misc.toimage(im2).save("output/imagen" + str(iteracion) + ".jpeg")
+
+
+        #plt.imshow(cv2.cvtColor(mask, cv2.COLOR_BGR2RGB))
+        #plt.savefig("output_mask/imagen" + str(iteracion) + ".jpeg", dpi=1000)
+        #plt.show()
+
+
+
+    #plt.imshow(cv2.cvtColor(imagen, cv2.COLOR_BGR2RGB))
+    #plt.show()
+
+
+#img_intensity = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#cv2.mixChannels(img, img_intensity)
+
+#print(img_intensity)
+#
+procesar(img, mask)
+#
+# plt.imshow(img2, cmap="gray")
+
+#sobelx = cv2.Sobel(img_intensity, cv2.CV_64F, 1, 0, ksize=9)
+#sobely = cv2.Sobel(img_intensity, cv2.CV_64F, 0, 1, ksize=9)
 
 #print(img)
 
@@ -24,7 +235,7 @@ sobely = cv2.Sobel(img_intensity, cv2.CV_64F, 0, 1, ksize=9)
 
 
 
-plt.show()
+#plt.show()
 
 
 
