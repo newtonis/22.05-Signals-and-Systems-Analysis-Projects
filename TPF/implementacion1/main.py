@@ -7,16 +7,20 @@ from numpy import random
 import scipy.misc
 from PIL import Image
 
-
+# imagen a procesar
 img = cv2.imread('imagen2.jpeg', 3)
+# mascara con area a remover.
+# la zona negra (0,0,0) es la que se remueve, la blanca se deja como esta (255,255,255)
 mask = cv2.imread("mask_test2.jpeg")
-
+# imagen pasada a escala de grises se guarda en esta variable
 grey_scale = np.zeros(img.shape, dtype=np.uint8) #uint8
 
+
+#lado de los cuadrados que utilizaremos para rellenar la imagen
 square_size = 5
 square = []
 
-
+# guardamos en un arreglo las coordenadas que describen al cuadrado
 for i in range(square_size):
     for j in range(square_size):
         square.append(
@@ -26,16 +30,11 @@ for i in range(square_size):
              ]
         )
 
+# tamaño del cuadrado de busqueda para el parche que reemplaza la posición a rellenear
 search_square_size = 200
+
+# cuantas veces buscamos al azar por un parche
 search_times = 20
-
-for i in range(len(img)):
-    for j in range(len(img[0])):
-        r = img[i][j][0]
-        g = img[i][j][1]
-        b = img[i][j][2]
-
-        grey_scale[i][j] = 0.299 * r + 0.587 * g + 0.114 * b
 
 
 def procesar(imagen, mask):
@@ -43,33 +42,40 @@ def procesar(imagen, mask):
 
     lower = np.array([0, 0, 0])
     upper = np.array([15, 15, 15])
+    # re-mapeamos a 0-1 la mascara. 1 es para la zona retocada, 0 para la que no
     shapeMask = cv2.inRange(mask, lower, upper)
 
     c = shapeMask[:, :] == 0 # maxima confianza en la zona que no se retoca
 
     for iteracion in range(iteraciones):
-
-
         # primero detectamos el borde de la máscara
 
         lower = np.array([0, 0, 0])
         upper = np.array([15, 15, 15])
         shapeMask = cv2.inRange(mask, lower, upper)
 
+        ## conseguimos un arreglo con todos los contornos
+
         cnts = cv2.findContours(shapeMask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         cnts = imutils.grab_contours(cnts)
+        # cada contorno cerrado forma un arreglo
 
         # luego tenemos que calcular la funcion de costos
         best_benefit = 0
         best_benefit_point = None
 
+        # conseguimos la escala de grises
         grey_scale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
+        # conseguimos el gradiente en x e y de la escala de grises, la funcion sobel no solo hace gradiente
+        # sino que suaviza
         sobel_x = cv2.Sobel(grey_scale, cv2.CV_64F, 1, 0, ksize=5)
         sobel_y = cv2.Sobel(grey_scale, cv2.CV_64F, 0, 1, ksize=5)
 
-        #array_border = np.zeros(len(cnts), dtype=np.uint8)
+        # por cada contorno cerrado
         for contorno in range(len(cnts)):
+
+            ## necesitamos generar las normales de cada punto del contorno
             border_normal = []
 
             n = len(cnts[contorno])
@@ -81,16 +87,14 @@ def procesar(imagen, mask):
                 dy = cnts[contorno][i][0][1] - cnts[contorno][(i-1) % n][0][1]
 
                 border_normal.append((dy, -dx))
+                # esta formula nos da la normal. no le damos importancia a la orientación
 
             index = 0
 
             for border_point in cnts[contorno]:
                 x, y = border_point[0]
 
-                # busco c[i]
-                #print(border_point)
-                # consigo la confiaza
-
+                # consigo la confianza del punto del contorno actual
                 confidence = 0
 
                 for dx, dy in square:
@@ -108,21 +112,26 @@ def procesar(imagen, mask):
                 max_grad_value = 0, 0
 
                 for dx, dy in square:
-                    if shapeMask[y + dy, x + dx] == 255:
-                        dx = np.sum(sobel_x[y][x])/3
+                    # solo sumamos si esta fuera de la zona a retocar
+                    if shapeMask[y + dy, x + dx] == 0:
+
+                        dx = np.sum(sobel_x[y][x])/3 # promediamos los tres componentes del gradiente
                         dy = np.sum(sobel_y[y][x])/3
 
                         p = dx ** 2 + dy ** 2
-                        if p > max_grad:
+                        if p > max_grad: # buscamos el mayor gradiente en norma
                             max_grad = p
                             max_grad_value = dx, dy
 
-                # producto escalar
+                # producto escalar del gradiente con la normal acorde a la formula
 
                 d = max_grad_value[0] * nx + max_grad_value[1] * ny
 
+                # el beneficio es la confianza por el factor d
+
                 benefit = abs(d * confidence)
-                #print("benefit = ", benefit)
+
+                # buscamos maximizar el beneficio
                 if benefit > best_benefit:
                     best_benefit = benefit
                     best_benefit_point = x, y
@@ -149,6 +158,9 @@ def procesar(imagen, mask):
             #original = imagen[py - square_size//2:py + square_size//2, px - square_size//2:px + square_size//2]
             sum = 0
 
+            # decidi usar fors porque se me estaban copiando los arreglos y en definitiva como son
+            # todas operaciones elemento a elemento no son optimizables
+
             for yi in range(-square_size//2, square_size//2):
                 for xi in range(-square_size//2, square_size//2):
                     for cmp in range(3):
@@ -162,18 +174,6 @@ def procesar(imagen, mask):
             if sum < patch_distance:
                 patch_distance = sum
                 best_patch = x, y
-
-        #print("Punto de borde elegido: ", best_benefit_point)
-
-        #print("Patch elegido: ", best_patch, patch_distance)
-
-        #print(shapeMask[best_patch[1]][best_patch[0]])
-        # print(shapeMask[best_patch[0]][best_patch[1]])
-        #
-        # plt.imshow(shapeMask, cmap="gray")
-        # plt.show()
-
-        ## copiamos el mejor parche a la posición que queremos reemplazar
 
         bx, by = best_patch # best_patch_x, best_patch_y
 
