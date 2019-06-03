@@ -91,6 +91,10 @@ DocumentUniqueId=KAIIOGCV
 DocumentPath=Project Outputs for Placa_Base_ADA\Board Information - PCB1.html
 DItemRevisionGUID=
 
+[GeneratedDocument2]
+DocumentPath=Project Outputs for Placa_Base_ADA\Board Information - PCB3.html
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Sources
 ParameterCount=0
