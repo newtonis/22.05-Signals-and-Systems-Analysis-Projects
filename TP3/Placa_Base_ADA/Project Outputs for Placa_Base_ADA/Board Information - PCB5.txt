@@ -1,12 +1,12 @@
 Board Information Report
 Filename     : C:\Users\joa-m\INFORMES_ASSD\TP3\Placa_Base_ADA\PCB5.PcbDoc
 Date         : 3/6/2019
-Time         : 20:16:40
+Time         : 20:50:24
 Time Elapsed : 00:00:00
 
 Routing Information
-    Routing completion, 98,30%
+    Routing completion, 99,43%
     Connections, 353
-    Connections routed, 347
-    Connections remaining, 6
+    Connections routed, 351
+    Connections remaining, 2
 count : 4
