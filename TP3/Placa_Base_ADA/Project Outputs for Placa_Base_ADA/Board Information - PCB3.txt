@@ -1,4 +1,5 @@
 Board Information Report
+<<<<<<< HEAD
 Filename     : C:\Users\joa-m\INFORMES_ASSD\TP3\Placa_Base_ADA\PCB3.PcbDoc
 Date         : 3/6/2019
 Time         : 02:40:08
@@ -9,4 +10,16 @@ Routing Information
     Connections, 353
     Connections routed, 300
     Connections remaining, 53
+=======
+Filename     : C:\Users\Martina\Desktop\INFORMES_ASSD\TP3\Placa_Base_ADA\PCB3.PcbDoc
+Date         : 6/3/2019
+Time         : 1:02:13 AM
+Time Elapsed : 00:00:00
+
+Routing Information
+    Routing completion, 73.09%
+    Connections, 353
+    Connections routed, 258
+    Connections remaining, 95
+>>>>>>> ea4876e0bb8059879739c9de7fdc1c921af1d2bc
 count : 4
