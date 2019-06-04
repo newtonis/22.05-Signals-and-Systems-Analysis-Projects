@@ -1,7 +1,7 @@
 Board Information Report
 Filename     : C:\Users\joa-m\INFORMES_ASSD\TP3\Placa_Base_ADA\PCB5.PcbDoc
-Date         : 3/6/2019
-Time         : 20:58:19
+Date         : 4/6/2019
+Time         : 13:04:04
 Time Elapsed : 00:00:00
 
 Routing Information
