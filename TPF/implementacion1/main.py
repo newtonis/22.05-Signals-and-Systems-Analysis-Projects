@@ -6,12 +6,14 @@ import imutils
 from numpy import random
 import scipy.misc
 from PIL import Image
+from numpy import sqrt
+
 
 # imagen a procesar
-img = cv2.imread('imagen2.jpeg', 3)
+img = cv2.imread('imagen3.jpeg', 3)
 # mascara con area a remover.
 # la zona negra (0,0,0) es la que se remueve, la blanca se deja como esta (255,255,255)
-mask = cv2.imread("mask_test2.jpeg")
+mask = cv2.imread("mask_3.png")
 # imagen pasada a escala de grises se guarda en esta variable
 grey_scale = np.zeros(img.shape, dtype=np.uint8) #uint8
 
@@ -34,7 +36,7 @@ for i in range(square_size):
 search_square_size = 200
 
 # cuantas veces buscamos al azar por un parche
-search_times = 20
+search_times = 100
 
 
 def procesar(imagen, mask):
@@ -156,22 +158,25 @@ def procesar(imagen, mask):
 
             #patch = imagen[y - square_size//2:y + square_size//2, x - square_size//2:x + square_size//2]
             #original = imagen[py - square_size//2:py + square_size//2, px - square_size//2:px + square_size//2]
-            sum = 0
+            total_sum = 0
 
             # decidi usar fors porque se me estaban copiando los arreglos y en definitiva como son
             # todas operaciones elemento a elemento no son optimizables
 
             for yi in range(-square_size//2, square_size//2):
                 for xi in range(-square_size//2, square_size//2):
+                    sum = 0
                     for cmp in range(3):
                         patch = int(imagen[y + yi][x + xi][cmp])
                         original = int(imagen[py + yi][px + xi][cmp])
 
                         sum += (patch - original)**2
+                    sum = sqrt(sum)
 
+                    total_sum += sum**2
             #print(np.square(patch-original))
 
-            if sum < patch_distance:
+            if total_sum < patch_distance:
                 patch_distance = sum
                 best_patch = x, y
 
@@ -205,7 +210,7 @@ def procesar(imagen, mask):
 
 
         #plt.imshow(cv2.cvtColor(mask, cv2.COLOR_BGR2RGB))
-        #plt.savefig("output_mask/imagen" + str(iteracion) + ".jpeg", dpi=1000)
+        #plt.savefig("output_mask/image/n" + str(iteracion) + ".jpeg", dpi=1000)
         #plt.show()
 
 
