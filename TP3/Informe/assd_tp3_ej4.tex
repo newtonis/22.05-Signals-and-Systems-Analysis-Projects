@@ -113,32 +113,50 @@ Esta técnica se conoce como Noise Shaping y puede ser facil y eficientemente im
 \end{figure}
 
 \subsection{Decimación: Introducción teórica}
-El general se suele hacer un oversampling de una señal y luego reducir la frecuencia de muestreo hasta la de Nyquist en el caso de un ADC o incrementarlo en caso de un DAC se llama. La primera opción es llamada decimación mientras que a la otra se la llama interpolación.
+El general se suele hacer un oversampling de una señal y luego reducir la frecuencia de muestreo hasta la de Nyquist en el caso de un ADC o incrementarlo en caso de un DAC. La primera opción es llamada decimación mientras que a la otra se la llama interpolación.
 Esas tasas de muestreo pueden ser implementadas utilizado filtros FIR de alta precisión, usualmente en distintas etapas.
 Usualmente la decimación es aplicada en la salida del sigma delta para facilitar la conversión A/D y dar una señal multibit que se encuentra en la banda la frecuencia de muestreo de Nyquist.
 \subsubsection{Rate Conversion}
-Hay varios casos donde la tasa de muestreo ne la cual las señales digitales son procesadas necesitan ser cambiadas. Surgen esas necesidades cuando se interfacean dos sistemas con dos tasas de muestreo distintos. El proceso en el cual  la tasa de muestreo es reducido r veces se llama decimación, \textbf{debido a que se guarda solo una de cada r muestras}.
+Hay varios casos donde la tasa de muestreo en la cual las señales digitales son procesadas necesitan ser cambiadas. Surgen esas necesidades cuando se interfacean dos sistemas con dos tasas de muestreo distintos. El proceso en el cual  la tasa de muestreo es reducido r veces se llama decimación, \textbf{debido a que se guarda solo una de cada r muestras}.
 El proceso inverso de aumentar la tasa de muestreo por r, se llama interpolación, debido a que se insertan r-1 muestras apropiadas entre dos muestras originales.
 \subsubsection{Decimación}
 Una de cada r muestras se guardan, el resto se descartan. 
-De esta forma, $f_s<=f_s/r$. Para evitar aliasing hay que colocar un filtro antialiasing en fs/2r.
-\todo[inline]{foto de antialiasing}
+De esta forma, $f_s(nueva)=f_s/r$. Para evitar aliasing hay que colocar un filtro antialiasing en $f_s/2r$.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{images/ej4/antialiasing_decimation.png}
+\caption{Decimación con r=4. a. Espectro de la señal oversampleada. b. Filtro pasabajos de los componentes de la señal que sean mayores a $f_s/2r$. c. Espectro de la señal downsampleada}
+\label{fig:antialiasing_decimation}
+\end{figure}
 
 \subsubsection{Filtros de decimación}
-Un filtro pasa bajos es utilizado en el proceso de decimación. La reducción en r, divide la zona original de nyquist (0,$f_s/2$) en r zonas $(mf_s/2r,(m+1)f_s/2r)$, m=0,...,r-1. Las r-1 zonas (m=0,...,r-1) provocan aliasing a la primera, por lo tanto el contenido en esas sonas tiene que ser suprimido debajo de un nivel determinado para que la señal se pueda considerar libre de ruido. Como el ancho de banda de la señal usualmente no cubre todo el espectro de la zona de Nyquist las zonas que deben ser suprimidas son:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{images/ej4/Alias_decimation.png}
+\caption{Filtros pasabajos de decimación con reducción de fs en r en la que se asume que r es par}
+\label{fig:Alias_decimation}
+\end{figure}
+
+
+Un filtro pasa bajos es utilizado en el proceso de decimación. La reducción de $f_s$ en r, divide la zona original de nyquist (0,$f_s/2$) en r zonas $(mf_s/2r,(m+1)f_s/2r)$, m=0,...,r-1. Las r-1 zonas (m=0,...,r-1) provocan aliasing a la primera, por lo tanto el contenido en esas zonas tiene que ser suprimido debajo de un nivel determinado para que la señal se pueda considerar libre de ruido. Como el ancho de banda de la señal usualmente no cubre todo el espectro de la zona de Nyquist las zonas que deben ser suprimidas son:
 
 \[ (m\frac{f_s}{r}-\frac{B}{2},m\frac{f_s}{r}+\frac{B}{2}) \]
 donde:\\
-m = 1,...,
-r/2 si r es par
-(r-1) si r es impar 
+
+\begin{equation}
+    m = 1,...,
+    \begin{cases}
+      r/2, & \text{r es par} \\
+      (r-1)/2, & \text{r es impar}
+    \end{cases}
+  \end{equation}
 La frecuencia de corte debe ser de B/2 y debería llegar a máxima atenuación en $f_s/r-B/2$.
 \subsubsection{Filtros Comb}
 En casos donde la relación R suele ser grande, la conversión suele hacerse en multiples etapas, con la etapa de más relación implementada por un filtro comb.
 Los filtros comb son filtros low-pass FIR cuya funcion transferencia es:
-\[ H(z)=(\frac{1}{r}suma z^{-i})^N=(\frac{1}{r}\frac{1-z^-{r}}{1-z^{-1}})^N \]
+$$H(z)=\Bigg(\frac{1}{r}\sum_{i=0}^{r-1} z^{-i}\Bigg)^N = \Bigg(\frac{1}{r}\frac{1-z^{-r}}{1-z^{-1}}\Bigg)^N$$
 Como todos los coeficientes son unitarios, se pueden implementar facilmente.
-El denominador está implementado como integrador en la relación mas grande, mientras el numerador es implementado ocmo diferenciador a la relación más chica. El orden del filtro comb es elegido igual al la tasa de conversion r, de forma tal que los zeros de la ecuación sean multiplos de $f_s/r$.
+El denominador está implementado como integrador en la reducción de $f_s$ más grande, mientras el numerador es implementado como diferenciador a la relación más chica. El orden del filtro comb es elegido igual al la tasa de conversion r, de forma tal que los zeros de la ecuación sean multiplos de $f_s/r$.
 \subsection{Simulaciones}
 \subsubsection{Respuesta al impulso}
 \begin{figure}[H]
@@ -161,16 +179,13 @@ El denominador está implementado como integrador en la relación mas grande, mi
 \caption{Respuesta a una senoidal de 1KHz}
 \label{fig:sin_response_1K}
 \end{figure}
-
+Se puede apreciar que antes de la decimación está presente el concepto de noise shaping, luego de la etapa de decimación, el ruido de cuantización es disminuido por lo que solo queda la banda de la señal, la cual al ser muestreada y haber fuga espetral (dado que el filtro no es ideal) queda modulada por una sinc (se distorsiona el espectro en amplitud) y hace que aparezcan más componentes espectrales y no sean solo dos deltas. Esto puede ser apreciado más en detalle en la siguiente figura en la cual se hizo un zoom a la imagen. Además, las bandas estan separadas en 6KHz, eso se debe a que el filtro antialiasing está puesto en 6KHz.
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\linewidth]{images/ej4/sin_response_1K_zoom.png}
 \caption{Respuesta a una senoidal de 1KHz (con zoom)}
 \label{fig:sin_response_1K_zoom}
 \end{figure}
-
-
-
 
 
 \subsection{Moduladores $\Sigma\Delta$ de primer orden }
