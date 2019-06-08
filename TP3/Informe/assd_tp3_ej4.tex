@@ -139,6 +139,38 @@ Los filtros comb son filtros low-pass FIR cuya funcion transferencia es:
 \[ H(z)=(\frac{1}{r}suma z^{-i})^N=(\frac{1}{r}\frac{1-z^-{r}}{1-z^{-1}})^N \]
 Como todos los coeficientes son unitarios, se pueden implementar facilmente.
 El denominador está implementado como integrador en la relación mas grande, mientras el numerador es implementado ocmo diferenciador a la relación más chica. El orden del filtro comb es elegido igual al la tasa de conversion r, de forma tal que los zeros de la ecuación sean multiplos de $f_s/r$.
+\subsection{Simulaciones}
+\subsubsection{Respuesta al impulso}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{images/ej4/impulse_response.png}
+\caption{Respuesta al impulso del sistema}
+\label{fig:impulse_response}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{images/ej4/NTF.png}
+\caption{Espectro del Ruido de cuantización, antes de la decimación, después de la decimación y la respuesta de NTF frente al ruido}
+\label{fig:NTF}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{images/ej4/sin_response_1K.png}
+\caption{Respuesta a una senoidal de 1KHz}
+\label{fig:sin_response_1K}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{images/ej4/sin_response_1K_zoom.png}
+\caption{Respuesta a una senoidal de 1KHz (con zoom)}
+\label{fig:sin_response_1K_zoom}
+\end{figure}
+
+
+
 
 
 \subsection{Moduladores $\Sigma\Delta$ de primer orden }
