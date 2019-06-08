@@ -184,17 +184,12 @@ Y arbitrariamente se elegió para la ventana de hamming N = 31.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\linewidth]{images/ej4/sin_response_1K.png}
+\includegraphics[width=0.7\linewidth]{images/ej4/sin_response_1K.png}
+\includegraphics[width=0.7\linewidth]{images/ej4/sin_response_1K_zoom.png}
 \caption{Respuesta a una senoidal de 1KHz}
 \label{fig:sin_response_1K}
 \end{figure}
 Se puede apreciar que antes de la decimación está presente el concepto de noise shaping, luego de la etapa de decimación, el ruido de cuantización es disminuido por lo que solo queda la banda de la señal, la cual al ser muestreada y haber fuga espetral (dado que el filtro no es ideal) queda modulada por una sinc (se distorsiona el espectro en amplitud) y hace que aparezcan más componentes espectrales y no sean solo dos deltas. Esto puede ser apreciado más en detalle en la siguiente figura en la cual se hizo un zoom a la imagen. Además, las bandas estan separadas en 6KHz, eso se debe a que el filtro antialiasing está puesto en 6KHz.
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{images/ej4/sin_response_1K_zoom.png}
-\caption{Respuesta a una senoidal de 1KHz (con zoom)}
-\label{fig:sin_response_1K_zoom}
-\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -209,6 +204,24 @@ Se puede apreciar que antes de la decimación está presente el concepto de nois
 \caption{Respuesta en frecuencia de los 3 filtros decimadores iguales en cascada}
 \label{fig:Decimation_3filt_cascade}
 \end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\linewidth]{images/ej4/noise_comparison.png}
+\includegraphics[width=0.75\linewidth]{images/ej4/noise_comparizoom.png}
+\caption{Comparación entre los ruidos de cuantización dados por un cuantizador de 1 Bit y uno de 2 Bits antes de la decimación}
+\label{fig:noise_comparison}
+\end{figure}
+Aquí se puede observar la diferencia de aproximadamente 6dB de la cual se habló al principio en la introducción teórica dada por aumentar la cantidad de bits en el cuantizador.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{images/ej4/AfterDecimationNoise.png}
+\caption{Comparación entre los ruidos de cuantización después de la decimación}
+\label{fig:AfterDecimationNoise}
+\end{figure}
+Lo que sucede finalmente es como se planteó en un principio, el espectro de la señal se ve menos "contaminado" por el de ruido de cuantización.
 
 \subsection{Moduladores $\Sigma\Delta$ de primer orden }
 Recordamos dos características importantes del modulador:
