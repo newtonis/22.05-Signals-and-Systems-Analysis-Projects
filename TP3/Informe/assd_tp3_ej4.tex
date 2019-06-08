@@ -106,9 +106,32 @@ El proceso inverso de aumentar la tasa de muestreo por r, se llama interpolació
 Una de cada r muestras se guardan, el resto se descartan. 
 De esta forma, $f_s<=f_s/r$. Para evitar aliasing hay que colocar un filtro antialiasing en fs/2r.
 \todo[inline]{foto de antialiasing}
-\subsection{Interpolación, ni idea si va esto}
 
-\subsection{Filtros de decimación y de interpolación}
+\subsection{Filtros de decimación}
+Un filtro pasa bajos es utilizado en el proceso de decimación. La reducción en r, divide la zona original de nyquist (0,$f_s/2$) en r zonas $(mf_s/2r,(m+1)f_s/2r)$, m=0,...,r-1. Las r-1 zonas (m=0,...,r-1) provocan aliasing a la primera, por lo tanto el contenido en esas sonas tiene que ser suprimido debajo de un nivel determinado para que la señal se pueda considerar libre de ruido. Como el ancho de banda de la señal usualmente no cubre todo el espectro de la zona de Nyquist las zonas que deben ser suprimidas son:
+
+\[ (m\frac{f_s}{r}-\frac{B}{2},m\frac{f_s}{r}+\frac{B}{2}) \]
+donde:\\
+m = 1,...,
+r/2 si r es par
+(r-1) si r es impar 
+La frecuencia de corte debe ser de B/2 y debería llegar a máxima atenuación en $f_s/r-B/2$.
+\subsection{Filtros Comb}
+En casos donde la relación R suele ser grande, la conversión suele hacerse en multiples etapas, con la etapa de más relación implementada por un filtro comb.
+Los filtros comb son filtros low-pass FIR cuya funcion transferencia es:
+\[ H(z)=(\frac{1}{r}suma z^{-i})^N=(\frac{1}{r}\frac{1-z^-{r}}{1-z^{-1}})^N \]
+Como todos los coeficientes son unitarios, son facilmente implementados.
+El denominador está implementado como integrador en la relación mas grande, mientras el numerador es implementado ocmo diferenciador a la relación más chica. El orden del filtro comb es elegido igual al la tasa de conversion r, de forma tal que los zeros de la ecuación sean multiplos de $f_s/r$.
+
+
+
+
+con 4.7nf  
+min = 617
+max = 19.2k
+1 nf 
+min = 2.78k
+max = 80k
 
 
 
