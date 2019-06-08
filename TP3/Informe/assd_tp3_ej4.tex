@@ -151,13 +151,22 @@ donde:\\
     \end{cases}
   \end{equation}
 La frecuencia de corte debe ser de B/2 y debería llegar a máxima atenuación en $f_s/r-B/2$.
+En resumen, siempre que nos quedemos con el espectro adecuado, se va a poder hablar de un downsampling o decimación. Esto es un problema que se reduce a elegir el filtro correcto y para ello hay multiples alternativas.
 \subsubsection{Filtros Comb}
 En casos donde la relación R suele ser grande, la conversión suele hacerse en multiples etapas, con la etapa de más relación implementada por un filtro comb.
 Los filtros comb son filtros low-pass FIR cuya funcion transferencia es:
 $$H(z)=\Bigg(\frac{1}{r}\sum_{i=0}^{r-1} z^{-i}\Bigg)^N = \Bigg(\frac{1}{r}\frac{1-z^{-r}}{1-z^{-1}}\Bigg)^N$$
 Como todos los coeficientes son unitarios, se pueden implementar facilmente.
 El denominador está implementado como integrador en la reducción de $f_s$ más grande, mientras el numerador es implementado como diferenciador a la relación más chica. El orden del filtro comb es elegido igual al la tasa de conversion r, de forma tal que los zeros de la ecuación sean multiplos de $f_s/r$.
+
 \subsection{Simulaciones}
+En la simulación para la decimación se utilizó la función fir1 de matlab para obtener los coeficientes del filtro.
+Donde:\\
+fs = 512KHz\\
+fc = 38.4KHz\\
+wn = fc/(fs/2) = 0.15 \\
+Y arbitrariamente se elegió para la ventana de hamming N = 31.
+
 \subsubsection{Respuesta al impulso}
 \begin{figure}[H]
 \centering
@@ -187,6 +196,19 @@ Se puede apreciar que antes de la decimación está presente el concepto de nois
 \label{fig:sin_response_1K_zoom}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{images/ej4/Decimation_1filt.png}
+\caption{Respuesta en frecuencia de un solo filtro decimador}
+\label{fig:Decimation_1filt}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{images/ej4/Decimation_3filt_cascade.png}
+\caption{Respuesta en frecuencia de los 3 filtros decimadores iguales en cascada}
+\label{fig:Decimation_3filt_cascade}
+\end{figure}
 
 \subsection{Moduladores $\Sigma\Delta$ de primer orden }
 Recordamos dos características importantes del modulador:
