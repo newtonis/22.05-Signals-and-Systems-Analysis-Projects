@@ -93,8 +93,6 @@ Entonces se conluye que frente a una igual cantidad de bits se tiene mejor preci
 \label{fig:oversampling_noise}
 \end{figure}
 
-\todo[inline]{aca se supone que vendria el modulador delta}
-
 \subsection{Concepto de Noise Shaping}
 Una última mejora en el SQNR puede ser lograda mediante el desplazamiento del ruido que se encuentra en la banda de la señal. Esto se puede lograr fácilmente si STF(z) es un pasa todo mientras que NTF(z) es un pasa altos.
 Esta técnica se conoce como Noise Shaping y puede ser facil y eficientemente implementada por una modificación en el sistema DM. Si en el diagrama en bloques del modulador delta colocamos otro integrador después de la x(n), lo que se obtiene finalmente es STF(z) y NTF(z) de la forma que queríamos.
@@ -160,13 +158,15 @@ Como todos los coeficientes son unitarios, se pueden implementar facilmente.
 El denominador está implementado como integrador en la reducción de $f_s$ más grande, mientras el numerador es implementado como diferenciador a la relación más chica. El orden del filtro comb es elegido igual al la tasa de conversion r, de forma tal que los zeros de la ecuación sean multiplos de $f_s/r$.
 
 \subsection{Simulaciones}
-En la simulación para la decimación se utilizó la función fir1 de matlab para obtener los coeficientes del filtro.
-Donde:\\
-fs = 512KHz\\
-fc = 38.4KHz\\
-wn = fc/(fs/2) = 0.15 \\
-Y arbitrariamente se elegió para la ventana de hamming N = 31.
-
+Se utilizo un valor estándar de decimación de R = 64. Se divide en 3 etapas de relación 4:1 y las 3 etapas son el mismo filtro.
+Además, con la función fir1 de matlab (que utiliza ventana de hamming) se obtuvieron los coeficientes del filtro.
+Donde:
+\begin{itemize}
+\item $f_s = 512KHz$
+\item $f_c = 38.4KHz$
+\item $w_N = f_c/(f_s/2) = 0.15$
+\item N = 31
+\end{itemize}
 \subsubsection{Respuesta al impulso}
 \begin{figure}[H]
 \centering
@@ -221,7 +221,7 @@ Aquí se puede observar la diferencia de aproximadamente 6dB de la cual se habl�
 \caption{Comparación entre los ruidos de cuantización después de la decimación}
 \label{fig:AfterDecimationNoise}
 \end{figure}
-Lo que sucede finalmente es como se planteó en un principio, el espectro de la señal se ve menos "contaminado" por el de ruido de cuantización.
+Lo que sucede finalmente es como se planteó en un principio, el espectro de la señal se ve menos contaminado por el de ruido de cuantización.
 
 \subsection{Moduladores $\Sigma\Delta$ de primer orden }
 Recordamos dos características importantes del modulador:
