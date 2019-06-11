@@ -8,6 +8,10 @@ Para realizar la implementación práctica, se utilizó de base el circuito prop
 
 \todo[inline]{Poner diagrama en bloques con simbolos}
 
+\subsubsection{Filtros Antialiasing - Recuperador}
+
+\todo[inline]{Aca poner el circuito decir que es el mismo, atenua 40dB en 60K lo puse la f de corte en 6K. Por simplicidad se usaron intergradores compensados}
+
 \subsubsection{Diferenciador}
 
 En la implementación propuesta, el modulador posee entrada diferencial (en lugar de una sola entrada referida a masa). Esto permite cancelar bastante el ruido en modo común, lo cual resulta como una ventaja adicional dado que se trabajará con frecuencias de clock de hasta 1MHz, y éste podría provocar interferencias en la señal muestreada con capacitores switcheados de manera no deseada si no se toman algunas consideraciones en el layout del PCB (que se explicará luego). El circuito diferenciador se implementó con amplificadores operacionales, como se muestra a continuación.
@@ -133,5 +137,27 @@ Si se reemplaza en la expresión anterior queda la aproximación al integrador a
 \[
 V_{O1}-V_{O2} = -\frac{V_I+V_{REF}}{C \cdot \dfrac{T}{2C_s}} \cdot \frac{T}{2} \cdot \frac{z+1}{z-1} = -(V_I + V_{REF}) \cdot \frac{C_s}{C} \cdot \frac{z+1}{z-1}
 \]
+
+El circuito que resulta de reemplazar la resistencia por el capacitor $C_s$ es:
+
+\todo[inline]{Poner el circuito diferencial con Cs}
+
+Las llaves $\phi$ se implementaron mediante multiplexores, utilizando la señal de clock como señal de control para la selección de las llaves. El multiplexor que se encontraba disponible es el CD4053.
+
+\subsubsection{Cuantizador de 1 bit}
+
+Se toma la salida del integrador diferencial, y mediante un comparador a lazo abierto se implementa el cuantizador de 1 bit. El circuito implementado es utilizando el comparador LM311, y luego, dicha salida se conecta a un flip-flop D, el cual actúa como latch. El flip-flop D utilizado es el integrado CD4013, alimentado entre +5V y 0V. La alimentación adicional se obtuvo a partir de la entrada de +15V del circuito pasándola por el regulador LM7805.
+
+\todo[inline]{Poner circuito con LM311 y pull up y el flip flop D}
+
+Como se mostrará en las mediciones obtenidas, la salida que se obtiene en este punto del circuito es una señal cuadrada de ancho de pulso modulado (PWM). En los tramos donde la pendiente de la señal es pequeña, las variaciones en la salida del integrador serán menores, por lo que en consecuencia el ancho de los pulsos resultantes es mayor. En los tramos donde la pendiente de la señal es mayor, las variaciones a la salida del integrador son más frecuentes, por lo que el ancho de los pulsos es menor.
+
+\subsubsection{DAC para realimentación}
+
+Las salidas binarias del flip-flop D corresponden a 0V (0 lógico), y +5V (1 lógico). Esta salida (tanto $Q$ y $\overline{Q}$) son convertidas mediante un DAC a -5V (0 lógico) y +5V (1 lógico), siguiendo el esquema propuesto por la bibliografía. Cada DAC es implementado mediante un multiplexor, utilizando las salidas del flip-flop como señales de control.
+
+\todo[inline]{Circuito del DAC}
+
+Se toma la salida de uno de los DAC como señal digital, para luego procesarla por el filtro recuperador (idéntico al antialiasing), para volver a obtener la señal original al quedarnos sólo con el espectro en banda base.
 
 \end{document}
