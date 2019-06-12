@@ -8,9 +8,80 @@ Para realizar la implementación práctica, se utilizó de base el circuito prop
 
 \todo[inline]{Poner diagrama en bloques con simbolos}
 
+\subsubsection{Oscilador}
+
+Para implementar el oscilador, se utilizó el VCO integrado en el PLL CD4046. Partiendo de los extremos teóricos pedidos:
+
+\[
+f_{MIN} = 60KHz \hspace{2cm} f_{MAX} = 1MHz
+\]
+
+Se calcula el cociente entre ambos:
+
+\[
+\frac{f_{MAX}}{f_{MIN}} = 16.\hat{6}
+\] 
+
+Tomando la hoja de datos de Texas Instruments, a partir del gráfico de $\frac{f_{MAX}}{f_{MIN}}$, se obtiene la relación $\frac{R_2}{R_1}$:
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.4]{images/ej5/f2f1.png}
+\par\end{centering}
+\caption{Gráfica del cociente entre las frecuencias en función de la relación de resistencias}
+\end{figure}
+
+De donde se obtiene que la relación es aproximadamente 40. Para una $R_2(N) = 680K\Omega$, resulta $R_1(N) = 18K\Omega$. De la gráfica de rectas de $R_2$ en función de $C_1$:
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.4]{images/ej5/r2c1.png}
+\par\end{centering}
+\caption{Gráfica de rectas de $R_2$ para valores de $C_1$}
+\end{figure}
+
+Se obtiene un valor aproximado de $C_1(N) = 39pF$. Dada la alta dispersión que posee el circuito para el cociente de las frecuencias, se ajusto el valor de $R_1$ en el PCB a $R_1(N) = 4.7K$. Finalmente se logró un intervalo de frecuencias práctico de entre 52KHz a 1.14MHz. En las figuras siguientes se muestran ambas señales obtenidas correspondientes a los extremos.
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.2]{../EJ4/Mediciones/Clk/clk_min.png}
+\includegraphics[scale=0.2]{../EJ4/Mediciones/Clk/clk_max.png}
+\par\end{centering}
+\caption{Gráfica de rectas de $R_2$ para valores de $C_1$}
+\end{figure}
+
 \subsubsection{Filtros Antialiasing - Recuperador}
 
-\todo[inline]{Aca poner el circuito decir que es el mismo, atenua 40dB en 60K lo puse la f de corte en 6K. Por simplicidad se usaron intergradores compensados}
+\todo[inline]{explicacion de porque orden 2}
+
+Teniendo el orden del filtro (2), por simplicidad se implementa utilizando dos integradores compensados en cascada, como se muestra en la figura.
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.5]{images/ej5/Filtro.png}
+\par\end{centering}
+\caption{Filtro de orden 2 con integradores compensados}
+\end{figure}
+
+La transferencia de cada uno, usando la expresión conocida para un amplificador no inversor:
+
+\[
+A_V = -\frac{Z_f}{Z_r} = -\frac{R_f}{R_i(1+sC_fR_f)}
+\]
+
+Donde la frecuencia de corte:
+
+\[
+f_c = \frac{1}{2 \pi R_f C_f}
+\]
+
+Teniendo en cuenta la frecuencia de corte $f_c = 6KHz$, proponiendo $C_f = 10nF$, se despeja $R_f$:
+
+\[
+R_f = \frac{1}{2 \pi f_c C_f} = 2.65K\Omega \Longrightarrow R_f(N) = 2.7K\Omega
+\] 
+
+Dado que en banda pasante el filtro debe tener ganancia unitaria, se define también $R_i(N) = R_f(N) = 2.7K\Omega$
 
 \subsubsection{Diferenciador}
 
@@ -140,13 +211,18 @@ V_{O1}-V_{O2} = -\frac{V_I+V_{REF}}{C \cdot \dfrac{T}{2C_s}} \cdot \frac{T}{2} \
 
 El circuito que resulta de reemplazar la resistencia por el capacitor $C_s$ es:
 
-\todo[inline]{Poner el circuito diferencial con Cs}
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.45]{images/ej5/IntegradorDifSC.png}
+\par\end{centering}
+\caption{Circuito integrador diferencial con SC}
+\end{figure}
 
 Las llaves $\phi$ se implementaron mediante multiplexores, utilizando la señal de clock como señal de control para la selección de las llaves. El multiplexor que se encontraba disponible es el CD4053.
 
 \subsubsection{Cuantizador de 1 bit}
 
-Se toma la salida del integrador diferencial, y mediante un comparador a lazo abierto se implementa el cuantizador de 1 bit. El circuito implementado es utilizando el comparador LM311, y luego, dicha salida se conecta a un flip-flop D, el cual actúa como latch. El flip-flop D utilizado es el integrado CD4013, alimentado entre +5V y 0V. La alimentación adicional se obtuvo a partir de la entrada de +15V del circuito pasándola por el regulador LM7805.
+Se toma la salida del integrador diferencial, y mediante un comparador a lazo abierto se implementa el cuantizador de 1 bit. El circuito implementado es utilizando el comparador LM311, y luego, dicha salida se conecta a un flip-flop D, el cual actúa como latch. El flip-flop D utilizado es el integrado CD4013, alimentado entre +5V y 0V. La alimentación adicional se obtuvo a partir de la entrada de +15V del circuito pasándola un regulador LM7805.
 
 \todo[inline]{Poner circuito con LM311 y pull up y el flip flop D}
 
@@ -159,5 +235,9 @@ Las salidas binarias del flip-flop D corresponden a 0V (0 lógico), y +5V (1 ló
 \todo[inline]{Circuito del DAC}
 
 Se toma la salida de uno de los DAC como señal digital, para luego procesarla por el filtro recuperador (idéntico al antialiasing), para volver a obtener la señal original al quedarnos sólo con el espectro en banda base.
+
+\subsection{Mediciones - Resultados obtenidos}
+
+\todo[inline]{va lo que medi, y conclusiones en cada caso. Aclarar el tema de la señal invertida}
 
 \end{document}
