@@ -1,25 +1,42 @@
 |main
-eoc <= sar:inst.eoc
+eoc <= mux:inst10.out
 clk => clock_divider:inst4.clk_in
 clk => rom:inst3.clock
+freq_selector[0] => rom:inst3.address[0]
+freq_selector[1] => rom:inst3.address[1]
+freq_selector[2] => rom:inst3.address[2]
+freq_selector[3] => rom:inst3.address[3]
+freq_selector[4] => rom:inst3.address[4]
+freq_selector[5] => rom:inst3.address[5]
+freq_selector[6] => rom:inst3.address[6]
+freq_selector[7] => rom:inst3.address[7]
+cmp => modulador_delta:inst6.cmp
 cmp => sar:inst.cmp
+control => mux:inst10.control
+control => led.DATAIN
+control => inst12.IN1
+control => mux8:inst9.control
 clk_out <= clock_divider:inst4.clk_out
-feedback_out[0] <= sar:inst.out[0]
-feedback_out[1] <= sar:inst.out[1]
-feedback_out[2] <= sar:inst.out[2]
-feedback_out[3] <= sar:inst.out[3]
-feedback_out[4] <= sar:inst.out[4]
-feedback_out[5] <= sar:inst.out[5]
-feedback_out[6] <= sar:inst.out[6]
-feedback_out[7] <= sar:inst.out[7]
-out[0] <= latch_x8:inst5.out[0]
-out[1] <= latch_x8:inst5.out[1]
-out[2] <= latch_x8:inst5.out[2]
-out[3] <= latch_x8:inst5.out[3]
-out[4] <= latch_x8:inst5.out[4]
-out[5] <= latch_x8:inst5.out[5]
-out[6] <= latch_x8:inst5.out[6]
-out[7] <= latch_x8:inst5.out[7]
+led <= control.DB_MAX_OUTPUT_PORT_TYPE
+clock_sh <= inst12.DB_MAX_OUTPUT_PORT_TYPE
+feedback_out[0] <= tristate:inst7.out[0]
+feedback_out[1] <= tristate:inst7.out[1]
+feedback_out[2] <= tristate:inst7.out[2]
+feedback_out[3] <= tristate:inst7.out[3]
+feedback_out[4] <= tristate:inst7.out[4]
+feedback_out[5] <= tristate:inst7.out[5]
+feedback_out[6] <= tristate:inst7.out[6]
+feedback_out[7] <= tristate:inst7.out[7]
+oe => tristate:inst7.oe
+oe => tristate:inst8.oe
+out[0] <= tristate:inst8.out[0]
+out[1] <= tristate:inst8.out[1]
+out[2] <= tristate:inst8.out[2]
+out[3] <= tristate:inst8.out[3]
+out[4] <= tristate:inst8.out[4]
+out[5] <= tristate:inst8.out[5]
+out[6] <= tristate:inst8.out[6]
+out[7] <= tristate:inst8.out[7]
 period[0] <= rom:inst3.q[0]
 period[1] <= rom:inst3.q[1]
 period[2] <= rom:inst3.q[2]
@@ -44,62 +61,42 @@ period[20] <= rom:inst3.q[20]
 period[21] <= rom:inst3.q[21]
 period[22] <= rom:inst3.q[22]
 period[23] <= rom:inst3.q[23]
-freq_selector[0] => ~NO_FANOUT~
-freq_selector[1] => ~NO_FANOUT~
-freq_selector[2] => ~NO_FANOUT~
-freq_selector[3] => ~NO_FANOUT~
-freq_selector[4] => ~NO_FANOUT~
-freq_selector[5] => ~NO_FANOUT~
-freq_selector[6] => ~NO_FANOUT~
-freq_selector[7] => ~NO_FANOUT~
 
 
-|main|sar:inst
-clk => step[0].CLK
-clk => step[1].CLK
-clk => step[2].CLK
-clk => step[3].CLK
-clk => b[0].CLK
-clk => b[1].CLK
-clk => b[2].CLK
-clk => b[3].CLK
-clk => b[4].CLK
-clk => b[5].CLK
-clk => b[6].CLK
-clk => b[7].CLK
-clk => a[0].CLK
-clk => a[1].CLK
-clk => a[2].CLK
-clk => a[3].CLK
-clk => a[4].CLK
-clk => a[5].CLK
-clk => a[6].CLK
-clk => a[7].CLK
-cmp => a.OUTPUTSELECT
-cmp => a.OUTPUTSELECT
-cmp => a.OUTPUTSELECT
-cmp => a.OUTPUTSELECT
-cmp => a.OUTPUTSELECT
-cmp => a.OUTPUTSELECT
-cmp => a.OUTPUTSELECT
-cmp => a.OUTPUTSELECT
-cmp => b.OUTPUTSELECT
-cmp => b.OUTPUTSELECT
-cmp => b.OUTPUTSELECT
-cmp => b.OUTPUTSELECT
-cmp => b.OUTPUTSELECT
-cmp => b.OUTPUTSELECT
-cmp => b.OUTPUTSELECT
-cmp => b.OUTPUTSELECT
-eoc <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
-out[0] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
-out[1] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
-out[2] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
-out[3] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
-out[4] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
-out[5] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
-out[6] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
-out[7] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+|main|mux:inst10
+in1 => out.DATAB
+in2 => out.DATAA
+control => out.OUTPUTSELECT
+out <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|main|modulador_delta:inst6
+clk => out[0]~reg0.CLK
+clk => out[1]~reg0.CLK
+clk => out[2]~reg0.CLK
+clk => out[3]~reg0.CLK
+clk => out[4]~reg0.CLK
+clk => out[5]~reg0.CLK
+clk => out[6]~reg0.CLK
+clk => out[7]~reg0.CLK
+clk => eoc.DATAIN
+cmp => out.OUTPUTSELECT
+cmp => out.OUTPUTSELECT
+cmp => out.OUTPUTSELECT
+cmp => out.OUTPUTSELECT
+cmp => out.OUTPUTSELECT
+cmp => out.OUTPUTSELECT
+cmp => out.OUTPUTSELECT
+cmp => out.OUTPUTSELECT
+eoc <= clk.DB_MAX_OUTPUT_PORT_TYPE
+out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |main|clock_divider:inst4
@@ -537,15 +534,141 @@ q_a[22] <= ram_block1a22.PORTADATAOUT
 q_a[23] <= ram_block1a23.PORTADATAOUT
 
 
-|main|bit8fixed:inst2
-out[0] <= <VCC>
-out[1] <= <VCC>
-out[2] <= <VCC>
-out[3] <= <VCC>
-out[4] <= <VCC>
-out[5] <= <VCC>
-out[6] <= <VCC>
-out[7] <= <VCC>
+|main|sar:inst
+clk => step[0].CLK
+clk => step[1].CLK
+clk => step[2].CLK
+clk => step[3].CLK
+clk => b[0].CLK
+clk => b[1].CLK
+clk => b[2].CLK
+clk => b[3].CLK
+clk => b[4].CLK
+clk => b[5].CLK
+clk => b[6].CLK
+clk => b[7].CLK
+clk => a[0].CLK
+clk => a[1].CLK
+clk => a[2].CLK
+clk => a[3].CLK
+clk => a[4].CLK
+clk => a[5].CLK
+clk => a[6].CLK
+clk => a[7].CLK
+cmp => a.OUTPUTSELECT
+cmp => a.OUTPUTSELECT
+cmp => a.OUTPUTSELECT
+cmp => a.OUTPUTSELECT
+cmp => a.OUTPUTSELECT
+cmp => a.OUTPUTSELECT
+cmp => a.OUTPUTSELECT
+cmp => a.OUTPUTSELECT
+cmp => b.OUTPUTSELECT
+cmp => b.OUTPUTSELECT
+cmp => b.OUTPUTSELECT
+cmp => b.OUTPUTSELECT
+cmp => b.OUTPUTSELECT
+cmp => b.OUTPUTSELECT
+cmp => b.OUTPUTSELECT
+cmp => b.OUTPUTSELECT
+eoc <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+out[0] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|main|tristate:inst7
+oe => out[0].OE
+oe => out[1].OE
+oe => out[2].OE
+oe => out[3].OE
+oe => out[4].OE
+oe => out[5].OE
+oe => out[6].OE
+oe => out[7].OE
+in[0] => out[0].DATAIN
+in[1] => out[1].DATAIN
+in[2] => out[2].DATAIN
+in[3] => out[3].DATAIN
+in[4] => out[4].DATAIN
+in[5] => out[5].DATAIN
+in[6] => out[6].DATAIN
+in[7] => out[7].DATAIN
+out[0] <= out[0].DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1].DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2].DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3].DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4].DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5].DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6].DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|main|mux8:inst9
+in1[0] => out.DATAB
+in1[1] => out.DATAB
+in1[2] => out.DATAB
+in1[3] => out.DATAB
+in1[4] => out.DATAB
+in1[5] => out.DATAB
+in1[6] => out.DATAB
+in1[7] => out.DATAB
+in2[0] => out.DATAA
+in2[1] => out.DATAA
+in2[2] => out.DATAA
+in2[3] => out.DATAA
+in2[4] => out.DATAA
+in2[5] => out.DATAA
+in2[6] => out.DATAA
+in2[7] => out.DATAA
+control => out.OUTPUTSELECT
+control => out.OUTPUTSELECT
+control => out.OUTPUTSELECT
+control => out.OUTPUTSELECT
+control => out.OUTPUTSELECT
+control => out.OUTPUTSELECT
+control => out.OUTPUTSELECT
+control => out.OUTPUTSELECT
+out[0] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|main|tristate:inst8
+oe => out[0].OE
+oe => out[1].OE
+oe => out[2].OE
+oe => out[3].OE
+oe => out[4].OE
+oe => out[5].OE
+oe => out[6].OE
+oe => out[7].OE
+in[0] => out[0].DATAIN
+in[1] => out[1].DATAIN
+in[2] => out[2].DATAIN
+in[3] => out[3].DATAIN
+in[4] => out[4].DATAIN
+in[5] => out[5].DATAIN
+in[6] => out[6].DATAIN
+in[7] => out[7].DATAIN
+out[0] <= out[0].DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1].DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2].DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3].DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4].DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5].DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6].DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |main|latch_x8:inst5
@@ -573,5 +696,14 @@ clk => out[4]~reg0.CLK
 clk => out[5]~reg0.CLK
 clk => out[6]~reg0.CLK
 clk => out[7]~reg0.CLK
+
+
+|main|divide8:inst14
+in => cnt[0].CLK
+in => cnt[1].CLK
+in => cnt[2].CLK
+in => cnt[3].CLK
+in => cnt[4].CLK
+out <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
 
 

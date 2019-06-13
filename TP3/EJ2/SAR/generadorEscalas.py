@@ -7,8 +7,8 @@ escalas = open("output.hex", "w")
 k = 1000
 n = 1e-9
 
-f_init = 5
-f_last = 50 * k
+f_init = 5 * k
+f_last = 1000 * k
 points = 256
 
 frecuencies = logspace(log10(f_init), log10(f_last), points)

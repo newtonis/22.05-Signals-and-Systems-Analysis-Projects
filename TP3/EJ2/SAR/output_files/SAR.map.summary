@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Tue May 28 14:31:13 2019
+Analysis & Synthesis Status : Successful - Wed Jun 12 21:45:53 2019
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : SAR
 Top-level Entity Name : main
 Family : Cyclone IV E
-Total logic elements : 106
-    Total combinational functions : 106
-    Dedicated logic registers : 52
-Total registers : 52
-Total pins : 52
+Total logic elements : 152
+    Total combinational functions : 152
+    Dedicated logic registers : 60
+Total registers : 60
+Total pins : 56
 Total virtual pins : 0
-Total memory bits : 48
+Total memory bits : 6,144
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0
