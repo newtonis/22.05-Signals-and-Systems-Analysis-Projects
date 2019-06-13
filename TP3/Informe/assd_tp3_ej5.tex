@@ -274,12 +274,12 @@ Se observa que la señal recuperada sigue la forma senoidal de la entrada, aunqu
 
 \begin{figure}[!ht]
 \begin{centering}
-\includegraphics[scale=0.25]{../EJ4/Mediciones/Seno/s1_2.png}
+\includegraphics[scale=0.25]{../EJ4/Mediciones/Seno/dif_seno.png}
 \par\end{centering}
 \caption{Señal de entrada y salida diferencial - (CH1: Entrada, CH2: Salida diferencial)}
 \end{figure}
 
-\todo[inline]{hay que cambiar la medicion y hacer la resta diferencial}
+Se tomaron las dos salidas del integrador diferencial, y mediante la función Math del osciloscopio se hizo la diferencia. El resultado que se observa en la figura tiene una frecuencia fundamental similar a la senoidal original, y se corresponde con la integral de la senoidal (que es de la misma forma) sumada a la respuesta a la señal cuadrada de la realimentación del DAC.
 
 \begin{figure}[!ht]
 \begin{centering}
@@ -298,7 +298,17 @@ La señal obtenida del comparador resulta una cuadrada de ancho de pulsos variab
 \end{figure}
 
 Al utilizar el promediador del osciloscopio, en forma aproximada se filtra la señal digital, dejando solamente componentes en bajas frecuencias, lo que resulta en una señal que se asemeja a la de la entrada. Sin embargo, en comparación a la señal recuperada con el filtro de la placa, la promediada en el osciloscopio pierde más amplitud. Esto se debe a que lo que se realiza en este caso no es filtrado del espectro en sí, sino una promediación de una cierta cantidad de muestras tomadas de la señal, lo que inevitablemente lleva a perder un poco de información.
+
 \newpage
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.55]{../EJ4/Mediciones/Seno/s1_ns.jpeg}
+\par\end{centering}
+\caption{Visualización de efecto de noise shaping en la señal digital}
+\end{figure}
+
+Tomando la señal digital, en el espectro obtenido del analizador de espectros se observa que en bajas frecuencia se tiene la mayor atenuación, y a medida que se aumenta la frecuencia la atenuación es cada vez menor, visualizando el efecto de noise shaping. Por otra parte, se puede observar también en forma notoria el espectro de la senoidal en banda base, correspondiente a la delta de dirac en aproximadamente 5KHz.
 
 \subsubsection{1/2 Gauss}
 En este caso, considerando que se pedía una frecuencia mínima de 2.5KHz, se utilizó una cercana (3KHz - 5Vp) de forma tal de poder conservar la mayor cantidad de armónicos posibles al pasar por el filtro antialias (dado que la frecuencia de corte es fija). Sin embargo, dado el gran ancho de banda de esta señal (como ya se explicó), se pierde una parte considerable de la potencia de la misma, por lo que el salto tipo escalón resultará visiblemente atenuado.
@@ -312,15 +322,15 @@ En este caso, considerando que se pedía una frecuencia mínima de 2.5KHz, se ut
 
 Para esta señal y la siguiente, se utilizó un factor de oversampleo L = 64, el mínimo comunmente utilizado. Considerando la frecuencia de la señal a 3KHz, la frecuencia para cumplir con Nyquist es de 6KHz. Multiplicando por el factor L, resulta en una frecuencia de oversampling de aproximadamente 400KHz. Por lo tanto, se configuró el clock a dicha frecuencia.\par
 Como era de esperar, la sección del salto resultó bastante atenuada. Midiendo el defasaje temporal con cursores, las señales resultaron desfasadas en aproximadamente $30^{\circ}$.
-
+\newpage
 \begin{figure}[!ht]
 \begin{centering}
-\includegraphics[scale=0.25]{../EJ4/Mediciones/0.5Gauss/s2_2.png}
+\includegraphics[scale=0.25]{../EJ4/Mediciones/0.5Gauss/dif_gaus.png}
 \par\end{centering}
 \caption{Señal de entrada y salida diferencial - (CH1: Entrada, CH2: Salida diferencial)}
 \end{figure}
 
-\todo[inline]{cambiar la medicion y hacer la resta difernecial}
+En este caso se procedio de igual manera que para la señal senoidal, tomando la salida diferencial del integrador, y haciendo la resta mediante la función Math. La señal obtenida tiene características similares a lo mencionado para la senoidal. También mantiene una forma similar a la 1/2 de gauss, pero como se encuentra invertida por lo explicado al principio (y en Math no se puede usar la función de inversión) no se puede comparar a simple vista.
 
 \begin{figure}[!ht]
 \begin{centering}
@@ -330,7 +340,7 @@ Como era de esperar, la sección del salto resultó bastante atenuada. Midiendo 
 \end{figure}
 
 En este caso, al usar una frecuencia de sampleo menor, logra apreciarse lo comentado previamente sobre las variaciones de ancho de pulso. Se puede observar claramente en este caso, donde mayor pendiente posee la gaussiana más oscilaciones resultan (debido a menor ancho de pulso), y éstos se van agrandando a medida que pierde pendiente en forma monótona.
-
+\newpage
 \begin{figure}[!ht]
 \begin{centering}
 \includegraphics[scale=0.25]{../EJ4/Mediciones/0.5Gauss/s2_4.png}
@@ -339,7 +349,26 @@ En este caso, al usar una frecuencia de sampleo menor, logra apreciarse lo comen
 \end{figure}
 
 Al igual que para la senoidal, se aplica el promediador del osciloscopio sobre la salida digital, buscando filtrarla en forma aproximada. La salida obtenida es muy similar a la que se obtiene con el filtro recuperador, pero la promediada es de menor amplitud al igual que en el caso senodial por las misma razones mencionadas.
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.5]{../EJ4/Mediciones/0.5Gauss/s2_ns.jpeg}
+\par\end{centering}
+\caption{Visualización de efecto de noise shaping en la señal digital}
+\end{figure}
+
+En este caso, la salida digital para la señal 1/2 Gauss presenta un espectro donde el efecto de noise shaping resulta más visible que en el caso senoidal. También, por otra parte, se observa la parte del espectro en banda base que pasó por el filtro antialias (que no es el espectro completo, por lo explicado sobre el ancho de banda de la señal en cuestión previamente).
+
 \newpage
+
+A modo de prueba, se disminuyó una década la frecuencia de la señal gaussiana (es decir a 300Hz), para que pasen más armónicos a través del filtro antialias y poder observar una salida recuperada más fiel a la entrada. Las señales resultantes se muestran a continuación.
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.25]{../EJ4/Mediciones/example.png}
+\par\end{centering}
+\caption{Señal de entrada y recuperada - Atenuación (CH1: Entrada, CH2: Salida) - Ejemplo a 300Hz}
+\end{figure}
 
 \subsubsection{Sinc}
 
@@ -354,14 +383,17 @@ Para esta señal, considerando que se pedía una frecuencia mínima de 3.3KHz, s
 
 Siguiendo el mismo criterio que para la señal 1/2 Gauss, el factor de oversampleo L = 64, resulta en una frecuencia de sampleo de aproximadamente 600KHz, por lo que se configuró el oscilador a dicha frecuencia. Como se esperaba, a la salida se obtiene una buena representación de la señal de entrada, dado que el espectro de ésta es acotado (como se mencionó previamente).
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{centering}
-\includegraphics[scale=0.25]{../EJ4/Mediciones/Sinc/s3_2.png}
+\includegraphics[scale=0.25]{../EJ4/Mediciones/Sinc/dif_sinc.png}
 \par\end{centering}
 \caption{Señal de entrada y salida diferencial - (CH1: Entrada, CH2: Salida diferencial)}
 \end{figure}
 
-\todo[inline]{cambiar la medicion y hacer la resta difernecial}
+La señal diferencial medida a la salida del integrador mediante el mismo método que en los casos anteriores resulta, como era de esperar, que siguiera la forma de la Sinc original, sumado a la respuesta a la señal cuadrada proveniente del DAC.
+
 
 \begin{figure}[!ht]
 \begin{centering}
@@ -372,6 +404,8 @@ Siguiendo el mismo criterio que para la señal 1/2 Gauss, el factor de oversampl
 
 En la figura, se observa la señal digital resultante, con características similares a las explicadas para las dos señales de prueba anteriores.
 
+\newpage
+
 \begin{figure}[!ht]
 \begin{centering}
 \includegraphics[scale=0.25]{../EJ4/Mediciones/Sinc/s3_4.png}
@@ -380,5 +414,14 @@ En la figura, se observa la señal digital resultante, con características simi
 \end{figure}
 
 En este último caso, se realizó también la promediación la señal digital con el osciloscopio. El lóbulo central, que es el de mayor amplitud es el que mejor queda respresentado por el promedio, mientras que los lóbulos laterales, al atenuarse rápidamente, en la promediación prácticamente se anulan, pero quedan remanentes algunos picos representativos en los lugares donde el seno toma su valor pico.
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.5]{../EJ4/Mediciones/Sinc/s3_ns.jpeg}
+\par\end{centering}
+\caption{Visualización de efecto de noise shaping en la señal digital}
+\end{figure}
+
+En este caso, la señal digital correspondiente a la Sinc posee un espectro donde no es tan notorio el efecto de noise shaping, pero de igual forma presenta la característica de que la atenuación disminuye al aumentar la frecuencia (aunque en forma leve). En banda base además se logra ver la parte del espectro de la sinc para frecuencias positivas (recordar que el espectro que le corresponde es un pulso centrado en 0 que va, en este caso, desde -4KHz a 4Khz).
 
 \end{document}
