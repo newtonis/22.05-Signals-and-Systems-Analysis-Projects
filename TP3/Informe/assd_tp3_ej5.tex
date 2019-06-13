@@ -6,7 +6,12 @@
 
 Para realizar la implementación práctica, se utilizó de base el circuito propuesto en las indicaciones del trabajo práctico, realizando las modificaciones pertinentes para su correcto funcionamiento. El diagrama en bloques del circuito es el siguiente.
 
-\todo[inline]{Poner diagrama en bloques con simbolos}
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.5]{images/ej5/Diagrama.png}
+\par\end{centering}
+\caption{Diagrama en bloques}
+\end{figure}
 
 \subsubsection{Oscilador}
 
@@ -31,7 +36,9 @@ Tomando la hoja de datos de Texas Instruments, a partir del gráfico de $\frac{f
 \caption{Gráfica del cociente entre las frecuencias en función de la relación de resistencias}
 \end{figure}
 
-De donde se obtiene que la relación es aproximadamente 40. Para una $R_2(N) = 680K\Omega$, resulta $R_1(N) = 18K\Omega$. De la gráfica de rectas de $R_2$ en función de $C_1$:
+De donde se obtiene que la relación es aproximadamente 40. Para una $R_2(N) = 680K\Omega$, resulta $R_1(N) = 18K\Omega$.
+\newpage
+De la gráfica de rectas de $R_2$ en función de $C_1$:
 
 \begin{figure}[!ht]
 \begin{centering}
@@ -40,7 +47,7 @@ De donde se obtiene que la relación es aproximadamente 40. Para una $R_2(N) = 6
 \caption{Gráfica de rectas de $R_2$ para valores de $C_1$}
 \end{figure}
 
-Se obtiene un valor aproximado de $C_1(N) = 39pF$. Dada la alta dispersión que posee el circuito para el cociente de las frecuencias, se ajusto el valor de $R_1$ en el PCB a $R_1(N) = 4.7K$. Finalmente se logró un intervalo de frecuencias práctico de entre 52KHz a 1.14MHz. En las figuras siguientes se muestran ambas señales obtenidas correspondientes a los extremos.
+Se obtiene un valor aproximado de $C_1(N) = 39pF$. Dada la alta dispersión que posee el circuito para el cociente de las frecuencias, se ajusto el valor de $R_1$ en el PCB a $R_1(N) = 4.7K$, logrando finalmente un intervalo de frecuencias práctico de entre 52KHz a 1.14MHz. En las figuras siguientes se muestran ambas señales obtenidas correspondientes a los extremos.
 
 \begin{figure}[!ht]
 \begin{centering}
@@ -52,13 +59,14 @@ Se obtiene un valor aproximado de $C_1(N) = 39pF$. Dada la alta dispersión que 
 
 \subsubsection{Filtros Antialiasing - Recuperador}
 
-\todo[inline]{explicacion de porque orden 2}
-
+El objetivo para el diseño de ambos filtros es que resulten de bajo orden, aprovechando la ventaja de estar realizando oversamplig, lo cual sitúa las repeticiones del espectro de la señal de entrada considerablemente separados.\par
+Para elegir la frecuencia de corte de los filtros, se considera como limitación a la mínima frecuencia de sampleo que provee el clock diseñado anteriormente. El peor caso de ancho de banda de entrada se da con la señal 1/2 Gauss, dado que su discontinuidad tipo escalón produce una gran cantidad de armónicos. Esta señal se puede modelar como una señal cuadrada multiplicada por una gaussiana que se repite con el mismo período. Visto desde la frecuencia, resulta la convolución del espectro de la señal cuadrada (el cual ya conocemos que es muy grande) con el de la gaussiana, el cual tiene también forma de gaussiana. Dado que ambas señales son periódicas, sus espectros son discretos, por lo que se puede pensar que el espectro de la señal gaussiana se monta en cada una de las deltas del espectro de la señal cuadrada, por lo que el espectro de la señal resultante (1/2 Gauss en el tiempo) sigue siendo tan grande como el de la señal cuadrada.\par
+Teniendo esto en cuenta, para tratar de incluir la mayor cantidad de armónicos posibles sin obtener aliasing a la salida, se ubicó la frecuencia de corte una década antes de la $f_{MIN}$ del clock, es decir $f_c = 6$KHz. Utilizando un filtro de orden 2, se logra para la frecuencia de 60KHz (es decir, donde se encontraría la primer repetición en el peor caso) una atenuación de 40dB. Dado que para las señales de prueba se pide que sean de una frecuencia mínima, se perderán varios armónicos para el caso de 1/2 Gauss, como se mostrará en las mediciones.\par
 Teniendo el orden del filtro (2), por simplicidad se implementa utilizando dos integradores compensados en cascada, como se muestra en la figura.
 
 \begin{figure}[!ht]
 \begin{centering}
-\includegraphics[scale=0.5]{images/ej5/Filtro.png}
+\includegraphics[scale=0.45]{images/ej5/Filtro.png}
 \par\end{centering}
 \caption{Filtro de orden 2 con integradores compensados}
 \end{figure}
@@ -75,7 +83,7 @@ Donde la frecuencia de corte:
 f_c = \frac{1}{2 \pi R_f C_f}
 \]
 
-Teniendo en cuenta la frecuencia de corte $f_c = 6KHz$, proponiendo $C_f = 10nF$, se despeja $R_f$:
+Teniendo en cuenta la frecuencia de corte $f_c = 6$KHz, proponiendo $C_f = 10nF$, se despeja $R_f$:
 
 \[
 R_f = \frac{1}{2 \pi f_c C_f} = 2.65K\Omega \Longrightarrow R_f(N) = 2.7K\Omega
@@ -89,7 +97,7 @@ En la implementación propuesta, el modulador posee entrada diferencial (en luga
 
 \begin{figure}[!ht]
 \begin{centering}
-\includegraphics[scale=0.5]{images/ej5/diferenciador.png}
+\includegraphics[scale=0.45]{images/ej5/diferenciador.png}
 \par\end{centering}
 \caption{Generador de señal diferencial}
 \end{figure}
@@ -196,7 +204,7 @@ Siendo T el período de muestreo. Resulta en la ecuación anterior:
 \[
 V_{O1}-V_{O2} = -\frac{V_I+V_{REF}}{CR} \cdot \frac{T}{2} \cdot \frac{z+1}{z-1}
 \]
-
+\newpage
 Recordando ahora la equivalencia resistiva simulada del capacitor switcheado explicada al inicio (considerando ahora que son 4 switches y no 2, el período es la mitad):
 
 \[
@@ -224,7 +232,12 @@ Las llaves $\phi$ se implementaron mediante multiplexores, utilizando la señal 
 
 Se toma la salida del integrador diferencial, y mediante un comparador a lazo abierto se implementa el cuantizador de 1 bit. El circuito implementado es utilizando el comparador LM311, y luego, dicha salida se conecta a un flip-flop D, el cual actúa como latch. El flip-flop D utilizado es el integrado CD4013, alimentado entre +5V y 0V. La alimentación adicional se obtuvo a partir de la entrada de +15V del circuito pasándola un regulador LM7805.
 
-\todo[inline]{Poner circuito con LM311 y pull up y el flip flop D}
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.5]{images/ej5/Comp.png}
+\par\end{centering}
+\caption{Cuantizador 1 bit}
+\end{figure}
 
 Como se mostrará en las mediciones obtenidas, la salida que se obtiene en este punto del circuito es una señal cuadrada de ancho de pulso modulado (PWM). En los tramos donde la pendiente de la señal es pequeña, las variaciones en la salida del integrador serán menores, por lo que en consecuencia el ancho de los pulsos resultantes es mayor. En los tramos donde la pendiente de la señal es mayor, las variaciones a la salida del integrador son más frecuentes, por lo que el ancho de los pulsos es menor.
 
@@ -232,7 +245,12 @@ Como se mostrará en las mediciones obtenidas, la salida que se obtiene en este 
 
 Las salidas binarias del flip-flop D corresponden a 0V (0 lógico), y +5V (1 lógico). Esta salida (tanto $Q$ y $\overline{Q}$) son convertidas mediante un DAC a -5V (0 lógico) y +5V (1 lógico), siguiendo el esquema propuesto por la bibliografía. Cada DAC es implementado mediante un multiplexor, utilizando las salidas del flip-flop como señales de control.
 
-\todo[inline]{Circuito del DAC}
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.5]{images/ej5/DAC.png}
+\par\end{centering}
+\caption{DAC de [0V +5V] a [-5V +5V]}
+\end{figure}
 
 Se toma la salida de uno de los DAC como señal digital, para luego procesarla por el filtro recuperador (idéntico al antialiasing), para volver a obtener la señal original al quedarnos sólo con el espectro en banda base.
 
