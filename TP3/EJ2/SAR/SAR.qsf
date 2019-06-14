@@ -65,11 +65,8 @@ set_global_assignment -name VERILOG_FILE bit8fixed.v
 set_global_assignment -name VERILOG_FILE tristate.v
 set_global_assignment -name VERILOG_FILE mux8.v
 set_global_assignment -name VERILOG_FILE mux.v
-set_location_assignment PIN_N9 -to eoc
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to eoc
 set_location_assignment PIN_P9 -to control
 set_location_assignment PIN_R8 -to clk
-set_location_assignment PIN_T10 -to clk_out
 set_location_assignment PIN_P11 -to cmp
 set_location_assignment PIN_E9 -to feedback_out[7]
 set_location_assignment PIN_F9 -to feedback_out[6]
@@ -98,9 +95,8 @@ set_location_assignment PIN_D6 -to out[5]
 set_location_assignment PIN_A7 -to out[6]
 set_location_assignment PIN_C6 -to out[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk_out
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to cmp
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to control
+set_instance_assignment -name IO_STANDARD "2.5 V" -to cmp
+set_instance_assignment -name IO_STANDARD "2.5 V" -to control
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to feedback_out[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to feedback_out[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to feedback_out[5]
@@ -125,13 +121,26 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to freq_selector[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to freq_selector[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to freq_selector
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to oe
+set_instance_assignment -name IO_STANDARD "2.5 V" -to oe
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to out[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to out[4]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to out[5]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to out[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to out
 set_location_assignment PIN_R10 -to clock_sh
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clock_sh
+set_instance_assignment -name IO_STANDARD "2.5 V" -to clock_sh
 set_global_assignment -name VERILOG_FILE divide8.v
+set_global_assignment -name VERILOG_FILE divide78.v
+set_global_assignment -name VERILOG_FILE latch_sync.v
+set_location_assignment PIN_T10 -to clk_9fs
+set_instance_assignment -name IO_STANDARD "2.5 V" -to clk_9fs
+set_location_assignment PIN_A13 -to led2
+set_location_assignment PIN_N9 -to eoc_input
+set_location_assignment PIN_R11 -to clock_filtro
+set_location_assignment PIN_N11 -to start
+set_instance_assignment -name IO_STANDARD "2.5 V" -to start
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led2
+set_instance_assignment -name IO_STANDARD "2.5 V" -to eoc_input
+set_instance_assignment -name IO_STANDARD "2.5 V" -to clock_filtro
+set_global_assignment -name VERILOG_FILE rochi_start.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
