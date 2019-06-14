@@ -25,21 +25,30 @@ Este tiempo de adquisici\'on limita la frecuencia m\'axima que se puede seguir c
 
 Luego, la condici\'on para que la salida pueda seguir a la entrada, es decir, que por cada per\'iodo de muestreo $T_s$, la salida no cambie m\'as de 1LSB, queda expresada como:
 
-\[ 
+\begin{equation}
 	\frac{dx}{dt} \leq \frac{\Delta}{2T_s}
-\]
+\end{equation}
 
 Si consideramos entradas senoidales de amplitud $V_p$ y frecuencia $f_0$, se obtiene entonces que:
 
 \begin{equation}
 	f_s \geq \frac{V_p}{\Delta} \cdot 4\pi f_0
+	\label{eq:deriv}
 \end{equation}
 
 Considerando el valor obtenido en \ref{eq:lsb}, y que la tensi\'on pico m\'axima es $\nicefrac{5\mathrm{V}}{2} = 2.5\mathrm{V}$, se obtiene que:
 
 \begin{equation}
 	f_s \geq 510 \pi \cdot f_0 \simeq 1603 \cdot f_0
+	\label{eq:f-sin}
 \end{equation}
 
+Dado que en este trabajo se utiliza $f_s \in [6$kHz, 45kHz], las senoidales m\'as r\'apidas que se puedan seguir ser\'an de entre 3.74Hz ( para $f_s=6$kHz) y 28Hz (para $f_s=45$kHz).
+
+Si se desease relajar la condici\'on establecida por la ecuaci\'on \ref{eq:f-sin}, podr\'iamos considerar \'unicamente entradas triangulares, que por tener pendiente constante, operan en el mejor caso para el modulador delta (en el cual en ning\'un momento se producen cambios bruscos). Para estas entradas, se cumple que:
+
+\[
+	\frac{dx}{dt} = \frac{V_p}\frac{}
+\]
 
 \end{document}

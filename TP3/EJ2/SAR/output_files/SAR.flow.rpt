@@ -1,5 +1,5 @@
 Flow report for SAR
-Wed Jun 12 21:46:19 2019
+Thu Jun 13 21:17:46 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Jun 12 21:46:11 2019       ;
+; Flow Status                        ; Successful - Thu Jun 13 21:17:42 2019       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; SAR                                         ;
 ; Top-level Entity Name              ; main                                        ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 160 / 22,320 ( < 1 % )                      ;
-;     Total combinational functions  ; 152 / 22,320 ( < 1 % )                      ;
-;     Dedicated logic registers      ; 60 / 22,320 ( < 1 % )                       ;
-; Total registers                    ; 60                                          ;
-; Total pins                         ; 56 / 154 ( 36 % )                           ;
+; Total logic elements               ; 287 / 22,320 ( 1 % )                        ;
+;     Total combinational functions  ; 285 / 22,320 ( 1 % )                        ;
+;     Dedicated logic registers      ; 130 / 22,320 ( < 1 % )                      ;
+; Total registers                    ; 130                                         ;
+; Total pins                         ; 59 / 154 ( 38 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 6,144 / 608,256 ( 1 % )                     ;
 ; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                             ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/12/2019 21:45:33 ;
+; Start date & time ; 06/13/2019 21:17:08 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SAR                 ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 275102345763672.156038673213552        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 275102345763672.156047142717720        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; rom.bsf                                ; --            ; --          ; --         ;
@@ -98,11 +98,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:20     ; 1.0                     ; 4785 MB             ; 00:00:45                           ;
-; Fitter               ; 00:00:12     ; 1.0                     ; 5539 MB             ; 00:00:15                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 4693 MB             ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:06     ; 1.1                     ; 4798 MB             ; 00:00:06                           ;
-; Total                ; 00:00:40     ; --                      ; --                  ; 00:01:09                           ;
+; Analysis & Synthesis ; 00:00:18     ; 1.0                     ; 4787 MB             ; 00:00:40                           ;
+; Fitter               ; 00:00:12     ; 1.1                     ; 5552 MB             ; 00:00:17                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4691 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.2                     ; 4802 MB             ; 00:00:03                           ;
+; Total                ; 00:00:34     ; --                      ; --                  ; 00:01:01                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

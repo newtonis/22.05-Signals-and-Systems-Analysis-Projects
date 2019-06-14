@@ -4,19 +4,27 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "eoc",
-					"strict" : false
-				},
-				{
-					"name" : "clk_out",
-					"strict" : false
-				},
-				{
 					"name" : "led",
 					"strict" : false
 				},
 				{
 					"name" : "clock_sh",
+					"strict" : false
+				},
+				{
+					"name" : "clk_9fs",
+					"strict" : false
+				},
+				{
+					"name" : "clock_filtro",
+					"strict" : false
+				},
+				{
+					"name" : "led2",
+					"strict" : false
+				},
+				{
+					"name" : "start",
 					"strict" : false
 				},
 				{
@@ -185,6 +193,10 @@
 				},
 				{
 					"name" : "oe",
+					"strict" : false
+				},
+				{
+					"name" : "eoc_input",
 					"strict" : false
 				},
 				{
