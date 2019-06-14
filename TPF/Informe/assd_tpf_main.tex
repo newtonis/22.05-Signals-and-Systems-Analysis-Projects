@@ -15,22 +15,28 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Paper Title}
+\title{Retoque fotográfico mediante reconstrucciones geométricas heurísticas}
 \maketitle
 
 \begin{abstract}
-This document is a model and instructions for \LaTeX.
-This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
-or Math in Paper Title or Abstract.
+En este trabajo se estudió diversos métodos de retoque de imagenes para eliminar elementos no deseados presentes en diversas fuentes. Finalmente se procedió a realizar una implementación en función de las tecnicas analizadas seguida de un análisis de sus ventajas y desventajas.
 \end{abstract}
 
-\begin{IEEEkeywords}
-component, formatting, style, styling, insert
-\end{IEEEkeywords}
+\section{Introducción}
+El problema elemental a resolver consiste en la eliminación de un objeto no deseado en una imagen.
+Naturalmente no es posible "adivinar" lo que se encuentre por detrás, ya que requiere información adicional, la cual en principio no es accesible, solo se dispone de la imagen. Por lo tanto la idea es, de algun modo asimilar la zona de la imagen a reemplazar con el resto de la misma. En lo que continua de este trabajo describiremos con un mayor detalle diversos métodos para llevar a cabo este proceso.
 
-\section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits. 
+\section{Descripción de la zona a eliminar}
+Es muy importante que el usuario que necesite retocar la imagen "indique" que región sea necesaria eliminar. En nuestro algoritmo decidimos que se ingrese como entrada una imagen de dos colores "blanco" y "negro" donde la zona negra sea aquella que se necesite borrar. En el desarrollo de el método muchas veces es necesario trabajr con el borde de esta región; se estudió entonces como utilizar la librería opencv que es muy conocida en el ambito de procesamiento de imagenes, la cual ofreció métodos optimizados para la detección de bordes de tanto regiones conexas, como regiones "multiplemente conexas"
+
+
+\section{Cálculo de gradientes de imagen}
+
+\section{Determinación de prioridades}
+
+\section{Determinación del rectangulo a reemplazar}
+
+
 
 
 \end{document}
