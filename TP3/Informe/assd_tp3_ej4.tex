@@ -168,6 +168,15 @@ Donde:
 \item N = 31
 \end{itemize}
 \subsubsection{Respuesta al impulso}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{images/ej4/impulse_simulink.png}
+\caption{Respuesta al impulso del sistema: Diagrama en bloques}
+\label{fig:impulse_simulink}
+\end{figure}
+
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\linewidth]{images/ej4/impulse_response.png}
@@ -175,14 +184,24 @@ Donde:
 \label{fig:impulse_response}
 \end{figure}
 
+\subsubsection{Espectro del ruido de cuantización}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\linewidth]{images/ej4/NTF.png}
+\includegraphics[width=0.8\linewidth]{images/ej4/noise_simulink.png}
+\caption{Espectro de Ruido de cuantización: Diagrama en bloques}
+\label{fig:noise_simulink}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{images/ej4/NTF.png}
 \caption{Espectro del Ruido de cuantización, antes de la decimación, después de la decimación y la respuesta de NTF frente al ruido}
 \label{fig:NTF}
 \end{figure}
 En la figura \ref{fig:NTF} se ve que antes de la decimación está presente el concepto de Noise Shaping el cual se ajusta a la Noise Tranfer Function. Luego del decimador lo que se ve es la forma característica del filtro con el cual se implementó.
 
+\subsubsection{Respuesta del sistema frente a una senoidal de 1KHz}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{images/ej4/sin_response_1K.png}
@@ -192,6 +211,7 @@ En la figura \ref{fig:NTF} se ve que antes de la decimación está presente el c
 \end{figure}
 Se puede apreciar que antes de la decimación está presente el concepto de noise shaping, luego de la etapa de decimación, el ruido de cuantización es disminuido por lo que solo queda la banda de la señal, la cual al ser muestreada y haber fuga espetral (dado que el filtro no es ideal) queda modulada por una sinc (se distorsiona el espectro en amplitud) y hace que aparezcan más componentes espectrales y no sean solo dos deltas. Esto puede ser apreciado más en detalle en la segunda imagen de la figura \ref{fig:sin_response_1K} en la cual se hizo un zoom a la imagen. Además, las bandas estan separadas en 6KHz, eso se debe a que el filtro antialiasing está puesto en 6KHz.
 
+\subsubsection{Respuesta en frecuencia del filtro decimador}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{images/ej4/Decimation_1filt.png}
