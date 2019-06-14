@@ -1,0 +1,2 @@
+entrada senoidal 50Hz 2Vpp
+ventana blackmann-harris 8912puntos
