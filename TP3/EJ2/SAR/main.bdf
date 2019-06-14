@@ -108,7 +108,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 656 632 824 648)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "eoc_input" (rect 5 0 53 12)(font "Arial" ))
+	(text "eoc_input" (rect 5 0 52 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -1178,21 +1178,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 1112 216)
-	(pt 1112 144)
-	(bus)
-)
-(connector
-	(pt 1112 144)
-	(pt 1128 144)
-	(bus)
-)
-(connector
-	(pt 1072 128)
-	(pt 1128 128)
-	(bus)
-)
-(connector
 	(pt 1072 128)
 	(pt 1072 280)
 	(bus)
@@ -1221,6 +1206,21 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 1088 160)
 	(pt 1128 160)
+)
+(connector
+	(pt 1112 216)
+	(pt 1112 144)
+	(bus)
+)
+(connector
+	(pt 1072 128)
+	(pt 1128 128)
+	(bus)
+)
+(connector
+	(pt 1112 144)
+	(pt 1128 144)
+	(bus)
 )
 (junction (pt 192 288))
 (junction (pt 640 352))

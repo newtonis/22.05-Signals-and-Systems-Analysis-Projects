@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SAR
-Thu Jun 13 20:31:45 2019
+Thu Jun 13 21:17:26 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -51,7 +51,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 13 20:31:45 2019       ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 13 21:17:26 2019       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; SAR                                         ;
 ; Top-level Entity Name              ; main                                        ;
@@ -167,8 +167,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -464,7 +463,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -474,7 +473,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Jun 13 20:31:28 2019
+    Info: Processing started: Thu Jun 13 21:17:07 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SAR -c SAR
 Warning (125092): Tcl Script File PLL.qip not found
     Info (125063): set_global_assignment -name QIP_FILE PLL.qip
@@ -566,10 +565,10 @@ Info (21057): Implemented 378 device resources after synthesis - the final resou
     Info (21061): Implemented 295 logic cells
     Info (21064): Implemented 24 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 16 warnings
-    Info: Peak virtual memory: 4806 megabytes
-    Info: Processing ended: Thu Jun 13 20:31:45 2019
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:39
+    Info: Peak virtual memory: 4787 megabytes
+    Info: Processing ended: Thu Jun 13 21:17:26 2019
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:40
 
 
 +------------------------------------------+
