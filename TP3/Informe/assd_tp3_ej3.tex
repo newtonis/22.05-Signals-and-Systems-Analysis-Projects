@@ -4,19 +4,21 @@
 
 \section{Modulador delta}
 
+\subsection{Introducci\'on}
+
 El segundo conversor anal\'ogico/digital que se implement\'o fue un modulador delta. El mismo hace uso del principio de que, al muestrear una se\~nal a una frecuencia mucho mayor a la de Nyquist (oversampling), el valor de la misma no se altera significativamente entre muestra y muestra. Por lo tanto, codificando la diferencia entre una muestra y la siguiente, en lugar del valor de la muestra en s\'i, se puede ganar SQNR sin necesidad de incrementar el n\'umero de bits del ADC. El diagrama de bloques b\'asico de este conversor se observa en la figura \ref{fig:delta-bloques}.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.6 \textwidth]
-	{imagenes/ej3/delta-bloques.png}
+	{images/ej3/delta-bloques.png}
 	\caption{Diagrama de bloques del modulador delta}
 	\label{fig:delta-bloques}
 \end{figure}
 
-En este trabajo, la implementaci\'on utiliza la FPGA como integrador y un LM311 para realizar la resta. La FPGA recibe la salida del comparador (que indica si la aproximaci\'on actual es menor o mayor que la entrada), y en funci\'on de la respuesta, incrementa o decrementa un contador de 8 bits. De esta manera, la salida sigue a la entrada en todo momento, si bien hay un tiempo de adquisici\'on proveniente de que la salida solo puede cambiar un LSB por per\'iodo de muestreo.
+De esta manera, la salida digital del sistema indica si la se\~nal es mayor o menor a su \'ultimo valor, y de esta manera puede reconstruirse la se\~nal original utilizando un integrador (al igual que lo hace el realimentador).
 
-Este tiempo de adquisici\'on limita la frecuencia m\'axima que se puede seguir con una cierta frecuencia de muestreo $f_s$. Llamamos $\Delta$ a la diferencia entre dos niveles l\'ogicos en la salida (un LSB), que en nuestro caso es:
+La principal limitaci\'on que presenta este conversor es el tiempo de adquisici\'on, es decir, aqu\'el que se demora entre un cambio de full scale en la entrada, y que el mismo es observable en la salida. Dado que la salida s\'olo puede cambiar de a un bit por per\'iodo de muestreo, este tiempo limita la frecuencia m\'axima de entrada que se puede seguir con una cierta frecuencia de muestreo $f_s$. Llamamos $\Delta$ a la diferencia entre dos niveles l\'ogicos en la salida (un LSB), que en nuestro caso es:
 
 \begin{equation}
 	\Delta = \frac{5\mathrm{V}}{256-1} \sim 0.0196\mathrm{V}
@@ -43,12 +45,16 @@ Considerando el valor obtenido en \ref{eq:lsb}, y que la tensi\'on pico m\'axima
 	\label{eq:f-sin}
 \end{equation}
 
-Dado que en este trabajo se utiliza $f_s \in [6$kHz, 45kHz], las senoidales m\'as r\'apidas que se puedan seguir ser\'an de entre 3.74Hz ( para $f_s=6$kHz) y 28Hz (para $f_s=45$kHz).
+Dado que en este trabajo se utiliza $f_s \in [6$kHz, 45kHz], las senoidales m\'as r\'apidas que se puedan seguir ser\'an de entre 3.74Hz (para $f_s=6$kHz) y 28Hz (para $f_s=45$kHz).
 
-Si se desease relajar la condici\'on establecida por la ecuaci\'on \ref{eq:f-sin}, podr\'iamos considerar \'unicamente entradas triangulares, que por tener pendiente constante, operan en el mejor caso para el modulador delta (en el cual en ning\'un momento se producen cambios bruscos). Para estas entradas, se cumple que:
 
-\[
-	\frac{dx}{dt} = \frac{V_p}\frac{}
-\]
+\subsection{Implementaci\'on}
+
+En este trabajo, la implementaci\'on utiliza la FPGA como integrador y un LM311 para realizar la resta y la cuantizaci\'on: su salida es $V_{CC}$ (un uno l\'ogico) cuando la entrada es mayor que la salida, y 0 (la tensi\'on de referencia, que a su vez representa un cero l\'ogico) cuando no. La FPGA recibe esta informaci\'on, e incrementa o decrementa un contador de 8 bits, dependiendo de si el comparador arroj\'o un 0 o un 1 respectivamente. Finalmente, el valor digital de este contador atraviesa un DAC0800 (con el mismo conexionado discutido en relaci\'on a la placa ADA), cuya salida se realimenta al LM311, cerrando as\'i el lazo de realimentaci\'on.
+
+Dado a que se realiza una conversi\'on por per\'iodo de muestreo, a partir del valor instant\'aneo de la salida del comparador (con la frecuencia que selecciona el usuario, e implementado internamente en la FPGA), no es necesario utilizar un sample and hold en la entrada de este conversor. Sin embargo, por compatibilidad con el conexionado requerido para el conversor SAR (que s\'i lo requiere), se decidi\'o pasar la se\~nal por el mismo de todas maneras, cambiando s\'olo la se\~nal de control del mismo (determinada por la FPGA  para que se est\'e siempre en modo sample cuando el usuario indica que se debe trabajar en modo "modulador delta" (lo cual se implement\'o con jumpers que modificaban se\~nales que iban a la FPGA).
+
+
+\subsection{Mediciones}
 
 \end{document}
