@@ -7,7 +7,7 @@ from numpy import random
 import scipy.misc
 from PIL import Image
 from numpy import sqrt
-
+import time
 
 # imagen a procesar
 img = cv2.imread('output3/imagen.jpeg', 3)
@@ -33,14 +33,14 @@ for i in range(square_size):
         )
 
 # tamaño del cuadrado de busqueda para el parche que reemplaza la posición a rellenear
-search_square_size = 200
+search_square_size = 1000
 
 # cuantas veces buscamos al azar por un parche
 search_times = 100
 
 
 def procesar(imagen, mask):
-    iteraciones = 10000
+    iteraciones = 1000
 
     lower = np.array([0, 0, 0])
     upper = np.array([15, 15, 15])
@@ -73,6 +73,7 @@ def procesar(imagen, mask):
         # sino que suaviza
         sobel_x = cv2.Sobel(grey_scale, cv2.CV_64F, 1, 0, ksize=5)
         sobel_y = cv2.Sobel(grey_scale, cv2.CV_64F, 0, 1, ksize=5)
+        sobel_x, sobel_y = -sobel_y,sobel_x
 
         # por cada contorno cerrado
         for contorno in range(len(cnts)):
@@ -150,16 +151,18 @@ def procesar(imagen, mask):
         patch_distance = np.Infinity
 
         for i in range(search_times):
-            x = random.randint(px - search_square_size//2, px + search_square_size//2)
-            y = random.randint(py - search_square_size//2, py + search_square_size//2)
+            # x = random.randint(px - search_square_size//2, px + search_square_size//2)
+            # y = random.randint(py - search_square_size//2, py + search_square_size//2)
+            x = int(random.normal(px, search_square_size//2**5,1))
+            y = int(random.normal(py, search_square_size//2**5,1))
 
             if shapeMask[y, x] == 255:
                 continue # no es de interés ya que esta en la region blanca
 
             #patch = imagen[y - square_size//2:y + square_size//2, x - square_size//2:x + square_size//2]
             #original = imagen[py - square_size//2:py + square_size//2, px - square_size//2:px + square_size//2]
+            #total_sum = np.array([0])
             total_sum = 0
-
             # decidi usar fors porque se me estaban copiando los arreglos y en definitiva como son
             # todas operaciones elemento a elemento no son optimizables
 
@@ -172,8 +175,9 @@ def procesar(imagen, mask):
 
                         sum += (patch - original)**2
                     sum = sqrt(sum)
-
+                    #np.append(total_sum,sum**2)
                     total_sum += sum**2
+            #total_sum = total_sum.sum()
             #print(np.square(patch-original))
 
             if total_sum < patch_distance:
@@ -197,10 +201,10 @@ def procesar(imagen, mask):
 
         if iteracion % 20 == 0:
             print("Iteración ", iteracion)
-            for cnt in cnts:
-                cv2.drawContours(im2, [np.array(cnt)], 0, (255, 255, 0), 1)
+            #for cnt in cnts:
+            #    cv2.drawContours(im2, [np.array(cnt)], 0, (255, 255, 0), 1)
 
-            cv2.drawContours(im2, [np.array([best_benefit_point])], 0, (0, 0, 255), 5)
+            #cv2.drawContours(im2, [np.array([best_benefit_point])], 0, (0, 0, 255), 5)
             im = Image.fromarray(cv2.cvtColor(im2, cv2.COLOR_BGR2RGB))
             im.save("output3/imagen" + str(iteracion) + ".jpeg")
 
@@ -225,7 +229,10 @@ def procesar(imagen, mask):
 
 #print(img_intensity)
 #
+start_time = time.time()
 procesar(img, mask)
+end_time = time.time()
+print("se calculo en:" ,(end_time-start_time)/60," minutos")
 #
 # plt.imshow(img2, cmap="gray")
 
