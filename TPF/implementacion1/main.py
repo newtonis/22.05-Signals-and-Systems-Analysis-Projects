@@ -10,10 +10,10 @@ from numpy import sqrt
 
 
 # imagen a procesar
-img = cv2.imread('imagen3.jpeg', 3)
+img = cv2.imread('output3/imagen.jpeg', 3)
 # mascara con area a remover.
 # la zona negra (0,0,0) es la que se remueve, la blanca se deja como esta (255,255,255)
-mask = cv2.imread("mask_3.png")
+mask = cv2.imread("output3/mask.jpeg")
 # imagen pasada a escala de grises se guarda en esta variable
 grey_scale = np.zeros(img.shape, dtype=np.uint8) #uint8
 
@@ -202,7 +202,7 @@ def procesar(imagen, mask):
 
             cv2.drawContours(im2, [np.array([best_benefit_point])], 0, (0, 0, 255), 5)
             im = Image.fromarray(cv2.cvtColor(im2, cv2.COLOR_BGR2RGB))
-            im.save("output2/imagen" + str(iteracion) + ".jpeg")
+            im.save("output3/imagen" + str(iteracion) + ".jpeg")
 
         #plt.imshow(cv2.cvtColor(im2, cv2.COLOR_BGR2RGB))
         #plt.savefig("output/imagen" + str(iteracion) + ".jpeg", dpi=1000)
