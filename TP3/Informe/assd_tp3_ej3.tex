@@ -57,4 +57,45 @@ Dado a que se realiza una conversi\'on por per\'iodo de muestreo, a partir del v
 
 \subsection{Mediciones}
 
+Para obtener la curva entrada-salida del conversor implementado, se realizaron mediciones de continua en todo el rango del conversor. Los resultados se observan en la figura \ref{fig:md-continua}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width = \textwidth]
+	{images/ej3/md-continua.png}
+	\caption{Curva de entrada-salida del modulador delta, incluyendo su posterior conversi\'on a anal\'ogico y la curva ideal}
+	\label{fig:md-continua}
+\end{figure}
+
+Se observa en la salida digital un peque\~no offset respecto de la entrada, pero tambi\'en respecto de su conversi\'on a anal\'ogica. Es razonable suponer, pues, que esto se debe a que el ruido inherente del sistema se manifestaba en los bits menos significativos, manteniendo los leds prendidos en todo momento, no porque estuviesen en 1, sino porque se encontraban oscilando.  Esto es, de hecho, exactamente lo que debe suceder en este conversor en la teor\'ia: como la salida no puede mantenerse constante, sino que debe subir o bajar un LSB en cada muestra, este es el comportamiento que se esperar\'ia.
+
+Esto puede observarse m\'as claramente en la figura \ref{md-chiquita}. Aqu\'i, como la amplitud de la senoidal es de 25mV, que es apenas superior a los 20mV que representa el LSB, en los picos de la entrada, la salida oscila con 20mV de amplitud.
+
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width = 0.8\textwidth]
+	{images/ej3/d__.png}
+	\caption{Salida del modulador delta, con una entrada senoidal de 400Hz, 2V de offset, y 50m$\mathrm{V}_{PP}$ pico a pico}
+	\label{fig:md-chiquita}
+\end{figure}
+
+
+Se observ\'o tambi\'en los efectos de reducir los bits activos en la salida. En la figura \ref{fig:md-bits}, resulta claro que una mayor contidad de bits conlleva m\'as precisi\'on, y m\'as niveles discretos a la salida.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width = 0.45\textwidth]
+	{images/ej3/d_4.png}
+	\includegraphics[width = 0.45\textwidth]
+	{images/ej3/d_5.png}
+	
+	\includegraphics[width = 0.45\textwidth]
+	{images/ej3/d_8.png}
+	\caption{Salida del conversor con 4, 5 y 8 bits activos}
+	\label{fig:md-bits}
+\end{figure}
+
+Algo que se esperar\'ia que ocurra, pero no se observa, es que el tiempo de adquisici\'on se reduzca, dado que al reducir N, aumenta $\Delta$, y con ello deber\'ia subir la frecuencia de sampleo m\'inima. Esto se debe a que, por consideraciones pr\'acticas, la anulaci\'on de bits se implement\'o s\'olo en la salida latcheada (que en este caso coincide siempre con la no latcheada, pero no as\'i para el SAR), con lo cual el loop de realimentaci\'on sigue funcionando en todo momento con 8 bits.
+
 \end{document}
