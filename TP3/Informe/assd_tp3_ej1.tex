@@ -165,7 +165,45 @@ $(V^- - 0.3V \leq Vin \leq V^+ + 0.3V )$, por lo que se colocó la siguiente pro
 
 \subsection{Mediciones}
 
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=\textwidth]
+	{images/ej2/sar-continua.png}
+	\caption{Salida del ADC con entrada continua}
+	\label{fig:adc-continua}
+\end{figure}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]
+	{images/ej1/mediciones/aa_.png}
+	\caption{Salida del ADC con entrada de 5V pico a pico}
+	\label{fig:adc-fs}
+\end{figure}
+
+
+Se verific\'o la precisi\'on del conversor estudiando su respuesta a se\~nales de continua (figura \ref{fig:adc-continua}) y a senoidales que cubr\'ian toda la escala (figura \ref{fig:adc-fs}). La salida no llega nunca a 0V, lo cual indica que probablemente un cierto nivel de ruido se est\'e convirtiendo tambi\'en. Esto se condice con lo que se observa en la figura \ref{fig:adc-chiquita}, donde se observa que los bit menos significativo tiene un aporte pr\'acticamente nulo en la precisi\'on de la se\~nal.
+
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.8\textwidth]
+	{images/ej1/mediciones/a__.png}
+	\caption{Salida del ADC0800 con entrada de 25mV de amplitud}
+	\label{fig:adc-chiquita}
+\end{figure}
+
+Sin embargo, esto no quita que no haya una p\'erdida apreciable de precisi\'on eliminando los bits menos significativos. Los efectos de esto se observan en la figura \ref{fig:adc-bits}. Particularmente para 4 bits, se observa que el ruido de cuantizaci\'on se hace considerable. Sin embargo, la gran diferencia con los resultados de la figura \ref{fig:adc-fs} se debe principalmente a que se midi\'o con una baja frecuencia de muestreo m\'as baja.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.45\textwidth]
+	{images/ej1/mediciones/a_4.png}
+	\includegraphics[width=0.45\textwidth]
+	{images/ej1/mediciones/a_6.png}
+	\caption{Salida del ADC con 4  y 6 bits activos}
+	\label{fig:adc-bits}
+\end{figure}
 
 
 \end{document}
