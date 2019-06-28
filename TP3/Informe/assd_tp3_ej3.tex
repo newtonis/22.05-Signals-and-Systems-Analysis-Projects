@@ -69,7 +69,7 @@ Para obtener la curva entrada-salida del conversor implementado, se realizaron m
 
 Se observa en la salida digital un peque\~no offset respecto de la entrada, pero tambi\'en respecto de su conversi\'on a anal\'ogica. Es razonable suponer, pues, que esto se debe a que el ruido inherente del sistema se manifestaba en los bits menos significativos, manteniendo los leds prendidos en todo momento, no porque estuviesen en 1, sino porque se encontraban oscilando.  Esto es, de hecho, exactamente lo que debe suceder en este conversor en la teor\'ia: como la salida no puede mantenerse constante, sino que debe subir o bajar un LSB en cada muestra, este es el comportamiento que se esperar\'ia.
 
-Esto puede observarse m\'as claramente en la figura \ref{md-chiquita}. Aqu\'i, como la amplitud de la senoidal es de 25mV, que es apenas superior a los 20mV que representa el LSB, en los picos de la entrada, la salida oscila con 20mV de amplitud.
+Esto puede observarse m\'as claramente en la figura \ref{fig:md-chiquita}. Aqu\'i, como la amplitud de la senoidal es de 25mV, que es apenas superior a los 20mV que representa el LSB, en los picos de la entrada, la salida oscila con 20mV de amplitud.
 
 
 \begin{figure}[htb!]
