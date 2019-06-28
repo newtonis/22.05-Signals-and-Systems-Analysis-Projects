@@ -4,12 +4,10 @@ close all
 
 % Especificaciones: Low Pass con:
 fs=48000;
-fa1=1000;
-fp1=1200;
-fp2=2000;
-fa2=2200;
+fp=1500;
+fa=1000;
 Ap=1;
-Aa=20;
+Aa=40;
 
 
 % Dise�o del filtro Pasa bajos usando ventana de kaiser 
@@ -36,8 +34,8 @@ else
  D=(Aa-7.95)/14.36;
 end
 
-N=fs*D/(fp1-fa1)+1;
-N=ceil(N);
+N=fs*D/(fa-fp)+1;
+N=ceil(abs(N));
 
 %==========================================================================
 
@@ -49,36 +47,25 @@ end
 
 %Normalizamos respecto de fs
 
-fp1=fp1/fs;
-fa1=fa1/fs;
-fa2=fa2/fs;
-fp2=fp2/fs;
-
-b1 = fp1 - fa1;
-b2 = fa2 - fp2;
-bmin = min(b1, b2);
-bmax = max(b1, b2);
-
-fc1=fp1-bmin/2;	 %frecuencia de corte normalizada respecto de fs
-fc2=fp2+bmax/2;
-
+fp=fp/fs;
+fa=fa/fs;
+fc=(fp+fa)/2;	 %frecuencia de corte normalizada respecto de fs
 
 
 %===========================Construccion de la h(n)====================================
 n=1:(N-1)/2;
-h(n)=-((sin(2*pi*fc2*n)-sin(2*pi*fc1*n))./(pi*n)); % h(n) for Lowpass
-h=[ h(((N-1)/2 ):-1:1) 2*(fc2-fc1) h];          % La hacemos causal 
+h(n)=-2*fc*(sin(2*pi*fc*n)./(2*pi*fc*n)); % h(n) for Lowpass
+h=[ h(((N-1)/2 ):-1:1) 1-2*fc h];          % La hacemos causal 
 %==========================================================================
 % Multiplicamos por la ventana de kaiser
 
 h=h.*kai(N,alfa)';
-plot(h)
 
 
 %=================Normalizamos la respuesta en frecuencia del filtro en banda pasante=====================================
 
-F0dB=5500;                       % F0dB es la frecuencia donde la ganancia del filtro debe ser unitaria ( 0 dB) esto es la banda pasante del filtro
-Zo=exp(-1j*2*pi*F0dB*1/fs);    % Z=e-jWT
+F0dB=16000;                       % F0dB es la frecuencia donde la ganancia del filtro debe ser unitaria ( 0 dB) esto es la banda pasante del filtro
+Zo=exp(-j*2*pi*F0dB*1/fs);    % Z=e-jWT
 gain = abs(polyval(h,Zo));    % mod H(ejWT) evaluado en F0dB que es la ganancia actual del filtro en esa frecuencia
 h = h/gain;                   % Normalizamos la h de esta manera los coeficentes del filtro no superan la unidad 
 %====================================================================================================================
@@ -108,14 +95,14 @@ fase=angle(H);
 %Banda pasante
 figure(1)
 plot(F,20*log10(modulo));
-v=[0,fp1*fs,-1,1];
+v=[0,fp*fs,-1,1];
 axis(v);
 grid
 
 %Banda atenuada
 figure(2)
 plot(F,20*log10(modulo));
-v=[fp1,.5*fs,-80,10];
+v=[fp,.5*fs,-80,10];
 axis(v);
 grid
 
@@ -124,9 +111,9 @@ grid
 
 %Salvo coeficientes (h(n)) para el DSP56300
 h=h';
-ntaps=length(h)';
+ntaps=length(h)
 
-fid = fopen('coef_bp2.txt','w');
+fid = fopen('coef_hp2.txt','w');
     fprintf(fid,'%0.9f \r\n',h);
 
 fclose(fid);
