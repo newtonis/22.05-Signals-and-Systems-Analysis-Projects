@@ -9,7 +9,7 @@ fp1=1200;
 fp2=2000;
 fa2=2200;
 Ap=1;
-Aa=20;
+Aa=40;
 
 
 % Dise�o del filtro Pasa bajos usando ventana de kaiser 

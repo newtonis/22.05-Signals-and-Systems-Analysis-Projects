@@ -4,7 +4,7 @@ close all
 
 % Especificaciones: Low Pass con:
 fs=48000;
-fp=1500;
+fp=1200;
 fa=1000;
 Ap=1;
 Aa=40;

@@ -1,0 +1,37 @@
+LOWPASS
+especificaciones originales:
+fs=48000;
+fp=1000;
+fa=1200;
+Ap=1;
+Aa=40;
+queda n=537 no se puede implementar
+
+bajamos Aa=35, fa=2000
+queda n=93 se puede implementar
+
+
+HIGHPASS
+fs=48000;
+fp=1200;
+fa=1000;
+Ap=1;
+Aa=40;
+queda n=535
+
+cambiamos fa=1500
+queda n=215
+
+
+BANDPASS
+fs=48000;
+fa1=1000;
+fp1=1200;
+fp2=2000;
+fa2=2200;
+Ap=1;
+Aa=40;
+queda n=537
+
+cambiamos Aa=20
+queda n=283
