@@ -232,7 +232,7 @@ def procesar(imagen, mask):
 start_time = time.time()
 procesar(img, mask)
 end_time = time.time()
-print("se calculo en:", (end_time-start_time)/60, " minutos")
+print("se calculo en:" ,(end_time-start_time)/60," minutos")
 #
 # plt.imshow(img2, cmap="gray")
 

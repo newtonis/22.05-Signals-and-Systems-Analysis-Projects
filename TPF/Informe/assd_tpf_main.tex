@@ -1,6 +1,8 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
+\usepackage{listings}
+\usepackage{float}
 \usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -8,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\lstset{basicstyle=\small\ttfamily,columns=fullflexible}
 
 % preambulo:
 %\input{assd_tpf_preamble.tex}
@@ -18,7 +21,7 @@
 
 \title{Retoque fotográfico mediante reconstrucciones geométricas heurísticas}
 \author{\IEEEauthorblockN{Ariel Nowik, Joaquin Mestanza, Rocio Parra, Martina Máspero, Marcelo Regueira}
-\IEEEauthorblockA{22.05 - Análisis de Señales y Sistemas Digitales} \\
+\IEEEauthorblockA{22.05 - Análisis de Señales y Sistemas Digitales - Grupo 1} \\
 \textit{ITBA: Instituto tecnológico de Buenos Aires}\\
 Ciudad de Buenos Aires, Argentina
 }
@@ -79,7 +82,49 @@ Para mejorar la eficiencia del algoritmo se decidió elegir rectángulos eficien
 \end{equation}
 Se utilizó una distribución normal para elegir al azar los cantidatos 
 \subsection{Parámetros, ventajas y desventajas}
+Finalmente con el algoritmo implementado se probó variar diversos parárametros, entre ellos:
+\begin{itemize}
+	\item Tamaño de los cuadrados
+	\item Region para buscar cuadrados
+	\item Cantidad de muestros
+\end{itemize}
+Variando dichos parámetros en generar el "tradeoff" fue eficiencia vs una mejor calidad en el procesamiento de la imagen
+\section{Resultados}
+A continuación se mostrará una selección con los resultados del algoritmo
+\subsection{Ejemplo 1}
+Se procedió a probar el algoritmo con una moneda en un fondo de textura prácticamente unifirme
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.19]{moneda1.jpeg}
+\includegraphics[scale=0.19]{moneda2.jpeg}
+\par\end{centering}
+\caption{Resultados - ejemplo 1}
+\end{figure}
+Si bien se notaron algunas impurezas dado que fue la primera versión del algoritmo, los resultados fueron satisfactorios
+\subsection{Ejemplo 2}
+Se probó el algoritmo esta vez con un fondo gris y unas piedritas de decoración
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.11]{imagen.jpeg}
+\includegraphics[scale=0.11]{imagen3320.jpeg}
+\par\end{centering}
+\caption{Resultados - ejemplo 2}
+\end{figure}
+Se obeservó que si bien se logró cubrir correctamente las areas a eliminar, la transcisión de colores no fue totalmente continua. Esto induce a que en un futuro se desarrolle algun procedimiento adicional que suavice dicha transición
+\subsection{Ejemplo 3}
+El tercer ejemplo fue corrido luego de convertir la distribución de la elección de cuadrados de lineal a gaussiana
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.18]{imagen3.jpeg}
+\includegraphics[scale=0.18]{imagen280.jpeg}
+\par\end{centering}
+\caption{Resultados - ejemplo 3}
+\end{figure}
+Se corrieron solo 280 iteraciónes del algoritmo pero se observaron resultados satisfactorios, el algoritmo tendió a absorber la lapicera.
 
+\section{Código}
+
+\lstinputlisting[linewidth=\columnwidth,breaklines=true]{main.py}
 
 \begin{thebibliography}{00}
 \bibitem{b1} A. Criminisi, P. Perez, and K. Toyama, “Region filling and object ´
