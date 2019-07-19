@@ -1,6 +1,4 @@
 \documentclass[assd_tp3_main.tex]{subfiles}
-\usepackage{graphicx}
-
 \begin{document}
 
 \section{Placa Base ADA}
@@ -77,8 +75,21 @@ frecuencia proporcional a la frecuencia de paso.
 En este caso se decidió utilizar la segunda opción, y más adelante se hará el cálculo
 de la frecuencia que debe tener el clock para ajustar bien la frecuencia de paso del
 filtro.
-A continuación se estudiará la función transferencia analógica del integrado para
-luego hallar la transformación de s$\rightarrow$z. A partir de las características del integrado
+A partir de las características del integrado se obtuvieron la respuesta en frecuencia y el diagrama de polos y ceros:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.3]{images/ej1/rtafrec.png}
+\includegraphics[scale=0.3]{images/ej1/pzmap.png}
+\par\end{centering}
+\caption{Respuesta en frecuencia y diagrama de polos y ceros en el plano 'z' del integrado}
+\end{figure}
+
+Además se obtuvieron  los coeficientes del filtro quedando la función transferencia como:
+
+$$\frac{z^8 - 7.948 z^7 + 27.69 z^6  - 55.22 z^5 + 68.95 z^4 - 55.22 z^3 + 27.69 z^2 - 7.948 z + 1}{z^8 - 7.948 z^7+27.63 z^6 - 54.89 z^5 + 68.17 z^4 - 54.19 z^3 + 26.92 z^2 - 7.645 z+ 0.9498}
+$$
+
 
 \subsubsection{Cálculo de la frecuencia del clock externo}
 
@@ -94,7 +105,7 @@ ripple típico de 0.23 dB medidos a una $f_{clk}=50KHz$ y una atenuación en la 
 atenuada de 80dB. A continuación se muestra la respuesta en frecuencia del filtro dada
 para una frecuencia de paso de 1KHz: 
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \begin{centering}
 \includegraphics[scale=0.2]{images/ej1/tf.png}
 \includegraphics[scale=0.4]{images/ej1/tfpaso.png}
@@ -119,7 +130,7 @@ $$ f_{clk} = \frac{50}{3}f_s \simeq 16f_s$$
 
 Entonces queda que el rango de las frecuencias de clock deberá ser: 
 
-$$ 48KHz \leq f_{clk} \leq 712KHz $$
+$$ 96KHz \leq f_{clk} \leq 712KHz $$
 
 \subsubsection{Alimentación y protecciones}
 La alimentación del integrado se encuentra acotada entre $\pm 2.35V$ y $\pm6V$ Dual Supply,
@@ -132,8 +143,8 @@ para que el capacitar pueda descargarse.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6 \textwidth]
-	{images/ej1/proteccion alim.png}
+	\includegraphics[width=0.4 \textwidth]
+	{images/ej1/proteccionalim.png}
 	\caption{Protección en la alimentación}
 	\label{fig:pal}
 \end{figure}
@@ -144,11 +155,55 @@ $(V^- - 0.3V \leq Vin \leq V^+ + 0.3V )$, por lo que se colocó la siguiente pro
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2 \textwidth]
-	{images/ej1/proteccion in.png}
+	{images/ej1/proteccionin.png}
 	\caption{Protección en la entrada}
 	\label{fig:pin}
 \end{figure}
 
+
+
+
+\subsection{Mediciones}
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=\textwidth]
+	{images/ej2/sar-continua.png}
+	\caption{Salida del ADC con entrada continua}
+	\label{fig:adc-continua}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]
+	{images/ej1/mediciones/aa_.png}
+	\caption{Salida del ADC con entrada de 5V pico a pico}
+	\label{fig:adc-fs}
+\end{figure}
+
+
+Se verific\'o la precisi\'on del conversor estudiando su respuesta a se\~nales de continua (figura \ref{fig:adc-continua}) y a senoidales que cubr\'ian toda la escala (figura \ref{fig:adc-fs}). La salida no llega nunca a 0V, lo cual indica que probablemente un cierto nivel de ruido se est\'e convirtiendo tambi\'en. Esto se condice con lo que se observa en la figura \ref{fig:adc-chiquita}, donde se observa que el bit menos significativo tiene un aporte pr\'acticamente nulo en la precisi\'on de la se\~nal.
+
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.8\textwidth]
+	{images/ej1/mediciones/a__.png}
+	\caption{Salida del ADC0800 con entrada de 25mV de amplitud}
+	\label{fig:adc-chiquita}
+\end{figure}
+
+Sin embargo, esto no quita que no haya una p\'erdida apreciable de precisi\'on eliminando los bits menos significativos. Los efectos de esto se observan en la figura \ref{fig:adc-bits}. Particularmente para 4 bits, se observa que el ruido de cuantizaci\'on se hace considerable. Sin embargo, la gran diferencia con los resultados de la figura \ref{fig:adc-fs} se debe principalmente a que se midi\'o con una baja frecuencia de muestreo m\'as baja.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.45\textwidth]
+	{images/ej1/mediciones/a_4.png}
+	\includegraphics[width=0.45\textwidth]
+	{images/ej1/mediciones/a_6.png}
+	\caption{Salida del ADC con 4  y 6 bits activos}
+	\label{fig:adc-bits}
+\end{figure}
 
 
 \end{document}

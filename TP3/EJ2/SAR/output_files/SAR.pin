@@ -30,7 +30,7 @@
  --                  Bank 2:       2.5V
  --                  Bank 3:       2.5V
  --                  Bank 4:       2.5V
- --                  Bank 5:       2.5V
+ --                  Bank 5:       3.3V
  --                  Bank 6:       2.5V
  --                  Bank 7:       3.3V
  --                  Bank 8:       3.3V
@@ -225,7 +225,7 @@ VCCINT                       : K10       : power  :                   : 1.2V    
 VCCINT                       : K11       : power  :                   : 1.2V    :           :                
 GND                          : K12       : gnd    :                   :         :           :                
 GND                          : K13       : gnd    :                   :         :           :                
-VCCIO5                       : K14       : power  :                   : 2.5V    : 5         :                
+VCCIO5                       : K14       : power  :                   : 3.3V    : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : K15       :        :                   :         : 5         :                
 freq_selector[0]             : K16       : input  : 3.3-V LVCMOS      :         : 5         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : L1        :        :                   :         : 2         :                
@@ -234,8 +234,8 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : L3        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : L4        :        :                   :         : 2         :                
 VCCA1                        : L5        : power  :                   : 2.5V    :           :                
 VCCINT                       : L6        : power  :                   : 1.2V    :           :                
-period[21]                   : L7        : output : 2.5 V             :         : 3         : N              
-period[13]                   : L8        : output : 2.5 V             :         : 3         : N              
+period[13]                   : L7        : output : 2.5 V             :         : 3         : N              
+period[12]                   : L8        : output : 2.5 V             :         : 3         : N              
 GND                          : L9        : gnd    :                   :         :           :                
 GND                          : L10       : gnd    :                   :         :           :                
 GND                          : L11       : gnd    :                   :         :           :                
@@ -249,78 +249,78 @@ GND+                         : M2        :        :                   :         
 VCCIO2                       : M3        : power  :                   : 2.5V    : 2         :                
 GND                          : M4        : gnd    :                   :         :           :                
 GNDA1                        : M5        : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : M6        :        :                   :         : 3         :                
-period[3]                    : M7        : output : 2.5 V             :         : 3         : N              
-period[9]                    : M8        : output : 2.5 V             :         : 3         : N              
+period[5]                    : M6        : output : 2.5 V             :         : 3         : N              
+period[21]                   : M7        : output : 2.5 V             :         : 3         : N              
+period[19]                   : M8        : output : 2.5 V             :         : 3         : N              
 VCCINT                       : M9        : power  :                   : 1.2V    :           :                
-period[5]                    : M10       : output : 2.5 V             :         : 4         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : M10       :        :                   :         : 4         :                
 VCCINT                       : M11       : power  :                   : 1.2V    :           :                
 GNDA4                        : M12       : gnd    :                   :         :           :                
 GND                          : M13       : gnd    :                   :         :           :                
-VCCIO5                       : M14       : power  :                   : 2.5V    : 5         :                
+VCCIO5                       : M14       : power  :                   : 3.3V    : 5         :                
 GND+                         : M15       :        :                   :         : 5         :                
 GND+                         : M16       :        :                   :         : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N1        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N2        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N3        :        :                   :         : 3         :                
 VCCD_PLL1                    : N4        : power  :                   : 1.2V    :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : N5        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : N6        :        :                   :         : 3         :                
+period[11]                   : N5        : output : 2.5 V             :         : 3         : N              
+period[23]                   : N6        : output : 2.5 V             :         : 3         : N              
 GND                          : N7        : gnd    :                   :         :           :                
-period[11]                   : N8        : output : 2.5 V             :         : 3         : N              
+period[7]                    : N8        : output : 2.5 V             :         : 3         : N              
 eoc_input                    : N9        : input  : 2.5 V             :         : 4         : Y              
 GND                          : N10       : gnd    :                   :         :           :                
 start                        : N11       : output : 2.5 V             :         : 4         : Y              
 oe                           : N12       : input  : 2.5 V             :         : 4         : Y              
 VCCD_PLL4                    : N13       : power  :                   : 1.2V    :           :                
-period[7]                    : N14       : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : N14       :        :                   :         : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N15       :        :                   :         : 5         :                
 freq_selector[6]             : N16       : input  : 3.3-V LVCMOS      :         : 5         : Y              
-period[6]                    : P1        : output : 2.5 V             :         : 2         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : P1        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P2        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P3        :        :                   :         : 3         :                
 VCCIO3                       : P4        : power  :                   : 2.5V    : 3         :                
 GND                          : P5        : gnd    :                   :         :           :                
-period[23]                   : P6        : output : 2.5 V             :         : 3         : N              
+period[15]                   : P6        : output : 2.5 V             :         : 3         : N              
 VCCIO3                       : P7        : power  :                   : 2.5V    : 3         :                
-period[22]                   : P8        : output : 2.5 V             :         : 3         : N              
+period[16]                   : P8        : output : 2.5 V             :         : 3         : N              
 control                      : P9        : input  : 2.5 V             :         : 4         : Y              
 VCCIO4                       : P10       : power  :                   : 2.5V    : 4         :                
 cmp                          : P11       : input  : 2.5 V             :         : 4         : Y              
 GND                          : P12       : gnd    :                   :         :           :                
 VCCIO4                       : P13       : power  :                   : 2.5V    : 4         :                
-period[19]                   : P14       : output : 2.5 V             :         : 4         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : P14       :        :                   :         : 4         :                
 freq_selector[5]             : P15       : input  : 3.3-V LVCMOS      :         : 5         : Y              
 freq_selector[4]             : P16       : input  : 3.3-V LVCMOS      :         : 5         : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : R1        :        :                   :         : 2         :                
+period[2]                    : R1        : output : 2.5 V             :         : 2         : N              
 GND                          : R2        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : R3        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : R4        :        :                   :         : 3         :                
-period[20]                   : R5        : output : 2.5 V             :         : 3         : N              
-period[17]                   : R6        : output : 2.5 V             :         : 3         : N              
-period[12]                   : R7        : output : 2.5 V             :         : 3         : N              
+period[6]                    : R4        : output : 2.5 V             :         : 3         : N              
+period[9]                    : R5        : output : 2.5 V             :         : 3         : N              
+period[10]                   : R6        : output : 2.5 V             :         : 3         : N              
+period[17]                   : R7        : output : 2.5 V             :         : 3         : N              
 clk                          : R8        : input  : 3.3-V LVCMOS      :         : 3         : Y              
 GND+                         : R9        :        :                   :         : 4         :                
 clock_sh                     : R10       : output : 2.5 V             :         : 4         : Y              
 clock_filtro                 : R11       : output : 2.5 V             :         : 4         : Y              
-period[14]                   : R12       : output : 2.5 V             :         : 4         : N              
-period[15]                   : R13       : output : 2.5 V             :         : 4         : N              
+period[0]                    : R12       : output : 2.5 V             :         : 4         : N              
+period[1]                    : R13       : output : 2.5 V             :         : 4         : N              
 freq_selector[7]             : R14       : input  : 3.3-V LVCMOS      :         : 4         : Y              
 GND                          : R15       : gnd    :                   :         :           :                
 freq_selector[3]             : R16       : input  : 3.3-V LVCMOS      :         : 5         : Y              
 VCCIO3                       : T1        : power  :                   : 2.5V    : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : T2        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : T3        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : T4        :        :                   :         : 3         :                
+period[20]                   : T3        : output : 2.5 V             :         : 3         : N              
+period[22]                   : T4        : output : 2.5 V             :         : 3         : N              
 period[8]                    : T5        : output : 2.5 V             :         : 3         : N              
-period[10]                   : T6        : output : 2.5 V             :         : 3         : N              
-period[4]                    : T7        : output : 2.5 V             :         : 3         : N              
+period[14]                   : T6        : output : 2.5 V             :         : 3         : N              
+period[18]                   : T7        : output : 2.5 V             :         : 3         : N              
 GND+                         : T8        :        :                   :         : 3         :                
 GND+                         : T9        :        :                   :         : 4         :                
 clk_9fs                      : T10       : output : 2.5 V             :         : 4         : Y              
-period[18]                   : T11       : output : 2.5 V             :         : 4         : N              
-period[0]                    : T12       : output : 2.5 V             :         : 4         : N              
-period[16]                   : T13       : output : 2.5 V             :         : 4         : N              
-period[2]                    : T14       : output : 2.5 V             :         : 4         : N              
-period[1]                    : T15       : output : 2.5 V             :         : 4         : N              
+period[3]                    : T11       : output : 2.5 V             :         : 4         : N              
+period[4]                    : T12       : output : 2.5 V             :         : 4         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : T13       :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T14       :        :                   :         : 4         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T15       :        :                   :         : 4         :                
 VCCIO4                       : T16       : power  :                   : 2.5V    : 4         :                

@@ -51,7 +51,7 @@ refer to the applicable agreement for further details.
 		(line (pt 117 12)(pt 121 8))
 	)
 	(text "VCC" (rect 136 7 156 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 408 288 472 312))
+	(annotation_block (location)(rect 320 232 384 256))
 )
 (pin
 	(input)
@@ -803,13 +803,38 @@ refer to the applicable agreement for further details.
 		(rectangle (rect 16 16 144 96))
 	)
 )
+(symbol
+	(rect 488 48 664 128)
+	(text "clock_divider16" (rect 5 0 81 12)(font "Arial" ))
+	(text "inst11" (rect 8 64 36 81)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk_in" (rect 0 0 28 12)(font "Arial" ))
+		(text "clk_in" (rect 21 27 49 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "period[23..0]" (rect 0 0 61 12)(font "Arial" ))
+		(text "period[23..0]" (rect 21 43 82 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 176 32)
+		(output)
+		(text "clk_out" (rect 0 0 35 12)(font "Arial" ))
+		(text "clk_out" (rect 126 27 161 39)(font "Arial" ))
+		(line (pt 176 32)(pt 160 32))
+	)
+	(drawing
+		(rectangle (rect 16 16 160 64))
+	)
+)
 (connector
 	(pt 464 352)
 	(pt 448 352)
-)
-(connector
-	(pt 448 352)
-	(pt 448 288)
 )
 (connector
 	(pt 216 448)
@@ -1021,11 +1046,6 @@ refer to the applicable agreement for further details.
 	(pt 1280 464)
 )
 (connector
-	(pt 440 368)
-	(pt 440 480)
-	(bus)
-)
-(connector
 	(pt 440 480)
 	(pt 672 480)
 	(bus)
@@ -1145,10 +1165,6 @@ refer to the applicable agreement for further details.
 	(pt 448 288)
 )
 (connector
-	(pt 664 80)
-	(pt 664 160)
-)
-(connector
 	(pt 664 160)
 	(pt 664 264)
 )
@@ -1222,6 +1238,33 @@ refer to the applicable agreement for further details.
 	(pt 1128 144)
 	(bus)
 )
+(connector
+	(pt 440 96)
+	(pt 488 96)
+	(bus)
+)
+(connector
+	(pt 440 96)
+	(pt 440 368)
+	(bus)
+)
+(connector
+	(pt 440 368)
+	(pt 440 480)
+	(bus)
+)
+(connector
+	(pt 448 80)
+	(pt 488 80)
+)
+(connector
+	(pt 448 80)
+	(pt 448 288)
+)
+(connector
+	(pt 448 288)
+	(pt 448 352)
+)
 (junction (pt 192 288))
 (junction (pt 640 352))
 (junction (pt 440 368))
@@ -1237,5 +1280,5 @@ refer to the applicable agreement for further details.
 (junction (pt 192 560))
 (junction (pt 944 584))
 (junction (pt 896 600))
-(junction (pt 664 160))
 (junction (pt 872 240))
+(junction (pt 448 288))
